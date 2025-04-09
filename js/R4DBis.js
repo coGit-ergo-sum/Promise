@@ -55,7 +55,7 @@
 
 	// this to control 'PromiseAny'
 	
-	let resolveAny = function(pguiAny, folders, btn){		
+	let resolveAny = function(pguiAny, envelopes, btn){		
 		try{
 			pguiAny.resolved();
 			tools.highlight.resolved(btn);	
@@ -67,11 +67,11 @@
 	}	
 
 	// The first progressBar that reject stops the 'race'
-	let rejectAll = function(pguiAny, folder, btn){		
+	let rejectAll = function(pguiAny, envelope, btn){		
 		pguiAny.rejected();
 		tools.highlight.rejected(btn);
 		
-		window.console.promise.log.reject(folder.result.id);
+		window.console.promise.log.reject(envelope.result.id);
 	}	
 	
 	let finallyAny = function(pguiAny, btn){
@@ -121,7 +121,7 @@
 				
 				try{
 					
-					// In this example we don't need to wrap info in a 'folder'.
+					// In this example we don't need to wrap info in a 'envelope'.
 					// object but we choose to call '_resolve' & '_finally' for  
 					// each 'Promise' bound with each 'ProgressBar'
 						
@@ -129,18 +129,18 @@
 
 						_resolve(pb, pgui);
 
-						let folder = {result: result, pgui: pgui};	
-						resolve(folder);
+						let envelope = {result: result, pgui: pgui};	
+						resolve(envelope);
 					}
 					
 					let __reject = function(result){
 						
 						_reject(pb, pgui);
 
-						let folder = {result: result, pgui: pgui};	
-						reject(folder);
+						let envelope = {result: result, pgui: pgui};	
+						reject(envelope);
 					}
-					pb.start(__resolve, __reject);
+					pb.executor(__resolve, __reject);
 
 				}
 				catch(jse){
@@ -148,10 +148,10 @@
 					window.console.promise.log.catch(jse);
 
 					let rejectionResult = pb.getRejectionResult(jse);
-					let folder = {result: rejectionResult, pgui: pgui};	
+					let envelope = {result: rejectionResult, pgui: pgui};	
 					
 					// this ensures '_reject' will always receive the correct type parameter.
-					reject(folder)
+					reject(envelope)
 				}
 			})
 			/*
@@ -165,8 +165,8 @@
 			.finally(function(){
 				 _finally(pb, pgui);
 			})
-			.catch(function(folder){ 
-				 if(folder.error != null){_catch(folder, pgui);};
+			.catch(function(envelope){ 
+				 if(envelope.error != null){_catch(envelope, pgui);};
 			})
 			*/
 			;
@@ -184,8 +184,8 @@
 		
 		// and now we can use the 'promise' in the way we learned 
 		promiseAny.then(
-			folders => resolveAny(pguiAny, folders, btn),
-			folder  => rejectAll (pguiAny, folder,  btn)
+			envelopes => resolveAny(pguiAny, envelopes, btn),
+			envelope  => rejectAll (pguiAny, envelope,  btn)
 		)
 		.finally(() => { finallyAny(pguiAny, btn); })
 		.catch((error) => catchAny(error, pguiAny, btn));

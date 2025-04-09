@@ -11,7 +11,7 @@
 	// ----------------------------------------------------------------------- //
 	// These are the default settings,
 	pb.resolvePercent =  60;	// percent 
-	pb.errorPercent   =   0;	// (the probability an exception is thrown. In the 'ProgressBar' but not in the 'start' function.)
+	pb.errorPercent   =   0;	// (the probability an exception is thrown. In the 'ProgressBar' but not in the 'executor' function.)
 	pb.interval       =  15;    // milliseconds per iteration. (The unit of time for the ProgressBar)	
 
 	
@@ -40,7 +40,7 @@
 		
 		text('Started: pending', '#cccccc');
 		
-		pb.start(
+		pb.executor(
 			_resolve, 
 			_reject
 		);	

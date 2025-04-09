@@ -58,10 +58,10 @@
 			
 			let promise = new Promise(function(resolve, reject) {	
 				
-				// The function 'start' will always 'resolve'!
+				// The function 'executor' will always 'resolve'!
 				pb0.resolvePercent = 100;	
 												
-				pb0.start(resolve, reject);
+				pb0.executor(resolve, reject);
 			});
 			
 			promise
@@ -87,11 +87,11 @@
 			
 			let promise = new Promise(function(resolve, reject) {	
 				
-				// The function 'start' will always 'reject'!
+				// The function 'executor' will always 'reject'!
 				pb0.resolvePercent = 0;	
 				pb0.errorPercent = 10;
 				
-				pb0.start(resolve, reject);
+				pb0.executor(resolve, reject);
 			});
 			
 			promise
@@ -131,7 +131,7 @@ promise
 //    'constructor' and NOT THE CALLBACKS PROVIDED BY THE DEVELOPER.
 //    that's why I think the constructor should be developed in that way:
 //
-//    let promise = new Promise(pb.start);
+//    let promise = new Promise(pb.executor);
 //
 //    - less verbose
 //    - hides confusing details

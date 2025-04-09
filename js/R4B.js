@@ -5,21 +5,31 @@
 		
 	// the array with the progress bars
 	let pbs   = [];
+
+
 	let pguis = [];	
 		
 	for(let i = 0; i < n; i++){
 		pbs[i] = new ProgressBar('ProgressBar' + i);	
 		pbs[i].resolvePercent = 40;
 		pbs[i].errorPercent   = 0;
+
+		// adds a progress bar to the page
 		tools.append2Demo(pbs[i], 'tdR4BC2');	
 		
-		pguis[i] = new PromiseGUI(1);		
+		pguis[i] = new PromiseGUI(1);
+		
+		// adds a promiseGUI tothempage
 		tools.prepend(pguis[i].$td, pbs[i].$tr);
 	}
 		
+	// This is the master promiseGUI that esposes the status of the master Promise
 	let pguiAllSettled = new PromiseGUI(n);
+
+	// adds the master promiseGUI to the page
 	tools.prepend(pguiAllSettled.$td, pbs[0].$tr);
 	
+
 	function btnR4BAllSettled_onclick(btn){
 		
 		console.clear();
@@ -30,11 +40,13 @@
 		
 		let promises = [];
 
+		// When the page is in 'Debug Mode' this 'debugger' sets a breakpoint
 		debugger;
 		
 		for(let i = 0; i < pbs.length; i++){
 			
-			// closure needs to be managed in that way, in a 'for loop'		
+			// for the 'closure' to work properly inside a loop it is necessary to assign every 'pbs[i]' 
+			// and 'pguis[i]' to a local variable, otherwise it will always refer to the last one item
 			let pb   = pbs[i];			
 			let pgui = pguis[i];
 			
@@ -44,27 +56,27 @@
 				try{
 					
 					let _resolve = function(result){ 
-						let folder = {result: result, pgui: pgui};	
-						resolve(folder);
+						let envelope = {result: result, pgui: pgui};	
+						resolve(envelope);
 					}
 
 					let _reject = function(result){ 
-						let folder = {result: result, pgui: pgui};		
-						reject(folder);
+						let envelope = {result: result, pgui: pgui};		
+						reject(envelope);
 					}
 					
-					pb.start(_resolve, _reject);
+					pb.executor(_resolve, _reject);
 					
 				}
 				catch(jse){
 					window.console.promise.log.catch(jse);
 						
 					let rejectionResult = pb.getRejectionResult(jse);
-					let folder = {result: rejectionResult, pgui: pgui};	
+					let envelope = {result: rejectionResult, pgui: pgui};	
 						
 					// this ensures '_reject' will always receive the correct 
 					// type parameter, and all the info it needs.
-					reject(folder);
+					reject(envelope);
 				}
 			})
 			
@@ -80,7 +92,7 @@
 		// and now we can use the 'promise' in the way we learn 
 		promiseAlllSettled.then(
 			items  => resolveAllSettled(items, pguiAllSettled), 
-			folder => rejectAlllSettled(folder, pguiAllSettled)
+			envelope => rejectAlllSettled(envelope, pguiAllSettled)
 		)
 		.finally(() => { finallyAllSettled(pguiAllSettled, btn); })
 		.catch((error) => catchAllSettled(error, pguiAllSettled, btn));
@@ -107,11 +119,11 @@
 
 	// ------------------------------------------------------------ //
 	// Seems that 'alllSettled' never rejects.
-	let rejectAlllSettled = function(folder, pgui){
+	let rejectAlllSettled = function(envelope, pgui){
 
-		folder.pb.rejected();
-		folder.pb.fulfilled();
-		window.console.promise.log.reject(folder.result.id);
+		envelope.pb.rejected();
+		envelope.pb.fulfilled();
+		window.console.promise.log.reject(envelope.result.id);
 		
 		tools.stop(pbs);
 		pgui.rejected();		

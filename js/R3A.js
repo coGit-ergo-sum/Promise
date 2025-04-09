@@ -46,32 +46,32 @@ let R3A = {};
 						
 						// both the callbacks: 'resolve' and 'reject', can have ONLY ONE PARAMETER.
 						// On the other hand our functions 'resolve' & 'reject' need 2 parameters (each one)
-						// The following variable 'folder', wraps 2 parameters.
+						// The following variable 'envelope', wraps 2 parameters.
 						// (just to show another way to carry extra information with 'resolve' & 'reject')	
 						
 						let _resolve = function(result){ 
-							let folder = {result: result, pgui: pgui};	
-							resolve(folder);
+							let envelope = {result: result, pgui: pgui};	
+							resolve(envelope);
 						}
 						
 						let _reject = function(result){ 
-							let folder = {result: result, pgui: pgui};		
-							reject(folder);
+							let envelope = {result: result, pgui: pgui};		
+							reject(envelope);
 						}
 						
 						
-						pb.start(_resolve, _reject);
+						pb.executor(_resolve, _reject);
 					}
 					
 					catch(jse){
 						window.console.promise.log.catch(jse);
 						
 						let rejectionResult = pb.getRejectionResult(jse);
-						let folder = {result: rejectionResult, pgui: pgui};	
+						let envelope = {result: rejectionResult, pgui: pgui};	
 						
 						// this ensures '_reject' will always receive the correct 
 						// type parameter, and all the info it needs.
-						reject(folder);
+						reject(envelope);
 					}
 					
 				});
@@ -94,15 +94,15 @@ let R3A = {};
 	// XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX //
 	
 	
-	R3A.resolve = function(folder){
-		window.console.promise.log.resolve(folder.result.id);
-		folder.pgui.resolved();
+	R3A.resolve = function(envelope){
+		window.console.promise.log.resolve(envelope.result.id);
+		envelope.pgui.resolved();
 	}	
 	
 
-	R3A.reject = function(folder){
-		window.console.promise.log.reject(folder.result.id);
-		folder.pgui.rejected();		
+	R3A.reject = function(envelope){
+		window.console.promise.log.reject(envelope.result.id);
+		envelope.pgui.rejected();		
 	}	
 
 	

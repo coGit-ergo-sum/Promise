@@ -32,11 +32,11 @@ let R4C = {};
 	
 	
 	
-	R4C.resolve = function(pgui, folder, btn){		
+	R4C.resolve = function(pgui, envelope, btn){		
 		try{		
-			window.console.promise.log.resolve(folder.result.id);
-			folder.pgui.resolved();
-			folder.pgui.fulfilled();
+			window.console.promise.log.resolve(envelope.result.id);
+			envelope.pgui.resolved();
+			envelope.pgui.fulfilled();
 
 			// this is the pguiRace
 			pgui.resolved();
@@ -51,11 +51,11 @@ let R4C = {};
 	}	
 
 	// The first progressBar that rejects and stops the 'race'
-	R4C.reject = function(pgui, folder, btn){		
-		window.console.promise.log.reject(folder.result.id);
+	R4C.reject = function(pgui, envelope, btn){		
+		window.console.promise.log.reject(envelope.result.id);
 
-		folder.pgui.rejected();
-		folder.pgui.fulfilled();
+		envelope.pgui.rejected();
+		envelope.pgui.fulfilled();
 		pgui.rejected();
 
 		tools.stop(pbs);		
@@ -103,27 +103,27 @@ let R4C = {};
 				try{
 						
 					let _resolve = function(result){ 
-						let folder = {result: result, pgui: pgui};	
-						resolve(folder);
+						let envelope = {result: result, pgui: pgui};	
+						resolve(envelope);
 					}
 
 					let _reject = function(result){ 
-						let folder = {result: result, pgui: pgui};		
-						reject(folder);
+						let envelope = {result: result, pgui: pgui};		
+						reject(envelope);
 					}
 
-					pb.start(_resolve, _reject);
+					pb.executor(_resolve, _reject);
 				}
 				catch(jse){
 					
 					window.console.promise.log.catch(jse);
 						
 					let rejectionResult = pb.getRejectionResult(jse);
-					let folder = {result: rejectionResult, pgui: pgui};	
+					let envelope = {result: rejectionResult, pgui: pgui};	
 						
 					// this ensures '_reject' will always receive the correct 
 					// type parameter, and all the info it needs.
-					reject(folder);
+					reject(envelope);
 				}
 				
 			});
@@ -138,8 +138,8 @@ let R4C = {};
 		
 		// and now we can use the 'promise' in the way we learned 
 		promiseRace.then(
-			folder => R4C.resolve(pguiRace, folder, btn),
-			folder => R4C.reject (pguiRace, folder, btn)
+			envelope => R4C.resolve(pguiRace, envelope, btn),
+			envelope => R4C.reject (pguiRace, envelope, btn)
 		)
 		.finally(() => { R4C.finally(pguiRace, btn); })
 		.catch((error) => R4C.catch(error, pguiRace, btn));

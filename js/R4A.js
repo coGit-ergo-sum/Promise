@@ -34,12 +34,12 @@ let R4A = {};
 	// XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX //	
 	// The callbacks used by the 'Promise.all'
 		
-	R4A.resolve = function(pguiAll, folders, btn){		
+	R4A.resolve = function(pguiAll, envelopes, btn){		
 		try{
 
-			folders.forEach((folder) => {
-				folder.pgui.resolved();
-				folder.pgui.fulfilled();
+			envelopes.forEach((envelope) => {
+				envelope.pgui.resolved();
+				envelope.pgui.fulfilled();
 			});
 
 			pguiAll.resolved();
@@ -53,12 +53,12 @@ let R4A = {};
 	}	
 
 	// The first progressBar that reject, stops the 'race'
-	R4A.reject = function(pguiAll, folder, btn){
+	R4A.reject = function(pguiAll, envelope, btn){
 		try{	
-			folder.pgui.rejected();
-			folder.pgui.fulfilled();
+			envelope.pgui.rejected();
+			envelope.pgui.fulfilled();
 			pguiAll.rejected();
-			window.console.promise.log.reject(folder.result.id);
+			window.console.promise.log.reject(envelope.result.id);
 
 			// As soon a 'ProgressBar' rejects, The 'PromiseAll' stops listening the other 'Promise'
 			// That means, this stop is an option. It is up to developer write it, based on what he/she 
@@ -108,26 +108,26 @@ let R4A = {};
 				try{
 					
 					let _resolve = function(result){ 
-						let folder = {result: result, pgui: pgui};	
-						resolve(folder);
+						let envelope = {result: result, pgui: pgui};	
+						resolve(envelope);
 					}
 
 					let _reject = function(result){ 
-						let folder = {result: result, pgui: pgui};		
-						reject(folder);
+						let envelope = {result: result, pgui: pgui};		
+						reject(envelope);
 					}
 					
-					pb.start(_resolve, _reject);
+					pb.executor(_resolve, _reject);
 				}
 				catch(jse){
 					window.console.promise.log.catch(jse);
 						
 					let rejectionResult = pb.getRejectionResult(jse);
-					let folder = {result: rejectionResult, pgui: pgui};	
+					let envelope = {result: rejectionResult, pgui: pgui};	
 						
 					// this ensures '_reject' will always receive the correct 
 					// type parameter, and all the info it needs.
-					reject(folder);
+					reject(envelope);
 				}
 			})
 		}
@@ -142,8 +142,8 @@ let R4A = {};
 		
 		// and now we can use the 'promise' in the way we learned 
 		promiseAll.then(
-			folder => R4A.resolve(pguiAll, folder), 
-			folder => R4A.reject (pguiAll, folder)
+			envelope => R4A.resolve(pguiAll, envelope), 
+			envelope => R4A.reject (pguiAll, envelope)
 		)
 		.finally(()    => R4A.finally(pguiAll, btn))
 		.catch((error) => R4A.catch  (error, pguiAll));

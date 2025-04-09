@@ -25,17 +25,17 @@
 
 
 	function btnR7AThenA_onclick(btn){
-		start(isSynchronous = false, btn);
+		executor(isSynchronous = false, btn);
 	}
 
 	
 	function btnR7AThenS_onclick(btn){
-		start(isSynchronous = true, btn)
+		executor(isSynchronous = true, btn)
 	}
 	
 
 
-	function start(isSynchronous, btn){	
+	function executor(isSynchronous, btn){	
 		
 		console.clear();
 		tools.disableBtns(btn);
@@ -56,35 +56,35 @@
 					try{
 						
 						// 'resolve' and 'reject' can have ONLY ONE PARAMETER.
-						// 'folder' wraps 3 parameters in only one.						
+						// 'envelope' wraps 3 parameters in only one.						
 						
 						let _resolve = function(result){ 
-							let folder = {result: result, pgui: pgui};	
-							resolve(folder);
+							let envelope = {result: result, pgui: pgui};	
+							resolve(envelope);
 						}
 						
 						let _reject = function(result){ 
-							let folder = {result: result, pgui: pgui};	
-							reject(folder);
+							let envelope = {result: result, pgui: pgui};	
+							reject(envelope);
 						}
 
 
-						pb.start(_resolve, _reject);
+						pb.executor(_resolve, _reject);
 					}
 					catch(jse){
 
 						window.console.promise.log.catch(jse);
 						
 						let rejectionResult = pb.getRejectionResult(jse);
-						let folder = {result: rejectionResult, pgui: pgui};	
+						let envelope = {result: rejectionResult, pgui: pgui};	
 						
 						// this ensures '_reject' will always receive the correct 
 						// type parameter, and all the info it needs.
-						reject(folder);
+						reject(envelope);
 					}
 				});
 				
-				// when 'isSynchronous' = 'true' the code below runs only after all the functions 'start' completed.
+				// when 'isSynchronous' = 'true' the code below runs only after all the functions 'executor' completed.
 				
 				promise.then(
 					result => R3A.resolve(result, pb), 

@@ -42,14 +42,14 @@
 	// https://hackernoon.com/should-i-use-promises-or-async-await-126ab5c98789
 	// https://developer.mozilla.org/en-US/docs/Learn/JavaScript/Asynchronous/Async_await
 	
-	let _resolve = function(folder){	
-		window.console.promise.log.resolve(folder.id);
-		folder.pgui.resolved();
+	let _resolve = function(envelope){	
+		window.console.promise.log.resolve(envelope.id);
+		envelope.pgui.resolved();
 	}	
 		
-	let _reject = function(folder){
-		window.console.promise.log.reject(folder.id);
-		folder.pgui.rejected();
+	let _reject = function(envelope){
+		window.console.promise.log.reject(envelope.id);
+		envelope.pgui.rejected();
 	}
 
 	let _finally = function(pb, pgui){
@@ -69,16 +69,16 @@
 		await new Promise(function(resolve, reject){
 						
 			let __resolve = function(result){
-				let folder = {result: result, pgui: pguis[0]};
-				resolve(folder);				
+				let envelope = {result: result, pgui: pguis[0]};
+				resolve(envelope);				
 			}
 			
 			let __reject = function(result){
-				let folder = {result: result, pgui: pguis[0]};	
-				reject(folder);				
+				let envelope = {result: result, pgui: pguis[0]};	
+				reject(envelope);				
 			}
 			
-			pbs[0].start(__resolve, __reject)
+			pbs[0].executor(__resolve, __reject)
 		})
 		.then(
 			_resolve, 
@@ -99,16 +99,16 @@
 			await new Promise(function(resolve, reject){
 						
 				let __resolve = function(result){
-					let folder = {result: result, pgui: pguis[index]};
-					resolve(folder);				
+					let envelope = {result: result, pgui: pguis[index]};
+					resolve(envelope);				
 				}
 				
 				let __reject = function(result){
-					let folder = {result: result, pgui: pguis[index]};	
-					reject(folder);				
+					let envelope = {result: result, pgui: pguis[index]};	
+					reject(envelope);				
 				}
 				
-				pbs[index].start(__resolve, __reject);
+				pbs[index].executor(__resolve, __reject);
 				
 			})
 			.then(

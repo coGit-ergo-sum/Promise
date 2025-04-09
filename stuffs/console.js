@@ -5,9 +5,9 @@
 
 		let pb = {log: {}};		
 		
-		pb.log.start = function (text){
+		pb.log.executor = function (text){
 			let css = 'color:#aaaaaa;'
-			pb._log('start', text, css);
+			pb._log('executor', text, css);
 		}
 		
 		pb.log.resolve = function (text){

@@ -68,13 +68,13 @@
 
 					debugger;
 
-					// The function 'start' will trown a synchronous exception!					
+					// The function 'executor' will trown a synchronous exception!					
 					pb0.errorPercent = 100;
 
-					// The lesson is: the function 'start' should be ALWAYS PROTECTED BY A 'TRY-CATCH' session.
+					// The lesson is: the function 'executor' should be ALWAYS PROTECTED BY A 'TRY-CATCH' session.
 					// ============================================================================================ //
 					
-					pb0.start(resolve, reject);				
+					pb0.executor(resolve, reject);				
 				//}
 				//catch(jse){
 				//	reject(...); // see code in 'R3a.js'
@@ -108,7 +108,7 @@
 			new Promise(function(resolve, reject) {					
 				// after this error '_reject' will receive an 'Error' object' instead of 'ProgressBar'.
 				throw new Error("Synchronous error thrown to test the behavior of the application.");	
-				pb0.start(resolve, reject);				
+				pb0.executor(resolve, reject);				
 			})
 			
 			.then(

@@ -86,27 +86,27 @@
 
 					let _resolve = function(result){
 						_done(pb);
-						let folder = {result: result, pgui: pgui};
-						resolve(folder);
+						let envelope = {result: result, pgui: pgui};
+						resolve(envelope);
 					}
 
 					let _reject = function(result){
 						_done(pb);
-						let folder = {result: result, pgui: pgui};
-						reject(folder);
+						let envelope = {result: result, pgui: pgui};
+						reject(envelope);
 					}
 
-					pb.start(_resolve, _reject);
+					pb.executor(_resolve, _reject);
 				}
 				catch(jse){
 					window.console.promise.log.catch(jse);
 						
 					let rejectionResult = pb.getRejectionResult(jse);
-					let folder = {result: rejectionResult, pgui: pgui};	
+					let envelope = {result: rejectionResult, pgui: pgui};	
 						
 					// this ensures '_reject' will always receive the correct 
 					// type parameter, and all the info it needs.
-					reject(folder);
+					reject(envelope);
 				} 
 			});
 		}
@@ -125,8 +125,8 @@
 		
 		// The 'ProgressBar' number 1 should be selected if things runs correctly.
 		masterPromise.then(
-			folder => R4C.resolve(pguiRace, folder, $btnR7CNewPromise),
-			folder => R4C.reject (pguiRace, folder, $btnR7CNewPromise)
+			envelope => R4C.resolve(pguiRace, envelope, $btnR7CNewPromise),
+			envelope => R4C.reject (pguiRace, envelope, $btnR7CNewPromise)
 		)
 		.finally(() => { 
 			R4C.finally(pguiRace, $btnR7CNewPromise); 

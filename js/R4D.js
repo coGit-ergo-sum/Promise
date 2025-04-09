@@ -34,10 +34,10 @@ let R4D = {};
 	// XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX //	
 	// The callbacks used by the 'Promise.any'
 		
-	R4D.resolve = function(pguiAny, folder, btn){		
+	R4D.resolve = function(pguiAny, envelope, btn){		
 		try{			
-			folder.pgui.resolved();
-			folder.pgui.fulfilled();
+			envelope.pgui.resolved();
+			envelope.pgui.fulfilled();
 
 			pguiAny.resolved();
 			tools.highlight.resolved(btn);
@@ -55,7 +55,7 @@ let R4D = {};
 		try{	
 			pguiAny.rejected();
 			pguiAny.fulfilled();
-			//window.console.promise.log.reject(folder.result.id);
+			//window.console.promise.log.reject(envelope.result.id);
 
 			// As soon a 'ProgressBar' rejects, The 'PromiseAny' stops listening the other 'Promise'
 			// That means, this stop is an option. It is up to developer write it, based on what he/she 
@@ -111,26 +111,26 @@ let R4D = {};
 				try{
 					
 					let _resolve = function(result){ 
-						let folder = {result: result, pgui: pgui};	
-						resolve(folder);
+						let envelope = {result: result, pgui: pgui};	
+						resolve(envelope);
 					}
 
 					let _reject = function(result){ 
-						let folder = {result: result, pgui: pgui};		
-						reject(folder);
+						let envelope = {result: result, pgui: pgui};		
+						reject(envelope);
 					}
 					
-					pb.start(_resolve, _reject);
+					pb.executor(_resolve, _reject);
 				}
 				catch(jse){
 					window.console.promise.log.catch(jse);
 						
 					let rejectionResult = pb.getRejectionResult(jse);
-					let folder = {result: rejectionResult, pgui: pgui};	
+					let envelope = {result: rejectionResult, pgui: pgui};	
 						
 					// this ensures '_reject' will always receive the correct 
 					// type parameter, and Any the info it needs.
-					reject(folder);
+					reject(envelope);
 				}
 			})
 		}
@@ -145,8 +145,8 @@ let R4D = {};
 		
 		// and now we can use the 'promise' in the way we learned 
 		promiseAny.then(
-			folder => R4D.resolve(pguiAny, folder, btn), 
-			folder => R4D.reject (pguiAny, folder, btn)
+			envelope => R4D.resolve(pguiAny, envelope, btn), 
+			envelope => R4D.reject (pguiAny, envelope, btn)
 		)
 		.finally(()    => R4D.finally(pguiAny, btn))
 		.catch((error) => R4D.catch  (error, pguiAny));

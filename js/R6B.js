@@ -19,15 +19,15 @@
 
 	
 	function btnR6BStartA_onclick(btn){
-		start(isSynchronous = false, btn);
+		executor(isSynchronous = false, btn);
 	}
 
 	
 	function btnR6BStartS_onclick(btn){
-		start(isSynchronous = true, btn)
+		executor(isSynchronous = true, btn)
 	}
 	
-	function start(isSynchronous, btn){
+	function executor(isSynchronous, btn){
 		debugger;
 		
 		counter = 0;
@@ -40,7 +40,7 @@
 		for(let i = 0; i < n; i++){	
 			let pb = pbs[i];
 			pb.isSynchronous  = isSynchronous;
-			pb.start(
+			pb.executor(
 				result => _resolve(result, pb), 
 				result => _reject(result, pb)
 			);				

@@ -6939,7 +6939,7 @@ Tween.prototype = {
 		this.prop = prop;
 		this.easing = easing || "swing";
 		this.options = options;
-		this.start = this.now = this.cur();
+		this.executor = this.now = this.cur();
 		this.end = end;
 		this.unit = unit || ( jQuery.cssNumber[ prop ] ? "" : "px" );
 	},
@@ -6961,7 +6961,7 @@ Tween.prototype = {
 		} else {
 			this.pos = eased = percent;
 		}
-		this.now = ( this.end - this.start ) * eased + this.start;
+		this.now = ( this.end - this.executor ) * eased + this.executor;
 
 		if ( this.options.step ) {
 			this.options.step.call( this.elem, this.now, this );
@@ -7083,7 +7083,7 @@ var
 
 			// Update tween properties
 			if ( parts ) {
-				start = tween.start = +start || +target || 0;
+				start = tween.executor = +start || +target || 0;
 				tween.unit = unit;
 				// If a +=/-= token was provided, we're doing a relative animation
 				tween.end = parts[ 1 ] ?
@@ -7266,10 +7266,10 @@ function defaultPrefilter( elem, props, opts ) {
 			tween = createTween( hidden ? dataShow[ prop ] : 0, prop, anim );
 
 			if ( !( prop in dataShow ) ) {
-				dataShow[ prop ] = tween.start;
+				dataShow[ prop ] = tween.executor;
 				if ( hidden ) {
-					tween.end = tween.start;
-					tween.start = prop === "width" || prop === "height" ? 1 : 0;
+					tween.end = tween.executor;
+					tween.executor = prop === "width" || prop === "height" ? 1 : 0;
 				}
 			}
 		}
@@ -7402,8 +7402,8 @@ function Animation( elem, properties, options ) {
 
 	jQuery.map( props, createTween, animation );
 
-	if ( jQuery.isFunction( animation.opts.start ) ) {
-		animation.opts.start.call( elem, animation );
+	if ( jQuery.isFunction( animation.opts.executor ) ) {
+		animation.opts.executor.call( elem, animation );
 	}
 
 	jQuery.fx.timer(
@@ -7650,7 +7650,7 @@ jQuery.fx.tick = function() {
 jQuery.fx.timer = function( timer ) {
 	jQuery.timers.push( timer );
 	if ( timer() ) {
-		jQuery.fx.start();
+		jQuery.fx.executor();
 	} else {
 		jQuery.timers.pop();
 	}
@@ -7658,7 +7658,7 @@ jQuery.fx.timer = function( timer ) {
 
 jQuery.fx.interval = 13;
 
-jQuery.fx.start = function() {
+jQuery.fx.executor = function() {
 	if ( !timerId ) {
 		timerId = setInterval( jQuery.fx.tick, jQuery.fx.interval );
 	}

@@ -46,9 +46,9 @@
 			
 			let promise = new Promise(function(resolve, reject) {	
 				
-				// The function 'start' will always 'resolve'!
+				// The function 'executor' will always 'resolve'!
 				pb0.resolvePercent = 100;									
-				pb0.start(resolve, reject);
+				pb0.executor(resolve, reject);
 				
 			});
 			
