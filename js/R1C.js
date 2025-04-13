@@ -3,7 +3,7 @@
 	let pb = new ProgressBar('ProgressBar');
 	
 	pb.resolvePercent = 50;
-	pb.errorPercent   =  25;
+	pb.errorPercent   =  0;
 		
 		
 	tools.append2Demo(pb, 'tdR1CC1');
@@ -29,12 +29,6 @@
 		}
 		finally{
 			pgui.fulfilled;
-		}
-
-		
+		}	
 	}
-	
-
-	
-
 }

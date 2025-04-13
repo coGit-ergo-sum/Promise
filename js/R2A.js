@@ -11,7 +11,30 @@
 	let pgui = new PromiseGUI(1);		
 	tools.prepend(pgui.$td, pb.$tr);	
 	
+	function btnR2ADIYThen_onclick(btn){
 
+		console.clear();
+		pgui.reset();
+		
+		
+		debugger;
+
+		
+		// ****************************************************************************** //
+		// let promise = new Promise(pb.executor)
+		let promise = new PromiseDIY(function(resolve, reject) {
+			pb.executor(resolve, reject);
+		})
+		.then(
+			pgui.resolved, 
+			pgui.rejected
+		)
+		.finally(x => {
+			debugger;
+			pgui.fulfilled(x);
+		})
+		.catch(pgui.catched);	
+	}
 
 	function btnR2AThen_onclick(btn){
 
@@ -33,7 +56,10 @@
 			pgui.resolved, 
 			pgui.rejected
 		)
-		.finally(pgui.fulfilled)
+		.finally(x => {
+			debugger;
+			pgui.fulfilled(x);
+		})
 		.catch(pgui.catched);	
 		
 		/*

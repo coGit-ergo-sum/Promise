@@ -1,0 +1,169 @@
+/* Tipografia moderna */
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
+
+body {
+    font-family: 'Roboto', Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f9;
+    color: #333;
+    line-height: 1.6;
+}
+
+/* Titolo della pagina */
+h1, h2, h3 {
+    color: #2c3e50;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+/* Contenitore globale */
+fieldset {
+    /* border: none; */
+    border: solid 1px #ccc;
+    margin: 20px auto;
+    padding: 20px;
+    background: #fff;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    max-width: 800px;
+}
+
+/* Etichetta di sezione */
+legend {
+    font-size: 1.5em;
+    color: #34495e;
+    padding: 0 10px;
+    font-weight: bold;
+    border-bottom: 2px solid #e67e22;
+    margin-bottom: 10px;
+}
+
+/* Note */
+.note {
+    font-size: 0.95em;
+    color: #616c6d;
+    background: #ecf0f1;
+    border: solid 1px #dce0e1;
+    padding: 10px;
+    border-radius: 5px;
+    margin-bottom: 15px;
+}
+
+button {
+    /* background: #6c757d; 
+    color: #fff;
+    border: none; */
+    font-size: 1em;
+    /* border-radius: 5px; */
+    cursor: pointer;
+    transition: background 0.3s ease;
+    height: 26px;
+    text-align: center;
+}
+
+
+/* Tabelle */
+table {
+    width: 100%;
+    /* border-collapse: collapse; */
+    /* margin: 20px 0; */
+    background: #fff;
+}
+
+table td, table th {
+    /* padding: 10px; */
+    border: 0px solid #ddd;
+    /* text-align: center; */
+}
+
+table th {
+    background: #3498db;
+    color: #fff;
+}
+
+/* Messaggi */
+span.message {
+    display: inline-block;
+    padding: 5px 10px;
+    background: #dfe6e9;
+    border-radius: 5px;
+    color: #2c3e50;
+}
+
+/* Stile Generale */
+pre {
+    /* background: #ecf0f1; */
+    /* color: #ccc; */
+    /* background: #1c2528; */
+    background-color: #1F1F1F;
+    color: #bae7fe;
+    padding: 15px;
+    border-radius: 5px;
+    overflow-x: auto;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 0.9em;
+}
+
+code {
+    background: #dcdde1;
+    padding: 2px 5px;
+    border-radius: 3px;
+    font-family: 'Courier New', Courier, monospace;
+    color: #e74c3c;
+}
+
+.MIB{
+    border:solid 0px red;
+    background-repeat: no-repeat;	
+    padding-left: 40px;
+    background-position: 0 0;	
+    background-image:url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAMBSURBVEhLtZZNTBNBFMf/u9uWQiNlKbR8CARQxC8SAwqiMXrwoGiiEI4iBxOjiRdD8MpBEyEmHkzUmIgh3jR64qqc0HgyaEJiKh8CAoJQQEoK3XZ9MzulLJQtEfwlm868mXn/2bdv3lTSdR2WTL7WsfAFCI0A2oJhs6UDzkIgvQLIaZQMY2I2Fxhs1xH4QI0kGwD5V2uBkjsJhTYKzPToGHkMRJeFYYvIKUDhTcBzxiRkFph8o+Nnl+j8I/lXKWwNqyKy+DV2vl3nDOaD+RLEBSgsETJrUSBCTzRZ6NfA5rI1sbUYeWIMEDxEDY2X9NGxcSyHdURptkQvKMsSXE4J2W4FBV4FJbk2uF3GfuaDUQxOaBidjmB6LoJgyFjHos3WpTgkFOTn4d7dDkPg4vkafWBc44utUHfJXHx2gW3TmmLaUOez5xQiyvPOliyebVZ4VQU9D3z8yclUhDUxbBMvWjzw2ftJgA5RtltGKSlacWSPAw6bBLsiobLMIayJKfLZ4M2gTZBvmZ9QorKM8tiCEwfj48cPWM+tim2AfMux43+hOpX/JsJH4ak7Fh8/dzQVPosw1dWkGQ3yrbRdL29j5SDPo0Cm15+cjWBF0+GwS/CkK6jal4L711TjlQUsTKcOOzFBc0Ms8yh7bGTL9djQdNaFy7VCQKKk0PuadIQDhmGnsasUIlYV/xfkW+Yldx1/FlcQmA+JXnLYXLZmA+RbNuq5+RCEtQg6nvai+70fi0sJFgrYWPc7P9pprsZrxBoo/sy3UU157e8VIwbfhwN41PUJWjiC/Xu9KC1S4VHTeDmYnVvCwI8A+v1TlAwKbjVX83ET6km6I1qFAONzI6WD+Q749TuIl2/74B+aERYzZSVZuFJfAa/HJSwC2Ukn8xUPS1yAldjhh0Z7HUOjc/j6bQrTM0HeZw4PlftQvNvN+xsovg1knl4nwNiRC6eZYl+/+lHNAgx+ZVI9j249izgsLIU3klyZa+Ef/iM1kpRmli0Z7NJvNaeiYHOBGNv62wL8BQpDK3So/IGhAAAAAElFTkSuQmCC');
+}
+
+/* Layout responsive */
+@media (max-width: 768px) {
+    body {
+        font-size: 0.9em;
+    }
+
+    fieldset {
+        padding: 15px;
+    }
+
+    button {
+        font-size: 0.9em;
+    }
+
+    table td, table th {
+        font-size: 0.85em;
+    }
+}
+
+
+#ulR6A span.action{
+    display: inline-block;
+    width: 65px;
+    border:solid 1px transparent;
+}	
+
+#ulR6A span.text{
+    display: inline-block;
+    width: 99px;
+    border:solid 1px transparent;
+}			
+#ulR6A span.elapsed{
+    display: inline-block;
+    width: 65px;
+    border:solid 1px transparent;
+    font-family:"courier new";
+    text-align:right;
+    padding-right:25px;
+}			
+#ulR6A li {
+    background-color:#FFF;
+    border:solid 1px #ccc;
+    margin:3px;
+    padding:2px 3px 2px 4px;
+    list-style-type:none
+}
