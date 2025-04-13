@@ -279,6 +279,13 @@
 
 	</fieldset>
 
+
+	<fieldset style="border: solid 0px #ccc;background-color:transparent;box-shadow: none;">
+		This is a 'Vanilla JS' example of a Promise. 
+		<!-- <br>		<br> -->
+		All the files <b>can be downloaded and run in a local environment</b>.
+	</fieldset>
+
 	<fieldset style="background-color: #fff; ">
 		<legend style="background-color: #fff;">
 			<span class="SectionLabel">intro: </span><span class="SectionTitle"> Main elements.</span>
@@ -1628,7 +1635,7 @@
 	<!--Section 7B  -->
 	<fieldset style="min-height:70px;">
 		<legend>
-			<span class="SectionLabel">Section 7B:</span><span class="SectionTitle">Promise.all <span style="font-weight:normal;">three steps.</span></span>
+			<span class="SectionLabel">Section 7B: </span> <span class="SectionTitle">Promise.all <span style="font-weight:normal;">three steps.</span></span>
 		</legend>
 		<table border="0" >		
 			<tr>
@@ -1639,7 +1646,7 @@
 			</tr>
 			<tr>
 				<td class="btnsContainer"> 
-					<button id="btnR7BNewPromise" onclick="btnR7BNewPromise_onclick(this)">new Promise</button>
+					<button id="btnR7BNewPromise" onclick="btnR7BNewPromise_onclick(this)">new Master Promise</button>
 					<br/>
 					<br/>
 					<!--button id="btnR7BAll" onclick="btnR7BAll_onclick(this)">all</button-->
@@ -1661,7 +1668,7 @@
 	<!--Section 7C  -->
 	<fieldset style="min-height:70px;">
 		<legend>
-			<span class="SectionLabel">Section 7C:</span><span class="SectionTitle">Promise.race <span style="font-weight:normal;">three steps.</span></span>
+			<span class="SectionLabel">Section 7C:</span> <span class="SectionTitle">Promise.race <span style="font-weight:normal;">three steps.</span></span>
 		</legend>
 		<table border="0" >		
 			<tr>
@@ -1672,7 +1679,7 @@
 			</tr>
 			<tr>
 				<td class="btnsContainer"> 
-					<button id="btnR7CNewPromise" onclick="btnR7CNewPromise_onclick(this)">new Promise</button>
+					<button id="btnR7CNewPromise" onclick="btnR7CNewPromise_onclick(this)">new Master Promise</button>
 					<br/>
 					<br/>
 					<!--button id="btnR7CRace"  onclick="btnR7CRace_onclick(this)">race</button-->
@@ -1697,22 +1704,30 @@
 		
 		<table border="0" >		
 			<tr>
-				<td class="msgContainer" id="msgContainer1" colspan="3"> 					
-				In both the previous sections:<br/> 
-				- the 'Master-Promise' is instantiated immediately before the first 'resolve' is called.<br/> 
-				- the button 'then' is enabled immediatly after the 'masterPromise' is created.<br/>
-				It is a little bit strange configuration, but it works! 
-					<br/>
-					<br/>
-				What lesson did we get from session 7?<br/><br/>
-				- 7A show that synchronous process stop the flow of code till they completed<br/>
-				- 7B & 7C show that 'Master-Promise' can't be created, after the synchronous processes it controls are complete.<br/>
-				<br/>
-				Hence <b>the process controlled by the 'Promise' MUST be asynchronous to be correctly managed</b>!
-				<br/>
-				<br/>
-				To be a little bit more detailed, the 'Master-Promise' needs to be created before any of the resolve/reject are called. But, to create a 'Master-Promise', for example, using Promise.race(promises), we need to create the array of promises (the parameter of the function Promise.race)<br/>
-				To force the process controlled by each promise in promises to 'wait' till the 'Master-Promise' is correctly configured, we 'push' the process out of the current executing function, using setTimeout(start, 0);
+				<td class="msgContainer" id="msgContainer1" colspan="3"> 	
+					
+					In both the previous sections:<br/> 
+					- The 'Master-Promise' is instantiated immediately before the first 'resolve' is called.<br/> 
+The 'then' button is enabled immediately after the 'Master-Promise' is created.<br/> 
+<br/> 
+This configuration is somewhat unusual, but it works!
+
+What lesson did we learn from Session 7?<br/> 
+<br/> 
+- 7A demonstrates that synchronous processes halt the flow of code until they are completed.
+- 7B and 7C illustrate that the 'Master-Promise' cannot be created after the synchronous processes it controls have completed.<br/>
+<br/>
+
+Therefore, <b>the processes controlled by the 'Promise' MUST be asynchronous to be managed correctly!</b><br/>
+<br/>
+To elaborate further, the 'Master-Promise' needs to be created before any of the resolves or rejects are called. 
+However, to create a 'Master-Promise', for example, using Promise.race(promises), we need to create the array 
+of promises (the parameter of the Promise.race function).<br/>
+<br/>
+To ensure that the processes controlled by each promise in the array wait until the 'Master-Promise' is 
+correctly configured, we can 'push' the process out of the currently executing function by using 
+setTimeout(start, 0);.
+
 				</td>
 			</tr>
 
