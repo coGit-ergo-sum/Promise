@@ -24,6 +24,8 @@ function ProgressBar(id) {
     
     // The probability that the process resolves successfully
     this.resolvePercent = 60;
+
+	this.probabilities = {resolve: 60, reject: 30, error: 2, timeout: 8};
     
     // The root element of the progress bar
     this.$tr = $(_html);
@@ -97,16 +99,17 @@ function ProgressBar(id) {
     // It's not, because this is a 'case study'.
     // ----------------------------------------------------------------------------------- //
     
-    this.executor = function(resolve, reject) {
+    this.executor = async function(resolve, reject) {
         _this.reset();    
 
         // Simulate a synchronous error with a probability
-        if (_this.errorPercent > (100 * Math.random())) {
-            // The exception here is to test the Promise's behaviour
-            throw new Error("Synchronous error thrown randomly to test the application.");
-        }
+        // if (_this.errorPercent > (100 * Math.random())) {
+        //     // The exception here is to test the Promise's behaviour
+        //     throw new Error("Synchronous error thrown randomly to test the application.");
+        // }
 
         try {
+			
             resolve = resolve || (() => {});
             reject  = reject  || (() => {});
 
@@ -147,37 +150,75 @@ function ProgressBar(id) {
             };                    
     
             // Determine the outcome of the process
-            let alea = 1 + Math.floor(99 * Math.random());
-    
-            let isResolve = (alea < _this.resolvePercent);
-            let remainder = alea % 3;
-    
-            // ---------------------------------------------------- //
-            // Only one of these conditions can be true at the same time
-            let isReject = !isResolve && (remainder == 0);
-            let isTimeout = !isResolve && (remainder == 1);
-            let isError = !isResolve && (remainder == 2);
-            
-            // ---------------------------------------------------- //
+            //let alea = 1 + Math.floor(99 * Math.random()); 
+
+			// mappo alcune variabili con variabili di comodo perchè 
+			// sia piu facile riconoscere le prossime manipolazioni
+			let p1 = this.probabilities.resolve;
+			let p2 = this.probabilities.reject;
+			let p3 = this.probabilities.error;
+			let p4 = this.probabilities.timeout;
+
+			// Inizio la normalizzazione dei dati
+			let P = p1 + p2 + p3 + p4 
+			
+			// e con questo passaggio le variabili sono normalizzate 
+			// ad 1: 100%
+			p1 = p1 / P;
+			p2 = p2 / P;
+			p3 = p3 / P;
+			p4 = p4 / P;
+
+
+            // ----------------------------------------------------------------------- //
+			// adesso decido quale dovra essere il risultato di questa elaborazione
+			// con il vincolo che i quattro possibili risultati abbiano ognuno la 
+			// propria possibilità di verificarsi. 
+			// Ossia cerco di fare in modo che su 100 ripetizioni di questa elaborazione
+			// l'evento is1 si sia presentato p1 volte
+			// l'evento is2 si sia presentato p2 volte
+			// l'evento is3 si sia presentato p3 volte
+			// l'evento is4 si sia presentato p4 volte
+			let alea = Math.random(); 
+			let is1 =  (0 <= alea) && (alea < p1); 
+			let is2 =  (p1 <= alea) && (alea < (p1 + p2)); 		
+			let is3 =  ((p1 + p2) <= alea) && (alea < (p1 + p2 + p3)); 
+			let is4 =  ((p1 + p2 + p3) <= alea) && (alea < (p1 + p2 + p3 + p4)); 
+
+			// faccio la mappature inversa per identificare i diversi eventi
+			let isResolve = is1;
+			let isReject  = is2;
+			let isError   = is3;
+			let isTimeout = is4;
+			//debugger;
+            // ----------------------------------------------------------------------- //
     
             // Set a random number of iterations based on whether it's a timeout
             let maxIterations = isTimeout ? 100 : Math.floor(100 * Math.random());
     
+			//debugger;
+
             // Set the initial width of the progress bar
             _width(++_iterations);
-            
-            if (_this.isSynchronous) {
-                // for (let i = 1; i <= maxIterations; i++) {
-                //     let jMax = (2500000 * Math.random());
-                //     for (let j = 0; j <= jMax; j++) { };
-                //     iteration();
-                // }
-				
-            } else {
-                // Starts the progress bar with setInterval for asynchronous updates
-                _intervalId = window.setInterval(iteration, _this.interval);
-            }		
 
+			function sleepAsync(ms) {
+				return new Promise(resolve => setTimeout(resolve, ms));
+			}
+
+			function sleepSync(ms)
+			{
+				var now = new Date();
+				do {}while(new Date()-now < ms);
+			}
+
+			var sleep = _this.isSynchronous ? sleepSync : sleepAsync;
+
+			for (let i = 1; i <= maxIterations; i++) {
+				iteration();
+				await sleep(_this.interval);
+			}	
+
+			let msg = "Synchronous error thrown randomly to test the application.";
             // Iteration function which updates the progress bar
             async function iteration() {
                 try {
@@ -186,8 +227,8 @@ function ProgressBar(id) {
                         else if (isResolve) { _resolve(); }
                         else if (isReject) { _reject(); }
                         else if (isTimeout) { _timeout(); }
-                        else {
-                            //throw new Error("Asynchronous error, thrown randomly to test the application.");
+                        else if (isError) { _error(); }
+                        else { throw new Error(msg);
                         }
                     } else {
                         _width(++_iterations);
