@@ -6,7 +6,7 @@ let R3A = {};
 
 
 {
-	let n = 1;
+	let n = 5;
 	
 	let pbs   = [];
 	let pguis = [];

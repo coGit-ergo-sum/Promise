@@ -40,15 +40,32 @@ legend {
 }
 
 /* Note */
-.note {
+.note, .text {
+    text-align:justify;
     font-size: 0.95em;
     color: #616c6d;
+    /* border: solid 1px #dce0e1; */
+    border-radius: 5px;
+    text-indent: 10px;
+}
+.note {
+
     background: #ecf0f1;
     border: solid 1px #dce0e1;
-    padding: 10px;
-    border-radius: 5px;
     margin-bottom: 15px;
+    padding: 10px 10px 10px 10px;
+
 }
+.text {
+    background: transparent;
+    border: solid 1px transparent;
+    margin-bottom: 0px;
+    padding: 0px 10px 0px 10px;
+    
+}
+
+
+
 
 button {
     /* background: #6c757d; 
@@ -164,6 +181,6 @@ code {
     background-color:#FFF;
     border:solid 1px #ccc;
     margin:3px;
-    padding:2px 3px 2px 4px;
+    /* padding:2px 3px 2px 4px; */
     list-style-type:none
 }

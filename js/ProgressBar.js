@@ -108,7 +108,7 @@ function ProgressBar(id) {
 
         try {
             resolve = resolve || (() => {});
-            reject = reject || (() => {});
+            reject  = reject  || (() => {});
 
             // ============================================================ //
             let _resolve = function() { 
@@ -167,18 +167,19 @@ function ProgressBar(id) {
             _width(++_iterations);
             
             if (_this.isSynchronous) {
-                for (let i = 1; i <= maxIterations; i++) {
-                    let jMax = (10000000 * Math.random());
-                    for (let j = 0; j <= jMax; j++) { };
-                    iteration();
-                }
+                // for (let i = 1; i <= maxIterations; i++) {
+                //     let jMax = (2500000 * Math.random());
+                //     for (let j = 0; j <= jMax; j++) { };
+                //     iteration();
+                // }
+				
             } else {
                 // Starts the progress bar with setInterval for asynchronous updates
                 _intervalId = window.setInterval(iteration, _this.interval);
-            }
+            }		
 
             // Iteration function which updates the progress bar
-            function iteration() {
+            async function iteration() {
                 try {
                     if (_iterations >= maxIterations) {
                         if (false) {} 
@@ -186,7 +187,7 @@ function ProgressBar(id) {
                         else if (isReject) { _reject(); }
                         else if (isTimeout) { _timeout(); }
                         else {
-                            throw new Error("Asynchronous error, thrown randomly to test the application.");
+                            //throw new Error("Asynchronous error, thrown randomly to test the application.");
                         }
                     } else {
                         _width(++_iterations);
