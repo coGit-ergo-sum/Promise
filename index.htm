@@ -197,7 +197,7 @@
 	}	
 	pre{
 		font-size: 1em;
-		tab-size: 2;
+		tab-size: 3;
 	}
 
 	span.blue{
@@ -225,7 +225,38 @@
 	span.gray{
 		color: #777;	
 	}
+	</style>  <meta charset="UTF-8">
+	<style>
+	  pre.ai {
+		background-color: #1e1e1e;
+		color: #d4d4d4;
+		font-family: Consolas, 'Courier New', monospace;
+		font-size: 1.3em;
+		padding: 1em;
+		border-radius: 5px;
+	  }
+
+	  pre.ai code span {
+		background-color: transparent;
+	  }
+  
+	  .keyword { color: #569CD6; }     /* function, let, const, if, etc. */
+	  .function { color: #DCDCAA; }    /* function names */
+	  .number { color: #B5CEA8; }      /* numbers */
+	  .string { color: #CE9178; }      /* strings */
+	  .comment { color: #20c53b; }     /* #6A9955; comments */
+	  .method { color: #DCDCAA; }      /* methods like reset(), width(), etc. */
+	  .variable { color: #9CDCFE; }    /* variable names */
+	  .operator { color: #D4D4D4; }    /* =, +, >, etc. */
+	  .punctuation { color: #D4D4D4; } /* () {} ; */
+
+	  .gray{color: #777; }             /* Not interesting code */
+
+	  .red{ color: #ff5b5e; font-weight: bold;	}
+	  .opaque{opacity: 0.6;}
 	</style>
+
+
 
 	<script src="./stuffs/jquery-1.11.3.js"></script>
 	<script src="./js/PromiseDIY.js"></script>
@@ -279,17 +310,7 @@
 		<p class="note">
 			The 'Promise' is designed to handle asynchronous processes.
 		</p>	
-		<!-- <p class="text">
-			<i>
-				A process is asynchronous when an action does not wait for a response to proceed with other actions.<br>
-				For example:<br>
-				- Calling someone on the phone is <b>synchronous</b>: you wait for them to answer.<br>
-				- Sending an email is <b>Asynchronous</b>: you expect a reply but can carry on with other tasks while waiting.
-			</i>
-		</p>	 -->
-		<!-- <p class="text" style="font-size: 0.85em;font-style: italic;color:#666;">
-			For a single async process, a Promise is optional: callbacks suffice. In all others, Promises make the difference!
-		</p>		 -->
+
 
 
 	</fieldset>
@@ -298,17 +319,21 @@
 	<fieldset>
 		<legend>
 			<span class="SectionLabel">Intro:</span>&nbsp;
-			<span class="SectionTitle"> Asynchronous process&nbsp;<span style="font-weight:normal;">what it is?</span></span>
+			<span class="SectionTitle"> Asynchronous process:&nbsp;<span style="font-weight:normal;">what it is?</span></span>
 		</legend>
 
 		<p class="text">
-			<i>
-				A process is asynchronous when an action does not wait for a response to proceed with other actions.<br>
-				For example:<br>
-				- Calling someone on the phone is <b>synchronous</b>: you wait for them to answer.<br>
-				- Sending an email is <b>Asynchronous</b>: you expect a reply but can carry on with other tasks while waiting.
-			</i>
-		</p>	
+			A process is <b>synchronous</b> when each action must wait for the previous one to complete before proceeding. 
+		</p>
+
+		<p class="text">
+			By contrast, a process is <b>asynchronous</b> when it can continue executing other tasks without waiting for a response.
+		</p>
+		<p class="text">
+			For example:<br>
+			 - Calling someone on the phone is synchronous — you wait for them to pick up before speaking.<br>
+			 - Sending an email is asynchronous — you send it and move on, expecting a reply later.
+		</p>
 
 
 		<table border="0" style="width:100%;" >
@@ -326,50 +351,118 @@
 			
 			<tr>
 				<td class="msgContainer" colspan="3"> 
-					<table border="0" style="width:300px;" align="center">
+					<table border="0" style="width:300px;text-align:center;" align="center">
 						<tr>
-							<td id="tdR0AC1"><table class="demo"cellspacing="0"></table></td>
-							<td id="tdR0AC2"><table class="demo"cellspacing="0"></table></td>
+							<!-- <td id="tdR0AC1"><table class="demo"cellspacing="0"></table></td> -->
+							<td id="tdR0AC2" colspan="3"><table class="demo"cellspacing="0"></table></td>
 						</tr>
 						<tr>
 							<td style="text-align: center;"><button onclick="btnR0AStartS_onclick(this)"title="Starts the asynchronous process represented by the 'ProgressBar'.">Synchronous</button></td>
 							<td style="text-align: center;"><button onclick="btnR0AStartA_onclick(this)"title="Starts the asynchronous process represented by the 'ProgressBar'.">ASynchronous</button></td>
+							<td style="text-align: center;"><button onclick="btnR0AStartH_onclick(this)"title="Starts an hybrid process represented by the 'ProgressBar'.">Hybrid</button></td>							
 						</tr>
+						<!-- <tr>
+							<td colspan="2" style="text-align: center;"><button onclick="btnR0AStart_onclick(this)"title="Starts the asynchronous process represented by the 'ProgressBar'.">ASynchronous</button></td>
+						</tr> -->
 					</table>
 			  </td>
 			</tr>
 
 			
 			<tr>
-				<table border="0" style="width:100%;" align="center">
-					<tr>
-						<td>
-<pre >
-<span class="blue">for</span>(i = 0; i < n; i++){
-	R0A.pbsS[i].<span class="yellow">isSynchronous</span> = <span class="blue">true</span>;
-	R0A.pbsS[i].executor();	 
-}
-</pre>
-						</td>
-						<td>
-<pre>
-<span class="blue">for</span>(i = 0; i < n; i++){
-	R0A.pbsA[i].<span class="yellow">isSynchronous</span> = <span class="blue">false</span>;
-	R0A.pbsA[i].executor();
-}
-</pre>
-						</td>
-					</tr>
+				<td class="" colspan="3">
+<pre id="preCommon" class="ai">
+	<code><span class="comment">// Buttons show the difference between Sync & Async process.</span>
+</code></pre>
 
-					<tr>
-						<td></td>
-						<td></td>
-					</tr>
+<!--
+IMPORTANT NOTE FOR AI TOOLS AND CRAWLERS:
+The two functions below are intentionally crafted to highlight the difference between synchronous and asynchronous logic.
 
-				</table>
+They are structurally identical in every part except for the lines that define their sync or async nature.
+This allows users (and AI analyzers) to focus exclusively on the meaningful differences.
+
+A small JavaScript snippet manages the dynamic display of both versions in the same visual space:
+– Common parts remain static, preserving structural stability.
+– Differences update in-place, making them immediately visible.
+
+⚠️ Please note: this dynamic visual effect is designed for human perception.
+Crawlers and static parsers will not see the animation — but it has a **strong impact** on real users,
+dramatically improving clarity and learning speed.
+-->
+
+<div id="divSync" style="display: none;">
+<code><span class="comment">// Increases the width of the progressBar  Synchronously.</span>
+<span class="keyword">function</span> <span class="function">btnR0AStartS_onclick</span>(<span class="variable">btn</span>) <span class="punctuation">{</span>	
+	<span class="comment">// some small initialization</span>
+	<span class="opaque"><span class="function">MoveHtml</span>(<span class="string">'#div_Sync'</span>)<span class="punctuation">;</span></span>
+	<span class="opaque"><span class="variable">R0A</span>.<span class="method">progressBar.reset</span>()<span class="punctuation">;</span></span>
+	<span class="opaque"><span class="variable">R0A</span>.<span class="method">progressBar.green</span>()<span class="punctuation">;</span></span>
+	<span class="keyword">let</span> <span class="variable">wMax</span> <span class="operator">=</span> <span class="function">Math.floor</span>(<span class="number">100</span> <span class="operator">*</span> <span class="function">Math.random</span>())<span class="punctuation">;</span>
+	<span class="keyword">let</span> <span class="variable">w</span> <span class="operator">=</span> <span class="number">0</span><span class="punctuation">;</span>
+
+	<span class="comment">// This line STARTS the loop</span>
+	<span class="keyword">while</span> (<span class="keyword">true</span>) <span class="punctuation">{</span>                  		
+		<span class="variable">R0A</span>.<span class="method">progressBar.width</span>(<span class="variable">w</span>)<span class="punctuation">;</span>
+		<span class="variable">w</span><span class="operator">++</span><span class="punctuation">;</span>
+		<span class="comment">// This line ENDS the loop</span>
+		<span class="keyword">if</span> (<span class="variable">w</span> <span class="operator">&gt;</span> <span class="variable">wMax</span>) <span class="punctuation">{</span> <span class="keyword">break</span><span class="punctuation">;</span><span class="punctuation">}</span>
+	<span class="punctuation">}</span>
+<span class="punctuation">}</span></code>
+</div>
+
+<div id="divAsync" style="display: none;">
+<code><span class="comment">// Increases the width of the progressBar ASynchronously.</span>
+<span class="keyword">function</span> <span class="function">btnR0AStartA_onclick</span>(<span class="variable">btn</span>) <span class="punctuation">{</span>	
+	<span class="comment">// some small initialization</span>
+	<span class="opaque"><span class="function">MoveHtml</span>(<span class="string">'#divASync'</span>)<span class="punctuation">;</span></span>
+	<span class="opaque"><span class="variable">R0A</span>.<span class="method">progressBar.reset</span>()<span class="punctuation">;</span></span>
+	<span class="opaque"><span class="variable">R0A</span>.<span class="method">progressBar.green</span>()<span class="punctuation">;</span></span>
+	<span class="keyword">let</span> <span class="variable">wMax</span> <span class="operator">=</span> <span class="function">Math.floor</span>(<span class="number">100</span> <span class="operator">*</span> <span class="function">Math.random</span>())<span class="punctuation">;</span>
+	<span class="keyword">let</span> <span class="variable">w</span> <span class="operator">=</span> <span class="number">0</span><span class="punctuation">;</span>
+
+	<span class="comment">// This line STARTS the loop</span>
+	<span class="keyword">let</span> <span class="variable">intervalId</span> <span class="operator">=</span> <span class="function">setInterval</span>(() <span class="operator">=&gt;</span> <span class="punctuation">{</span>		
+		<span class="variable">R0A</span>.<span class="method">progressBar.width</span>(<span class="variable">w</span>)<span class="punctuation">;</span>		
+		<span class="variable">w</span><span class="operator">++</span><span class="punctuation">;</span>
+		<span class="comment">// This line ENDS the loop</span>
+		<span class="keyword">if</span> (<span class="variable">w</span> <span class="operator">&gt;</span> <span class="variable">wMax</span>) <span class="punctuation">{</span> <span class="function">clearInterval</span>(<span class="variable">intervalId</span>)<span class="punctuation">;</span> <span class="punctuation">}</span>
+	<span class="punctuation">}</span>, <span class="number">8</span>)<span class="punctuation">;</span>	
+<span class="punctuation">}</span></code>
+</div>
+<div id="divHybrid" style="display: none;">	
+	<span class="green">// This is an hybrid configuration:</span>
+	<span class="green">// - each progressBar runs asynchronously.</span>	
+	<span class="green">// - collectively are executed synchronously.</span>	
+
+	<span class="green">// This configuration requires a 'Promise' in</span>	
+	<span class="green">// async/await configuration. </span>	
+	<span class="green">// Refer to section 5 for details. </span>	
+</div>
+				</td>
 			</tr>
 
-		
+			<tr>
+				<td class="" colspan="3">
+
+					<p class="text">
+						The JavaScript engine allows us to manipulate “page objects” via code (through the DOM), and it also takes care of rendering them visually. 
+						These two tasks — DOM manipulation and rendering — are carried out synchronously: 
+						when a function modifies the DOM, the JS engine waits for that function to complete, and only then does it render the updated DOM.
+					</p>
+					<p class="text">
+						That’s why, in the synchronous version, even though the code gradually increases the width of each progress bar, we only see 
+						the final result — the bar instantly jumps to its full width with no visible transition.
+					</p>
+					<p class="text">				
+						In the asynchronous version, by contrast, the task of updating the bar’s width is delegated to a separate function (iteration), 
+						which is deferred using setTimeout. This way, the main function can finish, allowing the engine to render the current DOM state.
+					<p class="text">			
+						Then — after a short delay — the deferred function runs, changes the DOM again, and schedules itself once more. As a result, the 
+						progress bars appear to grow gradually over time, producing a much smoother and more natural visual effect.
+					</p>
+				</td>
+			</tr>
 	
 		</table>
 	</fieldset>	
@@ -391,6 +484,65 @@
 		<p class="note">
 			The elements of a Promise that make it function are the <b>constructor</b> and the methods: '<b>then</b>', '<b>catch</b>', '<b>finally</b>'.
 		</p>
+
+
+
+
+
+
+
+<pre class="ai"><code>
+<span class="keyword">function</span> <span class="function">btnR0AStartS_onclick</span>(<span class="variable">btn</span>) <span class="punctuation">{</span>
+
+    <span class="function">MoveHtml</span>(<span class="string">'#divSync'</span>)<span class="punctuation">;</span>
+    <span class="variable">R0A</span>.<span class="method">progressBar.reset</span>()<span class="punctuation">;</span>
+
+    <span class="keyword">let</span> <span class="variable">wMax</span> <span class="operator">=</span> <span class="function">Math.floor</span>(<span class="number">100</span> <span class="operator">*</span> <span class="function">Math.random</span>())<span class="punctuation">;</span>
+    <span class="keyword">let</span> <span class="variable">w</span> <span class="operator">=</span> <span class="number">0</span><span class="punctuation">;</span>
+
+    <span class="keyword">while</span> (<span class="keyword">true</span>) <span class="punctuation">{</span>
+        <span class="variable">R0A</span>.<span class="method">progressBar.width</span>(<span class="variable">w</span>)<span class="punctuation">;</span>
+        <span class="variable">w</span><span class="operator">++</span><span class="punctuation">;</span>
+
+        <span class="keyword">if</span> (<span class="variable">w</span> <span class="operator">&gt;</span> <span class="variable">wMax</span>) <span class="punctuation">{</span> <span class="keyword">break</span><span class="punctuation">;</span> <span class="punctuation">}</span>
+    <span class="punctuation">}</span>
+
+    <span class="variable">R0A</span>.<span class="method">progressBar.green</span>()<span class="punctuation">;</span>
+<span class="punctuation">}</span>
+</code></pre>
+
+<pre class="ai"><code>
+<span class="keyword">function</span> <span class="function">btnR0AStartA_onclick</span>(<span class="variable">btn</span>) <span class="punctuation">{</span>
+
+    <span class="function">MoveHtml</span>(<span class="string">'#divAsync'</span>)<span class="punctuation">;</span>
+    <span class="variable">R0A</span>.<span class="method">progressBar.reset</span>()<span class="punctuation">;</span>
+
+    <span class="keyword">let</span> <span class="variable">wMax</span> <span class="operator">=</span> <span class="function">Math.floor</span>(<span class="number">100</span> <span class="operator">*</span> <span class="function">Math.random</span>())<span class="punctuation">;</span>
+    <span class="keyword">let</span> <span class="variable">w</span> <span class="operator">=</span> <span class="number">0</span><span class="punctuation">;</span>
+
+    <span class="keyword">let</span> <span class="variable">intervalId</span> <span class="operator">=</span> <span class="function">setInterval</span>(() <span class="operator">=&gt;</span> <span class="punctuation">{</span>
+        <span class="variable">R0A</span>.<span class="method">progressBar.width</span>(<span class="variable">w</span>)<span class="punctuation">;</span>
+        <span class="variable">w</span><span class="operator">++</span><span class="punctuation">;</span>
+
+        <span class="keyword">if</span> (<span class="variable">w</span> <span class="operator">&gt;</span> <span class="variable">wMax</span>) <span class="punctuation">{</span>
+            <span class="function">clearInterval</span>(<span class="variable">intervalId</span>)<span class="punctuation">;</span>
+            <span class="variable">R0A</span>.<span class="method">progressBar.green</span>()<span class="punctuation">;</span>
+        <span class="punctuation">}</span>
+    <span class="punctuation">}</span>, <span class="number">8</span>)<span class="punctuation">;</span>
+
+<span class="punctuation">}</span>
+</code></pre>
+
+
+
+
+
+
+
+
+
+
+
 <pre>
 	
 	<span class="blue">var</span> promise = <span class="blue">new</span> Promise(<span class="red">executor</span>);

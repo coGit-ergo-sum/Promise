@@ -30,6 +30,9 @@ function ProgressBar(id) {
     // The root element of the progress bar
     this.$tr = $(_html);
     this.$progressBar = this.$tr.find('div.progressBar').attr('id', id).attr('title', id);
+
+	// Sets the width of the progress bar
+	this.width = function(value) { _$bar.width((value % 101) + '%'); };
     
     // ---------------------------------------------------------- //
     // These are internal variables and functions
@@ -38,12 +41,8 @@ function ProgressBar(id) {
     
     // Function to mark the progress bar with an error class
     var _catched = function() { _this.$progressBar.addClass("error"); };
+
     
-    // Function to set the width of the progress bar
-    var _width = function(value) { _$bar.width(value + '%'); };
-    
-    // Function to set the background colour of the progress bar
-    var _color = function(value) { _$bar.css('background-color', value); };
     
     // Function to set the text inside the progress bar
     var _text = function(value) { _$span.text(value); };    
@@ -61,16 +60,23 @@ function ProgressBar(id) {
     this.fulfilled = function() {};
     this.rejected = function() {};
     this.resolved = function() {};
+
+	this.green = function(){_color('#52BE80');}
+	this.gray = function(){_color('#DDDDDD');}
+	this.red = function(){_color('#ff4d4d');}
+    // Set the background colour of the progress bar
+	debugger;
+    var _color = function(value) { _$bar.css('background-color', value); };
     
     // Function to reset the progress bar to its initial state
     this.reset = function() {
         _this.stop();
         _iterations = 0;
         _isStopped = false;
-        _width(0);
+        this.width(0);
         _text('');
         _this.$progressBar.removeClass("error");
-        _color('#DDDDDD');
+        _this.gray();
     };
     
     // This is a 'factory' method to create a rejection result object
@@ -116,7 +122,7 @@ function ProgressBar(id) {
             // ============================================================ //
             let _resolve = function() { 
                 _this.stop();
-                _color('#52BE80');
+                _this.green();
     
                 // The data sent by the promise to the 'then' function
                 let _result = { id: _this.id };
@@ -126,7 +132,7 @@ function ProgressBar(id) {
     
             let _reject = function(_error) {
                 _this.stop();
-                _color('#ff4d4d');
+                _this.red();
     
                 // The rejection result, which includes the error details
                 let _result = _this.getRejectionResult(_error);
@@ -199,7 +205,7 @@ function ProgressBar(id) {
 			//debugger;
 
             // Set the initial width of the progress bar
-            _width(++_iterations);
+            this.width(++_iterations);
 
 			function sleepAsync(ms) {
 				return new Promise(resolve => setTimeout(resolve, ms));
@@ -208,7 +214,7 @@ function ProgressBar(id) {
 			function sleepSync(ms)
 			{
 				var now = new Date();
-				do {}while(new Date()-now < ms);
+				do {} while(new Date()-now < ms);
 			}
 
 			var sleep = _this.isSynchronous ? sleepSync : sleepAsync;
@@ -230,8 +236,8 @@ function ProgressBar(id) {
                         else if (isError) { _error(); }
                         else { throw new Error(msg);
                         }
-                    } else {
-                        _width(++_iterations);
+                    } else {					
+						_this.width(++_iterations);
                     }
                 } catch (jse) {
                     window.console.log(jse);
@@ -244,4 +250,6 @@ function ProgressBar(id) {
             reject(_result);
         }
     };
+
+	this.reset();
 }

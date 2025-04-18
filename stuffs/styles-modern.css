@@ -109,10 +109,11 @@ span.message {
 }
 
 /* Stile Generale */
-pre {
     /* background: #ecf0f1; */
     /* color: #ccc; */
     /* background: #1c2528; */
+    /*
+pre {
     background-color: #1F1F1F;
     color: #bae7fe;
     padding: 15px;
@@ -121,7 +122,8 @@ pre {
     font-family: 'Courier New', Courier, monospace;
     font-size: 0.9em;
 }
-
+*/
+/*
 code {
     background: #dcdde1;
     padding: 2px 5px;
@@ -129,6 +131,7 @@ code {
     font-family: 'Courier New', Courier, monospace;
     color: #e74c3c;
 }
+*/
 
 .MIB{
     border:solid 0px red;
@@ -141,7 +144,7 @@ code {
 /* Layout responsive */
 @media (max-width: 768px) {
     body {
-        font-size: 0.9em;
+        /* font-size: 0.9em; */
     }
 
     fieldset {
