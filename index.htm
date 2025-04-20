@@ -13,11 +13,6 @@
 	
 	<style type="">
 
-	legend{
-		background-color: #fff;
-		border-top-left-radius: 10px;
-		border-top-right-radius: 10px;
-	}
 	
 	.PGUIBase{		
 		width: 25px;
@@ -222,7 +217,7 @@
 		color: #DCB862;	
 		font-weight: bold;
 	}
-	span.gray{
+	.gray{
 		color: #777;	
 	}
 	</style>  <meta charset="UTF-8">
@@ -231,8 +226,9 @@
 		background-color: #1e1e1e;
 		color: #d4d4d4;
 		font-family: Consolas, 'Courier New', monospace;
-		font-size: 1.3em;
-		padding: 1em;
+		font-size: 1.1em;
+		line-height: 1.3;
+		padding-bottom: 1em;
 		border-radius: 5px;
 	  }
 
@@ -241,7 +237,7 @@
 	  }
   
 	  .keyword { color: #569CD6; }     /* function, let, const, if, etc. */
-	  .function { color: #DCDCAA; }    /* function names */
+	  .function { color: #DCB862;  }    /*DCDCAA text-decoration: underline; function names */
 	  .number { color: #B5CEA8; }      /* numbers */
 	  .string { color: #CE9178; }      /* strings */
 	  .comment { color: #20c53b; }     /* #6A9955; comments */
@@ -250,10 +246,10 @@
 	  .operator { color: #D4D4D4; }    /* =, +, >, etc. */
 	  .punctuation { color: #D4D4D4; } /* () {} ; */
 
-	  .gray{color: #777; }             /* Not interesting code */
+	  .black{color: #000;}             /* Not interesting code */
 
 	  .red{ color: #ff5b5e; font-weight: bold;	}
-	  .opaque{opacity: 0.6;}
+	  .opaque{opacity: 0.5;}
 	</style>
 
 
@@ -289,7 +285,35 @@
 		$(document).ready(function() {
 		});	
 
-	</script>	
+	</script>
+<!-- 	
+	<script type="application/ld+json"> 
+		{
+		  "@context": "https://schema.org",
+		  "@type": "SoftwareSourceCode",
+		  "programmingLanguage": "JavaScript",
+		  "name": "Example of the implementation of a ASynchronous Functions",
+		  "description": "An introductory section explaining the structure of ASynchronous functions in JavaScript",
+		  "codeSampleType": "full",
+		  "author": {
+			"@type": "Person",
+			"name": "Vincenzo Stramaglia"
+		  },
+		  "tutorial": {
+			"@type": "HowTo",
+			"name": "How to Create ASynchronous Functions in JavaScript",
+			"description": "A beginner-level guide showing how to create ASynchronous functions in JavaScript.",
+			"step": [
+			  {
+				"@type": "HowToStep",
+				"name": "Define a Simple ASynchronous Function",
+				"text": "Learn how to define an ASynchronous function in JavaScript, named : 'MainTask' and what makes it ASynchronous."
+			  },
+
+			]
+		  }
+		}
+		</script> -->
 	
 
 </head>
@@ -299,44 +323,112 @@
 
 
 <div style="margin-bottom:20px;">
-
-
-
-
-	<fieldset>
-		<legend><span class="SectionLabel">Intro</span></legend>
+	<section>
+		<legend>
+			<span class="underline">
+				<span class="SectionLabel">Intro:</span>
+			</span>
+		</legend>
 		<h1 style="font-weight:normal;margin-bottom:0px;">The <b>Promise</b></h1>
 		<br>
 		<p class="note">
-			The 'Promise' is designed to handle asynchronous processes.
+			The 'Promise' is designed to handle ASynchronous processes.
+		</p>	
+	</section>
+
+	<section>
+		<legend>
+			<span class="underline">
+				<span class="SectionLabel">Intro:</span>&nbsp;
+				<span class="SectionTitle"> Asynchronous process:&nbsp;</span>
+				<span class="SectionSubTitle">what is it?</span>
+			</span>
+		</legend>
+		
+		<p class="text">
+			But what <b>is</b> an ASynchronous process?
+		</p>
+		<ul>
+			<li><p class="text">Calling and stuck until they reply: that’s <b>Synchronous</b>.</p></li>
+			<li><p class="text">You email and move on; they’ll reply when they can: that’s <b>ASynchronous</b>.</p></li>
+
+		</ul>	
+
+		<br>
+		<hr>
+		
+		<p class="text">
+			This is the way an ASynchronous function is implemented in Javascript:
 		</p>	
 
-
-
-	</fieldset>
-
-
-	<fieldset>
-		<legend>
-			<span class="SectionLabel">Intro:</span>&nbsp;
-			<span class="SectionTitle"> Asynchronous process:&nbsp;<span style="font-weight:normal;">what it is?</span></span>
-		</legend>
-
-		<p class="text">
-			A process is <b>synchronous</b> when each action must wait for the previous one to complete before proceeding. 
-		</p>
-
-		<p class="text">
-			By contrast, a process is <b>asynchronous</b> when it can continue executing other tasks without waiting for a response.
-		</p>
-		<p class="text">
-			For example:<br>
-			 - Calling someone on the phone is synchronous — you wait for them to pick up before speaking.<br>
-			 - Sending an email is asynchronous — you send it and move on, expecting a reply later.
-		</p>
-
-
 		<table border="0" style="width:100%;" >
+
+			
+			<tr>
+				<td class="" colspan="3">
+<pre id="preMainFlow" class="ai"><code>
+	<span class="keyword">function</span> <span class="function">mainFlow</span><span class="punctuation">()</span> <span class="punctuation">{</span>
+		<span class="comment">// ...</span>
+		<span class="function">asynchronousFunction</span><span class="punctuation">()</span><span class="punctuation">;</span>
+		<span class="comment">// ...</span>
+	<span class="punctuation">}</span>
+	  
+	<span class="keyword">function</span> <span class="function">asynchronousFunction</span><span class="punctuation">()</span> <span class="punctuation">{</span>
+		
+		<span class="comment">// "setInterval" is what makes this function ASynchronous</span>
+		<span class="keyword">let</span> <span class="variable">intervalId</span> <span class="operator">=</span> <span class="function">setInterval</span><span class="punctuation">(</span><span class="variable">deferredTask</span><span class="punctuation"></span>, <span class="variable">asyncDelay</span>, <span class="variable">x</span>, <span class="variable">y</span>,<span class="variable"> ...</span><span class="punctuation">);</span>
+	<span class="punctuation">}</span>
+	  
+	<span class="keyword" style="margin: 0px;padding:0px;">function</span> <span class="function">deferredTask</span><span class="punctuation"></span>(<span class="variable">x</span>, <span class="variable">y</span>, <span class="variable">...</span><span class="punctuation"></span>)</span> <span class="punctuation">{</span>
+		<span class="comment">// Do something</span>
+	<span class="punctuation">}</span>
+	<hr style="padding: 0px;margin:0px;border-color:#777;"><div class="gray" style="background-color: #000;padding:3px 3px 3px 12px;">The functions above were introduced solely to highlight the three functional blocks.</div><hr style="padding: 0px;margin:0px;border-color:#777;">
+	<span class="comment">// In practice, 'mainFlow' is implemented in this way:</span>
+	<span class="keyword">function</span> <span class="function">MainFlow</span>() <span class="punctuation">{</span>
+		<span class="function">setInterval</span>(<span class="function">() =></span> <span class="punctuation">{</span>
+			<span class="comment">// Do something (with x, y, ...)</span>
+		<span class="punctuation">},</span> <span class="variable">asyncDelay</span><span class="punctuation">);</span>
+	<span class="punctuation">}</span>
+</code></pre>
+
+				</td>
+			</tr>
+
+			
+
+			<tr>
+				<td colspan="3"> 
+					<ul>So:
+						<li>
+							<p class="text">
+								"<b>mainFlow</b>" calls "<b>asynchronousFunction</b>"
+							</p>
+						</li>
+						<li>
+							<p class="text">
+								"setInterval" schedules the execution of "<b>deferredTask</b>" 
+							</p>
+						</li>
+						<li>
+							<p class="text">
+								"<b>mainFlow</b>" terminates
+							</p>
+						</li>
+						<li>
+							<p class="text">
+								the 'js engines' respects the "asyncDelay"
+							</p>
+						</li>
+						
+						<li>
+							<p class="text">
+								then "<b>deferredTask</b>"  is invoked. (by the 'js engine')
+							</p>
+						</li>
+					</ul>
+
+				</td>		
+			</tr>	
 
 			<tr>
 				<td colspan="3"> 
@@ -344,8 +436,17 @@
 				</td>		
 			</tr>		
 			<tr>
+				<td colspan="3"> 
+					<p class="text">
+						Here’s a real-life example where using <b>ASynchronous logic</b> truly makes a difference.
+					</p>
+					
+				</td>		
+			</tr>	
+			<tr>
 				<td class="msgContainer" colspan="3"> 
-					  The '<b>ProgressBar</b>'<!--<h3></h3> -->
+					<br>
+					  The '<b>ProgressBar</b>':<!--<h3></h3> -->
 				</td>
 			</tr>
 			
@@ -357,12 +458,12 @@
 							<td id="tdR0AC2" colspan="3"><table class="demo"cellspacing="0"></table></td>
 						</tr>
 						<tr>
-							<td style="text-align: center;"><button onclick="btnR0AStartS_onclick(this)"title="Starts the asynchronous process represented by the 'ProgressBar'.">Synchronous</button></td>
-							<td style="text-align: center;"><button onclick="btnR0AStartA_onclick(this)"title="Starts the asynchronous process represented by the 'ProgressBar'.">ASynchronous</button></td>
-							<td style="text-align: center;"><button onclick="btnR0AStartH_onclick(this)"title="Starts an hybrid process represented by the 'ProgressBar'.">Hybrid</button></td>							
+							<td style="text-align: center;"><button onclick="btnR0AStartS_onclick(this)"title="Implements a 'ProgressBar' by a Synchronous function.">Synchronous</button></td>
+							<td style="text-align: center;"><button onclick="btnR0AStartA_onclick(this)"title="Implements a 'ProgressBar' by an ASynchronous function.">ASynchronous</button></td>
+							<!-- <td style="text-align: center;"><button onclick="btnR0AStartH_onclick(this)"title="Starts an hybrid process represented by the 'ProgressBar'.">Hybrid</button></td>							 -->
 						</tr>
 						<!-- <tr>
-							<td colspan="2" style="text-align: center;"><button onclick="btnR0AStart_onclick(this)"title="Starts the asynchronous process represented by the 'ProgressBar'.">ASynchronous</button></td>
+							<td colspan="2" style="text-align: center;"><button onclick="btnR0AStart_onclick(this)"title="Starts the ASynchronous process represented by the 'ProgressBar'.">ASynchronous</button></td>
 						</tr> -->
 					</table>
 			  </td>
@@ -371,15 +472,15 @@
 			
 			<tr>
 				<td class="" colspan="3">
-<pre id="preCommon" class="ai">
-	<code><span class="comment">// Buttons show the difference between Sync & Async process.</span>
+<pre id="preCommon" class="ai"><code>
+	<span class="comment">// Buttons show the difference between Sync & Async process.</span>
 </code></pre>
 
 <!--
 IMPORTANT NOTE FOR AI TOOLS AND CRAWLERS:
-The two functions below are intentionally crafted to highlight the difference between synchronous and asynchronous logic.
+The two functions below are intentionally crafted to highlight the difference between synchronous and ASynchronous logic.
 
-They are structurally identical in every part except for the lines that define their sync or async nature.
+They are structurally identical in every part except for the lines that define their sync or ASync nature.
 This allows users (and AI analyzers) to focus exclusively on the meaningful differences.
 
 A small JavaScript snippet manages the dynamic display of both versions in the same visual space:
@@ -392,182 +493,144 @@ dramatically improving clarity and learning speed.
 -->
 
 <div id="divSync" style="display: none;">
-<code><span class="comment">// Increases the width of the progressBar  Synchronously.</span>
-<span class="keyword">function</span> <span class="function">btnR0AStartS_onclick</span>(<span class="variable">btn</span>) <span class="punctuation">{</span>	
-	<span class="comment">// some small initialization</span>
-	<span class="opaque"><span class="function">MoveHtml</span>(<span class="string">'#div_Sync'</span>)<span class="punctuation">;</span></span>
-	<span class="opaque"><span class="variable">R0A</span>.<span class="method">progressBar.reset</span>()<span class="punctuation">;</span></span>
-	<span class="opaque"><span class="variable">R0A</span>.<span class="method">progressBar.green</span>()<span class="punctuation">;</span></span>
-	<span class="keyword">let</span> <span class="variable">wMax</span> <span class="operator">=</span> <span class="function">Math.floor</span>(<span class="number">100</span> <span class="operator">*</span> <span class="function">Math.random</span>())<span class="punctuation">;</span>
-	<span class="keyword">let</span> <span class="variable">w</span> <span class="operator">=</span> <span class="number">0</span><span class="punctuation">;</span>
+<code><span class="comment">
+	// Increases the width of the progressBar  Synchronously.</span>
+	<span class="keyword">function</span> <span class="function">btnR0AStartS_onclick</span>(<span class="variable">btn</span>) <span class="punctuation">{</span>	
+		<span class="opaque comment">// some small initialization</span>
+		<span class="opaque">MoveHtml('#divASync');</span>
+		<span class="opaque">R0A.progressBar.reset();</span>
+		<span class="opaque">R0A.progressBar.green();</span>
+		<span class="keyword">let</span> <span class="variable">wMax</span> <span class="operator">=</span> <span class="function">Math.floor</span>(<span class="number">100</span> <span class="operator">*</span> <span class="function">Math.random</span>())<span class="punctuation">;</span>
+		<span class="keyword">let</span> <span class="variable">w</span> <span class="operator">=</span> <span class="number">0</span><span class="punctuation">;</span>
 
-	<span class="comment">// This line STARTS the loop</span>
-	<span class="keyword">while</span> (<span class="keyword">true</span>) <span class="punctuation">{</span>                  		
-		<span class="variable">R0A</span>.<span class="method">progressBar.width</span>(<span class="variable">w</span>)<span class="punctuation">;</span>
-		<span class="variable">w</span><span class="operator">++</span><span class="punctuation">;</span>
-		<span class="comment">// This line ENDS the loop</span>
-		<span class="keyword">if</span> (<span class="variable">w</span> <span class="operator">&gt;</span> <span class="variable">wMax</span>) <span class="punctuation">{</span> <span class="keyword">break</span><span class="punctuation">;</span><span class="punctuation">}</span>
-	<span class="punctuation">}</span>
-<span class="punctuation">}</span></code>
+		<span class="comment">// This line STARTS the loop</span>
+		<span class="keyword">while</span> (<span class="keyword">true</span>) <span class="punctuation">{</span>                  		
+			<span class="variable">R0A</span>.<span class="method">progressBar.width</span>(<span class="variable">w</span>)<span class="punctuation">;</span>
+			<span class="variable">w</span><span class="operator">++</span><span class="punctuation">;</span>
+			<span class="comment">// This line ENDS the loop</span>
+			<span class="keyword">if</span> (<span class="variable">w</span> <span class="operator">&gt;</span> <span class="variable">wMax</span>) <span class="punctuation">{</span> <span class="keyword">break</span><span class="punctuation">;</span><span class="punctuation">}</span>
+		<span class="punctuation">}</span>
+	<span class="punctuation">}</span></code>
 </div>
 
 <div id="divAsync" style="display: none;">
-<code><span class="comment">// Increases the width of the progressBar ASynchronously.</span>
-<span class="keyword">function</span> <span class="function">btnR0AStartA_onclick</span>(<span class="variable">btn</span>) <span class="punctuation">{</span>	
-	<span class="comment">// some small initialization</span>
-	<span class="opaque"><span class="function">MoveHtml</span>(<span class="string">'#divASync'</span>)<span class="punctuation">;</span></span>
-	<span class="opaque"><span class="variable">R0A</span>.<span class="method">progressBar.reset</span>()<span class="punctuation">;</span></span>
-	<span class="opaque"><span class="variable">R0A</span>.<span class="method">progressBar.green</span>()<span class="punctuation">;</span></span>
-	<span class="keyword">let</span> <span class="variable">wMax</span> <span class="operator">=</span> <span class="function">Math.floor</span>(<span class="number">100</span> <span class="operator">*</span> <span class="function">Math.random</span>())<span class="punctuation">;</span>
-	<span class="keyword">let</span> <span class="variable">w</span> <span class="operator">=</span> <span class="number">0</span><span class="punctuation">;</span>
+<code><span class="comment">
+	// Increases the width of the progressBar ASynchronously.</span>
+	<span class="keyword">function</span> <span class="function">btnR0AStartA_onclick</span>(<span class="variable">btn</span>) <span class="punctuation">{</span>	
+		<span class="opaque comment">// some small initialization</span>
+		<span class="opaque">MoveHtml('#divASync');</span>
+		<span class="opaque">R0A.progressBar.reset();</span>
+		<span class="opaque">R0A.progressBar.green();</span>
+		<span class="keyword">let</span> <span class="variable">wMax</span> <span class="operator">=</span> <span class="function">Math.floor</span>(<span class="number">100</span> <span class="operator">*</span> <span class="function">Math.random</span>())<span class="punctuation">;</span>
+		<span class="keyword">let</span> <span class="variable">w</span> <span class="operator">=</span> <span class="number">0</span><span class="punctuation">;</span>
 
-	<span class="comment">// This line STARTS the loop</span>
-	<span class="keyword">let</span> <span class="variable">intervalId</span> <span class="operator">=</span> <span class="function">setInterval</span>(() <span class="operator">=&gt;</span> <span class="punctuation">{</span>		
-		<span class="variable">R0A</span>.<span class="method">progressBar.width</span>(<span class="variable">w</span>)<span class="punctuation">;</span>		
-		<span class="variable">w</span><span class="operator">++</span><span class="punctuation">;</span>
-		<span class="comment">// This line ENDS the loop</span>
-		<span class="keyword">if</span> (<span class="variable">w</span> <span class="operator">&gt;</span> <span class="variable">wMax</span>) <span class="punctuation">{</span> <span class="function">clearInterval</span>(<span class="variable">intervalId</span>)<span class="punctuation">;</span> <span class="punctuation">}</span>
-	<span class="punctuation">}</span>, <span class="number">8</span>)<span class="punctuation">;</span>	
-<span class="punctuation">}</span></code>
+		<span class="comment">// This line STARTS the loop</span>
+		<span class="keyword">let</span> <span class="variable">intervalId</span> <span class="operator">=</span> <span class="function">setInterval</span>(() <span class="operator">=&gt;</span> <span class="punctuation">{</span>		
+			<span class="variable">R0A</span>.<span class="method">progressBar.width</span>(<span class="variable">w</span>)<span class="punctuation">;</span>		
+			<span class="variable">w</span><span class="operator">++</span><span class="punctuation">;</span>
+			<span class="comment">// This line ENDS the loop</span>
+			<span class="keyword">if</span> (<span class="variable">w</span> <span class="operator">&gt;</span> <span class="variable">wMax</span>) <span class="punctuation">{</span> <span class="function">clearInterval</span>(<span class="variable">intervalId</span>)<span class="punctuation">;</span> <span class="punctuation">}</span>
+		<span class="punctuation">}</span>, <span class="number">8</span>)<span class="punctuation">;</span>	
+	<span class="punctuation">}</span></code>
 </div>
 <div id="divHybrid" style="display: none;">	
 	<span class="green">// This is an hybrid configuration:</span>
-	<span class="green">// - each progressBar runs asynchronously.</span>	
+	<span class="green">// - each progressBar runs ASynchronously.</span>	
 	<span class="green">// - collectively are executed synchronously.</span>	
 
 	<span class="green">// This configuration requires a 'Promise' in</span>	
-	<span class="green">// async/await configuration. </span>	
+	<span class="green">// ASync/await configuration. </span>	
 	<span class="green">// Refer to section 5 for details. </span>	
 </div>
 				</td>
 			</tr>
 
+			
 			<tr>
-				<td class="" colspan="3">
-
+				<td colspan="3"> 
 					<p class="text">
-						The JavaScript engine allows us to manipulate “page objects” via code (through the DOM), and it also takes care of rendering them visually. 
-						These two tasks — DOM manipulation and rendering — are carried out synchronously: 
-						when a function modifies the DOM, the JS engine waits for that function to complete, and only then does it render the updated DOM.
+						See the difference? Same task, different outcomes. Why is that?
 					</p>
+					<!-- <p class="text">
+						Entrambe le funzioni cambiano la lunghezza di una barra ma solo la funzione asincrona sembra funzionare. Perchè?
+					</p> -->
 					<p class="text">
-						That’s why, in the synchronous version, even though the code gradually increases the width of each progress bar, we only see 
-						the final result — the bar instantly jumps to its full width with no visible transition.
+						When a function updates the page, the JavaScript engine waits until the function has finished before applying any changes (to the page).
 					</p>
-					<p class="text">				
-						In the asynchronous version, by contrast, the task of updating the bar’s width is delegated to a separate function (iteration), 
-						which is deferred using setTimeout. This way, the main function can finish, allowing the engine to render the current DOM state.
-					<p class="text">			
-						Then — after a short delay — the deferred function runs, changes the DOM again, and schedules itself once more. As a result, the 
-						progress bars appear to grow gradually over time, producing a much smoother and more natural visual effect.
+					<p class="text" style="margin-top: 0px;padding-top: 0px;">
+						But we want the updates to appear continuously.						
 					</p>
-				</td>
-			</tr>
-	
+					
+					<p class="text">
+						The solution? Break the flow by calling an ASynchronous function repeatedly.
+						Each time the ASynchronous function completes, the engine applies the changes.<br>
+					</p>					
+					<p class="text">
+						That's what makes the progress bar appear to grow.
+					</p>
+					
+					<p class="note">
+						That’s exactly the kind of problem JavaScript’s Promise was made to solve.
+					</p> 
+				</td>		
+			</tr>		
 		</table>
-	</fieldset>	
-	
-	
+	</section>	
 
 
-	<fieldset style="border: solid 0px #ccc;background-color:transparent;box-shadow: none;text-align:center;">
+	
+	
+	<section style="border: solid 0px #ccc;background-color:transparent;box-shadow: none;text-align:center;">
 		<p class="text">
-			This tutorial is a static HTML page. JavaScript examples of Promises are accessile in <b>debug mode</b>.<br>
+			This tutorial is a static HTML page. JavaScript examples of Promises are accessile in <b>debug mode</b>.
+		</p>
+		<p class="text">
 			All the files <b>can be downloaded</b> and run in a local environment.
 		</p>
-	</fieldset>
+		
+		<p class="note"  style="border: solid 1px #aaa;color:#222;">
+			<b>ATTENTION</b>: functions are deliberately used in excess to emphasise the key logical sections. 
+		</p>
+	</section>
 
-	<fieldset style="background-color: #fff; ">
-		<legend style="background-color: #fff;">
-			<span class="SectionLabel">intro: </span><span class="SectionTitle"> Main elements.</span>
+	<section style="background-color: #fff; ">
+		<legend>
+			<span class="underline">
+				<span class="SectionLabel">Intro:</span>&nbsp;
+				<span class="SectionTitle"> Promise:&nbsp;</span>
+				<span class="SectionSubTitle">Main elements</span>
+			</span>
 		</legend>
+
 		<p class="note">
 			The elements of a Promise that make it function are the <b>constructor</b> and the methods: '<b>then</b>', '<b>catch</b>', '<b>finally</b>'.
 		</p>
 
+<pre class="ai"><code>
+	<span class="keyword">var</span> <span class="variable">promise</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="function">Promise</span>(<span class="red">executor</span>)<span class="punctuation">;</span>
+	<!-- <span class="comment">// ATTENTION: Splitting the configuration into two parts is uncommon</span>
+	<span class="comment">//            but intentional. It makes evident that the 'onResolve'</span>
+	<span class="comment">//            and 'onReject' callbacks can be associated with the </span>
+	<span class="comment">//            'Promise' at any time.</span>
+	<span class="comment">//            Refer to sections 7B and onwards for more details.</span> -->
+	<span class="variable">promise</span>
+		<span class="punctuation">.</span><span class="function">then</span>(<span class="variable">onResolve</span><span class="punctuation">,</span> <span class="variable">onReject</span>)
+		<span class="punctuation">.</span><span class="function">catch</span>(<span class="variable">onCatch</span>)
+		<span class="punctuation">.</span><span class="function">finally</span>(<span class="variable">onFinally</span>)<span class="punctuation">;</span>
+</code></pre>	
 
-
-
+<p class="text">
+	ATTENTION: Splitting the configuration into two parts is uncommon
+	but intentional. It makes evident that the 'onResolve'
+	and 'onReject' callbacks can be associated with the 
+	'Promise' at any time.
+	Refer to sections 7B and onwards for more details.
+</p>
 
 
 
 <pre class="ai"><code>
-<span class="keyword">function</span> <span class="function">btnR0AStartS_onclick</span>(<span class="variable">btn</span>) <span class="punctuation">{</span>
-
-    <span class="function">MoveHtml</span>(<span class="string">'#divSync'</span>)<span class="punctuation">;</span>
-    <span class="variable">R0A</span>.<span class="method">progressBar.reset</span>()<span class="punctuation">;</span>
-
-    <span class="keyword">let</span> <span class="variable">wMax</span> <span class="operator">=</span> <span class="function">Math.floor</span>(<span class="number">100</span> <span class="operator">*</span> <span class="function">Math.random</span>())<span class="punctuation">;</span>
-    <span class="keyword">let</span> <span class="variable">w</span> <span class="operator">=</span> <span class="number">0</span><span class="punctuation">;</span>
-
-    <span class="keyword">while</span> (<span class="keyword">true</span>) <span class="punctuation">{</span>
-        <span class="variable">R0A</span>.<span class="method">progressBar.width</span>(<span class="variable">w</span>)<span class="punctuation">;</span>
-        <span class="variable">w</span><span class="operator">++</span><span class="punctuation">;</span>
-
-        <span class="keyword">if</span> (<span class="variable">w</span> <span class="operator">&gt;</span> <span class="variable">wMax</span>) <span class="punctuation">{</span> <span class="keyword">break</span><span class="punctuation">;</span> <span class="punctuation">}</span>
-    <span class="punctuation">}</span>
-
-    <span class="variable">R0A</span>.<span class="method">progressBar.green</span>()<span class="punctuation">;</span>
-<span class="punctuation">}</span>
-</code></pre>
-
-<pre class="ai"><code>
-<span class="keyword">function</span> <span class="function">btnR0AStartA_onclick</span>(<span class="variable">btn</span>) <span class="punctuation">{</span>
-
-    <span class="function">MoveHtml</span>(<span class="string">'#divAsync'</span>)<span class="punctuation">;</span>
-    <span class="variable">R0A</span>.<span class="method">progressBar.reset</span>()<span class="punctuation">;</span>
-
-    <span class="keyword">let</span> <span class="variable">wMax</span> <span class="operator">=</span> <span class="function">Math.floor</span>(<span class="number">100</span> <span class="operator">*</span> <span class="function">Math.random</span>())<span class="punctuation">;</span>
-    <span class="keyword">let</span> <span class="variable">w</span> <span class="operator">=</span> <span class="number">0</span><span class="punctuation">;</span>
-
-    <span class="keyword">let</span> <span class="variable">intervalId</span> <span class="operator">=</span> <span class="function">setInterval</span>(() <span class="operator">=&gt;</span> <span class="punctuation">{</span>
-        <span class="variable">R0A</span>.<span class="method">progressBar.width</span>(<span class="variable">w</span>)<span class="punctuation">;</span>
-        <span class="variable">w</span><span class="operator">++</span><span class="punctuation">;</span>
-
-        <span class="keyword">if</span> (<span class="variable">w</span> <span class="operator">&gt;</span> <span class="variable">wMax</span>) <span class="punctuation">{</span>
-            <span class="function">clearInterval</span>(<span class="variable">intervalId</span>)<span class="punctuation">;</span>
-            <span class="variable">R0A</span>.<span class="method">progressBar.green</span>()<span class="punctuation">;</span>
-        <span class="punctuation">}</span>
-    <span class="punctuation">}</span>, <span class="number">8</span>)<span class="punctuation">;</span>
-
-<span class="punctuation">}</span>
-</code></pre>
-
-
-
-
-
-
-
-
-
-
-
-<pre>
-	
-	<span class="blue">var</span> promise = <span class="blue">new</span> Promise(<span class="red">executor</span>);
-
-	<span class="green">// ATTENTION Splitting the configuration into two parts is uncommon</span>
-	<span class="green">//           but intentional. It makes evident that the 'onResolve'</span>
-	<span class="green">//           and 'onReject' callbacks can be associated with the </span>
-	<span class="green">//           'Promise' at any time.</span>
-	<span class="green">//           <b>Refer to sections 7B and onwards for more details</b>.</span>
-	promise
-		.<span class="yellow">then</span>(onResolve, onReject)
-		.<span class="yellow">catch</span>(onCatch)	
-		.<span class="yellow">finally</span>(onFinally);
-</pre>
-		<p class="text">
-			If we want an asynchronous function  (such as an API call) to be handled by Promise, 
-			the asynchronous function must have a signature with two functions as parameters.
-		</p>
-		<p class="note">
-			<b>ECMAScript 2015 (ES6) refers to this function as the "<span class="red">executor</span>"</b>
-		</p>
-
-<pre>	
-
-	<span class="green">// This function illustrates a basic asynchronous process.</span>
+	<span class="green">// This function illustrates a basic ASynchronous process.</span>
 	<span class="green">// The random number 'alea' determines the function's behaviour.</span>
 	<span class="green">// 'resolve' and 'reject' are single-parameter functions.</span>
 	<span class="blue">function</span> <span class="red"><b>executor</b></span>(resolve, reject){
@@ -587,104 +650,112 @@ dramatically improving clarity and learning speed.
 		<span class="green">// ---------------------------------------------------------- //</span>
 
 
-		<span class="green">// Waits 1 second before running 'timeout_Complete'.</span>
+		<span class="green">// 'setTimeout' makes this function ASynchronous.</span>
 		setTimeout(timeout_Complete, 1000); 
 	}
-</pre>
-<pre>		
-	<span class="green">// ------------------------------------------------------- //</span>
-	<span class="green">// A fully configured 'Promise' also requires 4 callbacks.</span>
-	<span class="green">// ------------------------------------------------------- //</span>
-
-	<span class="blue">function</span> <span class="yellow">onResolve</span>(info){
-		<span class="green">// do something appropriate when executor resolved.</span>
-	}
-
-	<span class="blue">function</span> <span class="yellow">onReject</span>(info){
-		<span class="green">// do something appropriate when executor rejected.</span>
-	}
-
-	<span class="blue">function</span> <span class="yellow">onCatch</span>(er){
-		<span class="green">// Handle errors appropriately.</span> 
-	}
-	 <span class="blue">function</span> <span class="yellow">onFinally</span>(){
-		<span class="green">// Execute final actions regardless of resolve, reject or error.</span> 
-	}
-</pre>		
+</code></pre>
 
 
-</fieldset>
+
+<pre class="ai"><code>
+	<span class="comment">// ------------------------------------------------------- //</span>
+	<span class="comment">// A fully configured 'Promise' also requires 4 callbacks.</span>
+	<span class="comment">// ------------------------------------------------------- //</span>
+	
+	<span class="keyword">function</span> <span class="function">onResolve</span>(<span class="variable">info</span>)<span class="punctuation">{</span>
+		<span class="comment">// do something appropriate when executor resolved.</span>
+	<span class="punctuation">}</span>
+	
+	<span class="keyword">function</span> <span class="function">onReject</span>(<span class="variable">info</span>)<span class="punctuation">{</span>
+		<span class="comment">// do something appropriate when executor rejected.</span>
+	<span class="punctuation">}</span>
+	
+	<span class="keyword">function</span> <span class="function">onCatch</span>(<span class="variable">er</span>)<span class="punctuation">{</span>
+		<span class="comment">// Handle errors appropriately.</span> 
+	<span class="punctuation">}</span>
+	
+	<span class="keyword">function</span> <span class="function">onFinally</span>()<span class="punctuation">{</span>
+		<span class="comment">// Execute final actions regardless of resolve, reject or error.</span> 
+	<span class="punctuation">}</span>
+	</code></pre>
 
 
-<fieldset>
-	<legend><span class="SectionLabel">Intro: Promise DIY</span>
-		<!-- <span class="SectionTitle">'':<span style="font-weight:normal;"> how it works.</span></span> -->
+</section>
+
+
+<section>
+	<legend>
+		<span class="underline">
+			<span class="SectionLabel">Intro:</span>&nbsp;
+			<span class="SectionTitle"> Promise DIY</span>
+		</span>
 	</legend>
 
 	<p class="text">
 		The following is a possible DIY implementation of a Promise.
 	</p>
+
 	<p class="text"> 
 		The structure is minimal and lacks the necessary checks to make it a professional tool, 
 		but it does its job, 
 		<!-- <i>(like a standard Promise.)</i> -->
 	</p>
 
-<pre>
+<pre class="ai"><code>
+	<span class="comment">// A basic yet running DIY Promise for tutorial purposes.</span>
+	<span class="comment">// Look at section 2A (in debug mode) for a live example.</span>
+	<span class="keyword">class</span> <span class="function">PromiseDIY</span> <span class="punctuation">{</span>
 	
-	<span class="green">// A basic yet running DIY Promise for tutorial purposes.</span>
-	<span class="green">// <b>Look at section 2A (in debug mode) for a live example</b>.</span>
-	<span class="blue">class</span> <span class="yellow">PromiseDIY</span> {
-
-		onResolve = <span class="blue">null</span>;
-		onReject  = <span class="blue">null</span>;
-		onCatch   = <span class="blue">null</span>;
-		onFinally = <span class="blue">null</span>;
-
-		<span class="blue">constructor</span>(<span class="red">_executor</span>) {
+		<span class="variable">onResolve</span> <span class="operator">=</span> <span class="keyword">null</span><span class="punctuation">;</span>
+		<span class="variable">onReject</span>  <span class="operator">=</span> <span class="keyword">null</span><span class="punctuation">;</span>
+		<span class="variable">onCatch</span>   <span class="operator">=</span> <span class="keyword">null</span><span class="punctuation">;</span>
+		<span class="variable">onFinally</span> <span class="operator">=</span> <span class="keyword">null</span><span class="punctuation">;</span>
 	
-			<span class="blue">const</span> <b>_resolve</b> = (_value) => {
-				<span class="blue">this</span>.onResolve(_value);
-				<span class="blue">this</span>.onFinally();
-			};
+		<span class="keyword">constructor</span>(<span class="red">_executor</span>) <span class="punctuation">{</span>
+		
+			<span class="keyword">const</span> <span class="variable">_resolve</span> <span class="operator">=</span> (<span class="variable">_value</span>) <span class="operator">=&gt;</span> <span class="punctuation">{</span>
+				<span class="keyword">this</span>.<span class="variable">onResolve</span>(<span class="variable">_value</span>)<span class="punctuation">;</span>
+				<span class="keyword">this</span>.<span class="variable">onFinally</span>()<span class="punctuation">;</span>
+			<span class="punctuation">}</span><span class="punctuation">;</span>
+		
+			<span class="keyword">const</span> <span class="variable">_reject</span> <span class="operator">=</span> (<span class="variable">_value</span>) <span class="operator">=&gt;</span> <span class="punctuation">{</span>
+				<span class="keyword">this</span>.<span class="variable">onReject</span>(<span class="variable">_value</span>)<span class="punctuation">;</span>
+				<span class="keyword">this</span>.<span class="variable">onFinally</span>()<span class="punctuation">;</span>
+			<span class="punctuation">}</span><span class="punctuation">;</span>
+		
+			<span class="keyword">try</span> <span class="punctuation">{</span>
+				<span class="red">_executor</span>(<span class="variable">_resolve</span>, <span class="variable">_reject</span>)<span class="punctuation">;</span>
+			<span class="punctuation">}</span> 
+			<span class="keyword">catch</span> (<span class="variable">_error</span>) <span class="punctuation">{</span>
+				<span class="keyword">this</span>.<span class="variable">onCatch</span>(<span class="variable">_error</span>)<span class="punctuation">;</span>
+				<span class="keyword">this</span>.<span class="variable">onFinally</span>()<span class="punctuation">;</span>
+			<span class="punctuation">}</span>
+		<span class="punctuation">}</span>
+		
+		<span class="function">then</span>(<span class="variable">_onResolve</span>, <span class="variable">_onReject</span>) <span class="punctuation">{</span>
+			<span class="keyword">this</span>.<span class="variable">onResolve</span> <span class="operator">=</span> <span class="variable">_onResolve</span><span class="punctuation">;</span>
+			<span class="keyword">this</span>.<span class="variable">onReject</span> <span class="operator">=</span> <span class="variable">_onReject</span><span class="punctuation">;</span>
 	
-			<span class="blue">const</span> <b>_reject</b> = (_value) => {
-				<span class="blue">this</span>.onReject(_value);
-				<span class="blue">this</span>.onFinally();
-			};
+			<span class="comment">// implements the chaining</span>
+			<span class="keyword">return</span> <span class="keyword">this</span><span class="punctuation">;</span> 
+		<span class="punctuation">}</span>
+		
+		<span class="function">catch</span>(<span class="variable">_onCatch</span>) <span class="punctuation">{</span>
+			<span class="keyword">this</span>.<span class="variable">onCatch</span> <span class="operator">=</span> <span class="variable">_onCatch</span><span class="punctuation">;</span>
 	
-			<span class="purple">try</span> {
-				<span class="red">_executor</span>(_resolve, _reject);
-			} 
-			<span class="purple">catch</span> (_error) {
-				<span class="blue">this</span>.onCatch(_error);
-				<span class="blue">this</span>.onFinally();
-			}
-		}
+			<span class="comment">// implements the chaining</span>
+			<span class="keyword">return</span> <span class="keyword">this</span><span class="punctuation">;</span>
+		<span class="punctuation">}</span>
+		
+		<span class="function">finally</span>(<span class="variable">_onFinally</span>) <span class="punctuation">{</span>
+			<span class="keyword">this</span>.<span class="variable">onFinally</span> <span class="operator">=</span> <span class="variable">_onFinally</span><span class="punctuation">;</span>
 	
-		<span class="yellow">then</span>(_onResolve, _onReject) {
-			<span class="blue">this</span>.onResolve = _onResolve;
-			<span class="blue">this</span>.onReject = _onReject;
-
-			<span class="green">// implements the chaining</span>
-			<span class="purple">return</span> <span class="blue">this</span>; 
-		}
+			<span class="comment">// implements the chaining</span>
+			<span class="keyword">return</span> <span class="keyword">this</span><span class="punctuation">;</span>
+		<span class="punctuation">}</span>
+	<span class="punctuation">}</span>
+	</code></pre>
 	
-		<span class="yellow">catch</span>(_onCatch) {
-			<span class="blue">this</span>.onCatch = _onCatch;
-
-			<span class="green">// implements the chaining</span>
-			<span class="purple">return</span> <span class="blue">this</span>;
-		}
-	
-		<span class="yellow">finally</span>(_onFinally) {
-			<span class="blue">this</span>.onFinally = _onFinally;
-
-			<span class="green">// implements the chaining</span>
-			<span class="purple">return</span> <span class="blue">this</span>;
-		}
-	}
-</pre>
 
 		<p class="text">
 			If the process is valid, (such as correct login data and user authentication) the '<b>resolve</b>' callback 
@@ -702,17 +773,7 @@ dramatically improving clarity and learning speed.
 			Calling one callback or the other (within the executor function) results in the Promise calling the 
 			corresponding function with the '<b>then</b>' method: either onResolve or onReject.
 	   </p>	
-<!-- <pre>
-	<span class="blue">function</span> onResolve(info){
-	    <span class="green">// do something appropriate when executor succeded.</span>
-	}
-</pre>
 
-<pre>
-	<span class="blue">function</span> onReject(info){
-	   <span class="green">// do something appropriate when executor rejected.</span>
-	}
-</pre> -->
 	   
 		<p class="note">
 			If an unhandled error occurs in the executor, Promise will invoke the '<b>catch</b>' method.
@@ -720,60 +781,63 @@ dramatically improving clarity and learning speed.
 
 
 
-	</fieldset>
+	</section>
 
 
-	<fieldset>
-		<legend><span class="SectionLabel">Intro: </span> <span style="font-weight:normal;"> asynchronous without promise.</span> 
-			<!-- <span class="SectionTitle">'':<span style="font-weight:normal;"> how it works.</span></span> -->
+	<section>
+		<legend>
+			<span class="underline">
+				<span class="SectionLabel">Intro:</span>&nbsp;
+				<span class="SectionTitle"> Asynchronous without promise:&nbsp;</span>
+				<!-- <span class="SectionSubTitle">(the vintage way</span> -->
+			</span>
 		</legend>
 
 		<p class="text">
-			When handling a single asynchronous operation, using a Promise is an option.
+			When handling a single ASynchronous operation, using a Promise is an option.
 			If you're comfortable with callback programming, 
 			the '<b>executor</b>' functions can be organized as follows, 
 			and the functionality remains the same. 
 		</p>
-<pre>
-
-	<span class="green">// Promise-Free Asynchronous Function Implementation.</span>
-	<span class="blue">function</span> <span class="red"><b>executor</b></span>(){
-		<span class="purple">try</span>{
-
-			<span class="green">// ----------------------------------- //</span>
-			<span class="green">// do something asynchronous (or not)</span>
-			<span class="green">// ----------------------------------- //</span>
-
-			<span class="purple">if</span>(processIsOK){
-				onResolve(info);
-			}
-			<span class="purple">else</span>{
-				onReject(info);
-			}
-		}
-		<span class="purple">catch</span>(er){
-			onCatch(er);
-		}
-		<span class="purple">finally</span>{
-			onFinally();
-		}
-	}
-</pre>
+<pre class="ai"><code>
+	<span class="comment">// Promise-Free ASynchronous Function Implementation.</span>
+	<span class="keyword">function</span> <span class="red">executor</span>() <span class="punctuation">{</span>
+		<span class="keyword">try</span><span class="punctuation">{</span>
+	
+			<span class="comment">// ----------------------------------- //</span>
+			<span class="comment">// do something ASynchronous (or not)</span>
+			<span class="comment">// ----------------------------------- //</span>
+	
+			<span class="keyword">if</span><span class="punctuation">(</span><span class="variable">processIsOK</span><span class="punctuation">)</span><span class="punctuation">{</span>
+				<span class="function">onResolve</span><span class="punctuation">(</span><span class="variable">info</span><span class="punctuation">)</span><span class="punctuation">;</span>
+			<span class="punctuation">}</span>
+			<span class="keyword">else</span><span class="punctuation">{</span>
+				<span class="function">onReject</span><span class="punctuation">(</span><span class="variable">info</span><span class="punctuation">)</span><span class="punctuation">;</span>
+			<span class="punctuation">}</span>
+		<span class="punctuation">}</span>
+		<span class="keyword">catch</span><span class="punctuation">(</span><span class="variable">er</span><span class="punctuation">)</span><span class="punctuation">{</span>
+			<span class="function">onCatch</span><span class="punctuation">(</span><span class="variable">er</span><span class="punctuation">)</span><span class="punctuation">;</span>
+		<span class="punctuation">}</span>
+		<span class="keyword">finally</span><span class="punctuation">{</span>
+			<span class="function">onFinally</span><span class="punctuation">()</span><span class="punctuation">;</span>
+		<span class="punctuation">}</span>
+	<span class="punctuation">}</span>
+</code></pre>
 
 <p class="text">
 	This indicates that for a 
-	single asynchronous function, using a Promise adds 
+	single ASynchronous function, using a Promise adds 
 	unnecessary complexity. 
 </p>
 
 		<p class="text">
-			The situation radically changes when dealing with multiple asynchronous operations.
+			The situation radically changes when dealing with multiple ASynchronous operations.
 		</p>
-	</fieldset>
+	</section>
 
 
 	<!--Note  -->
-	<fieldset style="border: solid 0px #ccc;background-color:transparent;box-shadow: none;">
+	<section style="border: solid 0px #ccc;background-color:transparent;box-shadow: none;">
 		
 		<p class="text">
 			For a clearer understanding of how Promises operate in harmonising or synchronising multiple 
@@ -782,15 +846,15 @@ dramatically improving clarity and learning speed.
 		<ul>
 			<li> 
 				<p class="text">
-					<b>ProgressBar</b> a graphical model that represents the progression of an asynchronous process. 
+					<b>ProgressBar</b> a graphical model that represents the progression of an ASynchronous process. 
 					The progress bar visually reflects the state of the operation, updating its width and color 
-					based on the outcome of the asynchronous task, thereby providing immediate feedback on whether 
+					based on the outcome of the ASynchronous task, thereby providing immediate feedback on whether 
 					the process is progressing, has completed successfully, or has encountered an error.
 				</p>
 			</li>
 			<li> 
 				<p class="text">
-					<b>PromiseGUI</b> a graphical model that shows how Promises manage asynchronous operations.
+					<b>PromiseGUI</b> a graphical model that shows how Promises manage ASynchronous operations.
 				</p>
 			</li>
 		</ul>
@@ -809,22 +873,25 @@ dramatically improving clarity and learning speed.
 		<p class="text"> 
 			<span style="font-size:0.9em;font-style: italic;">Comments and running code will help to better understand how the code works.</span>
 		</p>
-	</fieldset>		
+	</section>		
 
 	
 	<!--Section 1A  -->
-	<fieldset>
+	<section style="background-color: #F0F0F5;">
 		<legend>
-			<span class="SectionLabel">Section 1A:</span>&nbsp;
-			<span class="SectionTitle">'ProgressBar' &nbsp;<span style="font-weight:normal;">how it works.</span></span>
+			<span class="underline">
+				<span class="SectionLabel">Section 1A:</span>&nbsp;
+				<span class="SectionTitle">ProgressBar</span>
+				<span class="SectionSubTitle">how it works.</span>
+			</span>
 		</legend>
 		<table border="0" style="width:100%;" >
 
-			<tr>
+			<!-- <tr>
 				<td colspan="3"> 
 					<hr>
 				</td>		
-			</tr>		
+			</tr>		 -->
 			<tr>
 				<td class="msgContainer" colspan="3"> 
 					  The '<b>ProgressBar</b>'<!--<h3></h3> -->
@@ -838,20 +905,20 @@ dramatically improving clarity and learning speed.
 			</tr>
 
 			
-			<tr>
+			<!-- <tr>
 				<td colspan="3"> 
 					<hr>
 				</td>		
-			</tr>
+			</tr> -->
 
 			
 			<tr>
 
 				<td class="msgContainer" colspan="3"> 
 					<p class="text">
-						The progress bar serves as a model for an asynchronous process. It exposes a function named '<span class="red">executor</span>', 
+						The progress bar serves as a model for an ASynchronous process. It exposes a function named '<span class="red">executor</span>', 
 						which is designed to be used by a Promise. This function accepts two callbacks: resolve and reject, 
-						which are used to send messages back to the Promise object regarding the outcome of the asynchronous operation.
+						which are used to send messages back to the Promise object regarding the outcome of the ASynchronous operation.
 					</p>
 				</td>
 			</tr>
@@ -859,7 +926,7 @@ dramatically improving clarity and learning speed.
 			<tr>
 				<td  id="tdR1AC1" colspan="3" class="btnsContainer" style="vertical-align:middle;height:30px;"> 
 					<div style="text-align: center;margin-top:20px;margin-bottom:15px;">
-						<button onclick="btnR1AStart_onclick(this)"title="Starts the asynchronous process represented by the 'ProgressBar'.">start</button>
+						<button onclick="btnR1AStart_onclick(this)"title="Starts the ASynchronous process represented by the 'ProgressBar'.">start</button>
 						<span style="padding-left: 6px;display:inline-block; width: 200px;">&nbsp;</span>
 					</div>
 				</td>		
@@ -869,7 +936,7 @@ dramatically improving clarity and learning speed.
 
 				<td class="msgContainer" colspan="3"> 
 					<p class="text">
-						The 'Progress bar' implements an asynchronous process that runs for a random amount of 
+						The 'Progress bar' implements an ASynchronous process that runs for a random amount of 
 						time and ends up with one state chosen randomly between <b>4 internal states</b>.<br/><br/>
 					</p>					
 					
@@ -933,7 +1000,7 @@ dramatically improving clarity and learning speed.
 						<p class="text">
 							The 'Promise' expects only two responses: 'resolved' and 'rejected', the 'rejected' 
 							state is split into three different conditions to allow for a more granular analysis 
-							of the possible circumstances within an asynchronous process.
+							of the possible circumstances within an ASynchronous process.
 						</p>
 					</span>
 				</td>
@@ -961,35 +1028,38 @@ dramatically improving clarity and learning speed.
 				</td>
 			</tr>	
 		</table>
-	</fieldset>	
+	</section>	
 	
 	
 	
 	
-	<fieldset style="border: solid 0px #ccc;background-color:transparent;box-shadow: none;">
+	<section style="border: solid 0px #ccc;background-color:transparent;box-shadow: none;">
 			<p class="text">
 				Once received a message ('resolve' xOr 'reject'), the 'Promise' is ready to call the methods listed at the introduction. 
 				'<b>PromiseGUI</b>' is the tool used by this page to give a graphical representation of the action taken by the 'Promise'.
 			</p>
-	</fieldset>	
+	</section>	
 	
 	
 
 	
 	<!--Section 1B  -->
-	<fieldset>
+	<section style="background-color: #F0F0F5;">
 		<legend>
-			<span class="SectionLabel">Section 1B:</span>&nbsp;
-			<span class="SectionTitle">'PromiseGUI' &nbsp;<span style="font-weight:normal;">how it works.</span></span>
+			<span class="underline">
+				<span class="SectionLabel">Section 1B:</span>&nbsp;
+				<span class="SectionTitle">PromiseGUI</span>
+				<span class="SectionSubTitle">how it works.</span>
+			</span>
 		</legend>
 
 		<table border="0" style="width:100%;">
 		
-			<tr>
+			<!-- <tr>
 				<td colspan="3"> 
 					<hr>
 				</td>		
-			</tr>
+			</tr> -->
 			<tr>
 				<td class="msgContainer" colspan="3"> 
 					The <b>'PromiseGUI'</b> 
@@ -1011,11 +1081,11 @@ dramatically improving clarity and learning speed.
 				</td>	
 		
 			</tr>
-			<tr>
+			<!-- <tr>
 				<td colspan="3"> 
 					<hr>
 				</td>		
-			</tr>
+			</tr> -->
 			
 			<tr>
 				<td class="msgContainer" colspan="3"> 
@@ -1079,19 +1149,73 @@ dramatically improving clarity and learning speed.
 			</tr>
 		
 		</table>
-	</fieldset>
+	</section>
+
+	
+	<section style="border: solid 0px #ccc;background-color:transparent;box-shadow: none;">
+		<p class="text">
+			From now bothe the 'ProgressBar' and the 'PromiseGUI' are the newly introduced UX.
+		</p>
+</section>	
 		
 	
 	<!--Section 1C  -->	
-	<fieldset>
+	<section>
 		<legend>
-		<span class="SectionLabel">Section 1C:</span>
-		<span class="SectionTitle">No 'Promise': <span style="font-weight:normal;">(vintage implementation)</span></span>
+			<span class="underline">
+				<span class="SectionLabel">Section 1C:</span>&nbsp;
+				<span class="SectionTitle">No 'Promise'</span>
+				<span class="SectionSubTitle">(vintage implementation)</span>
+			</span>
 		</legend>
 
-<pre>
+		<br>
 
-	<span class="green">// Handling of an asynchronous function by callbacks (no 'Promise')</span>
+		<table border="0" align="center" style="width: 300px;border:solid 0px transparent;">
+		<tr>
+			<td class="btnsContainer" > 
+				<button onclick="btnR1C_onclick(this)"  title="Asynchronous function managed without 'Promise'">GO</button>
+			</td>
+			<td class="pbsContainer" id="tdR1CC1"> 
+				<table class="demo"cellspacing="0"></table>
+			</td>
+			<td class="msgContainer"> 
+				<!-- This is a basic, yet complete, configuration of the 'Promise' using all its features. -->
+			</td>							
+			
+		</tr>
+		</table>
+
+<pre class="ai"><code>
+	<span class="comment">// Handling of an ASynchronous function by callbacks (no 'Promise')</span>
+	<span class="keyword">function</span> <span class="function">btnR1C_onclick</span>(<span class="variable">btn</span>) <span class="punctuation">{</span>
+		<span class="keyword">try</span><span class="punctuation">{</span>
+			<span class="function">console.clear</span><span class="punctuation">();</span>
+			<span class="variable">pgui</span>.<span class="method">reset</span><span class="punctuation">();</span>		
+
+			<span class="comment">// Keep the browser in 'debug-mode' to show the live code.</span>
+			<span class="keyword">debugger</span><span class="punctuation">;</span>
+
+			<span class="comment">// 'pgui.resolved' & 'pgui.rejected' are the callbacks functions</span>
+			<span class="comment">// provided to the 'then' function of the 'Promise'.</span>
+			<span class="variable">pb</span>.<span class="red">executor</span>(<span class="variable">pgui</span>.<span class="method">resolved</span>, <span class="variable">pgui</span>.<span class="method">rejected</span>)<span class="punctuation">;</span>
+		<span class="punctuation">}</span>
+
+		<span class="comment">// 'pgui.catched' is the callback function</span>
+		<span class="comment">// provided to the 'catch' function of the 'Promise'.</span>
+		<span class="keyword">catch</span>(<span class="variable">e</span>)<span class="punctuation">{</span>
+			<span class="variable">pgui</span>.<span class="method">catched</span><span class="punctuation">;</span>
+		<span class="punctuation">}</span>
+		
+		<span class="comment">// 'pgui.fulfilled' is the callback function</span>
+		<span class="comment">// provided to the 'finally' function of the 'Promise'.</span>
+		<span class="keyword">finally</span><span class="punctuation">{</span>
+			<span class="variable">pgui</span>.<span class="method">fulfilled</span><span class="punctuation">;</span>
+		<span class="punctuation">}</span>	
+	<span class="punctuation">}</span>
+<!-- 
+
+	<span class="green">// Handling of an ASynchronous function by callbacks (no 'Promise')</span>
 	<span class="blue">function</span> <span class="yellow">btnR1C_onclick</span>(btn){
 		<span class="purple">try</span>{
 			<span class="gray">console.clear();</span>
@@ -1117,14 +1241,14 @@ dramatically improving clarity and learning speed.
 		<span class="purple">finally</span>{
 			pgui.fulfilled;
 		}	
-	}
-</pre>		
+	} -->
+</code></pre>		
 		<table border="0" >
-		
+	
 			<tr>
 				<td class="msgContainer" colspan="3"> 
 					<p class="text">
-						Before the introduction of 'Promise', asynchronous functions were managed using callbacks. And when handling a simple 
+						Before the introduction of 'Promise', ASynchronous functions were managed using callbacks. When handling a simple 
 						asynchronous function, using 'Promise' is an option—a choice between formalism and simplicity.
 					</p>
 				</td>
@@ -1132,35 +1256,27 @@ dramatically improving clarity and learning speed.
 		
 			<tr>
 				<td class="msgContainer" colspan="3"> 
+					<p class="note">
+						Handling many ASynchronous function, using 'Promise' become <b>a must</b> to avoid the 'callback hell'.
+					</p>
 					<p class="text">
-						Handling many asynchronous function, using 'Promise' become <b>a must</b> to avoid the 'callback hell'.<br/>
 						<span style="font-size:0.9em;font-style: italic;">(try some shot and then hit F12 and take a look at the code, please.)</span>
 					</p>
 				</td>
-			</tr>
-			<tr>
-				<td class="btnsContainer" > 
-					<button onclick="btnR1C_onclick(this)"  title="Asynchronous function managed without 'Promise'">GO</button>
 				</td>
-				<td class="pbsContainer" id="tdR1CC1"> 
-					<table class="demo"cellspacing="0"></table>
-				</td>
-				<td class="msgContainer"> 
-					<!-- This is a basic, yet complete, configuration of the 'Promise' using all its features. -->
-				</td>							
-				
 			</tr>
+
 			
 
 		</table>
-	</fieldset>
+	</section>
 
 	
 
 
 		<!--Note  -->
 		
-	<fieldset style="border: solid 0px #ccc;background-color:transparent;box-shadow: none;">
+	<section style="border: solid 0px #ccc;background-color:transparent;box-shadow: none;">
 			<!-- <legend>Note</legend> -->
 				<p class="text">
 					In the real world:
@@ -1168,26 +1284,49 @@ dramatically improving clarity and learning speed.
 				<ul>
 				<li>
 					<p class="text">
-						'<b>ProgressBar</b>' could be, for example, an asynchronous call to an AJAX API that can only 'resolve' or reject'.
+						'<b>ProgressBar</b>' could be, for example, an ASynchronous call to an AJAX API that can only 'resolve' or reject'.
 					</p>
 				</li>
 				<li>
 					<p class="text">
-						'<b>PromiseGUI</b>' could be, for example, a process that adapts the DOM's layout based on the function called by the 'Promise'.
+						'<b>PromiseGUI</b>' could, for example, adapt the page layout based on the function called by the 'Promise'..
 					</p>
 				</li>
 				<ul>
 				<!-- </p>	 -->
-		</fieldset>	
+		</section>	
 	
 	
 	<!--Section 2A  -->	
-	<fieldset>
+	<section>
 		<legend>
-		<span class="SectionLabel">Section 2A: </span><span class="SectionTitle"> 'Promise' <span style="font-weight:normal;">for dummies.</span>
-		</legend>
+			<span class="underline">
+				<span class="SectionLabel">Section 2A:</span>&nbsp;
+				<span class="SectionTitle">'Promise'</span>
+				<span class="SectionSubTitle">for dummies.</span>
+			</span>
+		</legend>		
 
-<pre>
+<pre class="ai"><code>
+	<span class="comment">// Handles an asynchronous function by the 'PromiseDIY'.</span>
+	<span class="keyword">function</span> <span class="function">btnR2ADIYThen_onclick</span>(<span class="variable">btn</span>) <span class="punctuation">{</span>
+
+		<span class="gray">console.clear();</span>
+		<span class="gray">pgui.reset();</span>
+
+		<span class="comment">// Keep the browser in 'debug-mode' to show the live code.</span>
+		<span class="keyword">debugger</span><span class="punctuation">;</span>
+
+		<span class="comment">// Instantiate the 'PromiseDIY'.</span>
+		<span class="keyword">let</span> <span class="variable">promise</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="red">PromiseDIY</span>(<span class="variable">pb</span>.<span class="function">executor</span>)
+			.<span class="function">then</span>(
+				<span class="variable">pgui</span>.<span class="function">resolved</span><span class="punctuation">,</span> 
+				<span class="variable">pgui</span>.<span class="function">rejected</span>
+			)
+			.<span class="function">finally</span>(<span class="variable">pgui</span>.<span class="function">fulfilled</span>)
+			.<span class="function">catch</span>(<span class="variable">pgui</span>.<span class="function">catched</span>)<span class="punctuation">;</span>
+	<span class="punctuation">}</span>
+<!-- 
 
 	<span class="green">// Handles anasynchronous function by the 'PromiseDIY'.</span>
 	<span class="blue">function</span> <span class="yellow">btnR2ADIYThen_onclick</span>(btn){
@@ -1206,8 +1345,8 @@ dramatically improving clarity and learning speed.
 		)
 		.<span class="yellow">finally</span>(pgui.fulfilled)
 		.<span class="yellow">catch</span>(pgui.catched);	
-	}
-</pre>		
+	} -->
+</code></pre>		
 		<table border="0" >
 		
 			<tr>
@@ -1241,13 +1380,17 @@ dramatically improving clarity and learning speed.
 				</td>
 			</tr>
 		</table>
-	</fieldset>
+	</section>
 	
 	
 	
 	<!--Note  -->
-	<fieldset >
-		<legend>Note</legend>
+	<section >
+		<legend>
+			<span class="underline">
+				<span class="SectionLabel">Note:</span>&nbsp;
+			</span>
+		</legend>
 			<p class="note">
 				To properly control a 'Promise' it's important to know how it reacts to an exception. 'Promise' is a docile tool, 
 				the only real attention is needed during the instantiation: <span class="blue">new </span>Promise(<span class="blue">function </span>(resolve, reject) {...});
@@ -1255,21 +1398,28 @@ dramatically improving clarity and learning speed.
 			
 				
 
-	</fieldset>	
+	</section>	
 	
 	
-	<fieldset style="border: solid 0px #ccc;background-color:transparent;box-shadow: none;">
+	<section style="border: solid 0px #ccc;background-color:transparent;box-shadow: none;">
 			<p class="text">
 				The rest of section 2 systematically evaluates the effects of exceptions at each critical point.
 			</p>
-	</fieldset>	
+	</section>	
 	
 	
 		
 	<!--Section 2B  -->
-	<fieldset>
+	<section>
 		<legend>
 		<span class="SectionLabel">Section 2B: </span><span class="SectionTitle">Promise basics: <span style="font-weight:normal;">dealing with exceptions.</span>
+		</legend>
+		<legend>
+			<span class="underline">
+				<span class="SectionLabel">Section 2B:</span>&nbsp;
+				<span class="SectionTitle">Promise basics:</span>
+				<span class="SectionSubTitle">dealing with exceptions.</span>
+			</span>
 		</legend>
 
 		<p class="text">
@@ -1353,13 +1503,13 @@ dramatically improving clarity and learning speed.
 				</td>
 			</tr>				
 		</table>
-	</fieldset>	
+	</section>	
 	
 	
 	
 		
 	<!--Section 2C  -->
-	<fieldset>
+	<section>
 		<legend><span class="SectionLabel">Section 2C: </span><span class="SectionTitle">Promise basics: <span style="font-weight:normal;">dealing with exceptions.</span></legend>
 		
 <pre>
@@ -1424,11 +1574,11 @@ dramatically improving clarity and learning speed.
 				</td>
 			</tr>	
 		</table>
-	</fieldset>	
+	</section>	
 		
 		
 	<!--Section 2D  -->
-	<fieldset>
+	<section>
 		<legend><span class="SectionLabel">Section 2D: </span><span class="SectionTitle">Promise basics: <span style="font-weight:normal;">dealing with exceptions.</span></legend>
 		
 		<p class="text">
@@ -1489,11 +1639,11 @@ dramatically improving clarity and learning speed.
 				
 			</tr>
 		</table>
-	</fieldset>	
+	</section>	
 
 		
 	<!--Note  -->
-	<fieldset style="border: solid 0px #ccc;background-color:transparent;box-shadow: none;">
+	<section style="border: solid 0px #ccc;background-color:transparent;box-shadow: none;">
 		<!-- <legend>Note</legend>
 			<p class="note MIB" style="border:solid 1px transparent;padding-left:45px;background-position: 10px 15px;"> -->
 				 <!-- Now it's time to put things together...<span style="font-size:0.9em;font-style: italic;">(When the going gets tough, the tough get going.)</span><br/> -->
@@ -1502,11 +1652,11 @@ dramatically improving clarity and learning speed.
 				 Now it's time to put things together...<span style="font-size:0.9em;font-style: italic;">(When the going gets tough, the tough get going.)</span>
 			</p>
 
-	</fieldset>		
+	</section>		
 
 	
 	<!--Section 3A  -->
-	<fieldset>
+	<section>
 		<legend>
 		<span class="SectionLabel">Section 3A: </span> <span class="SectionTitle"> 'Promise':<span style="font-weight:normal;"> the revenge of dummies.</span></span>
 		</legend>
@@ -1602,10 +1752,10 @@ dramatically improving clarity and learning speed.
 				
 			</tr>
 		</table>
-	</fieldset>
+	</section>
 
 	<!--Section 3B  -->
-	<fieldset>
+	<section>
 		<legend>
 		<span class="SectionLabel">Section 3B: </span> <span class="SectionTitle"> 'Promise':
 			<span style="font-weight:normal;"> <span class="blue">async</span>/<span class="blue">await</span> version.</span>
@@ -1637,17 +1787,17 @@ dramatically improving clarity and learning speed.
 			</tr>
 		</table>
 
-	</fieldset>
+	</section>
 
 	<!--Note  -->	
-	<fieldset style="border: solid 0px #ccc;background-color:transparent;box-shadow: none;">
+	<section style="border: solid 0px #ccc;background-color:transparent;box-shadow: none;">
 		<!-- <legend>Note</legend>-->
 			<p class="text">
 				Nothing so special has happened so far. Now it's time to show 'Promise' in all its glory.				
 			</p>	 
-	</fieldset>
+	</section>
 	
-	<fieldset>
+	<section>
 			<p class="note">
 				In the following sections, there will be a <b>'Master Promise' and many 'Promises'</b>. 
 
@@ -1655,12 +1805,12 @@ dramatically improving clarity and learning speed.
 			<p class="note"> 
 				The 'Master Promise' will either fail or succeed, based on the outcomes of its promises. (and its own configuration)
 			</p>
-	</fieldset>	
+	</section>	
 		
 		
 		
 	<!--Section 4A  -->
-	<fieldset style="min-height:70px;">
+	<section style="min-height:70px;">
 		<legend>
 			<span class="SectionLabel">Section 4A: </span> <span class="SectionTitle"> Promise.all<span style="font-weight:normal;">.</span></span>
 		</legend>
@@ -1699,20 +1849,20 @@ dramatically improving clarity and learning speed.
 			</tr>
 			
 		</table>
-	</fieldset>
+	</section>
 
 	
 	<!--Note  -->	
-	<fieldset >
+	<section >
 		<legend>Note</legend>
 			<p class="text">
 				When a 'ProgressBar' fails, only the associate 'PromiseGUI' shows the right state (become red) all the other 'PromiseGUI' remains in the pending state (dimmed).			
 			</p>	
 
-	</fieldset>		
+	</section>		
 		
 	<!--Section 4A Bis  -->
-	<fieldset style="min-height:70px;">
+	<section style="min-height:70px;">
 		<legend>
 			<span class="SectionLabel">Section 4A Bis: </span> <span class="SectionTitle"> Promise.all<span style="font-weight:normal;"> (extended).</span></span>
 		</legend>
@@ -1753,11 +1903,11 @@ dramatically improving clarity and learning speed.
 			</tr>			
 			
 		</table>
-	</fieldset>
+	</section>
 
 		
 	<!--Section 4B  -->
-	<fieldset style="min-height:70px;">
+	<section style="min-height:70px;">
 		<legend>
 			<span class="SectionLabel">Section 4B: </span> <span class="SectionTitle"> Promise.allSettled<span style="font-weight:normal;">. <span style="font-size:0.9em;font-style: italic;"><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise/all#Browser_compatibility" target="_blank">(browser compatibility)</a></span></span></span>
 		</legend>
@@ -1801,11 +1951,11 @@ dramatically improving clarity and learning speed.
 			
 			
 		</table>
-	</fieldset>
+	</section>
 	
 		
 	<!--Section 4C  -->
-	<fieldset style="min-height:70px;">
+	<section style="min-height:70px;">
 		<legend><span class="SectionLabel">Section 4C: </span> <span class="SectionTitle"> Promise.race</span></legend>
 		<table border="0" >
 
@@ -1838,12 +1988,12 @@ dramatically improving clarity and learning speed.
 			
 			
 		</table>
-	</fieldset>
+	</section>
 
 
 		
 	<!--Section 4D  -->
-	<fieldset style="min-height:70px;">
+	<section style="min-height:70px;">
 		<legend>
 			<span class="SectionLabel">Section 4D: </span> <span class="SectionTitle"> Promise.any<span style="font-weight:normal;">.</span></span>
 		</legend>
@@ -1890,13 +2040,13 @@ dramatically improving clarity and learning speed.
 			</tr>
 			
 		</table>
-	</fieldset>	
+	</section>	
 	
 	
 	
 		
 	<!--Section 4D Bis  -->
-	<fieldset style="min-height:70px;">
+	<section style="min-height:70px;">
 		<legend>
 			<span class="SectionLabel">Section 4D Bis <span><span class="SectionTitle">Promise.any<span style="font-weight:normal;"> (extended).</span></span>
 		</legend>
@@ -1935,11 +2085,11 @@ dramatically improving clarity and learning speed.
 			</tr>			
 			
 		</table>
-	</fieldset>
+	</section>
 	
 		
 	<!--Section 5A  -->
-	<fieldset style="min-height:230px;">
+	<section style="min-height:230px;">
 		<legend><span class="SectionLabel">Section 5A: </span> <span class="SectionTitle">Promise synchronous.</span></legend>
 		<table border="0" >
 		
@@ -1972,13 +2122,13 @@ dramatically improving clarity and learning speed.
 				</td>
 			</tr>
 		</table>
-	</fieldset>
+	</section>
 	
 	
 
 		
 	<!--Note  -->
-	<fieldset >
+	<section >
 		<legend>Note</legend>
 			<p class="text">
 				Now some, more in-depth, consideration regarding:<br/>
@@ -1995,13 +2145,13 @@ dramatically improving clarity and learning speed.
 				and then notifying 'Promise' without worrying if another process might leave it in an inappropriate state.
 			</p>	
 
-	</fieldset>		
+	</section>		
 
 
 	
 	
 
-	<fieldset style="min-height:170px;">
+	<section style="min-height:170px;">
 		<legend>
 			<span class="SectionLabel">Section 6A:</span><span class="SectionTitle">Single thread<span style="font-weight:normal;"> a demonstration.</span></span>		
 		
@@ -2070,10 +2220,10 @@ dramatically improving clarity and learning speed.
 			</tr>
 						
 		</table>
-	</fieldset>
+	</section>
 	
 	
-	<fieldset style="min-height:170px;">
+	<section style="min-height:170px;">
 		<legend>
 			<span class="SectionLabel">Section 6B: </span><span class="SectionTitle">ProgressBar<span style="font-weight:normal;"> Synchronous/Asynchronous.</span></span>		
 		
@@ -2111,7 +2261,7 @@ dramatically improving clarity and learning speed.
 				</td>
 			</tr>			
 		</table>
-	</fieldset>
+	</section>
 	
 		
 
@@ -2120,14 +2270,14 @@ dramatically improving clarity and learning speed.
 		
 	<!--Note  -->
 
-	<fieldset style="border: solid 0px #ccc;background-color:transparent;box-shadow: none;">
+	<section style="border: solid 0px #ccc;background-color:transparent;box-shadow: none;">
 		<p class="text">
 				How this affects 'Promise'?
 			</p>
-	</fieldset>		
+	</section>		
 	
 
-	<fieldset style="min-height:170px;">
+	<section style="min-height:170px;">
 		<legend>
 			<span class="SectionLabel">Section 7A: </span> <span class="SectionTitle">Promise.then<span style="font-weight:normal;"> Synchronous/Asynchronous.</span></span>		
 		
@@ -2138,7 +2288,7 @@ dramatically improving clarity and learning speed.
 			<tr>
 				<td class="msgContainer" id="msgContainer1" colspan="3"> 
 					<p class="text">
-						A single "Promise" is completely indifferent whether the process it controls is synchronous or asynchronous.
+						A single "Promise" is completely indifferent whether the process it controls is synchronous or ASynchronous.
 					</p>
 				</td>
 			</tr>
@@ -2158,10 +2308,10 @@ dramatically improving clarity and learning speed.
 			
 			
 		</table>
-	</fieldset>	
+	</section>	
 	
 
-	<fieldset >
+	<section >
 		<legend>Note</legend>
 			<p class="note">				
 				Configuring a 'Master-Promise' is a 3 steps process.
@@ -2194,11 +2344,11 @@ dramatically improving clarity and learning speed.
 		<b>The constraint is</b>, masterPromise must be created, at least, immediately before the first resolve/reject is called.
 	</p>	
 			
-	</fieldset>		
+	</section>		
 
 		
 	<!--Section 7B  -->
-	<fieldset style="min-height:70px;">
+	<section style="min-height:70px;">
 		<legend>
 			<span class="SectionLabel">Section 7B: </span> <span class="SectionTitle">Promise.all <span style="font-weight:normal;">three steps.</span></span>
 		</legend>
@@ -2227,12 +2377,12 @@ dramatically improving clarity and learning speed.
 			</tr>
 
 		</table>
-	</fieldset>	
+	</section>	
 	
 	
 	
 	<!--Section 7C  -->
-	<fieldset style="min-height:70px;">
+	<section style="min-height:70px;">
 		<legend>
 			<span class="SectionLabel">Section 7C:</span> <span class="SectionTitle">Promise.race <span style="font-weight:normal;">three steps.</span></span>
 		</legend>
@@ -2261,9 +2411,9 @@ dramatically improving clarity and learning speed.
 			</tr>
 
 		</table>
-	</fieldset>
+	</section>
 
-	<fieldset >
+	<section >
 		<legend>
 			<span class="SectionLabel">Section 7D: </span> <span class="SectionTitle">setTimeout</span>			
 		</legend>
@@ -2286,7 +2436,7 @@ dramatically improving clarity and learning speed.
 						- 7B and 7C illustrate that the 'Master-Promise' cannot be created after the synchronous processes it controls have completed.
 					</p>
 					<p class="text">		
-						Therefore, <b>the processes controlled by the 'Promise' MUST be asynchronous to be managed correctly!</b>
+						Therefore, <b>the processes controlled by the 'Promise' MUST be ASynchronous to be managed correctly!</b>
 					</p>
 					<p class="text">
 						To elaborate further, the 'Master-Promise' needs to be created before any of the resolves or rejects are called. 
@@ -2303,9 +2453,9 @@ dramatically improving clarity and learning speed.
 
 		</table>
 
-	</fieldset>	
+	</section>	
 
-	<fieldset>
+	<section>
 		<legend>
 			<span class="SectionLabel">Extra: </span> 
 			<span class="SectionTitle">Console.js</span>
@@ -2329,8 +2479,8 @@ dramatically improving clarity and learning speed.
 		<img src="./stuffs/Console.png" style="width: 80%;margin:auto;display: block;border:solid 1px #ccc;margin-top:10px;">
 
 		<br>
-	</fieldset>
-	<fieldset>
+	</section>
+	<section>
 		<legend>
 			<span class="SectionLabel">Extra: </span> 
 			<span class="SectionTitle">The Workbench</span>
@@ -2352,8 +2502,8 @@ dramatically improving clarity and learning speed.
 		</p>
 		<br>	
 
-	</fieldset>
-	<fieldset style="border: solid 0px #ccc;background-color:transparent;box-shadow: none;padding-top:0px;">
+	</section>
+	<section style="border: solid 0px #ccc;background-color:transparent;box-shadow: none;padding-top:0px;">
 		<p class="text">
 			That's all.
 		</p>
@@ -2366,7 +2516,7 @@ dramatically improving clarity and learning speed.
 
 		<br>	
 		<br>	
-	</fieldset>	
+	</section>	
 	
 
 	<legend>

@@ -31,4 +31,30 @@
 			pgui.fulfilled;
 		}	
 	}
+
+	function MainFlow(){
+		// ...
+		asynchronousFunction();
+		// ...
+	}
+
+	function asynchronousFunction(){
+		let intervalId = setInterval(deferredTask, takeyourTime); 
+	}
+
+	function deferredTask(){
+		// Do something
+	}
+
+
+
+
+	function MainFlow2(){
+		// ...
+		setInterval(() => {
+			// Do something (with x, y, ...)
+		}, asyncDelay); 
+		// ...
+	}
+
 }
