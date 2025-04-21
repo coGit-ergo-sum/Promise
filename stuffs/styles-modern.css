@@ -67,7 +67,7 @@ legend span.SectionSubTitle{
 .note, .text {
     text-align:justify;
     font-size: 0.95em;
-    color: #616c6d;
+    color: #505b5c; /* 616c6d*/
     /* border: solid 1px #dce0e1; */
     border-radius: 5px;
     text-indent: 10px;
@@ -75,7 +75,7 @@ legend span.SectionSubTitle{
 .note {
 
     background: #ecf0f1;
-    border: solid 1px #dce0e1;
+    border: solid 1px #cbcfd0;/*  dce0e1 */
     margin-bottom: 15px;
     padding: 10px 10px 10px 10px;
 
@@ -93,7 +93,7 @@ li {
     padding-left: 0px; 
     margin-left: 0px;
     text-indent: 0px;
-    line-height: 1;
+    /* line-height: 1.4; */
   }
 
 
