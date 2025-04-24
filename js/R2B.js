@@ -128,4 +128,117 @@
 		
 	}
 
+	function executor(resolve, reject){
+		// var alea = 3; //Math.floor(Math.random() * 3) + 1; 
+
+		// if (alea == 1) { resolve(alea + ' = resolve');} 
+		// else if (alea == 2) { reject(alea + ' = reject'); }
+		// else{ 
+		// 	alert(alea);
+		// 	throw new Error(alea + ' = Error'); 
+		// }
+
+		//resolve('resolved');
+		//reject('rejected')
+		throw new Error('Errored'); 
+
+	}
+
+	function btnR2BTest_onclick(btn){
+		new Promise(executor)		
+		.then(
+			result => alert('then.resolve -> ' + result) 
+			// ,result => alert('then.reject -> ' + result.message) 
+		)
+
+		.finally(() => alert('finally'))
+		.catch(error => alert('catch - ' + error.message));
+	}
+
+
+
+	function executor(resolve, reject){
+
+		try {
+			// Do your staff
+			if( elaborationSucceded ){
+				resolve( anyParameterYouWant );
+			}
+			else{
+				reject( new Error('any message' ));
+			}
+		}
+		catch( jse ){
+			reject( jse );
+		}
+	}
+
+
+	
+	// Promise-Free ASynchronous Function Implementation.
+	function executor() {
+		try{	
+
+			setTimeout(() => {			
+				// ------------------------------------- //
+				// do something ASynchronous (or not)
+		
+				if(elaborationSucceeded){
+					onResolve(anyParameterYouWant);
+				}
+				else{
+					onReject(new Error('any message'));
+				}			
+				// ------------------------------------- //
+			}, asyncDelay);
+		}
+		catch(jse){
+			onCatch(jse);
+		}
+		finally{
+			onFinally();
+		}
+	}
+
+	// throw new Error('executor error thown');
+
+	// function executor(resolve, reject){
+	// 	resolve("executor resolved");
+	// }
+
+	// function onResolve(info){
+	// 	alert(`promise.then onResolve ${info}`);
+	// }
+
+	// function onReject(info){
+	// 	alert(`promise.then onReject ${info}`);
+	// }
+
+	// function onReject(jse){
+	// 	throw new Error("Error thrown into the 'onCatch' callback");
+	// }
+	
+	// function onCatch(jse){		
+	// 	alert(`promise.catch onCatched ${jse.message}`);
+	// }
+	
+	// function onFinally(){
+	// 	alert(`promise.finally onFinally`);
+	// }
+
+	// function executor(resolve, reject){
+	// 	resolve("executor resolved");
+	// }
+
+	// new Promise(executor)
+	// 	.then( onResolve, onReject )
+	// 	.catch( onCatch )
+	// 	.finally();
+	
+
+	function executor(resolve, reject) {
+		// Wrong parameter type for 'reject' (expects an JS Error). 
+		reject(new Error("executor rejected"));
+	}
+
 }

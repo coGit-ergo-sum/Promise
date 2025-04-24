@@ -19,10 +19,7 @@
 		debugger;
 
 		let promise = new PromiseDIY(pb.executor)
-		.then(
-			pgui.resolved, 
-			pgui.rejected
-		)
+		.then(pgui.resolved, pgui.rejected)
 		.finally(pgui.fulfilled)
 		.catch(pgui.catched);	
 	}

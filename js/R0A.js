@@ -17,41 +17,41 @@
 
 
 
-	function btnR0AStartS_onclick(btn){
+	// function btnR0AStartS_onclick(btn){
 		
-		MoveHtml('#divSync');
-		R0A.progressBar.reset();
-		R0A.progressBar.green();
+	// 	MoveHtml('#divSync');
+	// 	R0A.progressBar.reset();
+	// 	R0A.progressBar.green();
 
-		let wMax = Math.floor(100 * Math.random());
-		let w = 0;
+	// 	let wMax = Math.floor(100 * Math.random());
+	// 	let w = 0;
 		
-		while (true) {
-			R0A.progressBar.width(w);
-			w++;
+	// 	while (true) {
+	// 		R0A.progressBar.width(w);
+	// 		w++;
 
-			if(w > wMax){ break; }
-		}
-	}
+	// 		if(w > wMax){ break; }
+	// 	}
+	// }
 
 	
 
-	function btnR0AStartA_onclick(btn){
+	// function btnR0AStartA_onclick(btn){
 		
-		MoveHtml('#divAsync');
-		R0A.progressBar.reset();
-		R0A.progressBar.green();
+	// 	MoveHtml('#divAsync');
+	// 	R0A.progressBar.reset();
+	// 	R0A.progressBar.green();
 
-		let wMax = Math.floor(100 * Math.random());
-		let w = 0;
+	// 	let wMax = Math.floor(100 * Math.random());
+	// 	let w = 0;
 
-		let intervalId = setInterval(() => {
-			R0A.progressBar.width(w);
-			w++;
+	// 	let intervalId = setInterval(() => {
+	// 		R0A.progressBar.width(w);
+	// 		w++;
 
-			if(w > wMax){ clearInterval(intervalId);}
-		}, 8);
-	}	
+	// 		if(w > wMax){ clearInterval(intervalId);}
+	// 	}, 8);
+	// }	
 
 
 

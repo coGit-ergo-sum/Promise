@@ -18,7 +18,7 @@ h1, h2, h3 {
 }
 
 /* Contenitore globale */
-section {
+section, aside {
     /* border: none; */
     border: solid 1px #ccc;
     margin: 20px auto;

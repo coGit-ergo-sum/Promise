@@ -57,4 +57,21 @@
 		// ...
 	}
 
+	function executor(resolve, reject){
+
+		// 'alea' is a random number, Could be 1, 2 or 3
+		var alea = Math.floor(Math.random() * 3) + 1; 
+
+		// 'setTimeout' makes this function ASynchronous.
+		setInterval(() => {
+			if (alea == 1) { resolve(alea);} 
+			else if (alea == 2) { reject(alea); }
+			
+			// Simulate an error occurrence
+			// This will trigger the 'catch' method, calling 'onCatch'.
+			else{ throw new Error(alea); }	
+		}, asyncDelay); 
+
+	}
+
 }

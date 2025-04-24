@@ -345,34 +345,39 @@
 	<section>
 		<legend>
 			<span class="underline">
-				<span class="SectionLabel">Intro:</span>&nbsp;
+				<span class="SectionLabel">Intro 1:</span>&nbsp;
 				<span class="SectionTitle"> Asynchronous process:&nbsp;</span>
 				<span class="SectionSubTitle">what is it?</span>
 			</span>
 		</legend>
 		
 		<p class="text">
-			But what <b>is</b> an ASynchronous process?
+			But what is an ASynchronous process?
 		</p>
 		<ul>
-			<li><p class="text">Calling and stuck until they reply: that’s <b>Synchronous</b>.</p></li>
-			<li><p class="text">You email and move on; they’ll reply when they can: that’s <b>ASynchronous</b>.</p></li>
-
+			<li><p class="text">Calling someone and being stuck until they answer that's <b>Synchronous</b>.</p></li>
+			<li><p class="text">Send a message, carry on, reply comes later that’s   <b>ASynchronous</b>.</p></li>
 		</ul>	
 
 		<br>
 		<hr>
 		
 		<p class="text">
-			This is the way an ASynchronous function is implemented in Javascript:
+			These are the element of an ASynchronous function in Javascript:
 		</p>	
 
 		<table border="0" style="width:100%;" >
 
-			
 			<tr>
 				<td class="" colspan="3">
 <pre id="preMainFlow" class="ai"><code>
+	<span class="comment">// In practice an ASync function is implemented in this way:</span>
+	<span class="keyword">function</span> <span class="function">MainFlow</span>() <span class="punctuation">{</span>
+		<span class="function">setInterval</span>(<span class="function">() =></span> <span class="punctuation">{</span>
+			<span class="comment">// Do something (with x, y, ...)</span>
+		<span class="punctuation">},</span> <span class="variable">asyncDelay</span><span class="punctuation">);</span>
+	<span class="punctuation">}</span>
+	<hr style="padding: 0px;margin:0px;border-color:#777;"><div class="gray" style="background-color: #000;padding:5px 3px 3px 12px;">The following implementation highlights the functional blocks.</div><hr style="padding: 0px;margin:0px;border-color:#777;">
 	<span class="keyword">function</span> <span class="function">mainFlow</span><span class="punctuation">()</span> <span class="punctuation">{</span>
 		<span class="comment">// ...</span>
 		<span class="function">asynchronousFunction</span><span class="punctuation">()</span><span class="punctuation">;</span>
@@ -382,18 +387,11 @@
 	<span class="keyword">function</span> <span class="function">asynchronousFunction</span><span class="punctuation">()</span> <span class="punctuation">{</span>
 		
 		<span class="comment">// "setInterval" is what makes this function ASynchronous</span>
-		<span class="keyword">let</span> <span class="variable">intervalId</span> <span class="operator">=</span> <span class="function">setInterval</span><span class="punctuation">(</span><span class="variable">deferredTask</span><span class="punctuation"></span>, <span class="variable">asyncDelay</span>, <span class="variable">x</span>, <span class="variable">y</span>,<span class="variable"> ...</span><span class="punctuation">);</span>
+		<span class="keyword">let</span> <span class="variable">intervalId</span> <span class="operator">=</span> <span class="function">setInterval</span><span class="punctuation">(</span><span class="red">deferredTask</span><span class="punctuation"></span>, <span class="variable">asyncDelay</span>, <span class="variable">x</span>, <span class="variable">y</span>,<span class="variable"> ...</span><span class="punctuation">);</span>
 	<span class="punctuation">}</span>
 	  
-	<span class="keyword" style="margin: 0px;padding:0px;">function</span> <span class="function">deferredTask</span><span class="punctuation"></span>(<span class="variable">x</span>, <span class="variable">y</span>, <span class="variable">...</span><span class="punctuation"></span>)</span> <span class="punctuation">{</span>
+	<span class="keyword" style="margin: 0px;padding:0px;">function</span> <span class="red">deferredTask</span><span class="punctuation"></span>(<span class="variable">x</span>, <span class="variable">y</span>, <span class="variable">...</span><span class="punctuation"></span>)</span> <span class="punctuation">{</span>
 		<span class="comment">// Do something</span>
-	<span class="punctuation">}</span>
-	<hr style="padding: 0px;margin:0px;border-color:#777;"><div class="gray" style="background-color: #000;padding:3px 3px 3px 12px;">The functions above were introduced solely to highlight the three functional blocks.</div><hr style="padding: 0px;margin:0px;border-color:#777;">
-	<span class="comment">// In practice, 'mainFlow' is implemented in this way:</span>
-	<span class="keyword">function</span> <span class="function">MainFlow</span>() <span class="punctuation">{</span>
-		<span class="function">setInterval</span>(<span class="function">() =></span> <span class="punctuation">{</span>
-			<span class="comment">// Do something (with x, y, ...)</span>
-		<span class="punctuation">},</span> <span class="variable">asyncDelay</span><span class="punctuation">);</span>
 	<span class="punctuation">}</span>
 </code></pre>
 
@@ -444,17 +442,10 @@
 			<tr>
 				<td colspan="3"> 
 					<p class="text">
-						Here’s a real-life example where using <b>ASynchronous logic</b> truly makes a difference.
-					</p>
-					
+						Here’s a real-life example where using <b>ASynchronous logic makes a difference</b>.
+					</p>					
 				</td>		
 			</tr>	
-			<tr>
-				<td class="msgContainer" colspan="3"> 
-					<br>
-					  The '<b>ProgressBar</b>':<!--<h3></h3> -->
-				</td>
-			</tr>
 			
 			<tr>
 				<td class="msgContainer" colspan="3"> 
@@ -464,8 +455,8 @@
 							<td id="tdR0AC2" colspan="3"><table class="demo"cellspacing="0"></table></td>
 						</tr>
 						<tr>
-							<td style="text-align: center;"><button onclick="btnR0AStartS_onclick(this)"title="Implements a 'ProgressBar' by a Synchronous function.">Synchronous</button></td>
-							<td style="text-align: center;"><button onclick="btnR0AStartA_onclick(this)"title="Implements a 'ProgressBar' by an ASynchronous function.">ASynchronous</button></td>
+							<td style="text-align: center;"><button onclick="btnI1StartS_onclick(this)"title="Implements a 'ProgressBar' by a Synchronous function.">Synchronous</button></td>
+							<td style="text-align: center;"><button onclick="btnI1StartA_onclick(this)"title="Implements a 'ProgressBar' by an ASynchronous function.">ASynchronous</button></td>
 							<!-- <td style="text-align: center;"><button onclick="btnR0AStartH_onclick(this)"title="Starts an hybrid process represented by the 'ProgressBar'.">Hybrid</button></td>							 -->
 						</tr>
 						<!-- <tr>
@@ -479,7 +470,7 @@
 			<tr>
 				<td class="" colspan="3">
 <pre id="preCommon" class="ai"><code>
-	<span class="comment">// Buttons show the difference between Sync & Async process.</span>
+	<span class="comment">// <span class="yellow">Click</span> the buttons show the difference between Sync & Async process.</span>
 </code></pre>
 
 <!--
@@ -592,14 +583,18 @@ dramatically improving clarity and learning speed.
 	<section style="background-color: #fff; ">
 		<legend>
 			<span class="underline">
-				<span class="SectionLabel">Intro:</span>&nbsp;
+				<span class="SectionLabel">Intro 2:</span>&nbsp;
 				<span class="SectionTitle"> Promise:&nbsp;</span>
 				<span class="SectionSubTitle">Main elements</span>
 			</span>
 		</legend>
 
-		<p class="note">
-			The elements of a Promise that make it function are the <b>constructor</b> and the methods: '<b>then</b>', '<b>catch</b>', '<b>finally</b>'.
+
+		<p class="text">
+			A Promise is built around its <b>constructor</b> and the methods: '<b>then</b>', '<b>catch</b>', '<b>finally</b>'.
+		</p>
+		<p class="text">
+			And each method requires its own callback (function).
 		</p>
 
 <pre class="ai"><code>
@@ -613,213 +608,460 @@ dramatically improving clarity and learning speed.
 		<span class="punctuation">.</span><span class="function">then</span>(<span class="variable">onResolve</span><span class="punctuation">,</span> <span class="variable">onReject</span>)
 		<span class="punctuation">.</span><span class="function">catch</span>(<span class="variable">onCatch</span>)
 		<span class="punctuation">.</span><span class="function">finally</span>(<span class="variable">onFinally</span>)<span class="punctuation">;</span>
-</code></pre>	
-
-<p class="text">
-	ATTENTION: Splitting the configuration into two parts is uncommon
-	but intentional. It makes evident that the 'onResolve'
-	and 'onReject' callbacks can be associated with the 
-	'Promise' at any time.
-	Refer to sections 7B and onwards for more details.
-</p>
-
-
-
-<pre class="ai"><code>
-	<span class="green">// This function illustrates a basic ASynchronous process.</span>
-	<span class="green">// The random number 'alea' determines the function's behaviour.</span>
-	<span class="green">// 'resolve' and 'reject' are single-parameter functions.</span>
-	<span class="blue">function</span> <span class="red"><b>executor</b></span>(resolve, reject){
-
-		<span class="green">// 'alea' is a random number, Could be 1, 2 or 3</span>
-		<span class="blue">var</span> alea = Math.floor(Math.random() * 3) + 1; 
-
-		<span class="green">// ---------------------------------------------------------- //</span>
-		<span class="blue">function</span> timeout_Complete(){
-			<span class="purple">if</span> (alea == 1) { <b>resolve</b>(alea);} 
-			<span class="purple">else if</span> (alea == 2) { <b>reject</b>(alea); }
-			
-			<span class="green">// Simulate an error occurrence</span>
-			<span class="green">// This will trigger the 'catch' method, calling 'onCatch'.</span>
-			<span class="purple">else</span>{ <span class="blue">throw</span> <span class="blue">new</span> Error(alea); }	
-		}
-		<span class="green">// ---------------------------------------------------------- //</span>
-
-
-		<span class="green">// 'setTimeout' makes this function ASynchronous.</span>
-		setTimeout(timeout_Complete, 1000); 
-	}
 </code></pre>
-
-
-
-<pre class="ai"><code>
-	<span class="comment">// ------------------------------------------------------- //</span>
-	<span class="comment">// A fully configured 'Promise' also requires 4 callbacks.</span>
-	<span class="comment">// ------------------------------------------------------- //</span>
-	
+<br>
+<p class="text">
+	<!-- The constructor requires a callback with other two callbacks as parameters: 'resolve' and 'reject' -->
+	The constructor takes a callback, which in turn receives two functions as parameters: resolve and reject
+</p>
+<pre class="ai"><code>	
+	<span class="comment">// The ECMAScript calls this callback (function) the '<b>executor</b>'</span>
+	<span class="keyword">function</span> <span class="red">executor</span>(<span class="variable">resolve</span>, <span class="variable">reject</span>) <span class="punctuation">{</span>
+		<span class="keyword">try</span> <span class="punctuation">{</span>
+			<span class="comment">// Do your stuff, then:</span>
+			<span class="keyword">if</span> <span class="punctuation">(</span><span class="variable">elaborationSucceeded</span><span class="punctuation">)</span> <span class="punctuation">{</span>
+				<span class="variable">resolve</span><span class="punctuation">(</span><span class="variable">anyParameterYouWant</span><span class="punctuation">)</span><span class="punctuation">;</span>
+			<span class="punctuation">}</span> <span class="keyword">else</span> <span class="punctuation">{</span>
+				<span class="variable">reject</span><span class="punctuation">(</span><span class="keyword">new</span> <span class="class">Error</span><span class="punctuation">(</span><span class="string">'any message'</span><span class="punctuation">)</span><span class="punctuation">)</span><span class="punctuation">;</span>
+			<span class="punctuation">}</span>
+		<span class="punctuation">}</span> <span class="keyword">catch</span> <span class="punctuation">(</span><span class="variable">jse</span><span class="punctuation">)</span> <span class="punctuation">{</span>
+			<span class="variable">reject</span><span class="punctuation">(</span><span class="variable">jse</span><span class="punctuation">)</span><span class="punctuation">;</span>
+		<span class="punctuation">}</span>
+	<span class="punctuation">}</span>
+</code></pre>
+<br>
+<p class="text">
+	And the following are the callbacks for the other methods of the 'Promise'.
+</p>
+<pre class="ai"><code>		
+	<span class="comment">// 'info' is '<b>anyParameterYouWant</b>'</span>
 	<span class="keyword">function</span> <span class="function">onResolve</span>(<span class="variable">info</span>)<span class="punctuation">{</span>
 		<span class="comment">// do something appropriate when executor resolved.</span>
 	<span class="punctuation">}</span>
 	
-	<span class="keyword">function</span> <span class="function">onReject</span>(<span class="variable">info</span>)<span class="punctuation">{</span>
+	<span class="comment">// 'jse' is an instance of a JavaScript '<b>Error</b>'</span>
+	<span class="keyword">function</span> <span class="function">onReject</span>(<span class="variable">jse</span>)<span class="punctuation">{</span>
 		<span class="comment">// do something appropriate when executor rejected.</span>
 	<span class="punctuation">}</span>
 	
-	<span class="keyword">function</span> <span class="function">onCatch</span>(<span class="variable">er</span>)<span class="punctuation">{</span>
+	<span class="comment">// 'jse' is an instance of a JavaScript '<b>Error</b>'</span>
+	<span class="keyword">function</span> <span class="function">onCatch</span>(<span class="variable">jse</span>)<span class="punctuation">{</span>
 		<span class="comment">// Handle errors appropriately.</span> 
 	<span class="punctuation">}</span>
 	
 	<span class="keyword">function</span> <span class="function">onFinally</span>()<span class="punctuation">{</span>
 		<span class="comment">// Execute final actions regardless of resolve, reject or error.</span> 
 	<span class="punctuation">}</span>
-	</code></pre>
+</code></pre>
 
-
-</section>
-
-
-<section>
-	<legend>
-		<span class="underline">
-			<span class="SectionLabel">Intro:</span>&nbsp;
-			<span class="SectionTitle"> Promise DIY</span>
-		</span>
-	</legend>
-
-	<p class="text">
-		The following is a possible DIY implementation of a Promise.
-	</p>
-
-	<p class="text"> 
-		The structure is minimal and lacks the necessary checks to make it a professional tool, 
-		but it does its job, 
-		<!-- <i>(like a standard Promise.)</i> -->
-	</p>
-
-<pre class="ai"><code>
-	<span class="comment">// A basic yet running DIY Promise for tutorial purposes.</span>
-	<span class="comment">// Look at section 2A (in debug mode) for a live example.</span>
-	<span class="keyword">class</span> <span class="function">PromiseDIY</span> <span class="punctuation">{</span>
-	
-		<span class="variable">onResolve</span> <span class="operator">=</span> <span class="keyword">null</span><span class="punctuation">;</span>
-		<span class="variable">onReject</span>  <span class="operator">=</span> <span class="keyword">null</span><span class="punctuation">;</span>
-		<span class="variable">onCatch</span>   <span class="operator">=</span> <span class="keyword">null</span><span class="punctuation">;</span>
-		<span class="variable">onFinally</span> <span class="operator">=</span> <span class="keyword">null</span><span class="punctuation">;</span>
-	
-		<span class="keyword">constructor</span>(<span class="red">_executor</span>) <span class="punctuation">{</span>
-		
-			<span class="keyword">const</span> <span class="variable">_resolve</span> <span class="operator">=</span> (<span class="variable">_value</span>) <span class="operator">=&gt;</span> <span class="punctuation">{</span>
-				<span class="keyword">this</span>.<span class="variable">onResolve</span>(<span class="variable">_value</span>)<span class="punctuation">;</span>
-				<span class="keyword">this</span>.<span class="variable">onFinally</span>()<span class="punctuation">;</span>
-			<span class="punctuation">}</span><span class="punctuation">;</span>
-		
-			<span class="keyword">const</span> <span class="variable">_reject</span> <span class="operator">=</span> (<span class="variable">_value</span>) <span class="operator">=&gt;</span> <span class="punctuation">{</span>
-				<span class="keyword">this</span>.<span class="variable">onReject</span>(<span class="variable">_value</span>)<span class="punctuation">;</span>
-				<span class="keyword">this</span>.<span class="variable">onFinally</span>()<span class="punctuation">;</span>
-			<span class="punctuation">}</span><span class="punctuation">;</span>
-		
-			<span class="keyword">try</span> <span class="punctuation">{</span>
-				<span class="red">_executor</span>(<span class="variable">_resolve</span>, <span class="variable">_reject</span>)<span class="punctuation">;</span>
-			<span class="punctuation">}</span> 
-			<span class="keyword">catch</span> (<span class="variable">_error</span>) <span class="punctuation">{</span>
-				<span class="keyword">this</span>.<span class="variable">onCatch</span>(<span class="variable">_error</span>)<span class="punctuation">;</span>
-				<span class="keyword">this</span>.<span class="variable">onFinally</span>()<span class="punctuation">;</span>
-			<span class="punctuation">}</span>
-		<span class="punctuation">}</span>
-		
-		<span class="function">then</span>(<span class="variable">_onResolve</span>, <span class="variable">_onReject</span>) <span class="punctuation">{</span>
-			<span class="keyword">this</span>.<span class="variable">onResolve</span> <span class="operator">=</span> <span class="variable">_onResolve</span><span class="punctuation">;</span>
-			<span class="keyword">this</span>.<span class="variable">onReject</span> <span class="operator">=</span> <span class="variable">_onReject</span><span class="punctuation">;</span>
-	
-			<span class="comment">// implements the chaining</span>
-			<span class="keyword">return</span> <span class="keyword">this</span><span class="punctuation">;</span> 
-		<span class="punctuation">}</span>
-		
-		<span class="function">catch</span>(<span class="variable">_onCatch</span>) <span class="punctuation">{</span>
-			<span class="keyword">this</span>.<span class="variable">onCatch</span> <span class="operator">=</span> <span class="variable">_onCatch</span><span class="punctuation">;</span>
-	
-			<span class="comment">// implements the chaining</span>
-			<span class="keyword">return</span> <span class="keyword">this</span><span class="punctuation">;</span>
-		<span class="punctuation">}</span>
-		
-		<span class="function">finally</span>(<span class="variable">_onFinally</span>) <span class="punctuation">{</span>
-			<span class="keyword">this</span>.<span class="variable">onFinally</span> <span class="operator">=</span> <span class="variable">_onFinally</span><span class="punctuation">;</span>
-	
-			<span class="comment">// implements the chaining</span>
-			<span class="keyword">return</span> <span class="keyword">this</span><span class="punctuation">;</span>
-		<span class="punctuation">}</span>
-	<span class="punctuation">}</span>
-	</code></pre>
-	
-
-		<p class="text">
-			If the process is valid, (such as correct login data and user authentication) the '<b>resolve</b>' callback 
-			is called  (optionally with any 'resolve' data). Conversely, if the login data 
-			is invalid, the '<b>reject</b>' callback can be called (optionally with any 'reject' data).
-		</p>
-
-		<p class="note">
-			ATTENTION: <b>A 'rejection' is not the same as a 'failure'.</b>
-	   </p>		
-
-
-
-		<p class="text">
-			Calling one callback or the other (within the executor function) results in the Promise calling the 
-			corresponding function with the '<b>then</b>' method: either onResolve or onReject.
-	   </p>	
-
-	   
-		<p class="note">
-			If an unhandled error occurs in the executor, Promise will invoke the '<b>catch</b>' method.
-		</p>
-
-
-
+<p class="text">
+	This is close to the more formal setup — we’ll look at some simpler ones next.
+</p>
 	</section>
 
-
+	<!-- Intro 3  -->
 	<section>
 		<legend>
 			<span class="underline">
-				<span class="SectionLabel">Intro:</span>&nbsp;
-				<span class="SectionTitle"> Asynchronous without promise:&nbsp;</span>
-				<!-- <span class="SectionSubTitle">(the vintage way</span> -->
+				<span class="SectionLabel">Intro 3:</span>&nbsp;
+				<span class="SectionTitle"> Promise DIY</span>
 			</span>
 		</legend>
 
 		<p class="text">
-			When handling a single ASynchronous operation, using a Promise is an option.
+			A minimal DIY-style Promise — helps clarify the flow.
+		</p>
+
+
+	<pre class="ai"><code>
+		<span class="comment">// A basic DIY Promise that actually works.</span>
+		<span class="comment">// Try it out live in section 2A (debug mode).</span>
+		<span class="keyword">class</span> <span class="function">PromiseDIY</span> <span class="punctuation">{</span>
+		
+			<span class="variable">onResolve</span> <span class="operator">=</span> <span class="keyword">null</span><span class="punctuation">;</span>
+			<span class="variable">onReject</span>  <span class="operator">=</span> <span class="keyword">null</span><span class="punctuation">;</span>
+			<span class="variable">onCatch</span>   <span class="operator">=</span> <span class="keyword">null</span><span class="punctuation">;</span>
+			<span class="variable">onFinally</span> <span class="operator">=</span> <span class="keyword">null</span><span class="punctuation">;</span>
+		
+			<span class="keyword">constructor</span>(<span class="red">_executor</span>) <span class="punctuation">{</span>
+			
+				<span class="keyword">const</span> <span class="purple">_resolve</span> <span class="operator">=</span> (<span class="variable">_value</span>) <span class="operator">=&gt;</span> <span class="punctuation">{</span>
+					<span class="keyword">this</span>.<span class="variable">onResolve</span>(<span class="variable">_value</span>)<span class="punctuation">;</span>
+					<span class="keyword">this</span>.<span class="variable">onFinally</span>()<span class="punctuation">;</span>
+				<span class="punctuation">}</span><span class="punctuation">;</span>
+			
+				<span class="keyword">const</span> <span class="purple">_reject</span> <span class="operator">=</span> (<span class="variable">_value</span>) <span class="operator">=&gt;</span> <span class="punctuation">{</span>
+					<span class="keyword">this</span>.<span class="variable">onReject</span>(<span class="variable">_value</span>)<span class="punctuation">;</span>
+					<span class="keyword">this</span>.<span class="variable">onFinally</span>()<span class="punctuation">;</span>
+				<span class="punctuation">}</span><span class="punctuation">;</span>
+			
+				<span class="comment">// ---------------------------------------------- //</span>
+				<span class="keyword">try</span> <span class="punctuation">{</span>
+					<span class="red">_executor</span>(<span class="purple">_resolve</span>, <span class="purple">_reject</span>)<span class="punctuation">;</span>
+				<span class="punctuation">}</span> 
+				<span class="keyword">catch</span> (<span class="variable">_error</span>) <span class="punctuation">{</span>
+					<span class="keyword">this</span>.<span class="variable">onCatch</span>(<span class="variable">_error</span>)<span class="punctuation">;</span>
+					<span class="keyword">this</span>.<span class="variable">onFinally</span>()<span class="punctuation">;</span>
+				<span class="punctuation">}</span>
+				<span class="comment">// ---------------------------------------------- //</span>
+			<span class="punctuation">}</span>
+			
+			<span class="function">then</span>(<span class="variable">_onResolve</span>, <span class="variable">_onReject</span>) <span class="punctuation">{</span>
+				<span class="keyword">this</span>.<span class="variable">onResolve</span> <span class="operator">=</span> <span class="variable">_onResolve</span><span class="punctuation">;</span>
+				<span class="keyword">this</span>.<span class="variable">onReject</span> <span class="operator">=</span> <span class="variable">_onReject</span><span class="punctuation">;</span>
+		
+				<span class="comment">// implements the chaining</span>
+				<span class="keyword">return</span> <span class="keyword">this</span><span class="punctuation">;</span> 
+			<span class="punctuation">}</span>
+			
+			<span class="function">catch</span>(<span class="variable">_onCatch</span>) <span class="punctuation">{</span>
+				<span class="keyword">this</span>.<span class="variable">onCatch</span> <span class="operator">=</span> <span class="variable">_onCatch</span><span class="punctuation">;</span>
+		
+				<span class="comment">// implements the chaining</span>
+				<span class="keyword">return</span> <span class="keyword">this</span><span class="punctuation">;</span>
+			<span class="punctuation">}</span>
+			
+			<span class="function">finally</span>(<span class="variable">_onFinally</span>) <span class="punctuation">{</span>
+				<span class="keyword">this</span>.<span class="variable">onFinally</span> <span class="operator">=</span> <span class="variable">_onFinally</span><span class="punctuation">;</span>
+		
+				<span class="comment">// implements the chaining</span>
+				<span class="keyword">return</span> <span class="keyword">this</span><span class="punctuation">;</span>
+			<span class="punctuation">}</span>
+		<span class="punctuation">}</span>
+		</code></pre>
+
+	</section>
+
+	<!-- Intro 4  -->
+	<section>
+		<legend>
+			<span class="underline">
+				<span class="SectionLabel">Intro 4):</span>&nbsp;
+				<span class="SectionTitle">Tests:</span>			
+				<!-- <span class="SectionSubTitle"> making sense of the previous setup</span> -->
+			</span>
+		</legend>
+
+		<!-- <br>	 -->
+		<p class="text">
+			This section explores the often counterintuitive behaviour of 'Promise'.
+		</p>
+		<hr>
+
+	<!-- <style>
+		td{border:solid 1px red!important;}
+	</style> -->
+
+
+		<table style="border: solid 1px transparent;width:100%;margin-top:15px;">
+			<tr>
+				<td colspan="3">
+					<p class="text">
+						These are the callbacks that will be used throughout this section.
+					</p>
+				</td>
+			</tr>
+
+			<tr>
+				<td></td>
+				<td style="vertical-align: top;width: 100px;">
+					<!-- <button style="width: 80px;">run</button> -->
+				</td>			
+				<td style="vertical-align: top;">
+	<pre class="ai" style="margin-top:0px;"><code>
+		<span class="comment">// In this example 'info' is a string but can be anything.</span> 
+		<span class="keyword">function</span> <span class="function">onResolve</span><span class="punctuation">(</span><span class="variable">info</span><span class="punctuation">)</span> <span class="punctuation">{</span>
+			<span class="function">alert</span><span class="punctuation">(`</span><span class="string">promise.then onResolve </span><span class="punctuation">${</span><span class="variable">info</span><span class="punctuation">}</span><span class="punctuation">`</span><span class="punctuation">);</span>
+		<span class="punctuation">}</span>	
+			
+		<span class="comment">// 'jse' should be a javascript Error object.</span> 
+		<span class="keyword">function</span> <span class="function">onReject</span><span class="punctuation">(</span><span class="variable">jse</span><span class="punctuation">)</span> <span class="punctuation">{</span>
+			<span class="function">alert</span><span class="punctuation">(`</span><span class="string">promise.then onReject </span><span class="punctuation">${</span><span class="variable">jse</span><span class="punctuation">.</span><span class="variable">message</span><span class="punctuation">}</span><span class="punctuation">`</span><span class="punctuation">);</span>
+		<span class="punctuation">}</span>
+
+		<span class="comment">// 'jse' should be a javascript Error object.</span> 
+		<span class="keyword">function</span> <span class="function">onCatch</span><span class="punctuation">(</span><span class="variable">jse</span><span class="punctuation">)</span> <span class="punctuation">{</span>		
+			<span class="function">alert</span><span class="punctuation">(`</span><span class="string">promise.catch onCatch </span><span class="punctuation">${</span><span class="variable">jse</span><span class="punctuation">.</span><span class="variable">message</span><span class="punctuation">}</span><span class="punctuation">`</span><span class="punctuation">);</span>
+		<span class="punctuation">}</span>
+
+		<span class="comment">// 'onFinally' does expect any parameter.</span> 
+		<span class="keyword">function</span> <span class="function">onFinally</span><span class="punctuation">()</span> <span class="punctuation">{</span>
+			<span class="function">alert</span><span class="punctuation">(`</span><span class="string">promise.finally onFinally</span><span class="punctuation">`</span><span class="punctuation">);</span>
+		<span class="punctuation">}</span>
+	</code></pre>	
+				</td>	
+			</tr>	
+				
+			<tr><td colspan="3"><hr></td></tr>
+
+			
+			<tr>
+				<td colspan="3">
+					<p class="text">
+						A fairly predictable behaviour.
+					</p>
+				</td>
+			</tr>
+
+			<tr>
+				<td style="vertical-align: top;">1)</td>
+				<td style="vertical-align: top;width: 100px;">
+					<button onclick="btnI41_onclick(this)" style="width: 80px;">run</button>
+				</td>			
+				<td style="vertical-align: top;">
+	<pre class="ai" style="margin-top:0px;"><code>			
+		<span class="keyword">function</span> <span class="function">executor</span>(<span class="variable">resolve</span>, <span class="variable">reject</span>) <span class="punctuation">{</span>
+			<span class="comment">// This will call '<span class="red">onResolve</span>'.</span>
+			<span class="variable">resolve</span><span class="punctuation">(</span><span class="string">"executor resolved"</span><span class="punctuation">)</span><span class="punctuation">;</span>
+		<span class="punctuation">}</span>
+
+		<span class="keyword">new</span> <span class="function">Promise</span><span class="punctuation">(</span><span class="variable">executor</span><span class="punctuation">)</span>
+			<span class="punctuation">.</span><span class="function">then</span><span class="punctuation">(</span><span class="red">onResolve</span><span class="punctuation">,</span> <span class="variable">onReject</span><span class="punctuation">)</span>
+			<span class="punctuation">.</span><span class="function">catch</span><span class="punctuation">(</span><span class="variable">onCatch</span><span class="punctuation">)</span>
+			<span class="punctuation">.</span><span class="function">finally</span><span class="punctuation">(</span><span class="variable">onFinally</span><span class="punctuation">);</span>
+	</code></pre>
+				</td>
+			</tr>	
+
+			<tr><td colspan="3"><hr></td></tr>
+			
+			<tr>			
+				<td colspan="3">
+					<p class="text">
+						<b>Something odd is going on</b>, but it's too early to tell.
+					</p>
+				</td>
+			</tr>
+			
+			<tr>
+				<td style="vertical-align: top;">2)</td>
+				<td style="vertical-align: top;width: 100px;">
+					<button onclick="btnI42_onclick(this)" style="width: 80px;">run</button>
+				</td>			
+				<td style="vertical-align: top;">
+	<pre class="ai" style="margin-top:0px;"><code>
+		<span class="keyword">function</span> <span class="function">executor</span>(<span class="variable">resolve</span>, <span class="variable">reject</span>) <span class="punctuation">{</span>
+			<span class="comment">// This will call '<span class="red">onReject</span>' in the correct way.</span>
+			<span class="variable">reject</span>(<span class="keyword">new</span> <span class="class">Error</span>(<span class="string">"executor rejected"</span>))<span class="punctuation">;</span>
+		<span class="punctuation">}</span>
+
+		<span class="keyword">new</span> <span class="function">Promise</span><span class="punctuation">(</span><span class="variable">executor</span><span class="punctuation">)</span>
+			<span class="punctuation">.</span><span class="function">then</span><span class="punctuation">(</span><span class="variable">onResolve</span><span class="punctuation">,</span> <span class="red">onReject</span><span class="punctuation">)</span>
+			<span class="punctuation">.</span><span class="function">catch</span><span class="punctuation">(</span><span class="variable">onCatch</span><span class="punctuation">)</span>
+			<span class="punctuation">.</span><span class="function">finally</span><span class="punctuation">(</span><span class="variable">onFinally</span><span class="punctuation">);</span>
+	</code></pre>
+				</td>
+			</tr>	
+
+
+			<tr><td colspan="3"><hr></td></tr>	
+
+			<tr>
+				<td colspan="3">
+					<p class="text">
+						Now it should be starting to become clear what's going on.
+					</p>
+				</td>
+			</tr>	
+			
+			<tr>
+				<td style="vertical-align: top;">3)</td>
+				<td style="vertical-align: top;width: 100px;">
+					<button onclick="btnI43_onclick(this)" style="width: 80px;">run</button>
+				</td>			
+				<td style="vertical-align: top;">
+	<pre class="ai" style="margin-top:0px;"><code>
+		<span class="keyword">function</span> <span class="function">executor</span>(<span class="variable">resolve</span>, <span class="variable">reject</span>) <span class="punctuation">{</span>
+			<span class="comment">// 'Promise' will call '<span class="red">onReject</span>' passing an error as a parameter</span>
+			<span class="keyword">throw</span> <span class="keyword">new</span> <span class="function">Error</span><span class="punctuation">(</span><span class="string">'executor error thown'</span><span class="punctuation">)</span><span class="punctuation">;</span>
+		<span class="punctuation">}</span>	
+
+		<span class="keyword">new</span> <span class="function">Promise</span><span class="punctuation">(</span><span class="variable">executor</span><span class="punctuation">)</span>
+			<span class="punctuation">.</span><span class="function">then</span><span class="punctuation">(</span><span class="variable">onResolve</span><span class="punctuation">,</span> <span class="red">onReject</span><span class="punctuation">)</span>
+			<span class="punctuation">.</span><span class="function">catch</span><span class="punctuation">(</span><span class="variable">onCatch</span><span class="punctuation">)</span>
+			<span class="punctuation">.</span><span class="function">finally</span><span class="punctuation">(</span><span class="variable">onFinally</span><span class="punctuation">);</span>
+	</code></pre>
+				</td>
+			</tr>		
+		</td></tr>
+			
+
+			<tr>
+
+				<td colspan="3"><hr></td></tr>	
+
+			
+				<tr>
+					<td colspan="3">
+						<p class="text">
+							In case of an exception, 'Promise' calls either 'onReject' or 'onCatch' (depending on configuration), 
+							passing an Error object. 
+						</p>
+						<p class="text" style="padding-top: 0px;margin-top:0px;">
+							This behaviour is fixed, so when calling 'reject' (inside the 'executor'), it’s crucial to pass an 
+							instance of 'Error' to avoid unexpected results.
+						</p>
+					</td>
+				</tr>
+
+
+			<!-- In the event of an exception within the executor, 'Promise' will call either 'onReject' or 'onCatch', passing an error as a parameter -->
+			<tr>			
+				<td style="vertical-align: top;">4)</td>
+				<td style="vertical-align: top;width: 100px;">
+					<button onclick="btnI44_onclick(this)" style="width: 80px;">run</button>
+				</td>			
+				<td style="vertical-align: top;">
+	<pre class="ai" style="margin-top:0px;"><code>
+		<span class="keyword">function</span> <span class="function">executor</span>(<span class="variable">resolve</span>, <span class="variable">reject</span>) <span class="punctuation">{</span>
+			<span class="comment">// 'Promise' will call '<span class="red">onCatch</span>' passing an error as a parameter</span>
+			<span class="keyword">throw</span> <span class="keyword">new</span> <span class="function">Error</span><span class="punctuation">(</span><span class="string">'executor error thown'</span><span class="punctuation">)</span><span class="punctuation">;</span>
+		<span class="punctuation">}</span>	
+
+		<span class="keyword">new</span> <span class="function">Promise</span><span class="punctuation">(</span><span class="variable">executor</span><span class="punctuation">)</span>
+			<span class="comment">// In the absence of 'onReject', 'onCatch' will be called.</span>
+			<span class="punctuation">.</span><span class="function">then</span><span class="punctuation">(</span><span class="variable">onResolve</span><span class="punctuation">)</span> 
+			<span class="punctuation">.</span><span class="function">catch</span><span class="punctuation">(</span><span class="red">onCatch</span><span class="punctuation">)</span>
+			<span class="punctuation">.</span><span class="function">finally</span><span class="punctuation">(</span><span class="variable">onFinally</span><span class="punctuation">);</span>
+	</code></pre>
+				</td>
+			</tr>	
+
+
+			<tr><td colspan="3"><hr></td></tr>			
+			
+			
+			<tr>
+				<td colspan="3">
+					<p class="text">
+						Now it should be starting to become clear what's going on.
+					</p>
+				</td>
+			</tr>
+		
+			<tr>
+				<td style="vertical-align: top;">5)</td>
+				<td style="vertical-align: top;width: 100px;">
+					<button onclick="btnI45_onclick(this)" style="width: 80px;">run</button>
+				</td>			
+				<td style="vertical-align: top;">
+	<pre class="ai" style="margin-top:0px;"><code>
+		<span class="keyword">function</span> <span class="function">executor</span>(<span class="variable">resolve</span>, <span class="variable">reject</span>) <span class="punctuation">{</span>
+			<span class="comment">// 'Promise' will call '<span class="red">onReject</span>' passing an error as a parameter</span>
+			<span class="keyword">throw</span> <span class="keyword">new</span> <span class="function">Error</span><span class="punctuation">(</span><span class="string">'executor error thown'</span><span class="punctuation">)</span><span class="punctuation">;</span>
+		<span class="punctuation">}</span>	
+
+		<span class="comment">// A locally defined 'onReject'</span>
+		<span class="keyword">function</span> <span class="function">_onReject</span>(<span class="variable">jse</span>) <span class="punctuation">{</span>
+			<span class="comment">// This is the common 'onReject'</span>
+			<span class="function">onReject</span>(<span class="variable">jse</span>) <span class="punctuation">;</span>
+
+			<span class="comment">// The 'Promise' will call 'onCatch'</span>
+			<span class="keyword">throw</span> <span class="keyword">new</span> <span class="function">Error</span>(<span class="string">"Error thrown into the 'onReject' callback"</span>)<span class="punctuation">;</span>
+		<span class="punctuation">}</span>
+		
+		<span class="keyword">new</span> <span class="function">Promise</span><span class="punctuation">(</span><span class="variable">executor</span><span class="punctuation">)</span>
+			<span class="punctuation">.</span><span class="function">then</span><span class="punctuation">(</span><span class="variable">onResolve</span><span class="punctuation">,</span> <span class="red">onReject</span><span class="punctuation">)</span>
+			<span class="punctuation">.</span><span class="function">catch</span><span class="punctuation">(</span><span class="variable">onCatch</span><span class="punctuation">)</span>
+			<span class="punctuation">.</span><span class="function">finally</span><span class="punctuation">(</span><span class="variable">onFinally</span><span class="punctuation">);</span>
+	</code></pre>
+				</td>
+			</tr>
+			
+			
+			<tr><td colspan="3"><hr></td></tr>	
+			
+			<!-- test 6 --> 			 			
+			<tr>
+				<td colspan="3">
+					<p class="text">
+						This is an extreme case where all the callback ends up throwing an error.
+					</p>
+				</td>
+			</tr>	
+			<tr>
+				<td style="vertical-align: top;">6)</td>
+				<td style="vertical-align: top;width: 100px;">
+					<button onclick="btnI46_onclick(this)" style="width: 80px;">run</button>
+				</td>			
+				<td style="vertical-align: top;">
+	<pre class="ai" style="margin-top:0px;"><code>
+		<span class="keyword">function</span> <span class="function">executor</span>(<span class="variable">resolve</span>, <span class="variable">reject</span>) <span class="punctuation">{</span>
+			<span class="comment">// 'Promise' will call '<span class="red">_onReject</span>' passing an error as a parameter</span>
+			<span class="keyword">throw</span> <span class="keyword">new</span> <span class="function">Error</span><span class="punctuation">(</span><span class="string">'1 - executor error thown'</span><span class="punctuation">)</span><span class="punctuation">;</span>
+		<span class="punctuation">}</span>	
+
+		<span class="comment">// A locally defined 'onReject'</span>
+		<span class="keyword">function</span> <span class="red">_onReject</span>(<span class="variable">jse</span>) <span class="punctuation">{</span>
+			<span class="comment">// This is the common 'onReject'</span>
+			<span class="function">onReject</span>(<span class="variable">jse</span>) <span class="punctuation">;</span>
+
+			<span class="comment">// The 'Promise' will call 'onCatch'</span>
+			<span class="keyword">throw</span> <span class="keyword">new</span> <span class="function">Error</span>(<span class="string">"2 - Error thrown into the 'onReject' callback"</span>)<span class="punctuation">;</span>
+		<span class="punctuation">}</span>
+
+		<span class="comment">// A locally defined 'onCatch'</span>
+		<span class="keyword">function</span> <span class="function">_onCatch</span>(<span class="variable">jse</span>) <span class="punctuation">{</span>
+			<span class="comment">// This is the common 'onCatch'</span>
+			<span class="function">onCatch</span>(<span class="variable">jse</span>) <span class="punctuation">;</span>
+
+			<span class="comment">// this exception will be sillent.</span>
+			<span class="keyword">throw</span> <span class="keyword">new</span> <span class="function">Error</span>(<span class="string">"3 - Error thrown into the 'onReject' callback"</span>)<span class="punctuation">;</span>
+		<span class="punctuation">}</span>
+		
+		<span class="keyword">new</span> <span class="function">Promise</span><span class="punctuation">(</span><span class="variable">executor</span><span class="punctuation">)</span>
+			<span class="punctuation">.</span><span class="function">then</span><span class="punctuation">(</span><span class="variable">onResolve</span><span class="punctuation">,</span> <span class="red">_onReject</span><span class="punctuation">)</span>
+			<span class="punctuation">.</span><span class="function">catch</span><span class="punctuation">(</span><span class="variable">_onCatch</span><span class="punctuation">)</span>
+			<span class="punctuation">.</span><span class="function">finally</span><span class="punctuation">(</span><span class="variable">onFinally</span><span class="punctuation">);</span>
+	</code></pre>
+				</td>
+			</tr>
+
+		</table>
+
+	</section>
+
+	<!-- Intro 5 -->
+	<section>
+		<legend>
+			<span class="underline">
+				<span class="SectionLabel">Intro 5:</span>&nbsp;
+				<span class="SectionTitle"> Asynchronous without promise:&nbsp;</span>
+				<span class="SectionSubTitle">(the vintage way)</span>
+			</span>
+		</legend>
+
+		<p class="text">
+			When working with a single asynchronous operation, using a Promise is one option.
 		</p>
 		<p class="text">
-			If you're comfortable with callback programming, 
-			the '<b>executor</b>' functions can be organized as follows, 
-			and the functionality remains the same. 
+			If you're comfortable with callback programming, you can structure the '<b>executor</b>' 
+			functions like this, and the functionality will be the same.
 		</p>
 <pre class="ai"><code>
-	<span class="comment">// Promise-Free ASynchronous Function Implementation.</span>
-	<span class="keyword">function</span> <span class="red">executor</span>() <span class="punctuation">{</span>
-		<span class="keyword">try</span><span class="punctuation">{</span>
-	
-			<span class="comment">// ----------------------------------- //</span>
-			<span class="comment">// do something ASynchronous (or not)</span>
-			<span class="comment">// ----------------------------------- //</span>
-	
-			<span class="keyword">if</span><span class="punctuation">(</span><span class="variable">processIsOK</span><span class="punctuation">)</span><span class="punctuation">{</span>
-				<span class="function">onResolve</span><span class="punctuation">(</span><span class="variable">info</span><span class="punctuation">)</span><span class="punctuation">;</span>
+		<span class="comment">// Promise-Free ASynchronous Function Implementation.</span>
+		<span class="keyword">function</span> <span class="red">executor</span><span class="punctuation">()</span> <span class="punctuation">{</span>
+			<span class="keyword">try</span> <span class="punctuation">{</span>	
+				<span class="keyword">setTimeout</span>(<span class="punctuation">()</span> <span class="punctuation">=&gt;</span> <span class="punctuation">{</span>			
+					<span class="comment">// ------------------------------------- //</span>
+					<span class="comment">// do something ASynchronous (or not)</span>
+			
+					<span class="keyword">if</span> (<span class="variable">elaborationSucceeded</span>) <span class="punctuation">{</span>
+						<span class="variable">onResolve</span>(<span class="variable">anyParameterYouWant</span>);
+					<span class="keyword">}</span>
+					<span class="keyword">else</span> <span class="punctuation">{</span>
+						<span class="variable">onReject</span>(<span class="keyword">new</span> <span class="function">Error</span>(<span class="string">'any message'</span>));
+					<span class="punctuation">}</span>			
+					<span class="comment">// ------------------------------------- //</span>
+				<span class="punctuation">},</span> <span class="variable">asyncDelay</span><span class="punctuation">);</span>
 			<span class="punctuation">}</span>
-			<span class="keyword">else</span><span class="punctuation">{</span>
-				<span class="function">onReject</span><span class="punctuation">(</span><span class="variable">info</span><span class="punctuation">)</span><span class="punctuation">;</span>
+			<span class="keyword">catch</span>(<span class="variable">jse</span>) <span class="punctuation">{</span>
+				<span class="variable">onCatch</span>(<span class="variable">jse</span>);
+			<span class="punctuation">}</span>
+			<span class="keyword">finally</span> <span class="punctuation">{</span>
+				<span class="variable">onFinally</span>(<span class="punctuation">)</span>;
 			<span class="punctuation">}</span>
 		<span class="punctuation">}</span>
-		<span class="keyword">catch</span><span class="punctuation">(</span><span class="variable">er</span><span class="punctuation">)</span><span class="punctuation">{</span>
-			<span class="function">onCatch</span><span class="punctuation">(</span><span class="variable">er</span><span class="punctuation">)</span><span class="punctuation">;</span>
-		<span class="punctuation">}</span>
-		<span class="keyword">finally</span><span class="punctuation">{</span>
-			<span class="function">onFinally</span><span class="punctuation">()</span><span class="punctuation">;</span>
-		<span class="punctuation">}</span>
-	<span class="punctuation">}</span>
 </code></pre>
 
 <p class="text">
@@ -832,7 +1074,6 @@ dramatically improving clarity and learning speed.
 			The situation radically changes when dealing with multiple ASynchronous operations.
 		</p>
 	</section>
-
 
 	<!--Note  -->
 	<section style="border: solid 0px #ccc;background-color:transparent;box-shadow: none;">
@@ -856,7 +1097,7 @@ dramatically improving clarity and learning speed.
 				</p>
 			</li>
 		</ul>
-		<br>
+		<!-- <br> -->
 
 		<!-- <p class="text">
 			Keeping the browser in <span class="red">debug mode</span>: F12, will help to locate the topic points in code.
@@ -864,9 +1105,9 @@ dramatically improving clarity and learning speed.
 		<br>
 		<br> -->
 		
-		<p class="text">
+		<!-- <p class="text">
 			While the browser is in <span class="red">debug mode</span>, every 'click' on a button will display the running code
-		</p>
+		</p> -->
 	
 		<!-- <p class="text"> 
 			Comments and running code will help to better understand how the code works.
@@ -875,7 +1116,7 @@ dramatically improving clarity and learning speed.
 
 	
 	<!--Section 1A  -->
-	<section style="background-color: #F0F0F5;">
+	<aside style="background-color: #F0F0F5;">
 		<legend>
 			<span class="underline">
 				<span class="SectionLabel">Section 1A:</span>&nbsp;
@@ -883,6 +1124,7 @@ dramatically improving clarity and learning speed.
 				<span class="SectionSubTitle">how it works.</span>
 			</span>
 		</legend>
+		<br>
 		<table border="0" style="width:100%;" >
 
 			<!-- <tr>
@@ -1026,23 +1268,19 @@ dramatically improving clarity and learning speed.
 				</td>
 			</tr>	
 		</table>
-	</section>	
+	</aside>	
 	
 	
-	
-	
-	<section style="border: solid 0px #ccc;background-color:transparent;box-shadow: none;">
-			<p class="text">
-				Once received a message ('resolve' xOr 'reject'), the 'Promise' is ready to call the methods listed at the introduction. 
-				'<b>PromiseGUI</b>' is the tool used by this page to give a graphical representation of the action taken by the 'Promise'.
-			</p>
-	</section>	
-	
-	
+	<aside style="border: solid 0px #ccc;background-color:transparent;box-shadow: none;">
+		<p class="text">
+			Once received a message ('resolve' xOr 'reject'), the 'Promise' is ready to call the methods listed at the introduction. 
+			'<b>PromiseGUI</b>' is the tool used by this page to give a graphical representation of the action taken by the 'Promise'.
+		</p>
+	</aside>		
 
 	
 	<!--Section 1B  -->
-	<section style="background-color: #F0F0F5;">
+	<aside style="background-color: #F0F0F5;">
 		<legend>
 			<span class="underline">
 				<span class="SectionLabel">Section 1B:</span>&nbsp;
@@ -1147,14 +1385,14 @@ dramatically improving clarity and learning speed.
 			</tr>
 		
 		</table>
-	</section>
+	</aside>
 
 	
 	<section style="border: solid 0px #ccc;background-color:transparent;box-shadow: none;">
 		<p class="text">
-			From now bothe the 'ProgressBar' and the 'PromiseGUI' are the newly introduced UX.
+			From now both the the 'ProgressBar' and the 'PromiseGUI' are the newly introduced UX.
 		</p>
-</section>	
+	</section>	
 		
 	
 	<!--Section 1C  -->	
@@ -1270,10 +1508,7 @@ dramatically improving clarity and learning speed.
 	</section>
 
 	
-
-
-		<!--Note  -->
-		
+	<!--Note  -->		
 	<section style="border: solid 0px #ccc;background-color:transparent;box-shadow: none;">
 			<!-- <legend>Note</legend> -->
 				<p class="text">
@@ -1292,7 +1527,7 @@ dramatically improving clarity and learning speed.
 				</li>
 				<ul>
 				<!-- </p>	 -->
-		</section>	
+	</section>	
 	
 	
 	<!--Section 2A  -->	
@@ -1379,8 +1614,7 @@ dramatically improving clarity and learning speed.
 			</tr>
 		</table>
 	</section>
-	
-	
+		
 	
 	<!--Note  -->
 	<section >
@@ -1409,9 +1643,6 @@ dramatically improving clarity and learning speed.
 		
 	<!--Section 2B  -->
 	<section>
-		<legend>
-		<span class="SectionLabel">Section 2B: </span><span class="SectionTitle">Promise basics: <span style="font-weight:normal;">dealing with exceptions.</span>
-		</legend>
 		<legend>
 			<span class="underline">
 				<span class="SectionLabel">Section 2B:</span>&nbsp;
@@ -1480,7 +1711,8 @@ dramatically improving clarity and learning speed.
 
 				<td class="btnsContainer" > 					
 					<button onclick="btnR2BStart_onclick(this)">start</button>	
-					<button onclick="btnR2BNewPromise_onclick(this)">new Promise</button>			
+					<button onclick="btnR2BNewPromise_onclick(this)">new Promise</button>	
+					<button onclick="btnR2BTest_onclick(this)">Test</button>			
 				</td>
 				<td class="pbsContainer" id="tdR2BC2"> 					
 					<table class="demo"cellspacing="0"></table>
@@ -1502,8 +1734,6 @@ dramatically improving clarity and learning speed.
 			</tr>				
 		</table>
 	</section>	
-	
-	
 	
 		
 	<!--Section 2C  -->
@@ -2122,8 +2352,6 @@ dramatically improving clarity and learning speed.
 		</table>
 	</section>
 	
-	
-
 		
 	<!--Note  -->
 	<section >
@@ -2145,9 +2373,6 @@ dramatically improving clarity and learning speed.
 
 	</section>		
 
-
-	
-	
 
 	<section style="min-height:170px;">
 		<legend>
@@ -2262,12 +2487,7 @@ dramatically improving clarity and learning speed.
 	</section>
 	
 		
-
-	
-	
-		
 	<!--Note  -->
-
 	<section style="border: solid 0px #ccc;background-color:transparent;box-shadow: none;">
 		<p class="text">
 				How this affects 'Promise'?
@@ -2378,7 +2598,6 @@ dramatically improving clarity and learning speed.
 	</section>	
 	
 	
-	
 	<!--Section 7C  -->
 	<section style="min-height:70px;">
 		<legend>
@@ -2478,6 +2697,7 @@ dramatically improving clarity and learning speed.
 
 		<br>
 	</section>
+	
 	<section>
 		<legend>
 			<span class="SectionLabel">Extra: </span> 
@@ -2501,6 +2721,7 @@ dramatically improving clarity and learning speed.
 		<br>	
 
 	</section>
+	
 	<section style="border: solid 0px #ccc;background-color:transparent;box-shadow: none;padding-top:0px;">
 		<p class="text">
 			That's all.
@@ -2533,7 +2754,7 @@ dramatically improving clarity and learning speed.
 
 
 <!-- ===================================== -->
-
+<script src="./js/I1.js"></script>
 <script src="./js/R0A.js"></script>
 <script src="./js/R1A.js"></script>
 <script src="./js/R1B.js"></script>
