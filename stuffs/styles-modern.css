@@ -91,7 +91,7 @@ legend span.SectionSubTitle{
     z-index: 1;
 }
 
-.text {
+.text, li.text {
     color: #474f50; 
     background: transparent;
     border: solid 1px transparent;
@@ -134,9 +134,11 @@ li {
     padding-left: 0px; 
     margin-left: 0px;
     text-indent: 0px;
-    /* line-height: 1.4; */
   }
-
+  li.text{
+    margin-top: 2px;
+    font-size: 0.95em;
+  }
 
 button {
     /* background: #6c757d; 

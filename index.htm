@@ -397,8 +397,8 @@
 			But what is an ASynchronous process?
 		</p>
 		<ul>
-			<li><p class="text">Calling someone and being stuck until they answer that's <b>Synchronous</b>.</p></li>
-			<li><p class="text">Send a message, carry on, reply comes later that’s   <b>ASynchronous</b>.</p></li>
+			<li class="text">Calling someone and being stuck until they answer that's <b>Synchronous</b>.</li>
+			<li class="text">Send a message, carry on, reply comes later that’s   <b>ASynchronous</b>.</li>
 		</ul>	
 
 		<br>
@@ -438,31 +438,21 @@
 			<tr>
 				<td colspan="3"> 
 					<ul>Summary of what happens:
-						<li>
-							<p class="text">
+						<li class="text">
 								"<b>mainFlow</b>" calls "<b>asynchronousFunction</b>"
-							</p>
 						</li>
-						<li>
-							<p class="text">
+						<li class="text">
 								"setInterval" schedules the execution of "<b>deferredTask</b>" and immediately returns.
-							</p>
 						</li>
-						<li>
-							<p class="text">
+						<li class="text">
 								"<b>mainFlow</b>" continues and terminates.
-							</p>
 						</li>
-						<li>
-							<p class="text">
+						<li class="text">
 								The JavaScript engine waits for the specified <b>asyncDelay</b>.
-							</p>
 						</li>
 						
-						<li>
-							<p class="text">
+						<li class="text">
 								then the "<b>deferredTask</b>" function is invoked (by the engine itself).
-							</p>
 						</li>
 					</ul>
 
@@ -1204,27 +1194,22 @@ Keywords: JavaScript asynchronous example, sync vs async, progress bar demo, dyn
 			asynchronous operations, two tools and a demo code are provided:
 		</p>
 		<ul>
-			<li> 
-				<p class="text">
+			<li class="text">
 					<b>ProgressBar</b> — a graphical model that represents the progression of an asynchronous process. 
 					The progress bar visually reflects the state of the operation, updating its width and colour 
 					based on the outcome of the asynchronous task, giving immediate feedback on whether 
 					the process is progressing, has completed successfully, or has encountered an error.
-				</p>
 			</li>
-			<li> 
-				<p class="text">
+			<li class="text">
 					<b>PromiseGUI</b> — a graphical model that shows how the Promise responds 
 					to what happens inside the ProgressBar.<br>
 					It doesn’t display the state of the Promise itself, but the flow between the four callbacks it 
 					manages: <i>onResolve</i>, <i>onReject</i>, <i>onCatch</i>, and <i>onFinally</i>.
-				</p>
+
 			</li>
-			<li> 
-				<p class="text">
+			<li class="text">
 					<b>PromiseDIY</b> — a very simplified version of the Promise implementation.  
 					It is written purely for learning purposes, to give a basic idea of how the Promise interacts with its four callbacks.
-				</p>
 			</li>
 		</ul>
 		
@@ -1233,15 +1218,11 @@ Keywords: JavaScript asynchronous example, sync vs async, progress bar demo, dyn
 		<p class="text">In the real world:</p>
 
 		<ul>
-			<li>
-				<p class="text">
+			<li class="text">
 					<b>ProgressBar</b> might represent an asynchronous call to an AJAX API that either <i>resolves</i> or <i>rejects</i>.
-				</p>
 			</li>
-			<li>
-				<p class="text">
-					<b>PromiseGUI</b> might be code that adapts the page layout based on the AJAX API’s response.
-				</p>
+			<li class="text">
+				<b>PromiseGUI</b> might be code that adapts the page layout based on the AJAX API’s response.
 			</li>
 		</ul>
 		
@@ -2080,17 +2061,16 @@ Keywords: JavaScript asynchronous example, sync vs async, progress bar demo, dyn
 	<section style="border: solid 0px #ccc;background-color:transparent;box-shadow: none;">
 		<!-- <legend>Note</legend>-->
 			<p class="text">
-				Nothing so special has happened so far. Now it's time to show 'Promise' in all its glory.				
+				Now it's Time to make 'Promise' shine.
 			</p>	 
-	<!-- </section>
-	
-	<section style="border: solid 0px #ccc;background-color:transparent;box-shadow: none;"> -->
+			<br>
+
 			<p class="note">
 				In the following sections, there will be a '<b>Master Promise</b>' and many '<b>Promises</b>'. 
 
 			</p>
 			<p class="note"> 
-				The 'Master Promise' will either fail or succeed, based on the outcomes of its promises. (and its own configuration)
+				The 'Master Promise' will succeed or fail based on its promises (and configuration).
 			</p>
 	</section>	
 		
@@ -2143,17 +2123,13 @@ Keywords: JavaScript asynchronous example, sync vs async, progress bar demo, dyn
 				<td class="msgContainer" id="msgContainer1" colspan="3"> 
 					<ul>					
 						<p class="text" style="text-indent: -25px;">
-							With the function '<b>Promise.all</b>', the 'Master-Promise':<
+							With the function '<b>Promise.all</b>', the 'Master-Promise':
 						</p>
-						<li>							
-							<p class="text">
+						<li class="text">
 								<b>Resolves</b> (is successful) only when all its 'promises' resolve.
-							</p>
 						</li>
-						<li>
-							<p class="text">
+						<li class="text">
 								<b>Rejects</b> (fails) as soon any of the 'promises' rejects.
-							</p>
 						</li>
 					</ul>
 				</td>
@@ -2370,11 +2346,9 @@ Keywords: JavaScript asynchronous example, sync vs async, progress bar demo, dyn
 				<td class="msgContainer" id="msgContainer1" colspan="3"> 
 					<ul>
 						<p class="text">With '<b>Promise.any</b>', the 'Master-Promise':</p>
-						<li>
-							<p class="text"><b>resolves</b> (is successful) as soon any of the 'promises' resolve.</p>
+						<li class="text"><b>resolves</b> (is successful) as soon any of the 'promises' resolve.
 						</li>
-						<li>
-							<p class="text"><b>Rejects</b> (fails) when all 'promises' rejects.</p>
+						<li class="text"><b>Rejects</b> (fails) when all 'promises' rejects.
 						</li>
 					</ul>
 				</td>
