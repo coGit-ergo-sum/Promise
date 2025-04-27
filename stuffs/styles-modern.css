@@ -63,29 +63,70 @@ legend span.SectionSubTitle{
     padding-right:0px;
 }
 
-/* Note */
 .note, .text {
-    text-align:justify;
+    text-align: justify;
     font-size: 0.95em;
-    color: #505b5c; /* 616c6d*/
+    text-indent: 10px;
+}
+
+.note {
+    background-color: transparent;
+    opacity: 1;
+    border: solid 1px #b4b7b8;
+    margin-bottom: 15px;
+    padding: 10px;
+    /* color: #000; */
+    position: relative;
+    border-radius: 5px;
+}
+
+.note::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(255, 255, 0, 0.1); /* Modifica il colore come desiderato */
+    z-index: 1;
+}
+
+.text {
+    color: #474f50; 
+    background: transparent;
+    border: solid 1px transparent;
+    margin-bottom: 0px;
+    padding: 0px 10px;
+}
+/* Note */
+.noteOLD, .textOLD {
+    text-align:justify;
+    font-size: 0.95em; 
     /* border: solid 1px #dce0e1; */
     border-radius: 5px;
     text-indent: 10px;
+    
+    background-color: transparent;
 }
-.note {
-
-    background: #ecf0f1;
-    border: solid 1px #cbcfd0;/*  dce0e1 */
-    margin-bottom: 15px;
-    padding: 10px 10px 10px 10px;
-
-}
-.text {
+.textOLD {
+    color: #505b5c; /* 616c6d*/
     background: transparent;
     border: solid 1px transparent;
     margin-bottom: 0px;
     padding: 0px 10px 0px 10px;
     
+}
+
+.noteOLD {
+
+    /* background: #ecf0f1; */
+    color: #000;
+    background-color: #DDC;
+    opacity: 0.6;
+    border: solid 1px #b4b7b8;/*  dce0e1 */
+    margin-bottom: 15px;
+    padding: 10px 10px 10px 10px;
+
 }
 
 li {

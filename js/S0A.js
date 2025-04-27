@@ -1,16 +1,33 @@
 
 
-function btnI1StartS_onclick(btn){
+
+S0 = {};
+
+S0.progressBar = new ProgressBar('progressBar');
+
+tools.append(S0.progressBar, 'tdS0A');	
+
+S0.progressBar.probabilities.resolve  =  70;
+
+S0.progressBar.probabilities.reject   =  10;
+S0.progressBar.probabilities.error    =  10;
+S0.progressBar.probabilities.timeout  =  10;
+
+S0.progressBar.interval =  2;
+
+function btnS0AStartS_onclick(btn){
 		
 	MoveHtml('#divSync');
-	R0A.progressBar.reset();
-	R0A.progressBar.green();
+	S0.progressBar.reset();
+	S0.progressBar.green();
 
 	let wMax = Math.floor(100 * Math.random());
 	let w = 0;
+
+	debugger;
 	
 	while (true) {
-		R0A.progressBar.width(w);
+		S0.progressBar.width(w);
 		w++;
 
 		if(w > wMax){ break; }
@@ -19,17 +36,19 @@ function btnI1StartS_onclick(btn){
 
 	
 
-function btnI1StartA_onclick(btn){
+function btnS0AStartA_onclick(btn){
 		
 	MoveHtml('#divAsync');
-	R0A.progressBar.reset();
-	R0A.progressBar.green();
+	S0.progressBar.reset();
+	S0.progressBar.green();
 
 	let wMax = Math.floor(100 * Math.random());
 	let w = 0;
 
+	debugger;
+
 	let intervalId = setInterval(() => {
-		R0A.progressBar.width(w);
+		S0.progressBar.width(w);
 		w++;
 
 		if(w > wMax){ clearInterval(intervalId);}
@@ -60,6 +79,9 @@ function onFinally() {
 function btnI41_onclick(btn){
 
 	function executor(resolve, reject) {
+
+		debugger;
+
 		// This will call 'onResolve'.
 		resolve("executor resolved");
 	}
@@ -73,6 +95,9 @@ function btnI41_onclick(btn){
 function btnI42_onclick(btn){
 
 	function executor(resolve, reject) {
+
+		debugger;
+
 		// This will call 'onReject' in the correct way.
 		reject(new Error("executor rejected"));
 	}
@@ -87,6 +112,9 @@ function btnI42_onclick(btn){
 function btnI43_onclick(btn){
 
 	function executor(resolve, reject) {
+
+		debugger;
+
 		// 'Promise' will call 'onReject' passing an error as a parameter
 		throw new Error('executor error thown');
 	}
@@ -101,6 +129,9 @@ function btnI43_onclick(btn){
 function btnI44_onclick(btn){
 
 	function executor(resolve, reject) {
+
+		debugger;
+
 		// 'Promise' will call 'onCatch' passing an error as a parameter
 		throw new Error('executor error thown');
 	}	
@@ -116,6 +147,9 @@ function btnI44_onclick(btn){
 function btnI45_onclick(btn){	
 
 	function executor(resolve, reject) {
+
+		debugger;
+
 		// 'Promise' will call 'onReject' passing an error as a parameter
 		throw new Error('executor error thown');
 	}	
@@ -143,6 +177,9 @@ function btnI46_onclick(btn){
 	
 
 	function executor(resolve, reject) {
+
+		debugger;
+
 		// 'Promise' will call 'onReject' passing an error as a parameter
 		throw new Error('1 - executor error thown');
 	}	
@@ -171,4 +208,3 @@ function btnI46_onclick(btn){
 		.finally(onFinally);
 
 }	
-

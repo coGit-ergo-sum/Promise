@@ -10,7 +10,7 @@
 	R0A.progressBar.probabilities.timeout  =  10;
 
 	R0A.progressBar.interval =  2;
-	debugger;
+
 	R0A.progressBar.gray();
 
 	tools.append2Demo(R0A.progressBar, 'tdR0AC2');

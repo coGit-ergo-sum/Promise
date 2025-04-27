@@ -65,7 +65,7 @@ function ProgressBar(id) {
 	this.gray = function(){_color('#DDDDDD');}
 	this.red = function(){_color('#ff4d4d');}
     // Set the background colour of the progress bar
-	debugger;
+
     var _color = function(value) { _$bar.css('background-color', value); };
     
     // Function to reset the progress bar to its initial state
@@ -160,10 +160,10 @@ function ProgressBar(id) {
 
 			// mappo alcune variabili con variabili di comodo perchè 
 			// sia piu facile riconoscere le prossime manipolazioni
-			let p1 = this.probabilities.resolve;
-			let p2 = this.probabilities.reject;
-			let p3 = this.probabilities.error;
-			let p4 = this.probabilities.timeout;
+			let p1 = _this.probabilities.resolve;
+			let p2 = _this.probabilities.reject;
+			let p3 = _this.probabilities.error;
+			let p4 = _this.probabilities.timeout;
 
 			// Inizio la normalizzazione dei dati
 			let P = p1 + p2 + p3 + p4 
@@ -205,7 +205,7 @@ function ProgressBar(id) {
 			//debugger;
 
             // Set the initial width of the progress bar
-            this.width(++_iterations);
+            _this.width(++_iterations);
 
 			function sleepAsync(ms) {
 				return new Promise(resolve => setTimeout(resolve, ms));
