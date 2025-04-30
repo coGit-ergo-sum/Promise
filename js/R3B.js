@@ -1,10 +1,18 @@
 
 async function btnR3BThen_onclick(btn){
+
 	tools.reset(R3B.pguis);
 	tools.disableBtns(btn);
 	console.clear();	
 	
 	debugger;
+
+	let n = R3B.pbs.length;
+
+	for(let i = 0; i < n; i++){		
+		R3B.pbs[i].reset();
+	}
+
 
 	for(let i = 0; i < n; i++){		
 		
@@ -60,9 +68,12 @@ let R3B = {};
 		
 		R3B.pbs[i] = new ProgressBar('ProgressBar' + i);
 
-		R3B.pbs[i].resolvePercent = 70;
-		R3B.pbs[i].errorPercent   =  0;
-		R3B.pbs[i].interval       = 10;
+		R3B.pbs[i].interval = 1;
+
+		R3B.pbs[i].probabilities.resolve = 70;
+		R3B.pbs[i].probabilities.error   =  0;		
+		R3B.pbs[i].probabilities.reject  = 20;
+		R3B.pbs[i].probabilities.timeout = 10;
 	
 		tools.append2Demo(R3B.pbs[i], 'tdR3BC2');
 		
@@ -74,21 +85,21 @@ let R3B = {};
 // Handlers
 R3B.resolve = function(envelope){
 	window.console.promise.log.resolve(envelope.result.id);
-	envelope.pgui.resolved();
+	envelope.pgui.onResolve();
 }	
 
 R3B.reject = function(envelope){
 	window.console.promise.log.reject(envelope.result.id);
-	envelope.pgui.rejected();		
+	envelope.pgui.onReject();		
 }	
 
 R3B.finally = function(pb, pgui, btn){
 	window.console.promise.log.finally(pb.id);
-	pgui.fulfilled();
+	pgui.onFinally();
 	tools.enableBtns(btn);		
 }	
 
 R3B.catch = function(error, pb, pgui){
 	window.console.promise.log.catch(error);
-	pgui.catched();		
+	pgui.onCatch();		
 }	

@@ -16,9 +16,11 @@ let R4D = {};
 		
 		pbs[i] = new ProgressBar('ProgressBar' + i);	
 
-		pbs[i].resolvePercent = 35;
-		pbs[i].errorPercent   =  0;
 		//pbs[i].isSynchronous  = true;
+		pbs[i].probabilities.resolve = 55;
+		pbs[i].probabilities.error   =  0;		
+		pbs[i].probabilities.reject  = 45;
+		pbs[i].probabilities.timeout =  0;
 		
 		tools.append2Demo(pbs[i], 'tdR4DC2');
 
@@ -36,10 +38,10 @@ let R4D = {};
 		
 	R4D.resolve = function(pguiAny, envelope, btn){		
 		try{			
-			envelope.pgui.resolved();
-			envelope.pgui.fulfilled();
+			envelope.pgui.onResolve();
+			envelope.pgui.onFinally();
 
-			pguiAny.resolved();
+			pguiAny.onResolve();
 			tools.highlight.resolved(btn);
 			tools.stop(pbs);
 		}
@@ -54,7 +56,7 @@ let R4D = {};
 	R4D.reject = function(pguiAny, error, btn){
 		try{	
 			pguiAny.rejected();
-			pguiAny.fulfilled();
+			pguiAny.onFinally();
 			//window.console.promise.log.reject(envelope.result.id);
 
 			// As soon a 'ProgressBar' rejects, The 'PromiseAny' stops listening the other 'Promise'
@@ -71,7 +73,7 @@ let R4D = {};
 	R4D.finally = function(pguiAny, btn){
 		window.console.promise.log.finally();			
 		tools.enableBtns(btn);
-		pguiAny.fulfilled();
+		pguiAny.onFinally();
 	}	
 
 	R4D.catch = function(error, pguiAny){

@@ -15,10 +15,11 @@ let R4A = {};
 	for(let i = 0; i < n; i++){
 		
 		pbs[i] = new ProgressBar('ProgressBar' + i);	
-
-		pbs[i].resolvePercent = 90;
-		pbs[i].errorPercent   =  0;
-		//pbs[i].isSynchronous  = true;
+		
+		pbs[i].probabilities.resolve = 90;
+		pbs[i].probabilities.error   =  0;		
+		pbs[i].probabilities.reject  = 10;
+		pbs[i].probabilities.timeout =  0;
 		
 		tools.append2Demo(pbs[i], 'tdR4AC2');
 
@@ -38,11 +39,11 @@ let R4A = {};
 		try{
 
 			envelopes.forEach((envelope) => {
-				envelope.pgui.resolved();
-				envelope.pgui.fulfilled();
+				envelope.pgui.onResolve();
+				envelope.pgui.onFinally();
 			});
 
-			pguiAll.resolved();
+			pguiAll.onResolve();
 			tools.highlight.resolved(btn);
 		}
 		catch(jse){
@@ -55,8 +56,8 @@ let R4A = {};
 	// The first progressBar that reject, stops the 'race'
 	R4A.reject = function(pguiAll, envelope, btn){
 		try{	
-			envelope.pgui.rejected();
-			envelope.pgui.fulfilled();
+			envelope.pgui.onReject();
+			envelope.pgui.onFinally();
 			pguiAll.rejected();
 			window.console.promise.log.reject(envelope.result.id);
 
@@ -74,7 +75,7 @@ let R4A = {};
 	R4A.finally = function(pguiAll, btn){
 		window.console.promise.log.finally();			
 		tools.enableBtns(btn);
-		pguiAll.fulfilled();
+		pguiAll.onFinally();
 	}	
 
 	R4A.catch = function(error, pguiAll){

@@ -11,9 +11,12 @@
 	for(let i = 0; i < n; i++){
 		pbs[i] = new ProgressBar('ProgressBar' + i);	
 		
-		pbs[i].resolvePercent = 50;
-		pbs[i].errorPercent   =  0;
-		pbs[i].interval       = 30;
+		pbs[i].probabilities.resolve = 50;
+		pbs[i].probabilities.error   =  0;		
+		pbs[i].probabilities.reject  = 30;
+		pbs[i].probabilities.timeout = 20;
+
+		pbs[i].interval = 30;
 		
 		tools.append2Demo(pbs[i], 'tdR7CC2');
 

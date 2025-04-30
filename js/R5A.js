@@ -26,9 +26,12 @@
 		
 		// XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX //
 		// 'tuning' of the progressBar 
-		pbs[i].resolvePercent =  80;
-		pbs[i].errorPercent   =  10;
-		pbs[i].interval       =  10;
+		pbs[i].probabilities.resolve = 80;
+		pbs[i].probabilities.error   = 10;		
+		pbs[i].probabilities.reject  = 10;
+		pbs[i].probabilities.timeout =  0;
+
+		pbs[i].interval =  10;
 		// XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX //
 	
 		tools.append2Demo(pbs[i], 'tdR5AC2');		
@@ -44,23 +47,23 @@
 	
 	let _resolve = function(envelope){	
 		window.console.promise.log.resolve(envelope.id);
-		envelope.pgui.resolved();
+		envelope.pgui.onResolve();
 	}	
 		
 	let _reject = function(envelope){
 		window.console.promise.log.reject(envelope.id);
-		envelope.pgui.rejected();
+		envelope.pgui.onReject();
 	}
 
 	let _finally = function(pb, pgui){
 		window.console.promise.log.finally(pb.id);
 		window.console.log(pb.id);
-		pgui.fulfilled();
+		pgui.onFinally();
 	}
 	
 	let _catch = function(error, pb, pgui){
 		window.console.promise.log.catch(error);
-		pgui.catched();
+		pgui.onCatch();
 	}
 	
 	let run = async function (btn){	

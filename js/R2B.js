@@ -11,7 +11,7 @@
 
 	let _resolve = function(result, pgui){
 		window.console.promise.log.resolve(result.id);
-		pgui.resolved();
+		pgui.onResolve();
 	}	
 
 	let _reject = function(result, pgui){		
@@ -25,7 +25,7 @@
 
 
 		window.console.promise.log.reject(result.id);
-		pgui.rejected();
+		pgui.onReject();
 		
 		// If an exception occurs in this function, the error will be caught by 'Promise'. 
 		// and sent to the function 'cath', causing the lost of the information about who, 
@@ -37,14 +37,14 @@
 	
 	let _finally = function(pb, pgui, btn){
 		window.console.promise.log.finally(pb.id);
-		pgui.fulfilled();
+		pgui.onFinally();
 		
 		tools.enableBtns(btn);
 	}	
 	
 	let _catch = function(error, pb, pgui){
 		window.console.promise.log.catch(error);
-		pgui.catched();
+		pgui.onCatch();
 	}		
 
 	
@@ -69,7 +69,10 @@
 					debugger;
 
 					// The function 'executor' will trown a synchronous exception!					
-					pb0.errorPercent = 100;
+					pb.probabilities.resolve =   0;
+					pb.probabilities.error   = 100;
+					pb.probabilities.reject  =   0;
+					pb.probabilities.timeout =   0;
 
 					// The lesson is: the function 'executor' should be ALWAYS PROTECTED BY A 'TRY-CATCH' session.
 					// ============================================================================================ //
@@ -129,26 +132,13 @@
 	}
 
 	function executor(resolve, reject){
-		// var alea = 3; //Math.floor(Math.random() * 3) + 1; 
-
-		// if (alea == 1) { resolve(alea + ' = resolve');} 
-		// else if (alea == 2) { reject(alea + ' = reject'); }
-		// else{ 
-		// 	alert(alea);
-		// 	throw new Error(alea + ' = Error'); 
-		// }
-
-		//resolve('resolved');
-		//reject('rejected')
 		throw new Error('Errored'); 
-
 	}
 
 	function btnR2BTest_onclick(btn){
 		new Promise(executor)		
 		.then(
 			result => alert('then.resolve -> ' + result) 
-			// ,result => alert('then.reject -> ' + result.message) 
 		)
 
 		.finally(() => alert('finally'))
@@ -200,40 +190,7 @@
 		}
 	}
 
-	// throw new Error('executor error thown');
 
-	// function executor(resolve, reject){
-	// 	resolve("executor resolved");
-	// }
-
-	// function onResolve(info){
-	// 	alert(`promise.then onResolve ${info}`);
-	// }
-
-	// function onReject(info){
-	// 	alert(`promise.then onReject ${info}`);
-	// }
-
-	// function onReject(jse){
-	// 	throw new Error("Error thrown into the 'onCatch' callback");
-	// }
-	
-	// function onCatch(jse){		
-	// 	alert(`promise.catch onCatched ${jse.message}`);
-	// }
-	
-	// function onFinally(){
-	// 	alert(`promise.finally onFinally`);
-	// }
-
-	// function executor(resolve, reject){
-	// 	resolve("executor resolved");
-	// }
-
-	// new Promise(executor)
-	// 	.then( onResolve, onReject )
-	// 	.catch( onCatch )
-	// 	.finally();
 	
 
 	function executor(resolve, reject) {

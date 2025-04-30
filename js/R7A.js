@@ -12,8 +12,10 @@
 
 		pbs[i] = new ProgressBar('ProgressBar' + i);
 
-		pbs[i].resolvePercent =  60;
-		pbs[i].errorPercent   =  20;		
+		pbs[i].probabilities.resolve = 70;
+		pbs[i].probabilities.error   = 20;		
+		pbs[i].probabilities.reject  = 10;
+		pbs[i].probabilities.timeout =  0;		
 	
 		tools.append2Demo(pbs[i], 'tdR7AC2');
 		
@@ -111,7 +113,7 @@
 	let _finally = function(pguiAll, btn){
 		window.console.promise.log.finally();			
 		tools.enableBtns(btn);
-		pguiAll.fulfilled();
+		pguiAll.onFinally();
 	}	
 
 	let _catch = function(error, pguiAll){

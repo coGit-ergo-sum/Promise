@@ -34,9 +34,9 @@ var R1C = {};
 		debugger;
 
 		R1C.promise
-			.then(R1C.pgui.resolved, R1C.pgui.rejected)
-			.catch(R1C.pgui.catched)
-			.finally(R1C.pgui.fulfilled);	
+			.then(R1C.pgui.onResolve, R1C.pgui.onReject)
+			.catch(R1C.pgui.onCatch)
+			.finally(R1C.pgui.onFinally);	
 
 	}
 */
@@ -48,14 +48,14 @@ var R1C = {};
 			
 	// 		debugger;
 
-	// 		pb.executor(pgui.resolved, pgui.rejected);
+	// 		pb.executor(pgui.onResolve, pgui.onReject);
 
 	// 	}
 	// 	catch(e){
-	// 		pgui.catched;
+	// 		pgui.onCatch;
 	// 	}
 	// 	finally{
-	// 		pgui.fulfilled;
+	// 		pgui.onFinally;
 	// 	}	
 	// }
 

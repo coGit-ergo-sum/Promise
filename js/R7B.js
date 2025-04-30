@@ -14,9 +14,13 @@
 	for(let i = 0; i < n; i++){
 		pbs[i] = new ProgressBar('ProgressBar' + i);	
 
-		pbs[i].resolvePercent = 50;
-		pbs[i].errorPercent   =  0;
-		pbs[i].interval       = 15;
+		pbs[i].probabilities.resolve = 70;
+		pbs[i].probabilities.error   =  0;		
+		pbs[i].probabilities.reject  = 30;
+		pbs[i].probabilities.timeout =  0;
+
+
+		pbs[i].interval = 15;
 		pbs[i].isSynchronous  = false;
 		
 		// Appends the 'ProgressBar' to the page's DOM

@@ -27,18 +27,9 @@
 		border-radius: 5px;
 		width:810px;
 		padding: 10px 10px 25px 20px;
-		/*max-width:1000px;*/
 		-webkit-box-shadow: 10px 10px 58px 0px rgba(156,156,156,1); 
 		-moz-box-shadow: 10px 10px 58px 0px rgba(156,156,156,1);
 		box-shadow: 10px 10px 58px 0px rgba(156,156,156,1);
-
-		/* -webkit-box-shadow: 14px 14px 18px 0px rgba(231,166,26,0.63); */
-		/* -moz-box-shadow: 14px 14px 18px 0px rgba(231,166,26,0.63); */
-		/* box-shadow: 14px 14px 18px 0px rgba(231,166,26,0.63); */
-
-		/* -webkit-box-shadow: 14px 14px 18px 0px rgba(116,184,167,1); */
-		/* -moz-box-shadow: 14px 14px 18px 0px rgba(116,184,167,1); */
-		/* box-shadow: 14px 14px 18px 0px rgba(116,184,167,1);		 */
 	}
 	legend{
 		background-color:#FFFFFF;

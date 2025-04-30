@@ -15,9 +15,11 @@ let R3A = {};
 		
 		pbs[i] = new ProgressBar('ProgressBar' + i);
 
-		pbs[i].resolvePercent = 70;
-		pbs[i].errorPercent   = 10;
-		pbs[i].interval       = 10;
+		pbs[i].probabilities.resolve = 70;
+		pbs[i].probabilities.error   = 10;		
+		pbs[i].probabilities.reject  = 20;
+		pbs[i].probabilities.timeout  = 0;
+
 	
 		tools.append2Demo(pbs[i], 'tdR3AC2');
 		
@@ -96,19 +98,19 @@ let R3A = {};
 	
 	R3A.resolve = function(envelope){
 		window.console.promise.log.resolve(envelope.result.id);
-		envelope.pgui.resolved();
+		envelope.pgui.onResolve();
 	}	
 	
 
 	R3A.reject = function(envelope){
 		window.console.promise.log.reject(envelope.result.id);
-		envelope.pgui.rejected();		
+		envelope.pgui.onReject();		
 	}	
 
 	
 	R3A.finally = function(pb, pgui, btn){
 		window.console.promise.log.finally(pb.id);
-		pgui.fulfilled();
+		pgui.onFinally();
 		
 		tools.enableBtns(btn);		
 	}	
@@ -116,7 +118,7 @@ let R3A = {};
 
 	R3A.catch = function(error, pb, pgui){
 		window.console.promise.log.catch(error);
-		pgui.catched();		
+		pgui.onCatch();		
 	}	
 
 

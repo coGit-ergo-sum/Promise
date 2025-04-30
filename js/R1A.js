@@ -10,9 +10,15 @@
 
 	// ----------------------------------------------------------------------- //
 	// These are the default settings,
-	pb.resolvePercent =  60;	// percent 
-	pb.errorPercent   =   0;	// (the probability an exception is thrown. In the 'ProgressBar' but not in the 'executor' function.)
-	pb.interval       =  15;    // milliseconds per iteration. (The unit of time for the ProgressBar)	
+	pb.probabilities.resolve =  60;
+	pb.probabilities.error   =   0;	
+	pb.probabilities.reject  =  30;
+	pb.probabilities.timeout =  10;
+
+
+	pb.interval=  15;    // milliseconds per iteration. (The unit of time for the ProgressBar)	
+
+
 
 	
 	function btnR1AStart_onclick(btn){

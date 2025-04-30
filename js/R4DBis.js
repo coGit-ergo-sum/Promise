@@ -9,8 +9,12 @@
 		
 	for(let i = 0; i < n; i++){
 		pbs[i] = new ProgressBar('ProgressBar' + i);	
-		pbs[i].resolvePercent = 30;
-		pbs[i].errorPercent   =  0;
+
+		pbs[i].probabilities.resolve = 70;
+		pbs[i].probabilities.error   =  0;		
+		pbs[i].probabilities.reject  = 30;
+		pbs[i].probabilities.timeout =  0;
+
 		tools.append2Demo(pbs[i], 'tdR4DBisC2');
 
 		pguis[i] = new PromiseGUI(1);		
@@ -28,13 +32,13 @@
 	
 	let _resolve = function(pb, pgui){
 		window.console.promise.log.resolve(pb.id);
-		pgui.resolved();
+		pgui.onResolve();
 		_finally(pb, pgui);
 	}	
 	
 	let _reject = function(pb, pgui){
 		window.console.promise.log.reject(pb.id);
-		pgui.rejected();
+		pgui.onReject();
 		_finally(pb, pgui);
 	}	
 	
@@ -43,12 +47,12 @@
 	// (That's way the 'underscore'.)
 	let _finally = function(pb, pgui){
 		window.console.promise.log.finally(pb.id);
-		pgui.fulfilled();		
+		pgui.onFinally();		
 	}	
 
 	let _catch = function(error, pgui){
 		window.console.promise.log.catch(error);
-		pgui.catched();		
+		pgui.onCatch();		
 	}	
 		
 	// XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX //
@@ -57,7 +61,7 @@
 	
 	let resolveAny = function(pguiAny, envelopes, btn){		
 		try{
-			pguiAny.resolved();
+			pguiAny.onResolve();
 			tools.highlight.resolved(btn);	
 		}
 		catch(jse){
@@ -77,13 +81,13 @@
 	let finallyAny = function(pguiAny, btn){
 		window.console.promise.log.finally();			
 		tools.enableBtns(btn);
-		pguiAny.fulfilled();
+		pguiAny.onFinally();
 		tools.stop(pbs);
 	}	
 
 	let catchAny = function(error, pguiAny, btn){
 		window.console.promise.log.catch(error);
-		pguiAny.catched();			
+		pguiAny.onCatch();			
 	}	
 
 	// XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX //

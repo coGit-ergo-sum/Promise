@@ -16,26 +16,26 @@
 	function btnS1B_onclick(btn) {
 		try{
 			console.clear();
+
+			// Cleans the layout of the PromiseGUI
 			pgui.reset();		
 
 			// Keep the browser in 'debug-mode' to show the live code.
 			debugger;
 
-			// 'pgui.resolved' & 'pgui.rejected' are the callbacks functions
-			// provided to the 'then' function of the 'Promise'.
-			pb.executor(pgui.resolved, pgui.rejected);
+			// 'executor' can run independently of the 'Promise'.
+			pb.executor(pgui.onResolve, pgui.onReject);
 		}
 
-		// 'pgui.catched' is the callback function
-		// provided to the 'catch' function of the 'Promise'.
+		// This is the caught session.
 		catch(e){
-			pgui.catched;
+			pgui.onCatch;
 		}
 		
-		// 'pgui.fulfilled' is the callback function
-		// provided to the 'finally' function of the 'Promise'.
+		
+		// This is the 'finally' session.
 		finally{
-			pgui.fulfilled;
+			pgui.onFinally;
 		}	
 	}
 }
@@ -71,14 +71,14 @@
             
 //             debugger;
 
-//             pb.executor(pgui.resolved, pgui.rejected);
+//             pb.executor(pgui.onResolve, pgui.onReject);
 
 //         }
 //         catch(jse){
-//             pgui.catched;
+//             pgui.onCatch;
 //         }
 //         finally{
-//             pgui.fulfilled;
+//             pgui.onFinally;
 //         }	
 //     }
 

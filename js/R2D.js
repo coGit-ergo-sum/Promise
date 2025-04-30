@@ -9,18 +9,18 @@
 	
 	let _resolve = function(result, pgui){
 		window.console.promise.log.resolve(result.id);
-		pgui.resolved();	
+		pgui.onResolve();	
 	}	
 
 	
 	let _reject = function(result, pgui){
 		window.console.promise.log.reject(result.id);
-		pgui.rejected();
+		pgui.onReject();
 	}	
 	// XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX //
 	let _finally = function(pb, pgui, btn){
 		window.console.promise.log.finally(pb.id);
-		pgui.fulfilled();
+		pgui.onFinally();
 		
 		tools.enableBtns(btn);
 			
@@ -34,7 +34,7 @@
 	
 	let _catch = function(error, pb, pgui, btn){
 		window.console.promise.log.catch(error);
-		pgui.catched();
+		pgui.onCatch();
 	}	
 	
 	function btnR2DFinally_onclick(btn){
@@ -46,8 +46,12 @@
 			
 			let promise = new Promise(function(resolve, reject) {	
 				
-				// The function 'executor' will always 'resolve'!
-				pb0.resolvePercent = 100;									
+				// The function 'executor' will always 'resolve'!	
+				pb0.probabilities.resolve = 100;
+				pb0.probabilities.error   =   0;		
+				pb0.probabilities.reject  =   0;
+				pb0.probabilities.timeout =   0;
+				
 				pb0.executor(resolve, reject);
 				
 			});

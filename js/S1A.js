@@ -14,7 +14,9 @@
 	tools.append2Demo(pb, 'tdS1AE2');
 	
 	let pgui = new PromiseGUI(1);		
-	tools.prepend(pgui.$td, pb.$tr);	
+	tools.prepend(pgui.$td, pb.$tr);
+	
+	let promise = null;
 	
 	function btnS1AStep1_onclick(btn){
 
@@ -31,10 +33,20 @@
 		
 		debugger;
 
-		promise
-			.then(pgui.resolved, pgui.rejected)
-			.catch(pgui.catched)
-			.finally(pgui.fulfilled);	
+		if (promise) {
+			// ...we attach the 4 callbacks to handle its outcome.
+			promise
+				.then(pgui.onResolve, pgui.onReject)
+				.catch(pgui.onCatch)
+				.finally(pgui.onFinally);
+	
+			// Clear the reference to the Promise to avoid reusing it.
+			promise = null;
+		} 
+		else {
+			// If the Promise hasn't been instantiated yet, notify the user.
+			alert('The Promise object has not been instantiated yet. Please click the other button.');
+		}			
 
 	}
 
@@ -46,14 +58,14 @@
 			
 			debugger;
 
-			pb.executor(pgui.resolved, pgui.rejected);
+			pb.executor(pgui.onResolve, pgui.onReject);
 
 		}
 		catch(e){
-			pgui.catched;
+			pgui.onCatch;
 		}
 		finally{
-			pgui.fulfilled;
+			pgui.onFinally;
 		}	
 	}
 

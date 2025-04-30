@@ -2,8 +2,10 @@
 
 	let pb = new ProgressBar('ProgressBarRA2');
 	
-	pb.resolvePercent = 50;
-	pb.errorPercent   =  0;
+	pb.probabilities.resolve = 50;
+	pb.probabilities.error   =  0;
+	pb.probabilities.reject  = 40;
+	pb.probabilities.timeout = 10;
 		
 		
 	tools.append2Demo(pb, 'tdR2AC2');
@@ -19,9 +21,9 @@
 		debugger;
 
 		let promise = new PromiseDIY(pb.executor)
-		.then(pgui.resolved, pgui.rejected)
-		.catch(pgui.catched)
-		.finally(pgui.fulfilled);	
+		.then(pgui.onResolve, pgui.onReject)
+		.catch(pgui.onCatch)
+		.finally(pgui.onFinally);	
 	}
 
 	function btnR2AThen_onclick(btn){
@@ -32,9 +34,9 @@
 		debugger;
 		
 		let promise = new Promise(pb.executor)
-		.then(pgui.resolved, pgui.rejected)
-		.catch(pgui.catched)
-		.finally(pgui.fulfilled);
+		.then(pgui.onResolve, pgui.onReject)
+		.catch(pgui.onCatch)
+		.finally(pgui.onFinally);
 		
 				
 	}

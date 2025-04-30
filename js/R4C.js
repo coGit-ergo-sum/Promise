@@ -16,9 +16,14 @@ let R4C = {};
 	for(let i = 0; i < n; i++){
 		pbs[i] = new ProgressBar('ProgressBar' + i);
 			
-		pbs[i].resolvePercent = 20;
-		pbs[i].errorPercent   =  0;
-		pbs[i].interval       = 15;
+
+		pbs[i].interval = 15;
+
+		pbs[i].probabilities.resolve = 40;
+		pbs[i].probabilities.error   = 20;		
+		pbs[i].probabilities.reject  = 30;
+		pbs[i].probabilities.timeout = 10;
+
 		pbs[i].isSynchronous  = false;
 		
 		tools.append2Demo(pbs[i], 'tdR4CC2');
@@ -35,11 +40,11 @@ let R4C = {};
 	R4C.resolve = function(pgui, envelope, btn){		
 		try{		
 			window.console.promise.log.resolve(envelope.result.id);
-			envelope.pgui.resolved();
-			envelope.pgui.fulfilled();
+			envelope.pgui.onResolve();
+			envelope.pgui.onFinally();
 
 			// this is the pguiRace
-			pgui.resolved();
+			pgui.onResolve();
 
 			tools.stop(pbs);
 			tools.highlight.resolved(btn);
@@ -54,9 +59,9 @@ let R4C = {};
 	R4C.reject = function(pgui, envelope, btn){		
 		window.console.promise.log.reject(envelope.result.id);
 
-		envelope.pgui.rejected();
-		envelope.pgui.fulfilled();
-		pgui.rejected();
+		envelope.pgui.onReject();
+		envelope.pgui.onFinally();
+		pgui.onReject();
 
 		tools.stop(pbs);		
 		tools.highlight.rejected(btn);		
@@ -64,14 +69,14 @@ let R4C = {};
 	
 	R4C.finally = function(pgui, btn){		
 		window.console.promise.log.finally();
-		pgui.fulfilled();	
+		pgui.onFinally();	
 		
 		tools.enableBtns(btn);
 	}	
 
 	R4C.catch = function(error, pgui, btn){
 		window.console.promise.log.catch(error);
-		pguiRace.catched();		
+		pguiRace.onCatch();		
 	}	
 
 	// XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX //

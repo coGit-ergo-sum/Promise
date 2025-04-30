@@ -92,8 +92,8 @@ function btnI43_onclick(btn){
 
 		debugger;
 
-		// 'Promise' will call 'onReject' passing an error as a parameter
-		throw new Error('executor error thown');
+		// Error thrown without explicitly using 'throw new Error'
+		eval("notExistingFunction()");
 	}
 
 	new Promise(executor)

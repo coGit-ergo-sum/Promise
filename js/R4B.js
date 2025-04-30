@@ -10,9 +10,12 @@
 	let pguis = [];	
 		
 	for(let i = 0; i < n; i++){
-		pbs[i] = new ProgressBar('ProgressBar' + i);	
-		pbs[i].resolvePercent = 40;
-		pbs[i].errorPercent   = 0;
+		pbs[i] = new ProgressBar('ProgressBar' + i);
+
+		pbs[i].probabilities.resolve = 40;
+		pbs[i].probabilities.error   = 20;		
+		pbs[i].probabilities.reject  = 30;
+		pbs[i].probabilities.timeout = 10;
 
 		// adds a progress bar to the page
 		tools.append2Demo(pbs[i], 'tdR4BC2');	
@@ -105,15 +108,15 @@
 	let resolveAllSettled = function(items, pgui){		
 		
 			items.forEach(item => {
-				("value"  in item) ? item.value.pgui.resolved():
-				("reason" in item) ? item.reason.pgui.rejected():	
+				("value"  in item) ? item.value.pgui.onResolve():
+				("reason" in item) ? item.reason.pgui.onReject():	
 				alert('Unknown result.');
 				
-				(item.value || item.reason).pgui.fulfilled();
+				(item.value || item.reason).pgui.onFinally();
 			});
 			
 			// this is the 'master' 'Promise'
-			pgui.resolved();		
+			pgui.onResolve();		
 	}	
 
 
@@ -121,26 +124,24 @@
 	// Seems that 'alllSettled' never rejects.
 	let rejectAlllSettled = function(envelope, pgui){
 
-		envelope.pb.rejected();
-		envelope.pb.fulfilled();
 		window.console.promise.log.reject(envelope.result.id);
 		
 		tools.stop(pbs);
-		pgui.rejected();		
+		pgui.onReject();		
 	}	
 	// ------------------------------------------------------------ //
 
 	
 	let finallyAllSettled = function(pgui, btn){
 		window.console.promise.log.finally();
-		pgui.fulfilled();		
+		pgui.onFinally();		
 		tools.enableBtns(btn);
 	}	
 
 
 	let catchAllSettled = function(error, pgui, btn){
 		window.console.promise.log.catch(error);
-		pgui.catched();		
+		pgui.onCatch();		
 		tools.highlight.rejected(btn);				
 	}
 		

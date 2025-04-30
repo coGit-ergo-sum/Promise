@@ -18,12 +18,7 @@ function ProgressBar(id) {
     
     // The interval in milliseconds between iterations
     this.interval = 15;
-    
-    // The probability that an internal synchronous error occurs.
-    this.errorPercent = 0;
-    
-    // The probability that the process resolves successfully
-    this.resolvePercent = 60;
+
 
 	this.probabilities = {resolve: 60, reject: 30, error: 2, timeout: 8};
     
@@ -40,7 +35,7 @@ function ProgressBar(id) {
     let _$span = _$bar.find('span');    
     
     // Function to mark the progress bar with an error class
-    var _catched = function() { _this.$progressBar.addClass("error"); };
+    var _onCatch = function() { _this.$progressBar.addClass("error"); };
 
     
     
@@ -54,13 +49,6 @@ function ProgressBar(id) {
     // Function to stop the progress bar and clear the interval
     this.stop = function() { clearInterval(_intervalId); _isStopped = true; };
     
-	// Event-like functions, not used in this context, but available
-	// Empty functions are associated to avoid having to handle 'null'
-    this.catched = function() {};
-    this.fulfilled = function() {};
-    this.rejected = function() {};
-    this.resolved = function() {};
-
 	this.green = function(){_color('#52BE80');}
 	this.gray = function(){_color('#DDDDDD');}
 	this.red = function(){_color('#ff4d4d');}
@@ -108,12 +96,6 @@ function ProgressBar(id) {
     this.executor = async function(resolve, reject) {
         _this.reset();    
 
-        // Simulate a synchronous error with a probability
-        // if (_this.errorPercent > (100 * Math.random())) {
-        //     // The exception here is to test the Promise's behaviour
-        //     throw new Error("Synchronous error thrown randomly to test the application.");
-        // }
-
         try {
 			
             resolve = resolve || (() => {});
@@ -150,7 +132,7 @@ function ProgressBar(id) {
             let _error = function(jse) {
                 _this.stop();    
                 _color('transparent');    
-                _catched();            
+                _onCatch();            
                 let _result = _this.getRejectionResult(jse);
                 reject(_result);    
             };                    
@@ -200,7 +182,8 @@ function ProgressBar(id) {
             // ----------------------------------------------------------------------- //
     
             // Set a random number of iterations based on whether it's a timeout
-            let maxIterations = isTimeout ? 100 : Math.floor(100 * Math.random());
+            // maxIterations can be: 100 or any number between 1 to 99;
+            let maxIterations = isTimeout ? 100 : (Math.floor(Math.random() * 99) + 1);
     
 			//debugger;
 

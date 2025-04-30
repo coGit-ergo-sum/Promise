@@ -10,8 +10,10 @@
 	for(i = 0; i < n; i++){
 		pbs[i] = new ProgressBar('ProgressBar' + i);
 
-		pbs[i].resolvePercent =  80;
-		pbs[i].errorPercent   =   0;		
+		pbs[i].probabilities.resolve = 80;
+		pbs[i].probabilities.error   =  0;		
+		pbs[i].probabilities.reject  = 20;
+		pbs[i].probabilities.timeout =  0;				
 	
 		tools.append2Demo(pbs[i], 'tdR6BC2');			
 		tools.prependTdCounter(pbs[i].$tr);	
