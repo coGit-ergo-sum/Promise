@@ -36,4 +36,57 @@
 	
 	btnR1BReset_onclick();
 
+
+	function executor(resolve, reject) {
+		try{
+			eval('notExistingFunction()');
+		}
+		catch(jse){
+			reject("any parameter type you want");
+		}		
+	}
+
+
+
 }
+
+
+//////////////////////////////////////////
+function getUserData(userId, asyncComplete) {
+    setTimeout(() => {
+        asyncComplete(null, { userId: userId, name: 'John Doe' });
+    }, 1000);
+}
+
+function getUserPosts(userId, asyncComplete) {
+    setTimeout(() => {
+        asyncComplete(null, [{ postId: 1, content: 'Hello world' }, { postId: 2, content: 'My second post' }]);
+    }, 1000);
+}
+
+function getPostComments(postId, asyncComplete) {
+    setTimeout(() => {
+        asyncComplete(null, [{ commentId: 1, text: 'Great post!' }, { commentId: 2, text: 'Nice one' }]);
+    }, 1000);
+}
+
+// Callback hell
+getUserData(1, function (err, userData) {
+    if (err) {
+        console.error('Error getting user data');
+    } else {
+        getUserPosts(userData.userId, function (err, posts) {
+            if (err) {
+                console.error('Error getting posts');
+            } else {
+                getPostComments(posts[0].postId, function (err, comments) {
+                    if (err) {
+                        console.error('Error getting comments');
+                    } else {
+                        console.log('Comments for post 1:', comments);
+                    }
+                });
+            }
+        });
+    }
+});

@@ -2,9 +2,9 @@
 {
     let pb = new ProgressBar('ProgressBar');
 
-    pb.probabilities.resolve  =  48;
-    pb.probabilities.reject   =  16;
-    pb.probabilities.error    =  16;
+    pb.probabilities.resolve  =  50;
+    pb.probabilities.reject   =  17;
+    pb.probabilities.error    =  17;
     pb.probabilities.timeout  =  16;
 
     tools.append2Demo(pb, 'tdS1B');

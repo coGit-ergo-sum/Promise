@@ -1,18 +1,13 @@
 
 async function btnR3BThen_onclick(btn){
 
-	tools.reset(R3B.pguis);
+	tools.resetAll(R3B.pbs, R3B.pguis);
 	tools.disableBtns(btn);
 	console.clear();	
 	
 	debugger;
 
 	let n = R3B.pbs.length;
-
-	for(let i = 0; i < n; i++){		
-		R3B.pbs[i].reset();
-	}
-
 
 	for(let i = 0; i < n; i++){		
 		
