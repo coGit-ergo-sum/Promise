@@ -1,7 +1,7 @@
 
 {
 
-    let n = 5;
+    let n = 3;
 	
 	let pbs   = [];
 	let pguis = [];
@@ -27,24 +27,24 @@
 
 
 
-    // Handling of an ASynchronous function by callbacks (no 'Promise')
-	function btnS1D0_onclick(btn) {
+    // // Handling of an ASynchronous function by callbacks (no 'Promise')
+	// function btnS1D0_onclick(btn) {
 
-        tools.resetAll(pbs, pguis)
+    //     tools.resetAll(pbs, pguis)
 
-		debugger;
+	// 	debugger;
 
-        pbs[0].executor(() => {
-            pbs[1].executor(() => {
-                pbs[2].executor(() => {
-                    pbs[3].executor(() => {
-                        pbs[4].executor(pguis[4].onResolve, pguis[4].onReject)
-                    }, pguis[3].onReject)
-                }, pguis[2].onReject)
-            }, pguis[1].onReject)
-        }, pguis[0].onReject)
+    //     pbs[0].executor(() => {
+    //         pbs[1].executor(() => {
+    //             pbs[2].executor(() => {
+    //                 pbs[3].executor(() => {
+    //                     pbs[4].executor(pguis[4].onResolve, pguis[4].onReject)
+    //                 }, pguis[3].onReject)
+    //             }, pguis[2].onReject)
+    //         }, pguis[1].onReject)
+    //     }, pguis[0].onReject)
 
-	}
+	// }
 
 
     // Handling of an ASynchronous function by callbacks (no 'Promise')

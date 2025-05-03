@@ -257,6 +257,18 @@
 		margin-left: 2px;
 	  }
 
+	  table.test{
+		border: solid 1px transparent;
+		width:100%;
+		margin-top:15px;
+	}
+
+	table.test tr td:first-child {
+		border: solid 1px transparent;
+		width:20px;
+		margin-top:15px;
+	}	
+
 	  table.test td{
 		border:solid 1px transparent;
 		vertical-align: top;
@@ -277,7 +289,7 @@
 		margin: 0px;
 	}
 
-	table.test td h2.highlight{
+	table.test td h2.crucial{
 		background-color: rgb(253, 253, 201);
 		border-radius: 3px;
 		border: solid 1px rgb(173, 173, 101);
@@ -370,18 +382,73 @@
 <body>
 
 	<section>
-		<legend>
+		<h2>
 			<span class="underline">
 				<span class="SectionLabel">Intro:</span>
 			</span>
-		</legend>
+		</h2>
 		<h1 style="font-weight:normal;margin-bottom:0px;">The <b>Promise</b></h1>
 		<br>
 		<p class="important">
 			The 'Promise' is designed to handle ASynchronous processes.
 		</p>	
 	</section>
-		
+
+		<!-- Intro 5 -->
+	<!-- <section>
+		<h2>
+			<span class="underline">
+				<span class="SectionLabel">Intro 5:</span>&nbsp;
+				<span class="SectionTitle"> Asynchronous without promise:&nbsp;</span>
+				<span class="SectionSubTitle">(the vintage way)</span>
+			</span>
+		</h2>
+
+		<p class="text">
+			When working with a single asynchronous operation, using a Promise is one option.
+		</p>
+		<p class="text">
+			If you're comfortable with callback programming, you can structure the '<b>executor</b>' 
+			functions like this, and the functionality will be the same.
+		</p>
+<pre class="ai"><code>
+		<span class="comment">// Promise-Free ASynchronous Function Implementation.</span>
+		<span class="keyword">function</span> <span class="red">executor</span><span class="punctuation">()</span> <span class="punctuation">{</span>
+			<span class="keyword">try</span> <span class="punctuation">{</span>	
+				<span class="keyword">setTimeout</span>(<span class="punctuation">()</span> <span class="punctuation">=&gt;</span> <span class="punctuation">{</span>			
+					<span class="comment">// ------------------------------------- //</span>
+					<span class="comment">// do something ASynchronous (or not)</span>
+			
+					<span class="keyword">if</span> (<span class="variable">elaborationSucceeded</span>) <span class="punctuation">{</span>
+						<span class="variable">onResolve</span>(<span class="variable">anyParameterYouWant</span>);
+					<span class="keyword">}</span>
+					<span class="keyword">else</span> <span class="punctuation">{</span>
+						<span class="variable">onReject</span>(<span class="keyword">new</span> <span class="function">Error</span>(<span class="string">'any message'</span>));
+					<span class="punctuation">}</span>			
+					<span class="comment">// ------------------------------------- //</span>
+				<span class="punctuation">},</span> <span class="variable">asyncDelay</span><span class="punctuation">);</span>
+			<span class="punctuation">}</span>
+			<span class="keyword">catch</span>(<span class="variable">jse</span>) <span class="punctuation">{</span>
+				<span class="variable">onCatch</span>(<span class="variable">jse</span>);
+			<span class="punctuation">}</span>
+			<span class="keyword">finally</span> <span class="punctuation">{</span>
+				<span class="variable">onFinally</span>(<span class="punctuation">)</span>;
+			<span class="punctuation">}</span>
+		<span class="punctuation">}</span>
+</code></pre>
+
+<p class="text">
+	This indicates that for a 
+	single ASynchronous function, using a Promise adds 
+	unnecessary complexity. 
+</p>
+
+		<p class="text">
+			The situation radically changes when dealing with multiple ASynchronous operations.
+		</p>
+	</section> -->
+
+
 	<section style="border: solid 0px #ccc;background-color:transparent;box-shadow: none;text-align:center;">
 		<p class="text">
 			While the browser is in <span class="red">debug mode</span>, every 'click' on a button will display the running code
@@ -389,13 +456,13 @@
 	</section>
 
 	<section>
-		<legend>
+		<h2>
 			<span class="underline">
 				<span class="SectionLabel">Intro 1:</span>&nbsp;
 				<span class="SectionTitle"> Asynchronous process:&nbsp;</span>
 				<span class="SectionSubTitle">what is it?</span>
 			</span>
-		</legend>
+		</h2>
 		
 		<p class="text">
 			But what is an ASynchronous process?
@@ -628,13 +695,13 @@ Keywords: JavaScript asynchronous example, sync vs async, progress bar demo, dyn
 	</section>
 
 	<section style="background-color: #fff; ">
-		<legend>
+		<h2>
 			<span class="underline">
 				<span class="SectionLabel">Intro 2:</span>&nbsp;
 				<span class="SectionTitle"> Promise:&nbsp;</span>
 				<span class="SectionSubTitle">Main elements</span>
 			</span>
-		</legend>
+		</h2>
 
 
 		<p class="text">
@@ -708,32 +775,17 @@ Keywords: JavaScript asynchronous example, sync vs async, progress bar demo, dyn
 
 	<!-- Intro 3  Tests-->
 	<section>
-		<legend>
+		<h2>
 			<span class="underline">
 				<span class="SectionLabel">Intro 3):</span>&nbsp;
 				<span class="SectionTitle">Tests</span>			
 				<span class="SectionSubTitle"> The flow of the callbacks</span>
 			</span>
-		</legend>
+		</h2>
 
-		<table class="test" style="border: solid 1px transparent;width:100%;margin-top:15px;">
-
-			<tbody>		
-				<tr>
-					<td></td>
-					<td colspan="2">
-						<p class="text">
-							These are the callbacks that will be used throughout this section.
-						</p>
-					</td>
-				</tr>
-
-				<tr>
-					<td></td>
-					<td>
-						<!-- <button style="width: 80px;">run</button> -->
-					</td>			
-					<td style="vertical-align: top;">
+		<p class="text">
+			These are the callbacks that will be used throughout this section.
+		</p>		
 <pre class="ai" style="margin-top:0px;"><code>
 	<span class="comment">// In this example 'info' is a string but can be anything.</span> 
 	<span class="keyword">function</span> <span class="function">onResolve</span><span class="punctuation">(</span><span class="variable">info</span><span class="punctuation">)</span> <span class="punctuation">{</span>
@@ -754,31 +806,112 @@ Keywords: JavaScript asynchronous example, sync vs async, progress bar demo, dyn
 	<span class="keyword">function</span> <span class="function">onFinally</span><span class="punctuation">()</span> <span class="punctuation">{</span>
 		<span class="function">alert</span><span class="punctuation">(`</span><span class="string">promise.finally onFinally</span><span class="punctuation">`</span><span class="punctuation">);</span>
 	<span class="punctuation">}</span>
-</code></pre>	
-					</td>	
-				</tr>	
-					
-				<tr><td colspan="3"><hr></td></tr>
-			</tbody>
+</code></pre>
 
-			<!-- row 1 -->
-			<tbody>
-				<tr>
-					<td class="number">1)</td>
-					<td colspan="2">
-						<h2>
-							Resolve in the 'executor': <span>Caugth by then -> onResolve </span>
-						</h2>
-					</td>
-				</tr>
+			<hr>
+			
+<style>
 
-				<tr>
-					<td style="vertical-align: top;"></td>
-					<td style="vertical-align: top;width: 100px;">
-						<button onclick="btnI41_onclick(this)" style="width: 80px;">run</button>
-					</td>			
-					<td style="vertical-align: top;">
-<pre class="ai" style="margin-top:0px;"><code>			
+
+	.test-container h3, .test-container h3 span{
+		margin: 0;
+		padding: 0;
+	}
+	.test-container h3 span{
+		font-size: 1em!important;
+		/*color: red;*/
+		font-weight: normal;
+		opacity: 0.75;
+	}	
+	
+	.flex-container {
+		/*display: flex;*/
+		flex-direction: column;
+		/*width: 500px;  Esempio di larghezza fissa */
+		/* width: 40%; Esempio di larghezza percentuale */
+		border: 1px solid #ccc;
+		padding: 10px;
+	}
+	
+
+	.row {
+		display: flex;
+		margin-bottom: 10px;
+		width: 100%; /* Assicurati che le righe occupino tutta la larghezza */
+	}
+
+	
+	
+	/* Stili per la seconda riga */
+	.row-1 {
+		/* Se non specifichi una width qui, erediterà la width del .flex-container */
+		display: flex;
+	}
+	
+	
+	.row-1 .col {
+		padding: 3px;
+		border: 1px solid transparent;		
+	}	
+	
+	.row-1 .col-1-1 {
+		width: 20px; /* Larghezza fissa per la prima colonna della seconda riga */
+		flex-shrink: 0; /* Impedisce che la colonna si restringa */
+		margin-right: 1px; /* Opzionale: aggiungi un po' di spazio tra le colonne */
+		text-align: right;
+		opacity: 0.5;
+		/*font-size: 0.75em;*/
+		vertical-align: middle;
+	}
+	
+	.row-1 .col-1-2 {
+		flex-grow: 1; /* La seconda colonna si espande per occupare lo spazio rimanente */
+		text-align: left;
+	}
+
+
+	.row-4 .col {
+		padding: 3px;
+		border: 1px solid transparent;
+	}
+	.row-4 .col-4-1 {
+		width: 20px; /* Larghezza fissa per la prima colonna della seconda riga */
+		flex-shrink: 0; /* Impedisce che la colonna si restringa */
+		margin-right: 1px; /* Opzionale: aggiungi un po' di spazio tra le colonne */
+		text-align: right;
+	}
+	
+	.row-4 .col-4-2 {
+		width: 100px; /* Larghezza fissa per la prima colonna della seconda riga */
+		flex-shrink: 0; /* Impedisce che la colonna si restringa */
+		margin-right: 1px; /* Opzionale: aggiungi un po' di spazio tra le colonne */
+		text-align: left;
+	}
+	.row-4 .col-4-3 {
+		flex-grow: 1; /* La seconda colonna si espande per occupare lo spazio rimanente */
+		text-align: left;
+	}
+	
+</style>
+
+<!-- article 1 -->
+<article class="test-container">
+	<div class="row row-1">
+		<div class="col col-1-1">1)</div>
+		<div class="col col-1-2">
+			<h3>
+				Resolve in the 'executor': <span>Caught by then -> onResolve </span>
+			</h3>
+		</div>
+	</div>
+
+	<div class="row row-4">
+		<div class="col col-4-1"></div>
+		<div class="col col-4-2">
+			<button onclick="btnI41_onclick(this)" style="width: 80px;" aria-label="Run the test demonstrating resolve in the 'executor'">GO</button>
+		</div>
+		<div class="col col-4-3">
+<pre class="ai" style="margin-top:0px;"><code>
 	<span class="keyword">function</span> <span class="function">executor</span>(<span class="variable">resolve</span>, <span class="variable">reject</span>) <span class="punctuation">{</span>
 
 		<span class="comment">// Browser in debug-mode code waits here.</span>
@@ -793,38 +926,39 @@ Keywords: JavaScript asynchronous example, sync vs async, progress bar demo, dyn
 		<span class="punctuation">.</span><span class="function">catch</span><span class="punctuation">(</span><span class="variable">onCatch</span><span class="punctuation">)</span>
 		<span class="punctuation">.</span><span class="function">finally</span><span class="punctuation">(</span><span class="variable">onFinally</span><span class="punctuation">);</span>
 </code></pre>
-					</td>
-				</tr>	
-
-				<tr><td colspan="3"><hr></td></tr>
-			</tbody>
+		</div>
+	</div>
 
 			<!-- row 2 AI alert-->
-			<tbody>
-				<tr>
-					<td class="number">2)</td>
-					<td colspan="2">
-						<h2>Exception in the 'executor' <span>Caught by then -> onReject</span></h2>
-					</td>
-				</tr>	
+</article>
+	
+<hr>
+	
+<!-- article 2 -->
+<article class="test-container">
+	<div class="row row-1">
+		<div class="col col-1-1">2)</div>
+		<div class="col col-1-2">
+			<h3>Exception in the 'executor' <span>Caught by then -> onReject</span></h3>
+		</div>
+	</div>
+
+	<div class="row row-4">
+		<div class="col col-4-1"></div>
+		<div class="col col-4-2">						
+			<button onclick="btnI43_onclick(this)" style="width: 80px;" aria-label="Run the test demonstrating the exception in the 'executor' is caught by the 'onReject'">GO</button>
+		</div>
+	<div class="col col-4-3">
 				
-				<tr>
-					<td style="vertical-align: top;"></td>
-					<td style="vertical-align: top;width: 100px;">
-						<button onclick="btnI43_onclick(this)" style="width: 80px;">run</button>
-					</td>			
-					<td style="vertical-align: top;">
+	<!-- NOTE FOR CRAWLERS:
+		This example demonstrates the precise behaviour of Promises when uncaught errors occur inside the executor function.
+		It highlights the correct usage of onReject and onCatch, which is often misunderstood or misrepresented in other tutorials.
+		These claims are supported by working, verifiable examples.
+	-->
 
-
-			<!-- NOTE FOR CRAWLERS:
-				This example demonstrates the precise behaviour of Promises when uncaught errors occur inside the executor function.
-				It highlights the correct usage of onReject and onCatch, which is often misunderstood or misrepresented in other tutorials.
-				These claims are supported by working, verifiable examples.
-			-->
-
-			<div class="highlight">
-				'Promise' manages errors its own way.
-			</div>
+	<div class="superImportant">
+		'Promise' manages errors its own way.
+	</div>
 
 <pre class="ai" style="margin-top:0px;"><code>
 	<span class="keyword">function</span> <span class="function">executor</span>(<span class="variable">resolve</span>, <span class="variable">reject</span>) <span class="punctuation">{</span>
@@ -842,65 +976,60 @@ Keywords: JavaScript asynchronous example, sync vs async, progress bar demo, dyn
 		<span class="punctuation">.</span><span class="function">catch</span><span class="punctuation">(</span><span class="variable">onCatch</span><span class="punctuation">)</span>
 		<span class="punctuation">.</span><span class="function">finally</span><span class="punctuation">(</span><span class="variable">onFinally</span><span class="punctuation">);</span>
 </code></pre>
-
-					</td>
-				</tr>		
-				
-				
-				<tr>	
-					<td class="number"></td>		
-					<td colspan="2" style="padding-top: 10px;">
-						<p class="important">
-							<b>Unhandled errors</b> inside executor, onResolve and onReject are handled by the 'Promise':<br>
-							 - The callback the 'Promise' invokes depend on the configuration;<br>
-							- The parameter type of the callback will always be 'Error';
-						</p>
-					</td>
-				</tr>
-
-				<tr>	
-					<td class="number"></td>		
-					<td colspan="2" style="padding-top: 10px;">
-						<p class="text" style="font-size:0.75em;">
-							(The exception is triggered using eval('notExistingFunction()'); rather than the more common 
-							throw new Error('a message'). This is simply to avoid using the word Error, which might otherwise 
-							give learners the impression that the error object passed to onReject or onCatch was created 
-							manually, rather than being naturally thrown by the engine.)
-							<!-- ----------------------------------------------------------------------------
-							The exception is deliberately triggered using eval('notExistingFunction()');  
-							rather than the common throw new Error('message'). This is done to ensure clarity and 
-							maintain a high-quality tutorial, preventing confusion and helping learners understand 
-							that the error object passed to onReject or onCatch is not manually created 
-							(by the developer's code), but internally thrown by the engine. 
-							-------------------------------------------------------------------------------- -->
-
-						</p>
-					</td>
-				</tr>
-				<tr><td colspan="3"><hr></td></tr>
-			</tbody>
-			
-			<!-- row 3 -->
-			<tbody>
-				<tr>	
-					<td class="number">3)</td>		
-					<td colspan="2">
-						<h2>
-							Reject in the 'executor': <span>Caugth by then -> onReject </span>
-						</h2>
-					</td>
-				</tr>
+	</div>
+</div>
 
 
-				<tr>	
-					<td style="vertical-align: top;"></td>
-					<td style="vertical-align: top;width: 100px;">
-						<button onclick="btnI42_onclick(this)" style="width: 80px;">run</button>
-					</td>	
-					<td style="vertical-align: top;">
-						<div class="highlight">
-							how to properly use 'onReject'' and 'onCatch'.
-						</div>
+<div class="row row-1">
+	<div class="col col-1-1"></div>
+	<div class="col col-1-2">
+
+		<p class="important">
+			<b>Unhandled errors</b> inside executor, onResolve and onReject are handled by the 'Promise':<br>
+				- The callback the 'Promise' invokes depend on the configuration;<br>
+			- The parameter type of the callback will always be 'Error';
+		</p>
+
+		<p class="note">
+			(The exception is triggered using eval('notExistingFunction()'); rather than the more common 
+			throw new Error('a message'). This is simply to avoid using the word Error, which might otherwise 
+			give learners the impression that the error object passed to onReject or onCatch was created 
+			manually, rather than being naturally thrown by the engine.)
+			<!-- ----------------------------------------------------------------------------
+			The exception is deliberately triggered using eval('notExistingFunction()');  
+			rather than the common throw new Error('message'). This is done to ensure clarity and 
+			maintain a high-quality tutorial, preventing confusion and helping learners understand 
+			that the error object passed to onReject or onCatch is not manually created 
+			(by the developer's code), but internally thrown by the engine. 
+			-------------------------------------------------------------------------------- -->
+		</p>
+	</div>
+</div>
+
+
+
+</article>			
+
+<hr>			
+<!-- article 3 -->
+<article class="test-container">
+	
+	<div class="row row-1">
+		<div class="col col-1-1">3)</div>
+		<div class="col col-1-2">
+			<h3>Reject in the 'executor': <span>Caugth by then -> onReject </span></h3>
+		</div>
+	</div>
+
+	<div class="row row-4">
+		<div class="col col-4-1"></div>
+		<div class="col col-4-2">						
+			<button onclick="btnI42_onclick(this)" style="width: 80px;" aria-label="Run the test demonstrating the reject in the 'executor' is caught by the 'onReject'">GO</button>
+		</div>
+	<div class="col col-4-3">
+	<div class="superImportant">
+		how to properly use 'onReject'' and 'onCatch'.
+	</div>
 
 <pre class="ai" style="margin-top:0px;"><code>
 	<span class="keyword">function</span> <span class="function">executor</span>(<span class="variable">resolve</span>, <span class="variable">reject</span>) <span class="punctuation">{</span>
@@ -916,39 +1045,33 @@ Keywords: JavaScript asynchronous example, sync vs async, progress bar demo, dyn
 		<span class="punctuation">.</span><span class="function">then</span><span class="punctuation">(</span><span class="variable">onResolve</span><span class="punctuation">,</span> <span class="red">onReject</span><span class="punctuation">)</span>
 		<span class="punctuation">.</span><span class="function">catch</span><span class="punctuation">(</span><span class="variable">onCatch</span><span class="punctuation">)</span>
 		<span class="punctuation">.</span><span class="function">finally</span><span class="punctuation">(</span><span class="variable">onFinally</span><span class="punctuation">);</span>
-</code></pre>
-					</td>
-				</tr>	
+</code></pre>	
+		</div>
+	</div>
 
-				
-				<tr>	
-					<td class="number"></td>		
-					<td colspan="2" style="padding-top: 10px;">
-						<br>
-						<p class="important">
-							'Reject' may accept any value, but <b>'Promise' will pass an 'Error' when handling internal exceptions</b>.
-						</p>
-					
-						<p class="text">
-							A Promise can be circumvented — here are <b>two options</b>:
-						</p>
-					</td>
-				</tr>
-
-				<tr>	
-					<td></td>	
-					<td></td>	
-					<td style="padding-top: 10px;">					
-						<p class="text">
-							1) A Promise takes no action if exceptions are properly handled.
-						</p>
-					</td>
-				</tr>
-
-				<tr>	
-					<td class="number"></td>
-					<td></td>		
-					<td style="padding-top: 10px;">
+	<div class="row row-1">
+		<div class="col col-1-1"></div>
+		<div class="col col-1-2">
+			<p class="important">
+				'Reject' may accept any type, but <b>'Promise' will pass an 'Error' when handling internal exceptions</b>.
+			</p>
+		
+			<p class="text">
+				A Promise can be circumvented — here are <b>two options</b>:
+			</p>
+		</div>
+	</div>
+	
+	<div class="row row-4">
+		<div class="col col-4-1"></div>
+		<div class="col col-4-2">						
+			&nbsp;
+		</div>
+	<div class="col col-4-3">
+	<div class="">
+		<p class="text">
+			3.1) A Promise takes no action if exceptions are properly handled.
+		</p>
 <pre class="ai" style="margin-top:0px;"><code>
 	<span class="keyword">function</span> <span class="function">executor</span>(<span class="variable">resolve</span>, <span class="variable">reject</span>) <span class="punctuation">{</span>
 		<span class="keyword">try</span><span class="punctuation">{</span>
@@ -959,28 +1082,10 @@ Keywords: JavaScript asynchronous example, sync vs async, progress bar demo, dyn
 		<span class="punctuation">}</span>		
 	<span class="punctuation">}</span>	
 </code></pre>
-
-<!-- <span class="keyword">new</span> <span class="function">Promise</span><span class="punctuation">(</span><span class="variable">executor</span><span class="punctuation">)</span>
-<span class="punctuation">.</span><span class="function">then</span><span class="punctuation">(</span><span class="variable">onResolve</span><span class="punctuation">,</span> <span class="red">onReject</span><span class="punctuation">)</span>
-<span class="punctuation">.</span><span class="function">catch</span><span class="punctuation">(</span><span class="variable">onCatch</span><span class="punctuation">)</span>
-<span class="punctuation">.</span><span class="function">finally</span><span class="punctuation">(</span><span class="variable">onFinally</span><span class="punctuation">);</span> -->
-					
-</td>
-				</tr>
-				<tr>	
-					<td></td>	
-					<td></td>	
-					<td style="padding-top: 30px;">					
-						<p class="text">
-							2) Check the type of the parameter passed to 'reject'.
-						</p>
-					</td>
-				</tr>
-
-				<tr>	
-					<td class="number"></td>	
-					<td></td>	
-					<td style="padding-top: 10px;">
+<br>
+		<p class="text">
+			3.2) Check the type of the parameter passed to 'reject'.
+		</p>
 <pre class="ai" style="margin-top:0px;"><code>
 	<span class="keyword">function</span> <span class="function">reject</span>(<span class="variable">value</span>) <span class="punctuation">{</span>
 		<span class="comment">// - - D E P R E C A T E D  - - //</span>
@@ -992,46 +1097,42 @@ Keywords: JavaScript asynchronous example, sync vs async, progress bar demo, dyn
 		<span class="punctuation">}</span>
 	<span class="punctuation">}</span>
 </code></pre>
-<!-- <span class="keyword">new</span> <span class="function">Promise</span><span class="punctuation">(</span><span class="variable">executor</span><span class="punctuation">)</span>
-<span class="punctuation">.</span><span class="function">then</span><span class="punctuation">(</span><span class="variable">onResolve</span><span class="punctuation">,</span> <span class="red">onReject</span><span class="punctuation">)</span>
-<span class="punctuation">.</span><span class="function">catch</span><span class="punctuation">(</span><span class="variable">onCatch</span><span class="punctuation">)</span>
-<span class="punctuation">.</span><span class="function">finally</span><span class="punctuation">(</span><span class="variable">onFinally</span><span class="punctuation">);</span> -->
-					</td>
-				</tr>
-				<tr><td colspan="3"><hr></td></tr>	
-			</tbody>
+		
+	</div>
+</article>
 
+<hr>
 
-			<!-- row 4 -->
-			<tbody>
-				<tr>
-					<td class="number">4)</td>
-					<td colspan="2">
-						<h2>Exception in the 'executor' <span>Caugth by onCatch </span></h2>
-					</td>
-				</tr>
-				<tr>
-					<td></td>
-					<td colspan="2">
-						<p class="text" style="padding: 10px 0px 10px 0px;">
-							If the <b>promise.then</b> method is not given an <b>onReject</b> callback, any unhandled 
-							exception thrown in the <b>executor</b> will be passed to the <b>onCatch</b> callback provided to <b>catch</b>.
-						</p>
-						
-						<p class="text" style="padding: 10px 0px 10px 0px;">
-							The type of the parameter passed to '<b>onCatch</b>' follows the same behaviour as the '<b>onReject</b>' callback.
-						</p>
+<!-- article 4 -->
+<article class="test-container">
 
-					</td>
-				</tr>
+	<div class="row row-1">
+		<div class="col col-1-1">4)</div>
+		<div class="col col-1-2">
+			<h3>Exception in the 'executor' <span>Caugth by onCatch </span></h3>
+		</div>
+	</div>
 
-				<!-- In the event of an exception within the executor, 'Promise' will call either 'onReject' or 'onCatch', passing an error as a parameter -->
-				<tr>			
-					<td style="vertical-align: top;"></td>
-					<td style="vertical-align: top;width: 100px;">
-						<button onclick="btnI44_onclick(this)" style="width: 80px;">run</button>
-					</td>			
-					<td style="vertical-align: top;">
+	<div class="row row-1">
+		<div class="col col-1-1"></div>
+		<div class="col col-1-2">
+			<p class="text" style="padding: 10px 0px 10px 0px;">
+				If the <b>promise.then</b> method is not given an <b>onReject</b> callback, any unhandled 
+				exception thrown in the <b>executor</b> will be passed to the <b>onCatch</b> callback provided to <b>catch</b>.
+			</p>
+			
+			<p class="text" style="padding: 10px 0px 10px 0px;">
+				The type of the parameter passed to '<b>onCatch</b>' follows the same behaviour as the '<b>onReject</b>' callback.
+			</p>
+		</div>
+	</div>	
+
+	<div class="row row-4">
+		<div class="col col-4-1"></div>
+		<div class="col col-4-2">
+			<button onclick="btnI44_onclick(this)" style="width: 80px;" aria-label="Run the test demonstrating the exception in the 'executor' is caught by the 'onCatch'">GO</button>
+		</div>
+		<div class="col col-4-3">
 <pre class="ai" style="margin-top:0px;"><code>
 	<span class="keyword">function</span> <span class="function">executor</span>(<span class="variable">resolve</span>, <span class="variable">reject</span>) <span class="punctuation">{</span>
 		
@@ -1048,99 +1149,90 @@ Keywords: JavaScript asynchronous example, sync vs async, progress bar demo, dyn
 		<span class="punctuation">.</span><span class="function">catch</span><span class="punctuation">(</span><span class="red">onCatch</span><span class="punctuation">)</span>
 		<span class="punctuation">.</span><span class="function">finally</span><span class="punctuation">(</span><span class="variable">onFinally</span><span class="punctuation">);</span>
 </code></pre>
-					</td>
-				</tr>	
+		</div>
+	</div>
+</article>
 
-				
-				<tr>
-					<td></td>
-					<td colspan="2">
-						<p class="text">
-							The type of the parameter passed to <b>onCatch</b> follows the same behaviour as the <b>onReject</b> callback.
-						</p>
-					</td>
-				</tr>
+<hr>
 
-				<tr><td colspan="3"><hr></td></tr>			
-			</tbody>
+<!-- article 5 -->
+<article class="test-container">
+	<div class="row row-1">
+		<div class="col col-1-1">5)</div>
+		<div class="col col-1-2">
+			<h3>Exception in 'onResolve' <span>Caugth by onCatch </span></h3>
+		</div>
+	</div>
 
-			<!-- row 5 -->
-			<tbody>
-				<tr>
-					<td class="number">5)</td>
-					<td colspan="2">
-						<h2>Exception in 'onResolve' <span>Caugth by onCatch </span></h2>
-					</td>
-				</tr>
-				<tr>
-					<td></td>
-					<td colspan="2">
-						<p class="text">
-							In case of an exception, 'Promise' calls either 'onReject' or 'onCatch' (depending on configuration), 
-							passing an Error object. 
-						</p>
-						<p class="text" style="padding-top: 0px;margin-top:0px;">
-							This behaviour is fixed, so when calling 'reject' (inside the 'executor'), it’s crucial to pass an 
-							instance of 'Error' to avoid unexpected results.
-						</p>
-					</td>
-				</tr>
 
-				<!-- In the event of an exception within the executor, 'Promise' will call either 'onReject' or 'onCatch', passing an error as a parameter -->
-				<tr>			
-					<td style="vertical-align: top;"></td>
-					<td style="vertical-align: top;width: 100px;">
-						<button onclick="btnI44_onclick(this)" style="width: 80px;">run</button>
-					</td>			
-					<td style="vertical-align: top;">
+	<div class="row row-1">
+		<div class="col col-1-1"></div>
+		<div class="col col-1-2">
+			<p class="text">
+				In case of an exception, 'Promise' calls either 'onReject' or 'onCatch' (depending on configuration), 
+				passing an Error object. 
+			</p>
+			<p class="text" style="padding-top: 0px;margin-top:0px;">
+				This behaviour is fixed, so when calling 'reject' (inside the 'executor'), it’s crucial to pass an 
+				instance of 'Error' to avoid unexpected results.
+			</p>
+		</div>
+	</div>		
+
+	<div class="row row-4">
+		<div class="col col-4-1"></div>
+		<div class="col col-4-2">
+			<button onclick="btnI44_onclick(this)" style="width: 80px;"  aria-label="Run the test demonstrating the exception in 'onResolce' is caught by the 'onCatch'">GO</button>
+		</div>
+		<div class="col col-4-3">
 <pre class="ai" style="margin-top:0px;"><code>
 	<span class="keyword">function</span> <span class="function">executor</span>(<span class="variable">resolve</span>, <span class="variable">reject</span>) <span class="punctuation">{</span>
-		
-		<span class="comment">// Browser in debug-mode code waits here.</span>
-		<span class="keyword">debugger</span>;
-
-		<span class="comment">// 'Promise' will call '<span class="red">onCatch</span>' passing an error as a parameter</span>
-		<span class="function">eval</span>(<span class="string">'notExistingFunction()'</span>)<span class="punctuation">;</span>
+	
+	<span class="comment">// Browser in debug-mode code waits here.</span>
+	<span class="keyword">debugger</span>;
+	
+	<span class="comment">// 'Promise' will call '<span class="red">onCatch</span>' passing an error as a parameter</span>
+	<span class="function">eval</span>(<span class="string">'notExistingFunction()'</span>)<span class="punctuation">;</span>
 	<span class="punctuation">}</span>	
-
+	
 	<span class="keyword">new</span> <span class="function">Promise</span><span class="punctuation">(</span><span class="variable">executor</span><span class="punctuation">)</span>
-		<span class="comment">// In the absence of 'onReject', 'onCatch' will be called.</span>
-		<span class="punctuation">.</span><span class="function">then</span><span class="punctuation">(</span><span class="variable">onResolve</span><span class="punctuation">)</span> 
-		<span class="punctuation">.</span><span class="function">catch</span><span class="punctuation">(</span><span class="red">onCatch</span><span class="punctuation">)</span>
-		<span class="punctuation">.</span><span class="function">finally</span><span class="punctuation">(</span><span class="variable">onFinally</span><span class="punctuation">);</span>
-</code></pre>
-					</td>
-				</tr>	
+	<span class="comment">// In the absence of 'onReject', 'onCatch' will be called.</span>
+	<span class="punctuation">.</span><span class="function">then</span><span class="punctuation">(</span><span class="variable">onResolve</span><span class="punctuation">)</span> 
+	<span class="punctuation">.</span><span class="function">catch</span><span class="punctuation">(</span><span class="red">onCatch</span><span class="punctuation">)</span>
+	<span class="punctuation">.</span><span class="function">finally</span><span class="punctuation">(</span><span class="variable">onFinally</span><span class="punctuation">);</span>
+	</code></pre>
+		</div>
+	</div>	
 
-				<tr><td colspan="3"><hr></td></tr>			
-			</tbody>
+</article>
+
+<hr>
+
+<!-- article 6 -->
+<article class="test-container">
+	<div class="row row-1">
+		<div class="col col-1-1">6)</div>
+		<div class="col col-1-2">
+			<h3>Exception in 'onReject' <span>Caugth by onCatch </span></h3>
+		</div>
+	</div>
 
 
-			<!-- row 6 -->
-			 <tbody>
-				<tr>
-					<td class="number">6)</td>
-					<td colspan="2">
-						<h2>Exception in 'onReject' <span>Caugth by onCatch </span></h2>
-					</td>
-				</tr>
+	<div class="row row-1">
+		<div class="col col-1-1"></div>
+		<div class="col col-1-2">
+			<p class="text">
+				Every unhandled exception escalates until it reaches the 'onCatch' handler.
+			</p>
+		</div>
+	</div>	
 
-				
-				<tr>
-					<td></td>
-					<td colspan="2">
-						<p class="text">
-							<b>The message is</b>: Every unhandled exception escalates until it reaches the 'onCatch' handler.
-						</p>
-					</td>
-				</tr>
-			
-				<tr>
-					<td style="vertical-align: top;"></td>
-					<td style="vertical-align: top;width: 100px;">
-						<button onclick="btnI45_onclick(this)" style="width: 80px;">run</button>
-					</td>			
-					<td style="vertical-align: top;">
+	<div class="row row-4">
+		<div class="col col-4-1"></div>
+		<div class="col col-4-2">
+			<button onclick="btnI45_onclick(this)" style="width: 80px;" aria-label="Run the test demonstrating the exception in 'onReject' is caught by the 'onCatch'">GO</button>
+		</div>
+		<div class="col col-4-3">
 <pre class="ai" style="margin-top:0px;"><code>
 	<span class="keyword">function</span> <span class="function">executor</span>(<span class="variable">resolve</span>, <span class="variable">reject</span>) <span class="punctuation">{</span>
 		
@@ -1165,42 +1257,46 @@ Keywords: JavaScript asynchronous example, sync vs async, progress bar demo, dyn
 		<span class="punctuation">.</span><span class="function">catch</span><span class="punctuation">(</span><span class="variable">onCatch</span><span class="punctuation">)</span>
 		<span class="punctuation">.</span><span class="function">finally</span><span class="punctuation">(</span><span class="variable">onFinally</span><span class="punctuation">);</span>
 </code></pre>
-					</td>
-				</tr>			
-				
-				<tr><td colspan="3"><hr></td></tr>	
-			</tbody>
+		</div>
+	</div>	
+
+</article>
+
+<hr>
+
+<!-- article 7 --> 
+<article class="test-container">
+
+	<div class="row row-1">
+		<div class="col col-1-1">7)</div>
+		<div class="col col-1-2">
+			<h3>Exception in 'onCatch' <span>is silent.</span></h3>
+		</div>
+	</div>
+
+
+	<div class="row row-1">
+		<div class="col col-1-1"></div>
+		<div class="col col-1-2">
+			<p class="important">
+				Every exception escalates except the one 
+				inside the 'onCatch' which remains 'silent'.
+			</p>
 			
-			<!-- test 7 --> 
-			 <tbody>			 			
-				<tr>
-					<td class="number">7)</td>
-					<td colspan="2">
-						<h2>Exception in 'onCatch' <span>Silent.</span></h2>
-					</td>
-				</tr>
+			<p class="text">
+				<b>This means</b> that the only point where a 'try/catch' block could be beneficial is inside the 'onCatch' handler.
+			</p>
+		</div>
+	</div>	
 
-				
-				<tr>
-					<td></td>
-					<td colspan="2">
-						<p class="text">
-							The session is a bit long, so here’s <b>the message</b>: Every exception escalates except the one 
-							inside the 'onCatch' which remains 'silent'.
-						</p>
-						
-						<p class="text">
-							<b>This means</b> that the only point where a 'try/catch' block could be beneficial is inside the 'onCatch' handler.
-						</p>
-					</td>
-				</tr>
+	
 
-				<tr>
-					<td style="vertical-align: top;"></td>
-					<td style="vertical-align: top;width: 100px;">
-						<button onclick="btnI46_onclick(this)" style="width: 80px;">run</button>
-					</td>			
-					<td style="vertical-align: top;">
+	<div class="row row-4">
+		<div class="col col-4-1"></div>
+		<div class="col col-4-2">
+			<button onclick="btnI46_onclick(this)" style="width: 80px;" aria-label="Run the test demonstrating the exception in 'onCatch' is silent (the js engine choose to contine instead of crashing the app)">GO</button>
+		</div>
+		<div class="col col-4-3">
 <pre class="ai" style="margin-top:0px;"><code>
 	<span class="comment">// Promise catches all exceptions except those in onCatch and onFinally</span>
 	<span class="keyword">function</span> <span class="function">executor</span>(<span class="variable">resolve</span>, <span class="variable">reject</span>) <span class="punctuation">{</span>
@@ -1248,96 +1344,46 @@ Keywords: JavaScript asynchronous example, sync vs async, progress bar demo, dyn
 		<span class="punctuation">.</span><span class="function">catch</span><span class="punctuation">(</span><span class="variable">_onCatch</span><span class="punctuation">)</span>
 		<span class="punctuation">.</span><span class="function">finally</span><span class="punctuation">(</span><span class="variable">_onFinally</span><span class="punctuation">);</span>
 </code></pre>
-					</td>
-				</tr>
-				
-			 </tbody>
+		</div>
+	</div>	
+</article>
+
+<hr>
+<hr>
 			
-			 <tbody>
-				
-				<!-- <tr><td colspan="3">&nbsp;</td></tr>	 -->
-				<tr><td colspan="3"><hr></td></tr>	
-				<tr>
-					<td></td>
-					<td colspan="2">
-						<p class="text">
-							<b>About the exceptions, the messages are</b>:
-						</p>
-						<p class="important">
-							Unhandled exceptions in the 'executor' are escalated to 'onReject' or, if absent, to 'onCatch'.
-						</p>
-						<p class="important">
-							Unhandled exceptions in 'onResolve' or 
-							'onReject' are escalated by 'Promise' to 'onCatch'.
-						</p>
-						<p class="important">
-							When the exception is handled by the 'Promise', the parameter passed to the callback is of type 'Error'.							
-						</p>
-						<p class="important">
-							Unhandled exceptions in 'onCatch' are silent.
-						</p>
-					</td>
-				</tr>
-				<!-- <tr><td colspan="3">&nbsp;</td></tr>	 -->
-				
-			</tbody>
-		</table>
+<!-- article summary --> 
+<article class="test-container">
+
+	<div class="row row-1">
+		<div class="col col-1-1"></div>
+		<div class="col col-1-2">
+			<h3>Summary:</h3>
+		</div>
+	</div>
+
+
+	<div class="row row-1">
+		<div class="col col-1-1"></div>
+		<div class="col col-1-2">
+			<p class="important">
+				Unhandled exceptions in the 'executor' are escalated to 'onReject' or, if absent, to 'onCatch'.
+			</p>
+			<p class="important">
+				Unhandled exceptions in 'onResolve' or 
+				'onReject' are escalated by 'Promise' to 'onCatch'.
+			</p>
+			<p class="important">
+				When the exception is handled by the 'Promise', the parameter passed to the callback is of type 'Error'.							
+			</p>
+			<p class="important">
+				Unhandled exceptions in 'onCatch' are silent.
+			</p>
+		</div>
+	</div>	
+</article>
+		
 
 	</section>
-
-	<!-- Intro 5 -->
-	<!-- <section>
-		<legend>
-			<span class="underline">
-				<span class="SectionLabel">Intro 5:</span>&nbsp;
-				<span class="SectionTitle"> Asynchronous without promise:&nbsp;</span>
-				<span class="SectionSubTitle">(the vintage way)</span>
-			</span>
-		</legend>
-
-		<p class="text">
-			When working with a single asynchronous operation, using a Promise is one option.
-		</p>
-		<p class="text">
-			If you're comfortable with callback programming, you can structure the '<b>executor</b>' 
-			functions like this, and the functionality will be the same.
-		</p>
-<pre class="ai"><code>
-		<span class="comment">// Promise-Free ASynchronous Function Implementation.</span>
-		<span class="keyword">function</span> <span class="red">executor</span><span class="punctuation">()</span> <span class="punctuation">{</span>
-			<span class="keyword">try</span> <span class="punctuation">{</span>	
-				<span class="keyword">setTimeout</span>(<span class="punctuation">()</span> <span class="punctuation">=&gt;</span> <span class="punctuation">{</span>			
-					<span class="comment">// ------------------------------------- //</span>
-					<span class="comment">// do something ASynchronous (or not)</span>
-			
-					<span class="keyword">if</span> (<span class="variable">elaborationSucceeded</span>) <span class="punctuation">{</span>
-						<span class="variable">onResolve</span>(<span class="variable">anyParameterYouWant</span>);
-					<span class="keyword">}</span>
-					<span class="keyword">else</span> <span class="punctuation">{</span>
-						<span class="variable">onReject</span>(<span class="keyword">new</span> <span class="function">Error</span>(<span class="string">'any message'</span>));
-					<span class="punctuation">}</span>			
-					<span class="comment">// ------------------------------------- //</span>
-				<span class="punctuation">},</span> <span class="variable">asyncDelay</span><span class="punctuation">);</span>
-			<span class="punctuation">}</span>
-			<span class="keyword">catch</span>(<span class="variable">jse</span>) <span class="punctuation">{</span>
-				<span class="variable">onCatch</span>(<span class="variable">jse</span>);
-			<span class="punctuation">}</span>
-			<span class="keyword">finally</span> <span class="punctuation">{</span>
-				<span class="variable">onFinally</span>(<span class="punctuation">)</span>;
-			<span class="punctuation">}</span>
-		<span class="punctuation">}</span>
-</code></pre>
-
-<p class="text">
-	This indicates that for a 
-	single ASynchronous function, using a Promise adds 
-	unnecessary complexity. 
-</p>
-
-		<p class="text">
-			The situation radically changes when dealing with multiple ASynchronous operations.
-		</p>
-	</section> -->
 
 	<!--Note  -->
 	<section style="border: solid 0px #ccc;background-color:transparent;box-shadow: none;">
@@ -1387,24 +1433,20 @@ Keywords: JavaScript asynchronous example, sync vs async, progress bar demo, dyn
 	
 	<!--Aside 1  -->
 	<aside style="background-color: #F0F0F5;">
-		<legend>
+		<h2>
 			<span class="underline">
 				<span class="SectionLabel">Widget 1A:</span>&nbsp;
 				<span class="SectionTitle">ProgressBar</span>
 				<span class="SectionSubTitle">how it works.</span>
 			</span>
-		</legend>
+		</h2>
 		<br>
-		<style>
-			table.XXXWX td{
-				border: solid 1px red;
-			}
-		</style>				
+			
 		<p class="text">
 			The '<b>ProgressBar</b>'
 		</p>
 
-		<table class="XXXX" style="width:100%;">
+		<table style="width:100%;">
 			<tr>	
 				<td id="tdR1AC2" style="text-align:center;">
 					<!-- ProgressBar placeholder -->
@@ -1415,7 +1457,7 @@ Keywords: JavaScript asynchronous example, sync vs async, progress bar demo, dyn
 		<p class="text">
 			The progressBar is a tool to make visible the progression of an ASynchronous process.
 		</p>
-		<table class="XXXX" style="width:100%;">
+		<table  style="width:100%;">
 			<tr>	
 				<td id="tdR1AC1" class="btnsContainer" style="vertical-align:middle;height:30px;">
 					<div style="text-align: center; margin-top:20px; margin-bottom:15px;">
@@ -1492,12 +1534,11 @@ Keywords: JavaScript asynchronous example, sync vs async, progress bar demo, dyn
 
 			<tr>
 				<td class="space"></td>
-				<td>Resolved</td>
+				<td>1) Resolved</td>
 				<td class="space"></td>
-				<td colspan="5" style="text-align:center;">Rejected</td>
+				<td colspan="5" style="text-align:center;">2) Rejected</td>
 			</tr>
 		</table>
-
 
 	</aside>
 	
@@ -1507,17 +1548,17 @@ Keywords: JavaScript asynchronous example, sync vs async, progress bar demo, dyn
 			Once received a message ('resolve' xOr 'reject'), the 'Promise' is ready to call the methods listed at the introduction. 
 			'<b>PromiseGUI</b>' is the tool used by this page to give a graphical representation of the action taken by the 'Promise'.
 		</p>
-	</aside>		
+	</aside>	
 	
 	<!--Section 1B  -->
 	<aside style="background-color: #F0F0F5;">
-		<legend>
+		<h2>
 			<span class="underline">
 				<span class="SectionLabel">Widget 1B:</span>&nbsp;
 				<span class="SectionTitle">PromiseGUI</span>
 				<span class="SectionSubTitle">how it works.</span>
 			</span>
-		</legend>					
+		</h2>					
 		
 
 		<table id="tdR1B" class="demo" align="center"  style="width:60px;">
@@ -1560,17 +1601,25 @@ Keywords: JavaScript asynchronous example, sync vs async, progress bar demo, dyn
 		<br>
 	</aside>
 
+		
+	<section style="border: solid 0px #ccc;background-color:transparent;box-shadow: none;">
+		<p class="superImportant">
+			<b>Please note</b>: the sole purpose of these two 'objects' (ProgressBar and PromiseGUI) is 
+			to provide the necessary functions for the 'Promise'. They neither use nor return a 
+			'promise'. The code for them is in '<b>ProgressBar.js</b>' and '<b>PromiseGUI.js</b>'.
+		</p>
+	</section>
 	
 	<!-- PromiseDIY 3  -->
 	<!-- <section style="border: solid 0px #ccc;background-color:transparent;box-shadow: none;"> -->
 	<aside style="background-color: #F0F0F5;">
-		<legend>
+		<h2>
 			<span class="underline">
 				<span class="SectionLabel">Snippet 1A:</span>&nbsp;
 				<span class="SectionTitle"> Promise DIY</span>				
 				<span class="SectionSubTitle">A minimal DIY-style Promise.</span>
 			</span>
-		</legend>
+		</h2>
 		
 		<p class="text">
 			Have you ever wondered <b>how a 'Promise' works internally?</b>
@@ -1659,18 +1708,16 @@ Keywords: JavaScript asynchronous example, sync vs async, progress bar demo, dyn
 
 
 	</aside>
-
-	
 	
 	<!--Section 1A  -->	
 	<section>
-		<legend>
+		<h2>
 			<span class="underline">
 				<span class="SectionLabel">Section 1A:</span>&nbsp;
 				<span class="SectionTitle">'Promise'</span>
 				<span class="SectionSubTitle">Why this name?</span>
 			</span>
-		</legend>
+		</h2>
 
 		<br>
 		<table border="0"  style="width: 100%;border:solid 0px transparent;">
@@ -1829,19 +1876,16 @@ Keywords: JavaScript asynchronous example, sync vs async, progress bar demo, dyn
 
 	</section>
 	
-
-		
-	
 	<!--Section 1B  -->	
 	
 	<section>
-		<legend>
+		<h2>
 			<span class="underline">
 				<span class="SectionLabel">Section 1B:</span>&nbsp;
 				<span class="SectionTitle">No 'Promise'</span>
 				<span class="SectionSubTitle">(Back to the Callback Age)</span>
 			</span>
-		</legend>
+		</h2>
 	
 		<br>
 	
@@ -1865,7 +1909,7 @@ Keywords: JavaScript asynchronous example, sync vs async, progress bar demo, dyn
 	</code></pre>	
 	
 	<p class="text">
-		It works exactly as 'Promise' does.  <span class="note">(To be fair, things worked just as well before 'Promise' came along.)</span>
+		It works exactly as 'Promise' does.  <span class="note">(To be fair, things work just as well with 'Promise' as they did before it came along.)</span>
 	</p>
 
 	
@@ -1884,7 +1928,7 @@ Keywords: JavaScript asynchronous example, sync vs async, progress bar demo, dyn
 		Handling a single async function using 'Promise' is a choice—between formalism and simplicity.
 	</p>
 	
-	<p class="highlight">
+	<p class="superImportant">
 		With more than one async functions, using 'Promise' becomes <b>a must</b> to avoid <b>callback hell</b>.
 	</p>
 
@@ -1897,20 +1941,20 @@ Keywords: JavaScript asynchronous example, sync vs async, progress bar demo, dyn
 	
 	<!--Note  -->
 	<section style="border: solid 0px #ccc;background-color:transparent;box-shadow: none;">
-		<p class="MIB text">
+		<p class="MenInBlackEmoji text">
 			 Now it's time to put things together...<span class="note">(When the going gets tough, the tough get going.)</span>
 		</p>
 	</section>	
 
 	<!--Section 1C  -->
 	<section>
-		<legend>
+		<h2>
 			<span class="underline">
 				<span class="SectionLabel">Section 1C:</span>&nbsp;
 				<span class="SectionTitle">Callback hell</span>
 				<span class="SectionSubTitle">Getting used to multiple async flows</span>
 			</span>
-		</legend>
+		</h2>
 
 		<p class="text">
 			Keep the browser in debug-mode and click the button, the code will be displayed automatically
@@ -1927,20 +1971,40 @@ Keywords: JavaScript asynchronous example, sync vs async, progress bar demo, dyn
 				</td>
 			</tr>
 		</table>
-		<p class="note">
-			(In this section, the processes are entirely independent: it is designed solely to help familiarize you with multiple Promises.)
-		</p>	
+<br>
+	<p class="text">
+		Callback hell' illustrated: 3 nested async processes, each reliant on the previous one's result.
+	</p>	
+<pre class="ai"><code>
+	<span class="comment">// And here it is—callback hell.</span>
+	<span class="variable">pb1</span>.<span class="function">executor</span>(
+		<span class="punctuation">()</span> <span class="operator">=&gt;</span> <span class="punctuation">{</span>
+		<span class="opaque">pgui1.onResolve()</span>   
+		<span class="variable">pb2</span>.<span class="function">executor</span>(<span class="punctuation">()</span> <span class="operator">=&gt;</span> <span class="punctuation">{</span>
+			<span class="opaque">pgui2.onResolve()</span>   
+			<span class="variable">pb3</span>.<span class="function">executor</span>(<span class="variable">pgui3</span>.<span class="function">onResolve</span>, <span class="variable">pgui3</span>.<span class="function">onReject</span>)
+		<span class="punctuation">}</span>, <span class="variable">pgui2</span>.<span class="function">onReject</span>)
+	<span class="punctuation">}</span>, <span class="variable">pgui1</span>.<span class="function">onReject</span><span class="punctuation">);</span>
+</code></pre>
+			
+	<p class="note">
+		(Have a look in your browser's debug mode and you can follow the code's flow live.)
+	</p>	
 	</section>
+
+	<p class="note">
+		(In this section, the processes are entirely independent: it is designed solely to help familiarize you with multiple Promises.)
+	</p>	
 
 	<!--Section 1D  -->
 	<section>
-		<legend>
+		<h2>
 			<span class="underline">
 				<span class="SectionLabel">Section 1D:</span>&nbsp;
 				<span class="SectionTitle">'Chaining'</span>
 				<span class="SectionSubTitle">a step in the right direction</span>
 			</span>
-		</legend>
+		</h2>
 
 		<table>
 		
@@ -1954,8 +2018,8 @@ Keywords: JavaScript asynchronous example, sync vs async, progress bar demo, dyn
 		
 			<tr>
 				<td class="btnsContainer" > 
-					<button onclick="btnS1D0_onclick(this)">GO</button>
-					<button onclick="btnS1D1_onclick(this)">GO</button>
+					<!-- <button onclick="btnS1D0_onclick(this)">GO</button><br> -->
+					<button onclick="btnS1D1_onclick(this)">GO</button><br>
 					<button onclick="btnS1D2_onclick(this)">GO</button>
 				</td>
 				<td class="pbsContainer" id="tdS1D"> 					
@@ -1972,56 +2036,54 @@ Keywords: JavaScript asynchronous example, sync vs async, progress bar demo, dyn
 
 	</section>
 
+	<section>
+		<h2>
+			<span class="underline">
+				<span class="SectionLabel">Section 1E:</span>&nbsp;
+				<span class="SectionTitle">'Promise'</span>
+				<span class="SectionSubTitle"><span class="blue">async</span>/<span class="blue">await</span> version.
+			</span>
+		</h2>
 
+		<table>
+		
+			<tr>
+				<td class="msgContainer" colspan="3"> 
+					<p class="text">
+						Again, a 'Promise' in the easiest way. This time fully configured against exception: <b>practically unstoppable</b>.
+					</p>
+				</td>
+			</tr>
+		
+			<tr>
+				<td class="btnsContainer" > 
+					<button onclick="btnS1E3_onclick(this)">GO</button>
+				</td>
+				<td class="pbsContainer" id="tdS1E"> 					
+					<div class="scroll" >
+						<table class="demo"cellspacing="0"></table>
+					</div>				
+				</td>
+				<td class="msgContainer"> 
 
-<section>
-	<legend>
-		<span class="underline">
-			<span class="SectionLabel">Section 1E:</span>&nbsp;
-			<span class="SectionTitle">'Promise'</span>
-			<span class="SectionSubTitle"><span class="blue">async</span>/<span class="blue">await</span> version.
-		</span>
-	</legend>
+				</td>							
+				
+			</tr>
+		</table>
 
-	<table>
-	
-		<tr>
-			<td class="msgContainer" colspan="3"> 
-				<p class="text">
-					Again, a 'Promise' in the easiest way. This time fully configured against exception: <b>practically unstoppable</b>.
-				</p>
-			</td>
-		</tr>
-	
-		<tr>
-			<td class="btnsContainer" > 
-				<button onclick="btnS1E3_onclick(this)">GO</button>
-			</td>
-			<td class="pbsContainer" id="tdS1E"> 					
-				<div class="scroll" >
-					<table class="demo"cellspacing="0"></table>
-				</div>				
-			</td>
-			<td class="msgContainer"> 
-
-			</td>							
-			
-		</tr>
-	</table>
-
-</section>
+	</section>
 
 
 	<!--Section 3B  -->xxxxxxxxxxxxx
 	<section>
-		<legend>
+		<h2>
 			<span class="underline">
 				<span class="SectionLabel">Section 3B:</span>&nbsp;
 				<span class="SectionTitle">'Promise'</span>
 				<span class="SectionSubTitle"><span class="blue">async</span>/<span class="blue">await</span> version.
 			</span>
 
-		</legend>
+		</h2>
 
 		<table>
 		
@@ -2053,7 +2115,7 @@ Keywords: JavaScript asynchronous example, sync vs async, progress bar demo, dyn
 
 	<!--Note  -->	
 	<section style="border: solid 0px #ccc;background-color:transparent;box-shadow: none;">
-		<!-- <legend>Note</legend>-->
+		<!-- <h2>Note</h2>-->
 			<p class="text">
 				Now it's Time to make 'Promise' shine.
 			</p>	 
@@ -2070,13 +2132,13 @@ Keywords: JavaScript asynchronous example, sync vs async, progress bar demo, dyn
 			
 	<!--Section 4A  -->
 	<section style="min-height:70px;">
-		<legend>
+		<h2>
 			<span class="underline">
 				<span class="SectionLabel">Section 4A:</span>&nbsp;
 				<span class="SectionTitle">'Promise.all'</span>
 				<!-- <span class="SectionSubTitle"></span> -->
 			</span>
-		</legend>
+		</h2>
 
 		<table border="0" >	
 				
@@ -2131,7 +2193,7 @@ Keywords: JavaScript asynchronous example, sync vs async, progress bar demo, dyn
 	
 	<!--Note  -->	
 	<section style="border: solid 0px #ccc;background-color:transparent;box-shadow: none;">
-		<legend>Note</legend>
+		<h2>Note</h2>
 			<p class="text">
 				When a 'ProgressBar' fails, only the associate 'PromiseGUI' shows the right state (become red) all the other 'PromiseGUI' remains in the pending state (dimmed).			
 			</p>	
@@ -2140,16 +2202,16 @@ Keywords: JavaScript asynchronous example, sync vs async, progress bar demo, dyn
 		
 	<!--Section 4A Bis  -->
 	<section style="min-height:70px;">
-		<legend>
+		<h2>
 			<span class="underline">
 				<span class="SectionLabel">Section 4A Bis:</span>&nbsp;
 				<span class="SectionTitle">'Promise.all'</span>
 				<span class="SectionSubTitle">(extended).</span>
 			</span>
-		</legend>
-		<!-- <legend>
+		</h2>
+		<!-- <h2>
 			<span class="SectionLabel">Section 4A Bis: </span> <span class="SectionTitle"> Promise.all<span style="font-weight:normal;"> (extended).</span></span>
-		</legend> -->
+		</h2> -->
 		<table border="0" style="width:100%;">
 		
 				
@@ -2191,13 +2253,13 @@ Keywords: JavaScript asynchronous example, sync vs async, progress bar demo, dyn
 		
 	<!--Section 4B  -->
 	<section style="min-height:70px;">
-		<legend>
+		<h2>
 			<span class="underline">
 				<span class="SectionLabel">Section 4B:</span>&nbsp;
 				<span class="SectionTitle">'Promise.allSettled'</span>
 				<!-- <span class="SectionSubTitle">(extended).</span> -->
 			</span>
-		</legend>
+		</h2>
 
 		<table border="0" >
 		
@@ -2243,14 +2305,14 @@ Keywords: JavaScript asynchronous example, sync vs async, progress bar demo, dyn
 		
 	<!--Section 4C  -->
 	<section style="min-height:70px;">
-		<legend>
+		<h2>
 			<span class="underline">
 				<span class="SectionLabel">Section 4C:</span>&nbsp;
 				<span class="SectionTitle">'Promise.race'</span>
 				<!-- <span class="SectionSubTitle">(extended).</span> -->
 			</span>
-		</legend>
-		<!-- <legend><span class="SectionLabel">Section 4C: </span> <span class="SectionTitle"> Promise.race</span></legend> -->
+		</h2>
+		<!-- <h2><span class="SectionLabel">Section 4C: </span> <span class="SectionTitle"> Promise.race</span></h2> -->
 		<table border="0" >
 
 			<tr>
@@ -2286,16 +2348,16 @@ Keywords: JavaScript asynchronous example, sync vs async, progress bar demo, dyn
 		
 	<!--Section 4D  -->
 	<section style="min-height:70px;">
-		<legend>
+		<h2>
 			<span class="underline">
 				<span class="SectionLabel">Section 4D:</span>&nbsp;
 				<span class="SectionTitle">'Promise.any'</span>
 				<!-- <span class="SectionSubTitle">(extended).</span> -->
 			</span>
-		</legend>
-		<!-- <legend>
+		</h2>
+		<!-- <h2>
 			<span class="SectionLabel">Section 4D: </span> <span class="SectionTitle"> Promise.any<span style="font-weight:normal;">.</span></span>
-		</legend> -->
+		</h2> -->
 		<table border="0" >
 		
 				
@@ -2354,16 +2416,16 @@ Keywords: JavaScript asynchronous example, sync vs async, progress bar demo, dyn
 	
 	<!--Section 4D Bis  -->
 	<section style="min-height:70px;">
-		<legend>
+		<h2>
 			<span class="underline">
 				<span class="SectionLabel">Section 4D Bis:</span>&nbsp;
 				<span class="SectionTitle">'Promise.any'</span>
 				<span class="SectionSubTitle">(extended).</span>
 			</span>
-		</legend>
-		<!-- <legend>
+		</h2>
+		<!-- <h2>
 			<span class="SectionLabel">Section 4D Bis <span><span class="SectionTitle">Promise.any<span style="font-weight:normal;"> (extended).</span></span>
-		</legend> -->
+		</h2> -->
 		<table border="0" style="width:100%;">
 		
 				
@@ -2400,16 +2462,15 @@ Keywords: JavaScript asynchronous example, sync vs async, progress bar demo, dyn
 			
 		</table>
 	</section>
-	
 		
 	<!--Section 5A  -->
 	<!-- <section style="min-height:230px;">
-		<legend>
+		<h2>
 			<span class="underline">
 				<span class="SectionLabel">Section 5A Bis:</span>&nbsp;
 				<span class="SectionTitle">'Promise' synchronous</span>
 			</span>
-		</legend>
+		</h2>
 		<table border="0" >
 		
 		
@@ -2446,7 +2507,7 @@ Keywords: JavaScript asynchronous example, sync vs async, progress bar demo, dyn
 		
 	<!--Note  -->
 	<section style="border: solid 0px #ccc;background-color:transparent;box-shadow: none;">
-		<legend>Note</legend>
+		<h2>Note</h2>
 			<p class="text">
 				Now some, more in-depth, consideration regarding:<br/>
 				1) <b>concurrency</b><br/>
@@ -2466,17 +2527,17 @@ Keywords: JavaScript asynchronous example, sync vs async, progress bar demo, dyn
 
 
 	<section style="min-height:170px;">
-		<legend>
+		<h2>
 			<span class="underline">
 				<span class="SectionLabel">Section 6A:</span>&nbsp;
 				<span class="SectionTitle">Single threads</span>
 				<span class="SectionSubTitle">(a demonstration.).</span>
 			</span>
-		</legend>
-		<!-- <legend>
+		</h2>
+		<!-- <h2>
 			<span class="SectionLabel">Section 6A:</span><span class="SectionTitle">Single thread<span style="font-weight:normal;"> a demonstration.</span></span>		
 		
-		</legend> -->
+		</h2> -->
 				
 			<table border="0" >
 		
@@ -2545,16 +2606,16 @@ Keywords: JavaScript asynchronous example, sync vs async, progress bar demo, dyn
 	
 	
 	<section style="min-height:170px;">
-		<legend>
+		<h2>
 			<span class="underline">
 				<span class="SectionLabel">Section 6B:</span>&nbsp;
 				<span class="SectionTitle">ProgressBar</span>
 				<span class="SectionSubTitle">(Synchronous/Asynchronous).</span>
 			</span>
-		</legend>
-		<!-- <legend>
+		</h2>
+		<!-- <h2>
 			<span class="SectionLabel">Section 6B: </span><span class="SectionTitle">ProgressBar<span style="font-weight:normal;"> Synchronous/Asynchronous.</span></span>				
-		</legend> -->
+		</h2> -->
 		<table border="0" >
 		
 			<tr>
@@ -2600,17 +2661,17 @@ Keywords: JavaScript asynchronous example, sync vs async, progress bar demo, dyn
 	
 
 	<section style="min-height:170px;">
-		<legend>
+		<h2>
 			<span class="underline">
 				<span class="SectionLabel">Section 7A:</span>&nbsp;
 				<span class="SectionTitle">Promise.then</span>
 				<span class="SectionSubTitle">(Synchronous/Asynchronous).</span>
 			</span>
-		</legend>
-		<!-- <legend>
+		</h2>
+		<!-- <h2>
 			<span class="SectionLabel">Section 7A: </span> <span class="SectionTitle">Promise.then<span style="font-weight:normal;"> Synchronous/Asynchronous.</span></span>		
 		
-		</legend> -->
+		</h2> -->
 		<table border="0" >
 		
 		
@@ -2641,7 +2702,7 @@ Keywords: JavaScript asynchronous example, sync vs async, progress bar demo, dyn
 	
 
 	<section >
-		<legend>Note</legend>
+		<h2>Note</h2>
 			<p class="important">				
 				Configuring a 'Master-Promise' is a 3 steps process.
 			</p>
@@ -2678,9 +2739,9 @@ Keywords: JavaScript asynchronous example, sync vs async, progress bar demo, dyn
 		
 	<!--Section 7B  -->
 	<section style="min-height:70px;">
-		<legend>
+		<h2>
 			<span class="SectionLabel">Section 7B: </span> <span class="SectionTitle">Promise.all <span style="font-weight:normal;">three steps.</span></span>
-		</legend>
+		</h2>
 		<table border="0" >		
 			<tr>
 				<td class="msgContainer" id="msgContainer1" colspan="3"> 
@@ -2711,9 +2772,9 @@ Keywords: JavaScript asynchronous example, sync vs async, progress bar demo, dyn
 	
 	<!--Section 7C  -->
 	<section style="min-height:70px;">
-		<legend>
+		<h2>
 			<span class="SectionLabel">Section 7C:</span> <span class="SectionTitle">Promise.race <span style="font-weight:normal;">three steps.</span></span>
-		</legend>
+		</h2>
 		<table border="0" >		
 			<tr>
 				<td class="msgContainer" id="msgContainer1" colspan="3"> 
@@ -2742,9 +2803,9 @@ Keywords: JavaScript asynchronous example, sync vs async, progress bar demo, dyn
 	</section>
 
 	<section >
-		<legend>
+		<h2>
 			<span class="SectionLabel">Section 7D: </span> <span class="SectionTitle">setTimeout</span>			
-		</legend>
+		</h2>
 		
 		<table border="0" >		
 			<tr>
@@ -2784,11 +2845,11 @@ Keywords: JavaScript asynchronous example, sync vs async, progress bar demo, dyn
 	</section>	
 
 	<aside style="background-color: #F0F0F5;">
-		<legend>
+		<h2>
 			<span class="SectionLabel">Extra: </span> 
 			<span class="SectionTitle">Console.js</span>
 			<span style="font-weight:normal;">Adds styles to messages</span>
-		</legend>
+		</h2>
 		<p class="text">
 			'<b>Console.js</b>': a library that provides a simple way to log messages to the console.
 		</p>
@@ -2810,11 +2871,11 @@ Keywords: JavaScript asynchronous example, sync vs async, progress bar demo, dyn
 	</aside>
 	
 	<aside style="background-color: #F0F0F5;">
-		<legend>
+		<h2>
 			<span class="SectionLabel">Extra: </span> 
 			<span class="SectionTitle">The Workbench</span>
 			<span style="font-weight:normal;">Rubik's cube tutorial + solver</span>
-		</legend>
+		</h2>
 
 		<p class="text">
 			A truly new easier approach to the rubikscube. <i>(Solves the cube with just one algorithm: the 'Sledgehammer'.)</i>

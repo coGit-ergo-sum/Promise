@@ -50,7 +50,7 @@
         let onReject3 = () => pgui3.onReject();
 
         // This is the inception point -----------
-        pb1.executor(onResolve1, pgui1.onReject)
+        pb1.executor(onResolve1, pgui1.onReject);
         // ---------------------------------------
 
 	}
@@ -63,7 +63,7 @@
 
         debugger;
 
-        // this is the 'callback hell'
+        // And here it is—callback hell.
         pb1.executor(
             () => {
             pgui1.onResolve()   

@@ -11,7 +11,7 @@ body {
 }
 
 /* Titolo della pagina */
-h1, h3 {
+h1 {
     color: #2c3e50;
     text-align: center;
     margin-bottom: 20px;
@@ -23,7 +23,7 @@ section, aside {
     /* border: none; */
     border: solid 1px #ccc;
     margin: 20px auto;
-    padding: 20px;
+    padding: 15px 20px 25px 20px;
     background: #fff;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     border-radius: 8px;
@@ -31,34 +31,36 @@ section, aside {
 }
 
 /* Etichetta di sezione */
-/* legend {
-    font-size: 1.5em;
+h2 {
+    font-size: 1.3em;
     color: #34495e;
-    padding: 0 10px;
+    padding-top: 0px;
+    padding-bottom: 10px;
     font-weight: bold;
-    border-bottom: 2px solid #e67e22;
-    margin-bottom: 10px;
-} */
+    /* border-bottom: 2px solid #e67e22; */
+    margin-bottom: 0px;
+    margin-top: 0px;
+}
 
-legend span.underline {
+h2 span.underline {
     border-bottom: 2px solid #e67e22;
     margin-bottom: 10px;
     color: #34495e;    
 }
-legend span.SectionLabel{
+h2 span.SectionLabel{
     font-weight:normal;
     padding-right:0px;
     font-size: 1.1em;
     opacity: 0.6;
 }
 
-legend span.SectionTitle{
+h2 span.SectionTitle{
     font-weight:bold;
     padding-right:0px;
     font-size: 1.5em;
 }
 
-legend span.SectionSubTitle{
+h2 span.SectionSubTitle{
     font-weight:normal;
     font-size: 1.1em;
     padding-right:0px;
@@ -73,13 +75,13 @@ legend span.SectionSubTitle{
     text-indent: 10px;    
 }
 
-.important, .highlight, .text {
+.important, .superImportant, .text {
     text-align: justify;
     font-size: 0.95em;
     text-indent: 10px;
 }
 
-.important, .highlight {
+.important, .superImportant {
     background-color: rgba(200, 200, 200, 0.2);
     opacity: 1;
     border: solid 1px #c4c7c8;
@@ -103,7 +105,7 @@ legend span.SectionSubTitle{
     background-color: rgba(200, 200, 200, 0.2);
     z-index: 1;
 } */
-.highlight {
+.superImportant {
     background-color: #f0e22054;
     border-left: 5px solid #f0e220c2;
     /* padding: 12px 16px;
@@ -120,6 +122,7 @@ legend span.SectionSubTitle{
     background: transparent;
     border: solid 1px transparent;
     margin-bottom: 0px;
+    margin-top: 0px;
     padding: 0px 10px;
 }
 
@@ -168,6 +171,7 @@ table th {
     color: #fff;
 }
 
+
 /* Messaggi */
 span.message {
     display: inline-block;
@@ -178,7 +182,7 @@ span.message {
 }
 
 
-legend{
+h2{
     /* background-color: #fff; */
     border-top-left-radius: 10px;
     border-top-right-radius: 10px;
@@ -209,7 +213,7 @@ code {
 }
 */
 
-.MIB{
+.MenInBlackEmoji{
     border:solid 0px red;
     background-repeat: no-repeat;	
     padding-left: 40px;
