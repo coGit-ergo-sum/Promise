@@ -58,17 +58,17 @@ function btnS0AStartA_onclick(btn){
 
 // In this example 'info' is a string but can be anything. 
 function onResolve(info) {
-	alert(`promise.then onResolve ${info}`);
+	alert(`promise.then onResolve -> ${info}`);
 }	
 	
 // 'jse' should be a javascript Error object. 
 function onReject(jse) {
-	alert(`promise.then onReject ${jse.message}`);
+	alert(`promise.then onReject -> ${jse.message}`);
 }
 
 // 'jse' should be a javascript Error object. 
 function onCatch(jse) {		
-	alert(`promise.catch onCatch ${jse.message}`);
+	alert(`promise.catch onCatch -> ${jse.message}`);
 }
 
 // 'onFinally' does expect any parameter. 

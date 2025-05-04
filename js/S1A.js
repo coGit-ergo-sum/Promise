@@ -69,6 +69,19 @@
 		}	
 	}
 
+	function btnS1A1_onclick(btn){
+		var promise = new Promise((resolve, reject) => {resolve();});
+		promise.whoAreYou = "It's Me";
+
+		alert(promise.then().whoAreYou);
+	}
+
+	function btnS1A2_onclick(btn){
+		var promise = new PromiseDIY((resolve, reject) => {resolve();});
+		promise.whoAreYou = "It's Me";
+
+		alert(promise.then().whoAreYou);
+	}
 	// function MainFlow(){
 	// 	// ...
 	// 	asynchronousFunction();

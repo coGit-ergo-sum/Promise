@@ -1,9 +1,11 @@
 class PromiseDIY {
 
-    onResolve = null;
-    onReject = null;
-    onCatch = null;
-    onFinally = null;
+    onResolve = _ => {};
+    onReject = _ => {};
+    onCatch = _ => {};
+    onFinally = _ => {};
+
+
 
     constructor(_executor) {
 
@@ -30,21 +32,21 @@ class PromiseDIY {
         this.onResolve = _onResolve;
         this.onReject = _onReject;
 
-        // implements the chaining
+        // True chaining is not implemented that way
         return this; 
     }
 
     catch(_onCatch) {
         this.onCatch = _onCatch;
 
-        // implements the chaining
+        // True chaining is not implemented that way
         return this;
     }
 
     finally(_onFinally) {
         this.onFinally = _onFinally;
 
-        // implements the chaining
+        // True chaining is not implemented that way
         return this;
     }
 }
