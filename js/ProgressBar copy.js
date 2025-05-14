@@ -42,7 +42,7 @@ function ProgressBar(id) {
     var _text = function(value) { _$span.text(value); };    
     
     let _intervalId = 0;
-    //////let _isStopped = false;
+    // let _isStopped = false;
     // ---------------------------------------------------------- //
     
     // Function to stop the progress bar and clear the interval
@@ -92,7 +92,14 @@ function ProgressBar(id) {
     // It's not, because this is a 'case study'.
     // ----------------------------------------------------------------------------------- //
     
+
+
     this.executor = async function(resolve, reject) {
+        this.run(resolve, reject, 1)
+    }    
+
+    this.run = async function(resolve, reject, value) {
+        value = value || 0;
         _this.reset();    
 
         try {
@@ -122,7 +129,7 @@ function ProgressBar(id) {
     
             // Timeout function in case the process takes too long
             let _timeout = function() {
-                _text('timeout');
+                _text('Timeout');
                 let _error = new Error("Timeout");
                 _reject(_error);
             };
@@ -235,3 +242,222 @@ function ProgressBar(id) {
 
 	this.reset();
 }
+/*
+class ProgressBar {
+    constructor(id) {
+        var _this = this;
+
+        // HTML template for the progress bar element
+        let _html = '<tr><td><div class="progressBar" id="" title=""><div class="bar" style=""><span></span></div></div></td></tr>';
+
+        var _iterations = 0;
+
+        this.id = id;
+
+        // Flag indicating whether the process is synchronous or asynchronous
+        this.isSynchronous = false;
+
+        // The interval in milliseconds between iterations
+        this.interval = 15;
+
+
+        this.probabilities = { resolve: 60, reject: 30, error: 2, timeout: 8 };
+
+        // The root element of the progress bar
+        this.$tr = $(_html);
+        this.$progressBar = this.$tr.find('div.progressBar').attr('id', id).attr('title', id);
+
+        // ---------------------------------------------------------- //
+        // These are internal variables and functions
+        this._$bar = this.$progressBar.find('div.bar');
+        this._$span = this._$bar.find('span');
+
+        // Function to mark the progress bar with an error class
+        var _onCatch = function() { _this.$progressBar.addClass("error"); };
+
+
+        // Function to set the text inside the progress bar
+        this._text = function(value) { _$span.text(value); };
+
+        let _intervalId = 0;
+        let _isStopped = false;
+        // ---------------------------------------------------------- //
+
+        this.reset(); // Chiama il metodo reset all'inizializzazione
+    }
+
+    // Sets the width of the progress bar
+    width(value) {this._$bar.width((value % 101) + '%');}
+
+    // Function to stop the progress bar and clear the interval
+    stop() {
+        clearInterval(this._intervalId);
+        this._isStopped = true;
+    }
+
+    green() {
+        this._color('#52BE80');
+    }
+
+    gray() {
+        this._color('#DDDDDD');
+    }
+
+    red() {
+        this._color('#ff4d4d');
+    }
+
+    // Set the background colour of the progress bar
+    _color(value) {
+        this._$bar.css('background-color', value);
+    }
+
+    // Function to reset the progress bar to its initial state
+    reset() {
+        this.stop();
+        this._iterations = 0;
+        this._isStopped = false;
+        this.width(0);
+        alert(this._text);
+        this._text('');
+        this.$progressBar.removeClass("error");
+        this.gray();
+    }
+
+    // This is a 'factory' method to create a rejection result object
+    // The 'result' returned is not the same as the one used in the 'resolve' function
+    getRejectionResult(_error) {
+        let result = {};
+
+        result.id = this.id;
+
+        // Include the error that occurred (if any)
+        result.error = _error;
+
+        return result;
+    }
+
+    // ----------------------------------------------------------------------------------- //
+    // This function is designed to work with 'Promise'. When a 'Promise' calls this function,
+    // it provides two callbacks: 'resolve' and 'reject'.
+    // The only thing that 'Promise' expects from this function is that ONE AND ONLY ONE
+    // of the two callbacks is called.
+    // Any of the callbacks can be called, passing any value you like:
+    // resolve(whatYouWant) xor reject(whatYouWant).
+    // If an uncaught exception occurs, 'Promise' treats this as if reject(error) was called.
+    //
+    // This function should be protected by a 'try-catch' block.
+    // It's not, because this is a 'case study'.
+    // ----------------------------------------------------------------------------------- //
+
+    async executor(resolve, reject) {
+        this.reset();
+
+        try {
+
+            resolve = resolve || (() => {});
+            reject = reject || (() => {});
+
+            // ============================================================ //
+            let _resolve = () => {
+                this.stop();
+                this.green();
+
+                // The data sent by the promise to the 'then' function
+                let _result = { id: this.id };
+
+                resolve(_result);
+            };
+
+            let _reject = (_error) => {
+                this.stop();
+                this.red();
+
+                // The rejection result, which includes the error details
+                let _result = this.getRejectionResult(_error);
+                reject(_result);
+            };
+
+            // Timeout function in case the process takes too long
+            let _timeout = () => {
+                _text('timeout');
+                let _error = new Error("Timeout");
+                _reject(_error);
+            };
+
+            // Function to handle errors in the progress bar process
+            let _error = (jse) => {
+                this.stop();
+                this._color('transparent');
+                this._onCatch();
+                let _result = this.getRejectionResult(jse);
+                reject(_result);
+            };
+
+            // Determine the outcome of the process
+            //let alea = 1 + Math.floor(99 * Math.random());
+
+            // mappo alcune variabili con variabili di comodo perchè
+            // sia piu facile riconoscere le prossime manipolazioni
+            let p1 = this.probabilities.resolve / 100;
+            let p2 = this.probabilities.reject / 100;
+            let p3 = this.probabilities.error / 100;
+            let p4 = this.probabilities.timeout / 100;
+
+            let alea = Math.random();
+            let isResolve = (0 <= alea) && (alea < p1);
+            let isReject = (p1 <= alea) && (alea < (p1 + p2));
+            let isError = ((p1 + p2) <= alea) && (alea < (p1 + p2 + p3));
+            let isTimeout = ((p1 + p2 + p3) <= alea) && (alea < (p1 + p2 + p3 + p4));
+            //debugger;
+            // ----------------------------------------------------------------------- //
+
+            // Set a random number of iterations based on whether it's a timeout
+            // maxIterations can be: 100 or any number between 1 to 99;
+            let maxIterations = isTimeout ? 100 : (Math.floor(Math.random() * 99) + 1);
+
+            //debugger;
+
+            // Set the initial width of the progress bar
+            this.width(++this._iterations);
+
+            const sleepAsync = (ms) => new Promise(res => setTimeout(res, ms));
+            const sleepSync = (ms) => {
+                const now = new Date();
+                while (new Date() - now < ms) {}
+            };
+
+            const sleep = this.isSynchronous ? sleepSync : sleepAsync;
+
+            async function iteration() {
+                try {
+                    if (this._iterations >= maxIterations) {
+                        if (false) {}
+                        else if (isResolve) { _resolve(); }
+                        else if (isReject) { _reject(); }
+                        else if (isTimeout) { _timeout(); }
+                        else if (isError) { _error(); }
+                        else { throw new Error("Synchronous error thrown randomly to test the application.");
+                        }
+                    } else {
+                        this.width(++this._iterations);
+                    }
+                } catch (jse) {
+                    window.console.log(jse);
+                    _error(jse);
+                }
+            }
+
+            for (let i = 1; i <= maxIterations; i++) {
+                await iteration.call(this); // 'this' necessario perché 'iteration' è una funzione interna
+                await sleep(this.interval);
+            }
+
+        } catch (jse) {
+            // If an uncaught exception occurs, handle the rejection
+            let _result = this.getRejectionResult(jse);
+            reject(_result);
+        }
+    }
+}
+*/

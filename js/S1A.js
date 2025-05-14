@@ -33,6 +33,8 @@
 		
 		debugger;
 
+
+
 		if (promise) {
 			// ...we attach the 4 callbacks to handle its outcome.
 			promise
@@ -44,8 +46,12 @@
 			promise = null;
 		} 
 		else {
+			pgui.reset();
+			pb.reset();
+
+			var message = 'The Promise object has not been instantiated yet. Please click the other button.';
 			// If the Promise hasn't been instantiated yet, notify the user.
-			alert('The Promise object has not been instantiated yet. Please click the other button.');
+			setTimeout(alert, 0, message);
 		}			
 
 	}
@@ -70,6 +76,7 @@
 	}
 
 	function btnS1A1_onclick(btn){
+		debugger;
 		var promise = new Promise((resolve, reject) => {resolve();});
 		promise.whoAreYou = "It's Me";
 
@@ -77,11 +84,42 @@
 	}
 
 	function btnS1A2_onclick(btn){
+		debugger;
 		var promise = new PromiseDIY((resolve, reject) => {resolve();});
 		promise.whoAreYou = "It's Me";
 
 		alert(promise.then().whoAreYou);
 	}
+
+	function btnS1A3_onclick(btn){
+
+		function executor(resolve, reject){
+			setTimeout(() => {	resolve(11); }, 1); 
+		}
+
+		debugger;
+
+		let  promise1 = new Promise(executor);
+
+		promise1.then( value => { return value * 3; });
+		promise1.then( alert );
+
+		let promise2 = new Promise(executor);
+
+		promise2
+			.then( value => { return value * 3; })
+			.then( alert );
+	}
+	// function btnS1A3_onclick(btn){
+
+	// 	debugger;
+	// 	var promise = new Promise((resolve, reject) => { setTimeout(() => {	resolve(99); }, 1); });
+
+	// 	promise.then( (value) => { alert(value); return 33; });
+	// 	promise.then( (value) => { alert(value); return 33; });
+	// 	promise.then( alert );
+
+	// }
 	// function MainFlow(){
 	// 	// ...
 	// 	asynchronousFunction();

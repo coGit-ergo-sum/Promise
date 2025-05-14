@@ -14,8 +14,8 @@ class PromiseDIY {
             this.onFinally();
         };
 
-        const _reject = (_value) => {
-            this.onReject(_value);
+        const _reject = (_reason) => {
+            this.onReject(_reason);
             this.onFinally();
         };
 
