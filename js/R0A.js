@@ -58,10 +58,19 @@
 	// ======================================================================================================================== //
 
 	
-	function MoveHtml(idSource){
+	function MoveHtmlOLD(idSource){
 		var html = $(idSource).html();
 		$('#preCommon').html(html);
 	}
+
+	function MoveHtml(idSource){
+		const sourceElement = document.getElementById(idSource);
+		const destinationElement = document.getElementById('preCommon');
+	
+		// Trasferisce la stringa HTML da uno all'altro
+		destinationElement.innerHTML = sourceElement.innerHTML;
+	}
+
 
 
 

@@ -2,7 +2,7 @@
 
 {
 
-	let pb = new ProgressBar('ProgressBar');
+	let pb = new ProgresBar2('ProgressBar');
 
 
 	pb.probabilities.resolve  =  48;
@@ -10,12 +10,17 @@
 	pb.probabilities.error    =  16;
 	pb.probabilities.timeout  =  16;
 		
-		
-	tools.append2Demo(pb, 'tdS1AE2');
+	pb.appendTo('tdS1AE2Pb')
 	
-	let pgui = new PromiseGUI(1);		
-	tools.prepend(pgui.$td, pb.$tr);
+	let pgui = new PromiseGUI(1);	
+	pgui.appendTo('tdS1AE2gui');
 	
+	
+	function executor(resolve, reject) {
+		let alea = Math.floor(100 * Math.random());	
+		pb.executor(resolve, reject, alea);
+	}
+
 	let promise = null;
 	
 	function btnS1AStep1_onclick(btn){
@@ -25,7 +30,7 @@
 		
 		debugger;
 
-		promise = new Promise(pb.executor);
+		promise = new Promise(executor);
 
 	}
 
@@ -64,7 +69,10 @@
 			
 			debugger;
 
-			pb.executor(pgui.onResolve, pgui.onReject);
+			
+			let alea = Math.floor(100 * Math.random());	
+
+			pb.executor(pgui.onResolve, pgui.onReject, alea);
 
 		}
 		catch(e){
@@ -80,6 +88,7 @@
 		var promise = new Promise((resolve, reject) => {resolve();});
 		promise.whoAreYou = "It's Me";
 
+		alert(promise.whoAreYou);
 		alert(promise.then().whoAreYou);
 	}
 
@@ -109,57 +118,41 @@
 		promise2
 			.then( value => { return value * 3; })
 			.then( alert );
+		}
+
+	let td11 = document.getElementById("td11");
+	let td21 = document.getElementById("td21");
+	let td31 = document.getElementById("td31");
+
+	let td12 = document.getElementById("td12");
+	let td22 = document.getElementById("td22");
+	let td32 = document.getElementById("td32");
+
+	function btnS11S_onclick(btn){
+		td11.innerText = "1) button Sync: START";
+		syncFunction();
+		td31.innerText = "3) button Sync: END";
 	}
-	// function btnS1A3_onclick(btn){
+	function syncFunction(){
+		td21.innerText = "2) Sync function START"
+	}
+	
+	function btnS11A_onclick(btn){
+		td12.innerText = "1) button ASync: START";
+		 setTimeout(asyncFunction,1);
+		td22.innerText = "2) button ASync: END";
+	}
+	function btnS1Reset_onclick(btn){
+		td11.innerHTML = "&nbsp;";
+		td21.innerHTML = "&nbsp;";
+		td31.innerHTML = "&nbsp;";
+		td12.innerHTML = "&nbsp;";
+		td22.innerHTML = "&nbsp;";
+		td32.innerHTML = "&nbsp;";
+	}
+	function asyncFunction(){
+		td32.innerText = "3) ASync function START";
+	}
 
-	// 	debugger;
-	// 	var promise = new Promise((resolve, reject) => { setTimeout(() => {	resolve(99); }, 1); });
-
-	// 	promise.then( (value) => { alert(value); return 33; });
-	// 	promise.then( (value) => { alert(value); return 33; });
-	// 	promise.then( alert );
-
-	// }
-	// function MainFlow(){
-	// 	// ...
-	// 	asynchronousFunction();
-	// 	// ...
-	// }
-
-	// function asynchronousFunction(){
-	// 	let intervalId = setInterval(deferredTask, takeyourTime); 
-	// }
-
-	// function deferredTask(){
-	// 	// Do something
-	// }
-
-
-
-
-	// function MainFlow2(){
-	// 	// ...
-	// 	setInterval(() => {
-	// 		// Do something (with x, y, ...)
-	// 	}, asyncDelay); 
-	// 	// ...
-	// }
-
-	// function executor(resolve, reject){
-
-	// 	// 'alea' is a random number, Could be 1, 2 or 3
-	// 	var alea = Math.floor(Math.random() * 3) + 1; 
-
-	// 	// 'setTimeout' makes this function ASynchronous.
-	// 	setInterval(() => {
-	// 		if (alea == 1) { resolve(alea);} 
-	// 		else if (alea == 2) { reject(alea); }
-			
-	// 		// Simulate an error occurrence
-	// 		// This will trigger the 'catch' method, calling 'onCatch'.
-	// 		else{ throw new Error(alea); }	
-	// 	}, asyncDelay); 
-
-	// }
 
 }

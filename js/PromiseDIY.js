@@ -32,21 +32,21 @@ class PromiseDIY {
         this.onResolve = _onResolve;
         this.onReject = _onReject;
 
-        // True chaining is not implemented that way
+        // return this is absolutely fake (will be clear soon)
         return this; 
     }
 
     catch(_onCatch) {
         this.onCatch = _onCatch;
 
-        // True chaining is not implemented that way
+        // return this is absolutely fake (will be clear soon)
         return this;
     }
 
     finally(_onFinally) {
         this.onFinally = _onFinally;
 
-        // True chaining is not implemented that way
+        // return this is absolutely fake (will be clear soon)
         return this;
     }
 }

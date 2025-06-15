@@ -16,7 +16,7 @@
 	
 	.PGUIBase{		
 		width: 25px;
-		/*height:100px;*/
+		height:100%;
 		border-radius: 20px;
 		border-style:solid;
 		border-width:1px;	
@@ -313,6 +313,7 @@
 	<script src="./js/PromiseDIY.js"></script>
 	<script src="./js/PromisePro.js"></script>
 	<script src="./js/ProgressBar.js"></script>
+	<script src="./js/ProgressBar2.js"></script>
 	<script src="./js/PromiseGUI.js"></script>
 	
 	<script> 
@@ -378,462 +379,155 @@
 			  }
 			}
 			</script>
-</head>
 
-
-<body>
-
-	<section>
-		<h2>
-			<span class="underline">
-				<span class="SectionLabel">Intro:</span>
-			</span>
-		</h2>
-		<h1 style="font-weight:normal;margin-bottom:0px;">The <b>Promise</b></h1>
-		<br>
-		<p class="important">
-			The 'Promise' is designed to handle ASynchronous processes.
-		</p>	
-		<br>
-		<p class="text red">
-			Un abstract è una breve sintesi di un documento scientifico o di ricerca, 
-			che ne riassume i punti chiave. La sua struttura tipica include:<br>
-			- l'argomento, <br>
-			- la metodologia,<br>
-			- i risultati principali<br>
-			-  le conclusioni. 
-		</p>	
-		<h4 class="wp-block-heading fusion-responsive-typography-calculated" data-fontsize="28" style="--fontSize: 28; line-height: 1.36;" data-lineheight="38.08px"><span style="color: #00afaa;">Le 8 regole per un abstract efficace</span></h4>
-	
-		<p>1. Inizia a scrivere <strong>dopo aver scritto l’intero lavoro</strong> a cui si riferisce e/o dopo che il lavoro sperimentale che descrive sia ultimato</p>
-		<p>2. Seleziona <strong>frasi e parole-chiave </strong>da utilizzare per l’introduzione: una breve introduzione generale comprensibile ad un pubblico ampio che inquadra l’argomento (1-2 frasi), seguita da una introduzione più specifica che focalizza l’argomento all’interno della sua disciplina (2-3 frasi)</p>
-		<p>3. Descrivi chiaramente lo <strong>scopo del lavoro </strong>svolto (1-2 frasi)</p>
-		<p>4. Aggiungi una breve descrizione dei<strong> metodi </strong>utilizzati (1-2 frasi)</p>
-		<p>5. Identifica ed enfatizza i<strong> risultati più rilevanti</strong> (2-4 frasi)</p>
-		<p>6. Descrivi con cura le <strong>conclusioni </strong>e l’impatto dei tuoi risultati nel contesto scientifico, aggiungendo quali potrebbero essere le prospettive future (1-2 frasi)</p>
-		<p>7. Assicurati che<strong> l’abstract non contenga nuove informazioni</strong> non presenti nel lavoro a cui si riferisce, abbreviazioni e/o acronimi non definiti, riferimenti bibliografici, e dettagli non necessari che riguardano metodi e risultati</p>
-		<p>8. Non dimenticare di <strong>rileggere attentamente </strong>l’abstract e controllare che i contenuti siano facilmente comprensibili e che la sua lettura sia chiara e scorrevole, e che ovviamente l’abstract rispetti le regole imposte (es: numero di parole e/o caratteri, eventuali sottotitoli, tipo di abstract)</p>
-
-
-	</section>
-
-		<!-- Intro 5 -->
-	<!-- <section>
-		<h2>
-			<span class="underline">
-				<span class="SectionLabel">Intro 5:</span>&nbsp;
-				<span class="SectionTitle"> Asynchronous without promise:&nbsp;</span>
-				<span class="SectionSubTitle">(the vintage way)</span>
-			</span>
-		</h2>
-
-		<p class="text">
-			When working with a single asynchronous operation, using a Promise is one option.
-		</p>
-		<p class="text">
-			If you're comfortable with callback programming, you can structure the '<b>executor</b>' 
-			functions like this, and the functionality will be the same.
-		</p>
-<pre class="ai"><code>
-		<span class="comment">// Promise-Free ASynchronous Function Implementation.</span>
-		<span class="keyword">function</span> <span class="red">executor</span><span class="punctuation">()</span> <span class="punctuation">{</span>
-			<span class="keyword">try</span> <span class="punctuation">{</span>	
-				<span class="keyword">setTimeout</span>(<span class="punctuation">()</span> <span class="punctuation">=&gt;</span> <span class="punctuation">{</span>			
-					<span class="comment">// - - - - - - - - - - - - - - - - - - - - - //</span>
-					<span class="comment">// do something ASynchronous (or not)</span>
-			
-					<span class="keyword">if</span> (<span class="variable">elaborationSucceeded</span>) <span class="punctuation">{</span>
-						<span class="variable">onResolve</span>(<span class="variable">anyParameterYouWant</span>);
-					<span class="keyword">}</span>
-					<span class="keyword">else</span> <span class="punctuation">{</span>
-						<span class="variable">onReject</span>(<span class="keyword">new</span> <span class="function">Error</span>(<span class="string">'any message'</span>));
-					<span class="punctuation">}</span>			
-					<span class="comment">// - - - - - - - - - - - - - - - - - - - - - //</span>
-				<span class="punctuation">},</span> <span class="variable">asyncDelay</span><span class="punctuation">);</span>
-			<span class="punctuation">}</span>
-			<span class="keyword">catch</span>(<span class="variable">jse</span>) <span class="punctuation">{</span>
-				<span class="variable">onCatch</span>(<span class="variable">jse</span>);
-			<span class="punctuation">}</span>
-			<span class="keyword">finally</span> <span class="punctuation">{</span>
-				<span class="variable">onFinally</span>(<span class="punctuation">)</span>;
-			<span class="punctuation">}</span>
-		<span class="punctuation">}</span>
-</code></pre>
-
-<p class="text">
-	This indicates that for a 
-	single ASynchronous function, using a Promise adds 
-	unnecessary complexity. 
-</p>
-
-		<p class="text">
-			The situation radically changes when dealing with multiple ASynchronous operations.
-		</p>
-	</section> -->
-
-
-	<div class="comment">
-		<p class="text">
-			While the browser is in <span class="red">debug mode</span>, every 'click' on a button will display the running code
-		</p>
-	</div>
-
-	<section>
-		<h2>
-			<span class="underline">
-				<span class="SectionLabel">Intro 1:</span>&nbsp;
-				<span class="SectionTitle"> Asynchronous process:&nbsp;</span>
-				<span class="SectionSubTitle">what is it?</span>
-			</span>
-		</h2>
-		
-		<p class="text">
-			But what is an ASynchronous process?
-		</p>
-		<ul>
-			<li class="text">Calling someone and being stuck until they answer that's <b>Synchronous</b>.</li>
-			<li class="text">Send a message, carry on, reply comes later that’s   <b>ASynchronous</b>.</li>
-		</ul>	
-
-		<br>
-		<hr>
-		
-		<p class="text">
-			These are the elements of an <b>ASynchronous</b> function in JavaScript:
-		</p>	
-
-		<table style="width:100%;" >
-
-			<tr>
-				<td class="" colspan="3">
-<pre id="preMainFlow" class="ai"><code>
-	<span class="comment">// In practice an ASync function is made of this blocks:</span>
-	<span class="keyword">function</span> <span class="function">asynchronousFunction</span>() <span class="punctuation">{</span>
-
-		<span class="comment">// "setInterval" is what makes this function ASynchronous</span>
-		<span class="keyword">let</span> <span class="variable">intervalId</span> <span class="operator">=</span> <span class="function">setInterval</span><span class="punctuation">(</span><span class="red">deferredTask</span><span class="punctuation"></span>, <span class="variable">asyncDelay</span><span class="punctuation">);</span>
-		
-		<span class="keyword" style="margin: 0px;padding:0px;">function</span> <span class="red">deferredTask</span><span class="punctuation"></span>(<span class="punctuation"></span>) <span class="punctuation">{</span>
-			<span class="comment">// Do something</span>
-		<span class="punctuation">}</span>
-	<span class="punctuation">}</span>	
-	<hr style="padding: 0px;margin:0px;border-color:#777;"><div class="gray" style="background-color: #000;padding:5px 3px 3px 12px;">And normally are implemented in tha way:</div><hr style="padding: 0px;margin:0px;border-color:#777;">
-	<span class="keyword">function</span> <span class="function">asynchronousFunction</span>() <span class="punctuation">{</span>
-		<!-- <span class="comment">// "setInterval" is what makes this function ASynchronous</span> -->
-		<span class="keyword">let</span> <span class="variable">intervalId</span> <span class="operator">=</span> <span class="function">setInterval</span><span class="punctuation">(</span><span class="punctuation">(</span><span class="punctuation">)</span> <span class="keyword">=></span> <span class="punctuation">{</span>            
-			<span class="comment">// Do something</span>
-		<span class="punctuation">}</span><span class="punctuation">,</span> <span class="variable">asyncDelay</span><span class="punctuation">);</span>
-	
-	<span class="punctuation">}</span>	
-</code></pre>
-
-				</td>
-			</tr>
-			<!-- <span class="comment">// In practice an ASync function is made of this bloks:</span>
-			<span class="keyword">function</span> <span class="function">asynchronousFunction</span>() <span class="punctuation">{</span>		
-				<span class="comment">// "setInterval" is what makes this function ASynchronous</span>
-				<span class="keyword">let</span> <span class="variable">intervalId</span> <span class="operator">=</span> <span class="function">setInterval</span><span class="punctuation">(</span><span class="red">deferredTask</span><span class="punctuation"></span>, <span class="variable">asyncDelay</span><span class="punctuation">);</span>
-			<span class="punctuation">}</span>
+			<style>
+				.container {
+					font-family: sans-serif;
+					display: flex;
+					flex-direction: column;
+					align-items: center;
+					gap: 20px;
+					padding: 20px;
+				}
 				
-			<span class="keyword" style="margin: 0px;padding:0px;">function</span> <span class="red">deferredTask</span><span class="punctuation"></span>(</span><span class="punctuation"></span>)</span> <span class="punctuation">{</span>
-				<span class="comment">// Do something</span>
-			<span class="punctuation">}</span>
-			<hr style="padding: 0px;margin:0px;border-color:#777;"><div class="gray" style="background-color: #000;padding:5px 3px 3px 12px;">Now, here is how it fits into a typical flow:</div><hr style="padding: 0px;margin:0px;border-color:#777;">	
-			 -->
-			
+				.tblProgressBar {
+					border-spacing: 0px;
+					margin-top: 3px;
+					border: solid 0px transparent;
+					border-radius: 12px;
+					background-color: #FAFAFA; /* Questo sarà il colore di sfondo della tabella, non della barra */
+					width: 100%;
+					table-layout: fixed;
+				}
+				
+				.progressBar {
+					/* Questo è il TD centrale, fungerà da "container" per la barra e il testo */
+					height: 26px;
+					margin-top: 3px; /* Questo non ha effetto sul TD, è meglio gestirlo sul tblProgressBar se necessario */
+					border: solid 1px #777;
+					/*border-radius: 5px; *//* Aggiungi un border-radius qui per la barra interna */
+					position: relative; /* Importante per posizionare il testo */
+					overflow: hidden; /* Nasconde il testo che esce dal td */
+					/* Il background sarà impostato da JS con linear-gradient, non qui */
+					text-align: center; /* Centra il testo, ma lo span interno lo ri-centrerà */
+					/* Rimuovi color, font-size, font-family da qui per il testo, saranno sullo span */
+				}
+				
+				.progress-text {
+					/* Stili per il testo della percentuale */
+					position: absolute;
+					top: 50%;
+					left: 50%;
+					transform: translate(-50%, -50%); /* Centra il testo all'interno del td.progressBar */
+					font-size: 0.85em; /* Come era prima per il testo */
+					/* font-weight: bold; */
+					white-space: nowrap;
+					z-index: 2; /* Assicura che il testo sia sopra il gradiente */
+					color: #333; /* Colore del testo quando NON è coperto dalla barra */
+					mix-blend-mode:  multiply; /* La magia! Inverte il colore quando incontra un colore diverso */
+					font-family: Verdana, Geneva, Tahoma, sans-serif; /* Per coerenza con il tuo stile originale */
+				}
+				
+				
+				.tdLeft, .tdRight {
+					width: 60px;
+					margin-top: 3px; /* Nessun effetto qui */
+					border: solid 1px #777;
+					color: #333;
+					text-align: center;
+					font-family: courier new;
+					background-color: transparent;
+					/* Assicurati che siano allineati verticalmente con la barra */
+					vertical-align: middle;
+				}
+				
+				.tdLeft {
+					border-right: none;
+					border-top-left-radius: 5px;
+					border-bottom-left-radius: 5px;
+				}
+				
+				.tdRight {
+					border-left: none;
+					border-top-right-radius: 5px;
+					border-bottom-right-radius: 5px;
+					overflow: hidden;
+					text-overflow: ellipsis;
+					white-space: nowrap;
+				}
+				.error{
+					background-repeat: no-repeat;
+					background-position: center;
+				}
+			</style>
 
-			<tr>
-				<td colspan="3"> 
-					<ul>Summary of what happens:
-						<li class="text">
-								"<b>mainFlow</b>" calls "<b>asynchronousFunction</b>"
-						</li>
-						<li class="text">
-								"setInterval" schedules the execution of "<b>deferredTask</b>" and immediately returns.
-						</li>
-						<li class="text">
-								"<b>mainFlow</b>" continues and terminates.
-						</li>
-						<li class="text">
-								The JavaScript engine waits for the specified <b>asyncDelay</b>.
-						</li>
-						
-						<li class="text">
-								then the "<b>deferredTask</b>" function is invoked (by the engine itself).
-						</li>
-					</ul>
+			<!--style>
+				.container {
+					font-family: sans-serif;
+					display: flex;
+					flex-direction: column;
+					align-items: center;
+					gap: 20px;
+					padding: 20px;
+				}
+				
+				.tblProgressBar {
+					border-spacing: 0px;
+					margin-top: 3px;
+					border: solid 0px transparent;
+					border-radius: 12px; /* This was repeated, keeping the last one */
+					background-color: #FAFAFA;
+					width: 100%;
+					/* Add this crucial line */
+					table-layout: fixed; /* This tells the browser to use fixed column widths */
+				}
+				
+				.progressBar {
+					/* Keep the width here, as it's the main dynamic column */
+					/*width: 200px;*/
+					height: 26px;
+					margin-top: 3px;
+					border: solid 1px #777;
+					color: white;
+					font-size: 0.85em;
+					text-align: center;
+					font-family: Verdana, Geneva, Tahoma, sans-serif;
+				}
+				
+				.tdLeft, .tdRight {
+					/* Set a fixed width for these side columns */
+					width: 60px; /* Keep this as it was */
+					margin-top: 3px;
+					border: solid 1px #777;
+					color: #333;
+					text-align: center;
+					font-family: courier new;
+					background-color: transparent;
+				}
+				
+				.tdLeft {
+					border-right: none;
+					border-top-left-radius: 5px;
+					border-bottom-left-radius: 5px;
+				}
+				
+				.tdRight {
+					border-left: none;
+					border-top-right-radius: 5px;
+					border-bottom-right-radius: 5px;
+					/* Add this to prevent content from pushing the border */
+					overflow: hidden; /* Hides content that exceeds the fixed width */
+					text-overflow: ellipsis; /* Adds "..." if text is too long (optional but good) */
+					white-space: nowrap; /* Prevents text from wrapping */
+				}
+				.error{
+					/*background-size: 22px 22px;*/
+					background-repeat: no-repeat;
+					background-position: center;
+					/*background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACgAAAAoCAYAAACM/rhtAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsQAAA7EAZUrDhsAAAAYdEVYdFNvZnR3YXJlAFBhaW50Lk5FVCA1LjEuNBLfpoMAAAC2ZVhJZklJKgAIAAAABQAaAQUAAQAAAEoAAAAbAQUAAQAAAFIAAAAoAQMAAQAAAAMAAAAxAQIAEAAAAFoAAABphwQAAQAAAGoAAAAAAAAAqJMAAOgDAACokwAA6AMAAFBhaW50Lk5FVCA1LjEuNAADAACQBwAEAAAAMDIzMAGgAwABAAAAAQAAAAWgBAABAAAAlAAAAAAAAAACAAEAAgAEAAAAUjk4AAIABwAEAAAAMDEwMAAAAABCtwV84PirYQAACG1JREFUWEfFmG2MHWUVx3/neWbuSylttxQo2+LW2gWVpDH27r0grdAAId3dRglQIgnBKGpIE0RDEFKCEf2uxgTkpQ1+kFYEofTl7guGF9HSLkUklBBErKihGqgE6O7ee2ee44eZuTs7d2676xfPl3vmPOf8z/8553mZOzI0NGREBFVFVTHG4JwTY4wmNoDEx1pLGIaoKp7nEQQBqkqxWKTVaomIqIgQhiGe5wEQBAGe5+Gca+dQ1Vm+QBvbWotzjnK5rDI8PGwajYYREUQE5xzddCABTyeKiBtDEOtebHfOYa0F6MDqpic5nHP4vq8yNDRkWq2WyXPuFpgmalU5bi0HR0YCUnLZFVd4BRFcDlY3PY0bd0VlcHDQhGFoss4nC0x0T5X9ngf1ejBRqZ0HeplA0BAZu3ji4N8uvfJKr+gc2gX3VDmstc4kVZlPoKqCKu9YC/V6cLhSvc6gz1u418ADJdVnJyq1y54dHQ264c4lh4iIcc7JfANVlaIIr42MBIcHalXgfoGz4+4CrDLowwcr1TUjY2OB/z+QiwmqMcbofAN9Y9izdInb/YX1BVR/JLA4YRbteRBY6cEP+OZNsrdUVDvPHMaYaFzj3TafwCkUdj3qzmk2bxS4IiGXiMyoX5l4+dUvsWdvKPPMEetiNCrlnAMLqjwzOhb8YaD2CQvbZrjMVC/RBcTA95+tXdSzf3w8KMwxR6KrqhriQ3gugaiyx1oFKKreIdCXIYSk9Fg+tzAMbwE4EB/6WdxuunNO2uffXAJ9VajXw5cGapcCX0sYKEDo0GYLbbXARTdDivS3X6pU174/NhaUcnC76Z7nYfv7+yW+2joc0rpVZX/fueHjxfKCntBtF1gNoCIwOQmNBmbZUqRYQI//BxSk4CUky8DyF9eufex3C0q6ptkUycmR1a21aqy1STk7HNL6e8bAQzu0rxV8S2BDu3IffUyhWmHVr3fRv/MR+nftpG/nL/E+cz46OZVu9VXb33t/C0886eZCLu6smOTi5yQtLothYnQ0mBiorTFwe7p9+sYRFg8P07N2LeXeXsq9vfSsW8eiwUH0yBuzWm3g7hdqF549Mjoa+KcgJyJRBfMcZpXZGJ4q+Ep0Jm0Dlmd3qymWUEDDEA1DUMWUSiitmYlEv58uh+47APs8T8nJlz5RVBXjeV5XcsaYaGPs3RserFQ3CdyQ3a0RyxnKbS3eeLP8Itl6uFKtUq+H3knItVucvM/lkfNU2dO3Mnz6wouWePBDBZusqYTozFPGJpGWkEtVcSHoPfetX1/Y19PjTBdyp2wxqhwBeHCHLg3CrcC6fHIzZGbZUpIil1iuHJhu3sCjj7rJLuTaLS4Wix3kVBXPKUfHxoJDldoFCrdmyWln69rjaS1LLtEF7nqhWjv3ufHxoJRDTqI3eDGtVkuy5HCOfactcFxztTHo3QLL0uDptkVZ4xarpqsU2TLkUqOryk5vB3jKGDU5VfR9X42IaJqci3cuu3e7Q0f/fo3AlmyiRNoJkxbHv2nJqVx67BsvVaqXUK+HyT2drmKj0cCIyKwWl0Soj40FEwO1Mzy4O69FqQSdxrZtppp5k4ulKHDPyIUXlfcsXeK8zirOHNSqihFhb/wyYFRvBS44JblukqrmyXwFvrgsCG9i56/cB5m3e2utmuTvoIhQFIF6PXyxUl0H3NKNXCLttRi/XLZFBERyY7IS5/je76u1Tx0YGQlKqSo658QQ/x+1IjxVLrk7N270fbgHWJRHLllHbZt/Oo13341aai3GWjQMaR47hiw5MxUZSRortS5XlJxuA9hTLKomh7wIsmnTJuOcM03neGZ8PHi5Ur1R4eFu5LI2ghBZuICem75OacUKAKaOHuWD++6PCGSrG0vOugydyHBl4uDI4OWXe6G1eJ7nZPPmzcZNT5t94+PBwYHaOZ7q8wJrEpCETbKksm0T4jv4j0dQpiNbcTFywXmIyV99OeQS3ENTxly+/uLax4OvvW7xfTXqXHRxA1b1tlnkSJCipzTwrFarwsrlFK7ZQuHLV8EZi3OmEkk3cjFetezcVn78U31LBCOCKTkH9Xp4aKC2wcDNSUAbX6Pw9mMbNtbDEFHofejnnP/g/Zy3fTtn/+wnMDlFspbS/tllkrUJfPfAQO2zb46NBWXn1L7+1lu6b/2G0uIgeAjonz3vOCQ15XTlBNA33mbJnbex8rot2FIJu6DMwv5+Tnz0IY2nn0EWL0ojzcLJIQdwmoVlD1yy4fHXS6VoFy+fbnwV2JgFyZJLZBbw5HFKq/oQY3Dx+6B4HqXVq+Ff/+zwT6QLOYj06yb+/PZV7NzlzIGBai9wR7siKccsau6sz1rBiT+9SthsYjwPsZZwaorJV16BvtUdydtxOXp63MBdE5XqIru1d8UNwPUdHnMgB2AWnU7jwIu0lvbg9/TQOH6cY489zocP7kDOPCML04HRbVzgHGBCDlcG7hXk5twKxtKNXHtcFffXdzCf/AQEAe7Yv5FzV3QQyWJ0I5eSbUaQN3MGYGYmHcDpMQEQQVb3oUEYfWpLkUt8sxjZfHk2B38xk9b+Aniym1MWmIyPpnzE98DzTolxsvHEpLAj9LzdArD/4vWlsxrNjQKfV1hAatYZPdecHpeZv1BtXUA05hH7Jnp7PMXzowAOPbfk9Odvf/q3Lbl+eNg8UvDhN0/MPlX/37J52F7dCpChoSHTbDYNwMfG8I/oymt/FLeqBMYgKL5zTIvBEwHnCEUoidByDidCIdYDES2JSOAcDvCNYVJVfVUpGsN0/PnYGkMzzhEaAygrQ8ei+HXN830n1157rZw4cSL5FKwSiQKoqqiqOufE8zwS3VqrGn1XbOuqKr7va6PRQETEWqvJ19sISmW+Oay1/Bd3UDaF9Xc+zgAAAABJRU5ErkJggg==);*/
+				}
+			</style-->
 
-				</td>		
-			</tr>	
-
-			<tr>
-				<td colspan="3"> 
-					<hr>
-				</td>		
-			</tr>		
-			<tr>
-				<td colspan="3"> 
-					<p class="text">
-						Here’s a practical example of how using <b>ASynchronous logic can make a real difference</b>.
-					</p>					
-				</td>		
-			</tr>	
-			
-			<tr>
-				<td class="msgContainer" colspan="3"> 
-					<table border="0" style="width:300px;text-align:center;" align="center">
-						<tr>
-							<!-- <td id="tdR0AC1"><table class="demo"cellspacing="0"></table></td> -->
-							<td id="tdS0A" colspan="3"><table class="demo"cellspacing="0"></table></td>
-						</tr>
-						<tr>
-							<td style="text-align: center;"><button onclick="btnS0AStartS_onclick(this)"title="Implements a 'ProgressBar' by a Synchronous function.">Synchronous</button></td>
-							<td style="text-align: center;"><button onclick="btnS0AStartA_onclick(this)"title="Implements a 'ProgressBar' by an ASynchronous function.">ASynchronous</button></td>
-							<!-- <td style="text-align: center;"><button onclick="btnR0AStartH_onclick(this)"title="Starts an hybrid process represented by the 'ProgressBar'.">Hybrid</button></td>							 -->
-						</tr>
-						<!-- <tr>
-							<td colspan="2" style="text-align: center;"><button onclick="btnR0AStart_onclick(this)"title="Starts the ASynchronous process represented by the 'ProgressBar'.">ASynchronous</button></td>
-						</tr> -->
-					</table>
-			  </td>
-			</tr>
-
-			
-			<tr>
-				<td class="" colspan="3">
-<pre id="preCommon" class="ai"><code>
-	<span class="comment">// <span class="yellow">Click</span> the buttons show the difference between Sync & Async process.</span>
-</code></pre>
-
-<!-- 
-SEO NOTE FOR CRAWLERS, AI TOOLS, AND INDEXERS:
-
-This section demonstrates the visual and conceptual difference between Synchronous and ASynchronous JavaScript processes.
-
-Two nearly identical functions are provided — their structure is purposefully kept almost identical, except for the lines that define their sync or async behavior.
-This precise design ensures that:
-– Shared parts remain visually stable.
-– Key differences immediately stand out, helping users grasp the concept quickly.
-
-The transition between the two examples is dynamically handled by JavaScript, ensuring:
-– Smooth switching without visual flickering.
-– Immediate perception of the critical logic differences.
-
-⚡ Important: This dynamic visual effect is intended for **human learning and UX enhancement**.
-Static parsers, crawlers, and AI analyzers might not capture the dynamic transitions but should understand the intent and educational value.
-
-Keywords: JavaScript asynchronous example, sync vs async, progress bar demo, dynamic code comparison.
--->
-
-<div id="divSync" style="display: none;">
-<code><span class="comment">
-	// Increases the width of the progressBar  Synchronously.</span>
-	<span class="keyword">function</span> <span class="function">btnR0AStartS_onclick</span>(<span class="variable">btn</span>) <span class="punctuation">{</span>	
-		<span class="opaque comment">// some small initialization</span>
-		<span class="opaque">MoveHtml('#divASync');</span>
-		<span class="opaque">R0A.progressBar.reset();</span>
-		<span class="opaque">R0A.progressBar.green();</span>
-		<span class="keyword">let</span> <span class="variable">wMax</span> <span class="operator">=</span> <span class="function">Math.floor</span>(<span class="number">100</span> <span class="operator">*</span> <span class="function">Math.random</span>())<span class="punctuation">;</span>
-		<span class="keyword">let</span> <span class="variable">w</span> <span class="operator">=</span> <span class="number">0</span><span class="punctuation">;</span>
-
-		<span class="comment">// This line STARTS the loop</span>
-		<span class="keyword">while</span> (<span class="keyword">true</span>) <span class="punctuation">{</span>                  		
-			<span class="variable">R0A</span>.<span class="method">progressBar.width</span>(<span class="variable">w</span>)<span class="punctuation">;</span>
-			<span class="variable">w</span><span class="operator">++</span><span class="punctuation">;</span>
-			<span class="comment">// This line ENDS the loop</span>
-			<span class="keyword">if</span> (<span class="variable">w</span> <span class="operator">&gt;</span> <span class="variable">wMax</span>) <span class="punctuation">{</span> <span class="keyword">break</span><span class="punctuation">;</span><span class="punctuation">}</span>
-		<span class="punctuation">}</span>
-	<span class="punctuation">}</span></code>
-</div>
-
-<div id="divAsync" style="display: none;">
-<code><span class="comment">
-	// Increases the width of the progressBar ASynchronously.</span>
-	<span class="keyword">function</span> <span class="function">btnR0AStartA_onclick</span>(<span class="variable">btn</span>) <span class="punctuation">{</span>	
-		<span class="opaque comment">// some small initialization</span>
-		<span class="opaque">MoveHtml('#divASync');</span>
-		<span class="opaque">R0A.progressBar.reset();</span>
-		<span class="opaque">R0A.progressBar.green();</span>
-		<span class="keyword">let</span> <span class="variable">wMax</span> <span class="operator">=</span> <span class="function">Math.floor</span>(<span class="number">100</span> <span class="operator">*</span> <span class="function">Math.random</span>())<span class="punctuation">;</span>
-		<span class="keyword">let</span> <span class="variable">w</span> <span class="operator">=</span> <span class="number">0</span><span class="punctuation">;</span>
-
-		<span class="comment">// This line STARTS the loop</span>
-		<span class="keyword">let</span> <span class="variable">intervalId</span> <span class="operator">=</span> <span class="function">setInterval</span>(() <span class="operator">=&gt;</span> <span class="punctuation">{</span>		
-			<span class="variable">R0A</span>.<span class="method">progressBar.width</span>(<span class="variable">w</span>)<span class="punctuation">;</span>		
-			<span class="variable">w</span><span class="operator">++</span><span class="punctuation">;</span>
-			<span class="comment">// This line ENDS the loop</span>
-			<span class="keyword">if</span> (<span class="variable">w</span> <span class="operator">&gt;</span> <span class="variable">wMax</span>) <span class="punctuation">{</span> <span class="function">clearInterval</span>(<span class="variable">intervalId</span>)<span class="punctuation">;</span> <span class="punctuation">}</span>
-		<span class="punctuation">}</span>, <span class="number">8</span>)<span class="punctuation">;</span>	
-	<span class="punctuation">}</span></code>
-</div>
-<div id="divHybrid" style="display: none;">	
-	<span class="green">// This is an hybrid configuration:</span>
-	<span class="green">// - each progressBar runs ASynchronously.</span>	
-	<span class="green">// - collectively are executed synchronously.</span>	
-
-	<span class="green">// This configuration requires a 'Promise' in</span>	
-	<span class="green">// ASync/await configuration. </span>	
-	<span class="green">// Refer to section 5 for details. </span>	
-</div>
-				</td>
-			</tr>
-
-			
-			<tr>
-				<td colspan="3"> 
-					<p class="text">
-						See the difference? <b>Same task, different outcomes</b>. Why is that?
-					</p>
-					<!-- <p class="text">
-						Entrambe le funzioni cambiano la lunghezza di una barra ma solo la funzione asincrona sembra funzionare. Perchè?
-					</p> -->
-					<p class="text">
-						When a function updates the page, the JavaScript engine waits until the function has finished before applying any changes (to the page).
-					</p>
-					<p class="text" style="margin-top: 0px;padding-top: 0px;">
-						But we want the updates to appear continuously.						
-					</p>
-					
-					<p class="text">
-						The solution? Break the flow by calling an ASynchronous function repeatedly.
-						Each time the ASynchronous function completes, the engine applies the changes.<br>
-					</p>					
-					<p class="text">
-						That's what makes the progress bar appear to grow.
-					</p>
-					
-					<p class="important">
-						That’s exactly the kind of problem JavaScript’s Promise was made to solve.
-					</p> 
-				</td>		
-			</tr>		
-
-			
-		</table>
-	</section>	
-	
-	<div class="comment">	
-		<p class="text"  >
-			<!-- style="border: solid 1px #aaa;color:#222;" -->
-			Functions are deliberately overused to clearly highlight the key logical sections.
-		</p>
-	</div>
-
-	<section style="background-color: #fff; ">
-		<h2>
-			<span class="underline">
-				<span class="SectionLabel">Intro 2:</span>&nbsp;
-				<span class="SectionTitle"> Promise:&nbsp;</span>
-				<span class="SectionSubTitle">Main elements</span>
-			</span>
-		</h2>
-
-
-		<p class="text">
-			A Promise is built around its <b>constructor</b> and the methods: '<b>then</b>', '<b>catch</b>', '<b>finally</b>'.
-		</p>
-		<p class="text">
-			And each method requires its own callback (function).
-		</p>
-
-<pre class="ai"><code>
-	<span class="comment">// The ECMAScript calls function provided to the constructor the '<b>executor</b>'</span>
-	<span class="keyword">var</span> <span class="variable">promise</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="function">Promise</span>(<span class="red">executor</span>)<span class="punctuation">;</span>
-	<!-- <span class="comment">// ATTENTION: Splitting the configuration into two parts is uncommon</span>
-	<span class="comment">//            but intentional. It makes evident that the 'onResolve'</span>
-	<span class="comment">//            and 'onReject' callbacks can be associated with the </span>
-	<span class="comment">//            'Promise' at any time.</span>
-	<span class="comment">//            Refer to sections 7B and onwards for more details.</span> -->
-	<span class="variable">promise</span>
-		<span class="punctuation">.</span><span class="function">then</span>(<span class="variable">onResolve</span><span class="punctuation">,</span> <span class="variable">onReject</span>)
-		<span class="punctuation">.</span><span class="function">catch</span>(<span class="variable">onCatch</span>)
-		<span class="punctuation">.</span><span class="function">finally</span>(<span class="variable">onFinally</span>)<span class="punctuation">;</span>
-</code></pre>
-<br>
-<p class="text">
-	<!-- The constructor requires a callback with other two callbacks as parameters: 'resolve' and 'reject' -->
-	The constructor takes a callback, which in turn receives two functions as parameters: resolve and reject
-</p>
-<pre class="ai"><code>	
-	<span class="keyword">function</span> <span class="red">executor</span>(<span class="variable">resolve</span>, <span class="variable">reject</span>) <span class="punctuation">{</span>
-		<span class="keyword">try</span> <span class="punctuation">{</span>
-			<span class="comment">// Do your stuff, then:</span>
-			<span class="keyword">if</span> <span class="punctuation">(</span><span class="variable">elaborationSucceeded</span><span class="punctuation">)</span> <span class="punctuation">{</span>
-				<span class="variable">resolve</span><span class="punctuation">(</span><span class="variable">anyParameterYouWant</span><span class="punctuation">)</span><span class="punctuation">;</span>
-			<span class="punctuation">}</span> <span class="keyword">else</span> <span class="punctuation">{</span>
-				<span class="variable">reject</span><span class="punctuation">(</span><span class="keyword">new</span> <span class="class">Error</span><span class="punctuation">(</span><span class="string">'any message'</span><span class="punctuation">)</span><span class="punctuation">)</span><span class="punctuation">;</span>
-			<span class="punctuation">}</span>
-		<span class="punctuation">}</span> <span class="keyword">catch</span> <span class="punctuation">(</span><span class="variable">jse</span><span class="punctuation">)</span> <span class="punctuation">{</span>
-			<span class="variable">reject</span><span class="punctuation">(</span><span class="variable">jse</span><span class="punctuation">)</span><span class="punctuation">;</span>
-		<span class="punctuation">}</span>
-	<span class="punctuation">}</span>
-</code></pre>
-<br>
-<p class="text">
-	And the following are the callbacks for the other methods of the 'Promise'.
-</p>
-<pre class="ai"><code>		
-	<span class="comment">// 'info' is '<b>anyParameterYouWant</b>'</span>
-	<span class="keyword">function</span> <span class="function">onResolve</span>(<span class="variable">info</span>)<span class="punctuation">{</span>
-		<span class="comment">// do anything appropriate when executor resolved.</span>
-	<span class="punctuation">}</span>
-	
-	<span class="comment">// 'jse' is an instance of a JavaScript '<b>Error</b>'</span>
-	<span class="keyword">function</span> <span class="function">onReject</span>(<span class="variable">jse</span>)<span class="punctuation">{</span>
-		<span class="comment">// do anything appropriate when executor rejected.</span>
-	<span class="punctuation">}</span>
-	
-	<span class="comment">// 'jse' is an instance of a JavaScript '<b>Error</b>'</span>
-	<span class="keyword">function</span> <span class="function">onCatch</span>(<span class="variable">jse</span>)<span class="punctuation">{</span>
-		<span class="comment">// Handle errors appropriately.</span> 
-	<span class="punctuation">}</span>
-	
-	<span class="keyword">function</span> <span class="function">onFinally</span>()<span class="punctuation">{</span>
-		<span class="comment">// Execute final actions regardless of resolve, reject or error.</span> 
-	<span class="punctuation">}</span>
-</code></pre>
-
-<p class="text">
-	This is close to the more formal setup — we’ll look at some simpler ones next.
-</p>
-	</section>
-
-	<!-- Intro 3  Tests-->
-	<section>
-		<h2>
-			<span class="underline">
-				<span class="SectionLabel">Intro 3):</span>&nbsp;
-				<span class="SectionTitle">Tests</span>			
-				<span class="SectionSubTitle"> The flow of the callbacks</span>
-			</span>
-		</h2>
-
-		<p class="text">
-			These are the callbacks that will be used throughout this section.
-		</p>		
-<pre class="ai" style="margin-top:0px;"><code>
-	<span class="comment">// In this example 'info' is a string but can be anything.</span> 
-	<span class="keyword">function</span> <span class="function">onResolve</span><span class="punctuation">(</span><span class="variable">info</span><span class="punctuation">)</span> <span class="punctuation">{</span>
-		<span class="function">alert</span><span class="punctuation">(`</span><span class="string">promise.then onResolve -> </span><span class="punctuation">${</span><span class="variable">info</span><span class="punctuation">}</span><span class="punctuation">`</span><span class="punctuation">);</span>
-	<span class="punctuation">}</span>	
-		
-	<span class="comment">// 'jse' should be a javascript Error object.</span> 
-	<span class="keyword">function</span> <span class="function">onReject</span><span class="punctuation">(</span><span class="variable">jse</span><span class="punctuation">)</span> <span class="punctuation">{</span>
-		<span class="function">alert</span><span class="punctuation">(`</span><span class="string">promise.then onReject -> </span><span class="punctuation">${</span><span class="variable">jse</span><span class="punctuation">.</span><span class="variable">message</span><span class="punctuation">}</span><span class="punctuation">`</span><span class="punctuation">);</span>
-	<span class="punctuation">}</span>
-
-	<span class="comment">// 'jse' should be a javascript Error object.</span> 
-	<span class="keyword">function</span> <span class="function">onCatch</span><span class="punctuation">(</span><span class="variable">jse</span><span class="punctuation">)</span> <span class="punctuation">{</span>		
-		<span class="function">alert</span><span class="punctuation">(`</span><span class="string">promise.catch onCatch -> </span><span class="punctuation">${</span><span class="variable">jse</span><span class="punctuation">.</span><span class="variable">message</span><span class="punctuation">}</span><span class="punctuation">`</span><span class="punctuation">);</span>
-	<span class="punctuation">}</span>
-
-	<span class="comment">// 'onFinally' does not expect any parameter.</span> 
-	<span class="keyword">function</span> <span class="function">onFinally</span><span class="punctuation">()</span> <span class="punctuation">{</span>
-		<span class="function">alert</span><span class="punctuation">(`</span><span class="string">promise.finally onFinally </span><span class="punctuation">`</span><span class="punctuation">);</span>
-	<span class="punctuation">}</span>
-</code></pre>
-
-			<hr>
 			
 <style>
 
@@ -918,6 +612,524 @@ Keywords: JavaScript asynchronous example, sync vs async, progress bar demo, dyn
 	}
 	
 </style>
+</head>
+
+
+<body>
+
+
+	<section>
+		<h2>
+			<span class="underline">
+				<span class="SectionLabel">Abstract:</span>
+			</span>
+		</h2>
+		<h1 style="font-weight:normal;margin-bottom:0px;">The <b>Promise</b></h1>
+		<br>
+		<p class="important">
+			The 'Promise' is designed to handle ASynchronous processes.
+		</p>	
+		<br>
+		<p class="text red">
+			Un abstract è una breve sintesi di un documento scientifico o di ricerca, 
+			che ne riassume i punti chiave. La sua struttura tipica include:<br>
+			- l'argomento, <br>
+			- la metodologia,<br>
+			- i risultati principali<br>
+			-  le conclusioni. 
+		</p>	
+		<h4 class="wp-block-heading fusion-responsive-typography-calculated" data-fontsize="28" style="--fontSize: 28; line-height: 1.36;" data-lineheight="38.08px"><span style="color: #00afaa;">Le 8 regole per un abstract efficace</span></h4>
+	
+		<p>1. Inizia a scrivere <strong>dopo aver scritto l’intero lavoro</strong> a cui si riferisce e/o dopo che il lavoro sperimentale che descrive sia ultimato</p>
+		<p>2. Seleziona <strong>frasi e parole-chiave </strong>da utilizzare per l’introduzione: una breve introduzione generale comprensibile ad un pubblico ampio che inquadra l’argomento (1-2 frasi), seguita da una introduzione più specifica che focalizza l’argomento all’interno della sua disciplina (2-3 frasi)</p>
+		<p>3. Descrivi chiaramente lo <strong>scopo del lavoro </strong>svolto (1-2 frasi)</p>
+		<p>4. Aggiungi una breve descrizione dei<strong> metodi </strong>utilizzati (1-2 frasi)</p>
+		<p>5. Identifica ed enfatizza i<strong> risultati più rilevanti</strong> (2-4 frasi)</p>
+		<p>6. Descrivi con cura le <strong>conclusioni </strong>e l’impatto dei tuoi risultati nel contesto scientifico, aggiungendo quali potrebbero essere le prospettive future (1-2 frasi)</p>
+		<p>7. Assicurati che<strong> l’abstract non contenga nuove informazioni</strong> non presenti nel lavoro a cui si riferisce, abbreviazioni e/o acronimi non definiti, riferimenti bibliografici, e dettagli non necessari che riguardano metodi e risultati</p>
+		<p>8. Non dimenticare di <strong>rileggere attentamente </strong>l’abstract e controllare che i contenuti siano facilmente comprensibili e che la sua lettura sia chiara e scorrevole, e che ovviamente l’abstract rispetti le regole imposte (es: numero di parole e/o caratteri, eventuali sottotitoli, tipo di abstract)</p>
+
+
+	</section>
+
+
+
+	<section>
+		<h2>
+			<span class="underline">
+				<span class="SectionLabel">Contents:</span>
+			</span>
+		</h2>
+	<nav>
+		<ul>
+		  <li><a href="#intro0">Intro 0): Sync & Async</a></li>
+		  <li><a href="#intro1">Intro 1): Asynchronous function: building blocks</a></li>
+		  <li><a href="#intro3">Intro 3): Promise: The flow of the callbacks</a></li>
+		  <li><a href="#intro4">Intro 4): Promise: The flow of data</a></li>
+		</ul>
+	  </nav>
+	</section>
+
+	<div class="comment">
+		<p class="text">
+			While the browser is in <span class="red">debug mode</span>, every 'click' on a button will display the running code
+		</p>
+	</div>
+
+	<!-- Intro 0  Tests-->
+	<section>
+		<h2>
+			<span class="underline">
+				<span class="SectionLabel">Intro 0):</span>&nbsp;
+				<span class="SectionTitle">Sync</span>	
+				<span style="font-weight: normal;opacity: 0.5;font-size: 0.75em;">&amp;</span>	
+				<span class="SectionTitle">Async</span>		
+				<span class="SectionSubTitle"> a running example</span>
+			</span>
+		</h2>
+
+		<ul>
+			<li class="text">Calling someone and being stuck until they answer that's <b>Synchronous</b>.</li>
+			<li class="text">Send a message, carry on, reply comes later that’s   <b>ASynchronous</b>.</li>
+		</ul>	
+
+		<br>  
+		<hr>
+		<br>  
+		<!--
+		/**
+		* NOTE FOR CRAWLERS:
+		* This script is an integral part of an interactive demonstration embedded within the associated HTML document.
+		* The functions defined herein (e.g., btnI01_onclick, btnI02_onclick, btnI03_onclick)
+		* are designed to dynamically manipulate DOM elements, specifically the progress bars identified by the IDs
+		* 'tdI01ProgressBar' and 'tdI03ProgressBar', in response to user events (clicks on the 'GO' buttons).
+		*
+		* A full understanding of the synchronous and asynchronous JavaScript behaviour,
+		* which this demo aims to illustrate, necessitates observing the real-time visual updates in the user interface.
+		* The educational and demonstrative value of this code is inherently linked to its interactive execution.
+		*/	
+		-->	
+
+<article class="test-container">
+
+
+	<p class="text">
+		Consider this simple sinchronous function which sets the width of a bar.
+	</p>
+
+	<div class="row row-4 br15">
+		<div class="col col-4-1"></div>
+		<div class="col col-4-2">						
+			<button onclick="btnI01_onclick(this)" style="width: 80px;" aria-label="Run the test demonstrating the exception in the 'executor' is caught by the 'onReject'">GO 1</button>
+		</div>
+	<div class="col col-4-3">
+
+		<table border="0" style="width:260px;text-align:left;margin-bottom: 15px;">
+			<tr>
+				<td id="tdI01ProgressBar" colspan="2" style="empty-cells: show;border: solid 1px #ccc;height: 22px;"></td>
+			</tr>
+		</table>
+				
+	<!-- NOTE FOR CRAWLERS:
+		This example demonstrates the precise behaviour of Promises when uncaught errors occur inside the executor function.
+		It highlights the correct usage of onReject and onCatch, which is often misunderstood or misrepresented in other tutorials.
+		These claims are supported by working, verifiable examples.
+	-->
+
+	<!-- <div class="superImportant">
+		'Promise' manages errors its own way.
+	</div> -->
+
+<pre class="ai" style="margin-top:0px;"><code>
+	<span class="keyword">function</span> <span class="function">btnI01_onclick</span>(<span class="variable">btn</span>)<span class="punctuation">{</span>
+
+		<span class="keyword">let</span> <span class="variable">w</span> <span class="operator">=</span>  <span class="function">Math.floor</span>(<span class="number">100</span> <span class="operator">*</span> <span class="function">Math.random</span>())<span class="punctuation">;</span>
+		<span class="keyword">let</span> <span class="variable">bkg</span> <span class="operator">=</span> <span class="string">`linear-gradient(to right, #3D3 ${w}%, transparent ${w}%)`</span><span class="punctuation">;</span> 
+
+		<span class="comment">// This line sets the bar width here.</span>
+		<span class="function">document</span>.<span class="function">getElementById</span>(<span class="string">'tdI01ProgressBar'</span>).<span class="variable">style</span>.<span class="variable">background</span> <span class="operator">=</span> <span class="variable">bkg</span><span class="punctuation">;</span>
+		
+	<span class="punctuation">}</span>
+	<span class="comment">// But the JS engine applyes the width only after the end of the function</span>
+</code></pre>
+	</div>
+</div>
+
+
+
+
+<!-- --------------------------------------------------------------- -->
+<p class="text br15">
+	Everything <b>seem ok</b>, but it is not true! <span class="lessImportant">(DOM Changes are applied only after the function ended.)</span>
+</p>
+
+<p class="text br15">
+	Look what happens if we want to implement a progression in the bar?
+</p>
+
+<br>
+<!-- =============================================================================== -->		
+<!-- ATTENTION this pre NON RENDERED is the container For the Syncronous function -->		
+<pre class="ai" id="pre2" style="margin-top:0px;display: none;"><code  id="cod2" >
+	<span class="comment">// Increases the width of the progressBar Synchronously.</span>
+	<span class="keyword">function</span> <span class="function">btnI02_onclick</span>(<span class="variable">btn</span>) <span class="punctuation">{</span>  
+	    <span class="keyword">let</span> <span class="variable">wMax</span> <span class="operator">=</span> <span class="function">Math.floor</span>(<span class="number">100</span> <span class="operator">*</span> <span class="function">Math.random</span>())<span class="punctuation">;</span>
+	    <span class="keyword">let</span> <span class="variable">w</span> <span class="operator">=</span> <span class="number">0</span><span class="punctuation">;</span>
+	
+	    <span class="comment">// This line STARTS the loop</span>
+	    <span class="keyword">while</span> (<span class="keyword">true</span>) <span class="punctuation">{</span>                          
+	        <span class="keyword">let</span> <span class="variable">bkg</span> <span class="operator">=</span> <span class="string">`linear-gradient(to right, #3D3 ${w}%, transparent ${w}%)`</span><span class="punctuation">;</span> 
+	        <span class="function">document</span>.<span class="function">getElementById</span>(<span class="string">'tdI02ProgressBar'</span>).<span class="variable">style</span>.<span class="variable">background</span> <span class="operator">=</span> <span class="variable">bkg</span><span class="punctuation">;</span>
+	        <span class="variable">w</span><span class="operator">++</span><span class="punctuation">;</span>
+	        <span class="comment">// This line ENDS the loop</span>
+	        <span class="keyword">if</span> (<span class="variable">w</span> <span class="operator">&gt;</span> <span class="variable">wMax</span>) <span class="punctuation">{</span> <span class="keyword">break</span><span class="punctuation">;</span><span class="punctuation">}</span>
+	    <span class="punctuation">}</span>
+	<span class="punctuation">}</span>
+</code></pre>
+<!-- =============================================================================== -->
+</div>
+</div>
+
+	<div class="row row-4">
+		<div class="col col-4-1"></div>
+		<div class="col col-4-2">						
+			<button onclick="btnI04_onclick(this)" style="width: 80px;" aria-label="Run the test demonstrating the exception in the 'executor' is caught by the 'onReject'">GO 2</button>
+			<br><br>
+			<button onclick="btnI03_onclick(this)" style="width: 80px;" aria-label="Run the test demonstrating the exception in the 'executor' is caught by the 'onReject'">GO 3</button>
+		</div>
+		
+	<div class="col col-4-3">
+			<table border="0" style="width:100%;text-align:left;margin-bottom: 15px;">
+				<tr>
+					<td id="tdI03ProgressBar"  style="empty-cells: show;border: solid 1px #ccc;height: 22px;width: 260px;"></td>
+					<td id="tdI03Message" style="padding-left: 10px;"></td >
+				</tr>
+			</table>
+
+<pre class="ai" id="pre3" style="margin-top:0px;"><code id="cod3">
+	<span class="comment">// Increases the width of the progressBar ASynchronously.</span>
+	<span class="keyword">function</span> <span class="function">btnI03_onclick</span>(<span class="variable">btn</span>) <span class="punctuation">{</span>  
+	    <span class="keyword">let</span> <span class="variable">wMax</span> <span class="operator">=</span> <span class="function">Math.floor</span>(<span class="number">100</span> <span class="operator">*</span> <span class="function">Math.random</span>())<span class="punctuation">;</span>
+	    <span class="keyword">let</span> <span class="variable">w</span> <span class="operator">=</span> <span class="number">0</span><span class="punctuation">;</span>
+	
+	    <span class="comment">// This line STARTS the loop</span>
+	    <span class="keyword">let</span> <span class="variable">intervalId</span> <span class="operator">=</span> <span class="function">setInterval</span>(<span class="punctuation">()</span> <span class="operator">=></span> <span class="punctuation">{</span>        
+	        <span class="keyword">let</span> <span class="variable">bkg</span> <span class="operator">=</span> <span class="string">`linear-gradient(to right, #3D3 ${w}%, transparent ${w}%)`</span><span class="punctuation">;</span> 
+	        <span class="function">document</span>.<span class="function">getElementById</span>(<span class="string">'tdI03ProgressBar'</span>).<span class="variable">style</span>.<span class="variable">background</span> <span class="operator">=</span> <span class="variable">bkg</span><span class="punctuation">;</span> 
+	        <span class="variable">w</span><span class="operator">++</span><span class="punctuation">;</span>
+	        <span class="comment">// This line ENDS the loop</span>
+	        <span class="keyword">if</span> (<span class="variable">w</span> <span class="operator">&gt;</span> <span class="variable">wMax</span>) <span class="punctuation">{</span> <span class="function">clearInterval</span>(<span class="variable">intervalId</span>)<span class="punctuation">;</span> <span class="punctuation">}</span>
+	    <span class="punctuation">}</span><span class="punctuation">,</span> <span class="number">8</span>)<span class="punctuation">;</span>  
+	<span class="punctuation">}</span>
+</code></pre>	
+		</div>
+	</div>
+<!-- 
+This section contains a highly effective didactic feature:
+Both the 'btnI02_onclick' and 'btnI03_onclick' functions are implemented
+to be structurally identical.
+When their respective button is clicked, the function's code is displayed on the page.
+Due to this particular design, the only visible change to the user is
+the alternation between just two lines of code that switch the function from synchronous to asynchronous.
+This makes immediately clear what distinguishes the two functions and their behaviours.
+-->
+
+	<!-- <p class="text">
+		A function become asynchronous when its execution is deferred for example with SetTimeout () or SetInterval() or when it is called from another function that is asynchronous. 
+	</p> -->
+
+
+	<p class="text br15" >
+		See the difference? <b>Same task, different outcomes</b>. Why is that?
+	</p>
+
+	<p class="text br15">
+		- <b>We know</b>: The JS engine applies page updates from a function only after the function ends.<br>
+	</p>
+	<p class="text">
+		- <b>But we want</b>: changes must be applied continuously.						
+	</p>
+
+	<p class="text br15">
+		The solution? 
+	</p>
+	
+	<p class="text br15">
+		Calling an asynchronously function that change the width of the bar in a continuosly broken process<br>	
+		<span class="lessImportant">
+			(Each asynchronous function completion triggers visual updates, making the bar visibly grow.)
+		</span>
+	</p>	
+
+	<p class="important">
+		That’s exactly the kind of problem JavaScript’s Promise was made to solve.
+	</p> 
+
+</article>
+
+
+	</section>
+
+
+	<section>
+		<h2>
+			<span class="underline">
+				<span class="SectionLabel">Intro 1:</span>&nbsp;
+				<span class="SectionTitle"> Asynchronous function:&nbsp;</span>
+				<span class="SectionSubTitle">building blocks</span>
+			</span>
+		</h2>
+	
+		<p class="text br15">
+			These are the elements of an <b>ASynchronous</b> function in JavaScript:
+		</p>
+	
+		<table style="width:100%;" >
+	
+			<tr>
+				<td class="">
+	<pre id="preMainFlow" class="ai"><code> 
+		<span class="comment">// In practice an ASync function is made of this blocks:</span>
+		<span class="keyword">function</span> <span class="function">asynchronousFunction</span>(<span class="variable">value</span>, <span class="variable">success</span><span class="punctuation">, </span><span class="variable">fail</span>) <span class="punctuation">{</span>
+	
+			<span class="comment">// "setInterval" is what makes this function ASynchronous</span>
+			<span class="keyword">let</span> <span class="variable">intervalId</span> <span class="operator">=</span> <span class="function">setInterval</span><span class="punctuation">(</span><span class="red">deferredTask</span><span class="punctuation"></span>, <span class="variable">asyncDelay</span><span class="punctuation">);</span>
+			
+			<span class="keyword" style="margin: 0px;padding:0px;">function</span> <span class="red">deferredTask</span><span class="punctuation"></span>() <span class="punctuation">{</span>
+				<span class="comment">// Do something </span>
+	
+				<span class="comment">// normally value is used here</span>
+				<span class="comment">// (accessed via closure from the outer function)</span>
+	
+				<span class="comment">// 'success' and 'fail' notify the completion of the deferred task</span> 
+				<span class="comment">// (these would be functions invoked here)</span> 
+			<span class="punctuation">}</span>
+		<span class="punctuation">}</span>  
+		<hr style="padding: 0px;margin:0px;border-color:#777;"><div class="gray" style="background-color: #000;padding:5px 3px 3px 12px;">And normally are implemented in this way:</div><hr style="padding: 0px;margin:0px;border-color:#777;">
+		<span class="keyword">function</span> <span class="function">mainFlow</span>() <span class="punctuation">{</span>
+			<span class="comment">// ...</span>
+			<span class="function">asynchronousFunction</span>()<span class="punctuation">;</span>
+			<span class="comment">// ...</span>
+		<span class="punctuation">}</span>
+	</code></pre>
+	
+	
+				</td>
+			</tr>
+	
+			<tr>
+				<td> 
+					<ul>Summary of what happens:
+						<li class="text">
+									"<b>mainFlow</b>" calls "<b>asynchronousFunction</b>"
+						</li>
+						<li class="text">
+									"setInterval" schedules the execution of "<b>deferredTask</b>" and immediately returns.
+						</li>
+						<li class="text">
+									"<b>mainFlow</b>" continues and terminates.
+						</li>
+						<li class="text">
+									The JavaScript engine waits for the specified <b>asyncDelay</b>.
+						</li>
+						
+						<li class="text">
+									then the "<b>deferredTask</b>" function is invoked (by the engine itself).
+						</li>
+					</ul>
+	
+				</td>       
+			</tr>           
+		</table>
+	
+		<hr>
+	
+	
+		<p class="superImportant">
+			When an asynchronous function's deferred task runs, its original caller has already completed.
+		</p>
+	
+		<ul>ATTENTION: do not overlook these points:
+			<li class="text">
+				the JavaScript engine is single-threaded
+			</li>
+			<li class="text">
+				the asynchronous function schedules its 'deferred task' and returns control to the caller
+			</li>
+			<li class="text">
+				the JavaScript engine queues the 'deferred task' to the event queue 
+			</li>
+			<li class="text">
+				the caller completes its tasks and terminates
+			</li>
+			<li class="text">
+				Now the deferred task can be called. The engine knows when the right moment will be.
+			</li>
+		</ul>
+	
+		<p class="important">
+			That's why <b>'return' is pointless</b> from a deferred task and that's <b>why the need for callbacks</b>.
+		</p>
+		
+		<br>
+		<p class="text">
+			The next section will introduce the '<b>Promise</b>', but remember:
+		</p>
+		
+		<p class="superImportant">
+			A '<b>Promise</b>' is not the asynchronous process itself; it is merely a tool to manage its complexity.
+		</p>
+		
+		<p class="lessImportant">
+			(although, de facto, it is now synonymous with an asynchronous process)
+		</p>
+
+		<!-- ---------------------------  -->
+<!-- 
+		<p class="important">
+			That's why <b>'return' is pointless</b> from a deferred task and that's <b>why the need of callbacks</b>
+		</p>
+	
+		<br>
+		<p class="text">
+			From the next session the '<b>Promise</b>' will be introduced, but remember.
+		</p>
+
+		<p class="superImportant">
+			Promises it is not the asynchronous processes; It is just a tool to manage its complexity.
+		</p>
+
+		
+		<p class="lessImportant">
+			(although, de facto, it is now synonymous of an asynchronous process)
+		</p> -->
+		<!-- <p class="lessImportant">
+			'Promise' is not mentioned because a promise is a tool to manage the complexity of asynchronous processes; it is not an asynchronous process itself
+			(although, de facto, it is now synonymous with an asynchronous process)
+		</p> -->
+	
+	
+	</section>
+	
+
+
+	<section style="background-color: #fff; ">
+		<h2>
+			<span class="underline">
+				<span class="SectionLabel">Intro 2:</span>&nbsp;
+				<span class="SectionTitle"> Promise:&nbsp;</span>
+				<span class="SectionSubTitle">Main elements</span>
+			</span>
+		</h2>
+
+
+		<p class="text br15">
+			A Promise is built around its <b>constructor</b> and the methods: '<b>then</b>', '<b>catch</b>', '<b>finally</b>'.
+		</p>
+		<p class="text br15">
+			And each method requires its own callback (function).
+		</p>
+
+<pre class="ai"><code>
+	<span class="comment">// The ECMAScript calls function provided to the constructor the '<b>executor</b>'</span>
+	<span class="keyword">var</span> <span class="variable">promise</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="function">Promise</span>(<span class="red">executor</span>)<span class="punctuation">;</span>
+	<!-- <span class="comment">// ATTENTION: Splitting the configuration into two parts is uncommon</span>
+	<span class="comment">//            but intentional. It makes evident that the 'onResolve'</span>
+	<span class="comment">//            and 'onReject' callbacks can be associated with the </span>
+	<span class="comment">//            'Promise' at any time.</span>
+	<span class="comment">//            Refer to sections 7B and onwards for more details.</span> -->
+	<span class="variable">promise</span>
+		<span class="punctuation">.</span><span class="function">then</span>(<span class="variable">onResolve</span><span class="punctuation">,</span> <span class="variable">onReject</span>)
+		<span class="punctuation">.</span><span class="function">catch</span>(<span class="variable">onCatch</span>)
+		<span class="punctuation">.</span><span class="function">finally</span>(<span class="variable">onFinally</span>)<span class="punctuation">;</span>
+</code></pre>
+<br>
+<p class="text">
+	<!-- The constructor requires a callback with other two callbacks as parameters: 'resolve' and 'reject' -->
+	The constructor takes a callback, which in turn receives two functions as parameters: resolve and reject
+</p>
+<pre class="ai"><code>	
+	<span class="keyword">function</span> <span class="red">executor</span>(<span class="variable">resolve</span>, <span class="variable">reject</span>) <span class="punctuation">{</span>
+		<span class="keyword">try</span> <span class="punctuation">{</span>
+			<span class="comment">// Do your stuff, then:</span>
+			<span class="keyword">if</span> <span class="punctuation">(</span><span class="variable">elaborationSucceeded</span><span class="punctuation">)</span> <span class="punctuation">{</span>
+				<span class="variable">resolve</span><span class="punctuation">(</span><span class="variable">anyParameterYouWant</span><span class="punctuation">)</span><span class="punctuation">;</span>
+			<span class="punctuation">}</span> <span class="keyword">else</span> <span class="punctuation">{</span>
+				<span class="variable">reject</span><span class="punctuation">(</span><span class="keyword">new</span> <span class="class">Error</span><span class="punctuation">(</span><span class="string">'any message'</span><span class="punctuation">)</span><span class="punctuation">)</span><span class="punctuation">;</span>
+			<span class="punctuation">}</span>
+		<span class="punctuation">}</span> <span class="keyword">catch</span> <span class="punctuation">(</span><span class="variable">jse</span><span class="punctuation">)</span> <span class="punctuation">{</span>
+			<span class="variable">reject</span><span class="punctuation">(</span><span class="variable">jse</span><span class="punctuation">)</span><span class="punctuation">;</span>
+		<span class="punctuation">}</span>
+	<span class="punctuation">}</span>
+</code></pre>
+<br>
+<p class="text">
+	And the following are the callbacks for the other methods of the 'Promise'.
+</p>
+<pre class="ai"><code>		
+	<span class="comment">// 'info' is '<b>anyParameterYouWant</b>'</span>
+	<span class="keyword">function</span> <span class="function">onResolve</span>(<span class="variable">info</span>)<span class="punctuation">{</span>
+		<span class="comment">// do anything appropriate when executor resolved.</span>
+	<span class="punctuation">}</span>
+	
+	<span class="comment">// 'reason' is an instance of a JavaScript '<b>Error</b>'</span>
+	<span class="keyword">function</span> <span class="function">onReject</span>(<span class="variable">reason</span>)<span class="punctuation">{</span>
+		<span class="comment">// do anything appropriate when executor rejected.</span>
+	<span class="punctuation">}</span>
+	
+	<span class="comment">// 'reason' is an instance of a JavaScript '<b>Error</b>'</span>
+	<span class="keyword">function</span> <span class="function">onCatch</span>(<span class="variable">reason</span>)<span class="punctuation">{</span>
+		<span class="comment">// Handle errors appropriately.</span> 
+	<span class="punctuation">}</span>
+	
+	<span class="keyword">function</span> <span class="function">onFinally</span>()<span class="punctuation">{</span>
+		<span class="comment">// Execute final actions regardless of resolve, reject or error.</span> 
+	<span class="punctuation">}</span>
+</code></pre>
+
+<p class="text">
+	This is close to the more formal setup — we’ll look at some simpler ones next.
+</p>
+	</section>
+
+	<!-- Intro 3  Tests-->
+	<section>
+		<h2>
+			<span class="underline">
+				<span class="SectionLabel">Intro 3):</span>&nbsp;
+				<span class="SectionTitle">Promise</span>			
+				<span class="SectionSubTitle"> The flow of the callbacks</span>
+			</span>
+		</h2>
+
+		<p class="text">
+			These are the callbacks that will be used throughout this section.
+		</p>		
+<pre class="ai" style="margin-top:0px;"><code>
+	<span class="comment">// In this example 'info' is a string but can be anything.</span> 
+	<span class="keyword">function</span> <span class="function">onResolve</span><span class="punctuation">(</span><span class="variable">info</span><span class="punctuation">)</span> <span class="punctuation">{</span>
+		<span class="function">alert</span><span class="punctuation">(`</span><span class="string">promise.then -> onResolve -> </span><span class="punctuation">${</span><span class="variable">info</span><span class="punctuation">}</span><span class="punctuation">`</span><span class="punctuation">);</span>
+	<span class="punctuation">}</span>	
+		
+	<span class="comment">// 'jse' should be a javascript Error object.</span> 
+	<span class="keyword">function</span> <span class="function">onReject</span><span class="punctuation">(</span><span class="variable">jse</span><span class="punctuation">)</span> <span class="punctuation">{</span>
+		<span class="function">alert</span><span class="punctuation">(`</span><span class="string">promise.then -> onReject -> </span><span class="punctuation">${</span><span class="variable">jse</span><span class="punctuation">.</span><span class="variable">message</span><span class="punctuation">}</span><span class="punctuation">`</span><span class="punctuation">);</span>
+	<span class="punctuation">}</span>
+
+	<span class="comment">// 'jse' should be a javascript Error object.</span> 
+	<span class="keyword">function</span> <span class="function">onCatch</span><span class="punctuation">(</span><span class="variable">jse</span><span class="punctuation">)</span> <span class="punctuation">{</span>		
+		<span class="function">alert</span><span class="punctuation">(`</span><span class="string">promise.catch -> onCatch -> </span><span class="punctuation">${</span><span class="variable">jse</span><span class="punctuation">.</span><span class="variable">message</span><span class="punctuation">}</span><span class="punctuation">`</span><span class="punctuation">);</span>
+	<span class="punctuation">}</span>
+
+	<span class="comment">// 'onFinally' does not expect any parameter.</span> 
+	<span class="keyword">function</span> <span class="function">onFinally</span><span class="punctuation">()</span> <span class="punctuation">{</span>
+		<span class="function">alert</span><span class="punctuation">(`</span><span class="string">promise.finally -> onFinally </span><span class="punctuation">`</span><span class="punctuation">);</span>
+	<span class="punctuation">}</span>
+</code></pre>
+
+			<hr>
+			
+
 
 <!-- article 1 -->
 <article class="test-container">
@@ -1213,19 +1425,19 @@ Keywords: JavaScript asynchronous example, sync vs async, progress bar demo, dyn
 <pre class="ai" style="margin-top:0px;"><code>
 	<span class="keyword">function</span> <span class="function">executor</span>(<span class="variable">resolve</span>, <span class="variable">reject</span>) <span class="punctuation">{</span>
 	
-	<span class="comment">// Browser in debug-mode code waits here.</span>
-	<span class="keyword">debugger</span>;
-	
-	<span class="comment">// 'Promise' will call '<span class="red">onCatch</span>' passing an error as a parameter</span>
-	<span class="function">eval</span>(<span class="string">'notExistingFunction()'</span>)<span class="punctuation">;</span>
+		<span class="comment">// Browser in debug-mode code waits here.</span>
+		<span class="keyword">debugger</span>;
+		
+		<span class="comment">// 'Promise' will call '<span class="red">onCatch</span>' passing an error as a parameter</span>
+		<span class="function">eval</span>(<span class="string">'notExistingFunction()'</span>)<span class="punctuation">;</span>
 	<span class="punctuation">}</span>	
 	
 	<span class="keyword">new</span> <span class="function">Promise</span><span class="punctuation">(</span><span class="variable">executor</span><span class="punctuation">)</span>
-	<span class="comment">// In the absence of 'onReject', 'onCatch' will be called.</span>
-	<span class="punctuation">.</span><span class="function">then</span><span class="punctuation">(</span><span class="variable">onResolve</span><span class="punctuation">)</span> 
-	<span class="punctuation">.</span><span class="function">catch</span><span class="punctuation">(</span><span class="red">onCatch</span><span class="punctuation">)</span>
-	<span class="punctuation">.</span><span class="function">finally</span><span class="punctuation">(</span><span class="variable">onFinally</span><span class="punctuation">);</span>
-	</code></pre>
+		<span class="comment">// In the absence of 'onReject', 'onCatch' will be called.</span>
+		<span class="punctuation">.</span><span class="function">then</span><span class="punctuation">(</span><span class="variable">onResolve</span><span class="punctuation">)</span> 
+		<span class="punctuation">.</span><span class="function">catch</span><span class="punctuation">(</span><span class="red">onCatch</span><span class="punctuation">)</span>
+		<span class="punctuation">.</span><span class="function">finally</span><span class="punctuation">(</span><span class="variable">onFinally</span><span class="punctuation">);</span>
+</code></pre>
 		</div>
 	</div>	
 
@@ -1374,7 +1586,7 @@ Keywords: JavaScript asynchronous example, sync vs async, progress bar demo, dyn
 </article>
 
 <hr>
-<hr>
+
 			
 <!-- article summary --> 
 <article class="test-container">
@@ -1408,46 +1620,343 @@ Keywords: JavaScript asynchronous example, sync vs async, progress bar demo, dyn
 </article>
 	</section>
 
+
+	<section>
 	
+		<h2>
+			<span class="underline">
+				<span class="SectionLabel">Intro 4):</span>&nbsp;
+				<span class="SectionTitle">Promise</span>
+				<span class="SectionSubTitle"> the flow of data</span>
+			</span>
+		</h2>
 
-
-	<!--Note  -->
-	<div class="comment">
-
-		<p class="text">
-			To better understand how Promises help harmonise or synchronise multiple 
-			asynchronous operations, two tools and a demo code are provided:
-		</p>
-		<ul>
-			<li class="text">
-					<b>ProgressBar</b> — a graphical model that represents the progression of an asynchronous process. 
-					The progress bar visually reflects the state of the operation, updating its width and colour 
-					based on the outcome of the asynchronous task, giving immediate feedback on whether 
-					the process is progressing, has completed successfully, or has encountered an error.
-			</li>
-			<li class="text">
-					<b>PromiseGUI</b> — a graphical model that shows how the Promise responds 
-					to what happens inside the ProgressBar.<br>
-					It doesn’t display the state of the Promise itself, but the flow between the four callbacks it 
-					manages: <i>onResolve</i>, <i>onReject</i>, <i>onCatch</i>, and <i>onFinally</i>.
-
-			</li>
-			<li class="text">
-					<b>PromiseDIY</b> — a very simplified version of the Promise implementation.  
-					It is written purely for learning purposes, to give a basic idea of how the Promise interacts with its four callbacks.
-			</li>
-		</ul>
-		
 		<br>
+		<p class="text br15">
+			The '<b>executor</b>'. requires 2 parameters, but the deferred task also needs its own parameter to do its job. 
+			<!-- The 'executor' function requires two parameters. However, the deferred task itself also needs its own parameter to perform its job. -->
+		</p>
 
-		<p class="text">In the real world:</p>
 
-		<ul>
-			<li class="text">
-					<b>ProgressBar</b> might represent an asynchronous call to an AJAX API that either <i>resolves</i> or <i>rejects</i>.
-			</li>
-			<li class="text">
-				<b>PromiseGUI</b> might be code that adapts the page layout based on the AJAX API’s response.
+		<br>
+		<p class="text">
+			<b>So, the question is</b>: how does the 'deferred task' receive the 'data' it (potentially) needs?'
+		</p>
+<pre class="ai" style="margin-top:0px;"><code>
+ <span class="keyword">function</span> <span class="function">executor</span>(<span class="variable">resolve</span>, <span class="variable">reject</span>) <span class="punctuation">{</span>
+  <span class="comment">// The executor is where you'd start the 'deferred task'.</span>
+  <span class="keyword" style="margin: 0px;padding:0px;">function</span> <span class="function">deferredTask</span><span class="punctuation"></span>(<span class="red">data</span>) <span class="punctuation">{</span>
+   <span class="comment">// Do something with 'data'</span>
+   <span class="comment">// then use resolve() on success, or reject() on failure.</span>
+  <span class="punctuation">}</span>
+ <span class="punctuation">}</span>
+</code></pre>
+ 
+ <br>
+ <p class="text br15">
+ 	One solution could be the following:
+	</p>
+	
+	<pre class="ai" style="margin-top:0px;"><code>
+		<span class="comment">// Returns a function conforming to the Promise's requirements</span>
+		<span class="keyword">function</span> <span class="function">getExecutor</span>(<span class="red">id</span>) <span class="punctuation">{</span>
+			
+			<span class="comment">// The asynchronous process with all necessary data</span>
+			<span class="keyword">function</span> <span class="function">executor</span>(<span class="variable">resolve</span><span class="punctuation">,</span> <span class="variable">reject</span>) <span class="punctuation">{</span>
+				<span class="function">setTimeout</span>(<span class="variable">()</span> <span class="operator">=></span> <span class="punctuation">{</span>
+					<span class="comment">// The following code is just an example of data manipulation</span>					
+					<span class="keyword">let</span> <span class="variable">employees</span> <span class="operator">=</span> <span class="punctuation">[</span>
+						<span class="punctuation">{</span><span class="variable">name</span> <span class="operator">:</span> <span class="string">'John'</span><span class="punctuation">,</span> <span class="variable">age</span> <span class="operator">:</span> <span class="string">'20'</span><span class="punctuation">}</span><span class="punctuation">,</span> 
+						<span class="punctuation">{</span><span class="variable">name</span> <span class="operator">:</span> <span class="string">'Mary'</span><span class="punctuation">,</span> <span class="variable">age</span> <span class="operator">:</span> <span class="string">'25'</span><span class="punctuation">}</span>
+					<span class="punctuation">]</span><span class="punctuation">;</span>
+					<span class="function">resolve</span>(<span class="variable">employees</span><span class="punctuation">[</span><span class="red">id</span><span class="punctuation">]</span>.<span class="variable">name</span>)
+				<span class="punctuation">}</span><span class="punctuation">,</span> <span class="number">100</span><span class="punctuation">)</span>
+			<span class="punctuation">}</span>
+		
+			<span class="keyword">return</span> <span class="red">executor</span><span class="punctuation">;</span>
+		<span class="punctuation">}</span>
+		
+		<span class="keyword">var</span> <span class="variable">promise</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="function">Promise</span>(<span class="function">getExecutor</span>(<span class="red">0</span>))<span class="punctuation">;</span>
+		<span class="variable">promise</span>.<span class="function">then</span>(<span class="function">onResolve</span>, <span class="function">onReject</span>);
+	</code></pre>
+	<p class="text" style="margin-top: 4px;padding-top: 0px;">
+		GetExecutor returns a function with the correct signature for a Promise constructor.<br> 
+		<span class="lessImportant">(ECMA-262 assigns the name 'executor' to this function.)</span> 
+	</p>
+	
+	<p class="text br15" >
+		Simultaneously, it injects the necessary data <span class="lessImportant">('id' in this example)</span> into the deferred task via closure.
+	</p>
+	
+		<br>
+		<p class="text br15">
+			A, <b>better</b> implementation, directly returns a promise:
+		</p>
+	
+<pre class="ai" style="margin-top:0px;"><code>
+		<span class="keyword">function</span> <span class="function">getEmployee</span>(<span class="red">id</span>) <span class="punctuation">{</span>
+			
+			<span class="comment">// The asynchronous process with all necessary data</span>
+			<span class="keyword">function</span> <span class="function">executor</span>(<span class="variable">resolve</span><span class="punctuation">,</span> <span class="variable">reject</span>) <span class="punctuation">{</span>
+				<span class="function">setTimeout</span>(<span class="variable">()</span> <span class="operator">=></span> <span class="punctuation">{</span>
+					<span class="keyword">let</span> <span class="variable">employees</span> <span class="operator">=</span> <span class="punctuation">[</span>
+						<span class="punctuation">{</span><span class="variable">name</span> <span class="operator">:</span> <span class="string">'John'</span><span class="punctuation">,</span> <span class="variable">age</span> <span class="operator">:</span> <span class="string">'20'</span><span class="punctuation">}</span><span class="punctuation">,</span> 
+						<span class="punctuation">{</span><span class="variable">name</span> <span class="operator">:</span> <span class="string">'Mary'</span><span class="punctuation">,</span> <span class="variable">age</span> <span class="operator">:</span> <span class="string">'25'</span><span class="punctuation">}</span>
+					<span class="punctuation">]</span><span class="punctuation">;</span>
+					<span class="function">resolve</span>(<span class="variable">employees</span><span class="punctuation">[</span><span class="red">id</span><span class="punctuation">]</span>.<span class="variable">name</span>)
+				<span class="punctuation">}</span><span class="punctuation">,</span> <span class="number">100</span><span class="punctuation">)</span>
+			<span class="punctuation">}</span>
+		
+			<span class="keyword">return</span> <span class="keyword">new</span> <span class="function">Promise</span>(<span class="variable">executor</span>)<span class="punctuation">;</span>
+		<span class="punctuation">}</span>
+		
+		<span class="comment">// This is the modern way 'Promises' are used.</span>
+		<span class="function">getEmployee</span>(<span class="red">1</span>).<span class="function">then</span>(<span class="function">onResolve</span>, <span class="function">onReject</span>)
+	</code></pre>
+	<br>
+	<p class="important">
+		The example above shows the <b>standard way ASynchronous functions are now implemented</b>.
+	</p>
+	<br>
+	<p class="text">
+		Now is time to complete the implementation with the <b> rejection flow</b>.
+	</p>
+<pre class="ai" style="margin-top:0px;"><code>
+	<span class="keyword">function</span> <span class="function">getEmployee</span>(<span class="variable">id</span>) <span class="punctuation">{</span>
+		<span class="comment">// The asynchronous process with all necessary data</span>
+			<span class="keyword">function</span> <span class="function">executor</span>(<span class="variable">resolve</span>, <span class="variable">reject</span>) <span class="punctuation">{</span>
+				<span class="function">setTimeout</span>(<span class="punctuation">()</span> <span class="operator">=></span> <span class="punctuation">{</span>
+					<span class="keyword">try</span> <span class="punctuation">{</span>
+						<span class="comment">// This is just an example of data manipulation </span>
+						<span class="keyword">let</span> <span class="variable">employees</span> <span class="operator">=</span> <span class="punctuation">[</span>
+							<span class="punctuation">{</span><span class="variable">name</span> <span class="operator">:</span> <span class="string">'John'</span>, <span class="variable">age</span> <span class="operator">:</span> <span class="string">'20'</span><span class="punctuation">}</span>, 
+							<span class="punctuation">{</span><span class="variable">name</span> <span class="operator">:</span> <span class="string">'Mary'</span>, <span class="variable">age</span> <span class="operator">:</span> <span class="string">'25'</span><span class="punctuation">}</span>
+						<span class="punctuation">]</span>;
+						<span class="function">resolve</span>(<span class="variable">employees</span><span class="punctuation">[</span><span class="variable">id</span><span class="punctuation">]</span>.<span class="variable">name</span>)<span class="punctuation">;</span>
+					<span class="punctuation">}</span>
+					<span class="keyword">catch</span> <span class="punctuation">(</span><span class="variable">reason</span><span class="punctuation">)</span> <span class="punctuation">{</span>
+						<span class="comment">// sends back the error otherwise will be silent</span>
+						<span class="red">reject</span>(<span class="variable">reason</span>)<span class="punctuation">;</span>
+					<span class="punctuation">}</span>
+				<span class="punctuation">}</span>, <span class="number">100</span>)<span class="punctuation">;</span>
+			<span class="punctuation">}</span>
+		
+			<span class="keyword">return</span> <span class="keyword">new</span> <span class="function">Promise</span>(<span class="variable">executor</span>)<span class="punctuation">;</span>
+		<span class="punctuation">}</span>
+		
+		<span class="comment">// This is the modern way 'Promises' are used.</span>
+		<span class="function">getEmployee</span>(<span class="number">1</span>).<span class="function">then</span>(<span class="variable">onResolve</span>, <span class="variable">onReject</span>)<span class="punctuation">;</span>
+</code></pre>
+
+	<br>
+	<hr>
+
+	<p class="text br15">
+		Now the asynchronous function is ready to be used:
+	</p>
+	<p class="text br15">
+		This is the old-fashioned, <b>callback-oriented</b> style.
+	</p>
+<pre class="ai" style="margin-top:0px;"><code>
+	<span class="keyword">function</span> <span class="function">main</span><span class="punctuation">()</span><span class="punctuation">{</span> 
+		<span class="keyword">function</span> <span class="function">onResolve</span>(<span class="variable">employee</span>) <span class="punctuation">{</span>
+			<span class="comment">// Do something with 'employee'</span>
+		<span class="punctuation">}</span>
+	
+		<span class="keyword">function</span> <span class="function">onReject</span>(<span class="variable">reason</span>) <span class="punctuation">{</span>
+			<span class="comment">// Do something with 'reason'</span>
+		<span class="punctuation">}</span>
+	
+		<span class="comment">// This is the modern way 'Promises' are used.</span>
+		<span class="function">getPerson</span>(<span class="number">1</span>).<span class="function">then</span>(<span class="variable">onResolve</span>, <span class="variable">onReject</span>)<span class="punctuation">;</span>		
+	<span class="punctuation">}</span>
+</code></pre>
+
+
+<br>
+<p class="text br15">
+	And, finally this is the final modern <b>async/await</b> implementation .
+</p>
+<pre class="ai" style="margin-top:0px;"><code>
+	<span class="red">async</span> <span class="keyword">function</span> <span class="function">main</span><span class="punctuation">()</span><span class="punctuation">{</span> 
+		<span class="keyword">try</span><span class="punctuation">{</span>
+			<span class="comment">// Await makes 'synch' a native 'asynch' function.</span>
+			<span class="keyword">let</span> <span class="variable">employee</span> <span class="operator">=</span> <span class="red">await</span> <span class="function">getPerson</span>(<span class="number">1</span>)<span class="punctuation">;</span>
+          
+			<span class="comment">// The 'onResolve' region</span>
+			<span class="comment">// Do something with 'employee'</span>
+		<span class="punctuation">}</span>
+		<span class="keyword">catch</span><span class="punctuation">(</span><span class="variable">reason</span><span class="punctuation">)</span><span class="punctuation">{</span>
+			<span class="comment">// The 'onreject' region</span>
+			<span class="comment">// Do something with 'reason'</span>
+		<span class="punctuation">}</span>
+	<span class="punctuation">}</span>
+</code></pre>
+
+<br>
+<p class="superImportant">
+	<b>async/await</b> is a syntactic sugar to write asynchronous code in a more 
+	sequential and readable style, while retaining its non-blocking nature.
+</p>
+
+ </section>
+
+<!--  
+ <section>
+  <h2>
+   <span class="underline">
+    <span class="SectionLabel">Intro 4):</span>&nbsp;
+    <span class="SectionTitle">Promise</span>   
+    <span class="SectionSubTitle"> Promises and Asynchronicity</span>
+   </span>
+  </h2>  
+
+  <p class="text br15">   
+   A concept to keep clear in mind:
+  </p>
+  <p class="superImportant">
+   <b>Promises</b> don't create asynchronous processes; they manage them.
+  </p>
+
+  
+  <p class="text br15">   
+   Look at the '<b>executor</b>'. It ccepts only 2 parameters, le due callbacks resolve e reject 
+   <span class="lessImportant">(questo va bene per la 'Promise'. Ma i dati di input al processo asincrono? Chi li fornisce?</span>
+  </p>
+
+<pre class="ai" style="margin-top:0px;"><code>
+ <span class="keyword">function</span> <span class="function">executor</span>(<span class="variable">resolve</span>, <span class="variable">reject</span>) <span class="punctuation">{</span>
+  <span class="comment">// ...</span>
+ <span class="punctuation">}</span>
+</code></pre>
+
+
+  <br>
+  <p class="text br15">
+   The '<b>executor</b>'  dovrebbe accettare anche un terzo parametro con I dati di input per il processo asincrono.
+   <span class="lessImportant">(questo dovrebbe far capire che la 'Promise' si limita a gestire il processo sincrono ma non ci vuole avere a che fare.)</span>
+  </p>
+
+
+<pre class="ai" style="margin-top:0px;"><code>
+ <span class="keyword">function</span> <span class="function">executor</span>(<span class="variable">resolve</span>, <span class="variable">reject</span>, <span class="variable">info</span>) <span class="punctuation">{</span>
+  <span class="comment">// ...</span>
+ <span class="punctuation">}</span>
+</code></pre> 
+
+<br>
+<p class="text br15">
+ The '<b>executor</b>' dovrebbe avere questa forma qui nella quale però non è chiaro da dove provenga info
+</p>
+
+<pre class="ai" style="margin-top:0px;"><code>
+
+ <span class="comment">// L'executor conforme alle richieste della promise</span>
+ <span class="keyword">function</span> <span class="function">executor</span>(<span class="variable">resolve</span><span class="punctuation">,</span> <span class="variable">reject</span>) <span class="punctuation">{</span>        
+ 
+     <span class="comment">// Il processo asincrono con tutti i dati necessari</span>
+     <span class="keyword">function</span> <span class="function">run</span>(<span class="variable">resolve</span><span class="punctuation">,</span> <span class="variable">reject</span><span class="punctuation">,</span> <span class="variable">info</span>) <span class="punctuation">{</span>
+         <span class="comment">// ...</span>
+     <span class="punctuation">}</span>
+ <span class="punctuation">}</span>
+</code></pre>
+
+<br>
+<p class="text br15">
+ Una soluzione potrebbe essere questa
+</p>
+
+<pre class="ai" style="margin-top:0px;"><code>
+ <span class="comment">// Returns a function conforme alle richieste della promise</span>
+ <span class="keyword">function</span> <span class="function">getExecutor</span>(<span class="variable">id</span>) <span class="punctuation">{</span>
+     
+     <span class="comment">// Il processo asincrono con tutti i dati necessari</span>
+     <span class="keyword">function</span> <span class="function">executor</span>(<span class="variable">resolve</span><span class="punctuation">,</span> <span class="variable">reject</span>) <span class="punctuation">{</span>
+         <span class="function">setTimeout</span>(<span class="variable">_</span> <span class="operator">=></span> <span class="punctuation">{</span>
+             <span class="keyword">let</span> <span class="variable">employees</span> <span class="operator">=</span> <span class="punctuation">[</span>
+                 <span class="punctuation">{</span><span class="variable">name</span> <span class="operator">:</span> <span class="string">'John'</span><span class="punctuation">,</span> <span class="variable">age</span> <span class="operator">:</span> <span class="string">'20'</span><span class="punctuation">}</span><span class="punctuation">,</span> 
+                 <span class="punctuation">{</span><span class="variable">name</span> <span class="operator">:</span> <span class="string">'Mary'</span><span class="punctuation">,</span> <span class="variable">age</span> <span class="operator">:</span> <span class="string">'25'</span><span class="punctuation">}</span>
+             <span class="punctuation">]</span><span class="punctuation">;</span>
+             <span class="function">resolve</span>(<span class="variable">employees</span><span class="punctuation">[</span><span class="variable">id</span><span class="punctuation">]</span>.<span class="variable">name</span>)
+         <span class="punctuation">}</span><span class="punctuation">,</span> <span class="number">100</span><span class="punctuation">)</span>
+     <span class="punctuation">}</span>
+ 
+     <span class="keyword">return</span> <span class="variable">executor</span><span class="punctuation">;</span>
+ <span class="punctuation">}</span>
+ 
+ <span class="keyword">var</span> <span class="variable">promise</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="function">Promise</span>(<span class="function">getExecutor</span>(<span class="number">0</span>))<span class="punctuation">;</span>
+ <span class="variable">promise</span>.<span class="function">then</span>(<span class="function">onResolve</span>, <span class="function">onReject</span>);
+ </code></pre>
+
+ <br>
+ <p class="text br15">
+  O, ancora meglio, questa che ritorna direttamente una promise:
+ </p>
+
+ <pre class="ai" style="margin-top:0px;"><code>
+ <span class="keyword">function</span> <span class="function">getEmployee</span>(<span class="variable">id</span>) <span class="punctuation">{</span>
+     
+     <span class="comment">// Il processo asincrono con tutti i dati necessari</span>
+     <span class="keyword">function</span> <span class="function">executor</span>(<span class="variable">resolve</span><span class="punctuation">,</span> <span class="variable">reject</span>) <span class="punctuation">{</span>
+         <span class="function">setTimeout</span>(<span class="variable">_</span> <span class="operator">=></span> <span class="punctuation">{</span>
+             <span class="keyword">let</span> <span class="variable">employees</span> <span class="operator">=</span> <span class="punctuation">[</span>
+                 <span class="punctuation">{</span><span class="variable">name</span> <span class="operator">:</span> <span class="string">'John'</span><span class="punctuation">,</span> <span class="variable">age</span> <span class="operator">:</span> <span class="string">'20'</span><span class="punctuation">}</span><span class="punctuation">,</span> 
+                 <span class="punctuation">{</span><span class="variable">name</span> <span class="operator">:</span> <span class="string">'Mary'</span><span class="punctuation">,</span> <span class="variable">age</span> <span class="operator">:</span> <span class="string">'25'</span><span class="punctuation">}</span>
+             <span class="punctuation">]</span><span class="punctuation">;</span>
+             <span class="function">resolve</span>(<span class="variable">employees</span><span class="punctuation">[</span><span class="variable">id</span><span class="punctuation">]</span>.<span class="variable">name</span>)
+         <span class="punctuation">}</span><span class="punctuation">,</span> <span class="number">100</span><span class="punctuation">)</span>
+     <span class="punctuation">}</span>
+ 
+     <span class="keyword">return</span> <span class="keyword">new</span> <span class="function">Promise</span>(<span class="variable">executor</span>)<span class="punctuation">;</span><span class="punctuation">;</span>
+ <span class="punctuation">}</span>
+ 
+ <span class="function">getEmployee</span>(<span class="number">1</span>).<span class="function">then</span>(<span class="function">onResolve</span>, <span class="function">onReject</span>)
+
+</code></pre> 
+
+ </section> -->
+
+
+ 
+
+
+ <!--Note  -->
+ <div class="comment">
+
+  <p class="text">
+   To better understand how Promises help harmonise or synchronise multiple 
+   asynchronous operations, two tools and a demo code are provided:
+  </p>
+  <ul>
+   <li class="text">
+     <b>ProgressBar</b> — a graphical model that represents the progression of an asynchronous process. 
+     The progress bar visually reflects the state of the operation, updating its width and colour 
+     based on the outcome of the asynchronous task, giving immediate feedback on whether 
+     the process is progressing, has completed successfully, or has encountered an error.
+   </li>
+   <li class="text">
+     <b>PromiseGUI</b> — a graphical model that shows how the Promise responds 
+     to what happens inside the ProgressBar.<br>
+     It doesn’t display the state of the Promise itself, but the flow between the four callbacks it 
+     manages: <i>onResolve</i>, <i>onReject</i>, <i>onCatch</i>, and <i>onFinally</i>.
+
+   </li>
+   <li class="text">
+     <b>PromiseDIY</b> — a very simplified version of the Promise implementation.  
+     It is written purely for learning purposes, to give a basic idea of how the Promise interacts with its four callbacks.
+   </li>
+  </ul>
+  
+  <br>
+
+  <p class="text">In the real world:</p>
+
+  <ul>
+   <li class="text">
+     <b>ProgressBar</b> might represent an asynchronous call to an AJAX API that either <i>resolves</i> or <i>rejects</i>.
+   </li>
+   <li class="text">
+ 			<b>PromiseGUI</b> might be code that adapts the page layout based on the AJAX API’s response.
 			</li>
 		</ul>
 		
@@ -1471,6 +1980,16 @@ Keywords: JavaScript asynchronous example, sync vs async, progress bar demo, dyn
 		<p class="text">
 			The '<b>ProgressBar</b>'
 		</p>
+		<ul>
+			<li>Receives a random number <span class="lessImportant">(shown on the left)</span> to simulate an input for the asynchronous process</li>
+			<li>Runs for a random time (shown in the middle) to simulate the deferred task running</li>			
+			<li>returns a value <span class="lessImportant">(shown on the right. The sum of the two previous values)</span></li>
+		</ul>
+
+<hr>
+		<div id="divProgressBars" style="width: 300px;margin: auto;"></div>
+		<div id="divMessage" style="text-align: center;">&nbsp;</div>
+<hr>
 
 		<table style="width:100%;">
 			<tr>	
@@ -1479,14 +1998,13 @@ Keywords: JavaScript asynchronous example, sync vs async, progress bar demo, dyn
 				</td>
 			</tr>
 		</table>
-
 		<p class="text">
-			The progressBar is a tool to make visible the progression of an ASynchronous process.
+			The progressBar is a tool to <b>make visible an ASynchronous process</b> running.
 		</p>
 		<table  style="width:100%;">
 			<tr>	
 				<td id="tdR1AC1" class="btnsContainer" style="vertical-align:middle;height:30px;">
-					<div style="text-align: center; margin-top:20px; margin-bottom:15px;">
+					<div class="br15" style="text-align: center; margin-bottom:15px;">
 						<button onclick="btnR1AStart_onclick(this)" title="Starts the asynchronous process represented by the 'ProgressBar'.">GO</button>
 						<span style="padding-left: 6px; display:inline-block; width: 200px;">&nbsp;</span>
 					</div>
@@ -1504,7 +2022,7 @@ Keywords: JavaScript asynchronous example, sync vs async, progress bar demo, dyn
 </code></pre>				
 		<p class="important">
 			<!-- The 'Progress bar' implements an ASynchronous process that runs for a random amount of time and ends up with one state chosen randomly between 4 internal states. -->
-			The 'Progress bar' implements an ASynchronous process that runs for a <b>random time</b> and ends up with a <b>random state</b> chosen between 4 internal states.
+			The 'Progress bar' ends up with a random state (chosen between 4 internal states)<br>
 		</p>
 		<p class="text">
 			These 4 states are graphically <b>visible only to the user </b> (by the bar). 
@@ -1636,7 +2154,8 @@ Keywords: JavaScript asynchronous example, sync vs async, progress bar demo, dyn
 		<p class="superImportant">
 			<b>Please note</b>: 
 			ProgressBar and PromiseGUI solely provide the necessary functions for 'Promise'.
-			They neither use nor return a 'promise'. The code for them is in
+			They neither use nor return a 'promise'.<br>
+			The code for them is in
 			'<b>ProgressBar.js</b>' and '<b>PromiseGUI.js</b>'.
 		</p>
 	</div>
@@ -1669,11 +2188,13 @@ Keywords: JavaScript asynchronous example, sync vs async, progress bar demo, dyn
 					<button onclick="btnR2ADIYThen_onclick(this)" title="Uses the 'PromiseDIY' object">GO <span style="font-size: 0.8em;opacity:0.5">('PromiseDIY')</span></button>
 				</td>
 				<td class="pbsContainer" id="tdR2AC2"> 
-					<table class="demo"cellspacing="0"></table>
+					<div ></div>
+					<table style="width: 320px;"><tr><td id="tdGUI" style="width: 35px;border: solid 1px transparent;"></td><td id="divXXX"></td></tr></table>
+	
 				</td>
 				<td class="msgContainer">					
 					<p class="lessImportant">
-						(Just an example to show PromiseDIY works.)
+						shows PromiseDIY works.
 					</p>
 				</td>							
 				
@@ -1718,79 +2239,38 @@ Keywords: JavaScript asynchronous example, sync vs async, progress bar demo, dyn
 			<span class="keyword">this</span>.<span class="variable">onResolve</span> <span class="operator">=</span> <span class="variable">_onResolve</span><span class="punctuation">;</span>
 			<span class="keyword">this</span>.<span class="variable">onReject</span> <span class="operator">=</span> <span class="variable">_onReject</span><span class="punctuation">;</span>
 	
-			<span class="comment">// True chaining is not implemented that way</span>
+			<span class="comment">// return this is absolutely fake (will be clear soon)</span>
 			<span class="keyword">return</span> <span class="keyword">this</span><span class="punctuation">;</span> 
 		<span class="punctuation">}</span>
 		
 		<span class="function">catch</span>(<span class="variable">_onCatch</span>) <span class="punctuation">{</span>
 			<span class="keyword">this</span>.<span class="variable">onCatch</span> <span class="operator">=</span> <span class="variable">_onCatch</span><span class="punctuation">;</span>
 	
-			<span class="comment">// True chaining is not implemented that way</span>
+			<span class="comment">// return this is absolutely fake (will be clear soon)</span>
 			<span class="keyword">return</span> <span class="keyword">this</span><span class="punctuation">;</span>
 		<span class="punctuation">}</span>
 		
 		<span class="function">finally</span>(<span class="variable">_onFinally</span>) <span class="punctuation">{</span>
 			<span class="keyword">this</span>.<span class="variable">onFinally</span> <span class="operator">=</span> <span class="variable">_onFinally</span><span class="punctuation">;</span>
 	
-			<span class="comment">// True chaining is not implemented that way</span>
+			<span class="comment">// return this is absolutely fake (will be clear soon)</span>
 			<span class="keyword">return</span> <span class="keyword">this</span><span class="punctuation">;</span>
 		<span class="punctuation">}</span>
 	<span class="punctuation">}</span>
 	</code></pre>
 	<br>
 	<p class="superImportant">
-		<strong>Attention:</strong> 'then', 'catch' and 'finally' <b>ALWAYS return a NEW 'Promise'</b>.
+		<strong>Attention:</strong> 'then', 'catch' and 'finally' <b>ALWAYS return a <span class="red">NEW</span> 'Promise'</b>.
 	</p>
-	<p class="text">  
+	<p class="important">  
 		'<b><span class="keyword">return</span> <span class="keyword">this</span><span class="punctuation">;</span></b>' 
-		 in the snippet above doesn't reflect how Promises ACTUALLY work in JavaScript!
+		 in the snippet above doesn't reflect how Promises really works in JavaScript!
 	</p>
-	<hr>
-	<br>
-	
-	<p class="text">  
-		The following code shows how the real 'Promose' behave 
-	</p>
-	
-	<br>
-	<p class="lessImportant" style="margin-bottom: 0px;padding-bottom: 1px;">
-		<button onclick="btnS1A1_onclick(this)"    title="Uses the 'Promise' object">Who are you? <span style="font-size: 0.8em;opacity:0.5">('Promise')</span></button>
- 
-		('pronise.then' is totally new 'Promise'. Therefore 'whoAreYou' is 'undefined'.)
-	</p>
-	
-
-<pre class="ai" style="margin-top:0px;"><code>
-	<span class="keyword">var</span> <span class="variable">promise</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="function">Promise</span>((<span class="variable">resolve</span>, <span class="variable">reject</span>) <span class="punctuation">=></span> {
-		<span class="function">resolve</span>()<span class="punctuation">;</span>
-	})<span class="punctuation">;</span>
-	<span class="variable">promise</span>.<span class="variable">whoAreYou</span> <span class="operator">=</span> <span class="string">"It's Me"</span><span class="punctuation">;</span>
-	  
-	<span class="function">alert</span>(<span class="variable">promise</span>.<span class="function">then</span>().<span class="variable">whoAreYou</span>)<span class="punctuation">;</span>
-</code></pre>
+	<!-- <hr> -->
 	<br>
 
-	<p class="lessImportant" style="margin-bottom: 0px;padding-bottom: 1px;">
-		<button onclick="btnS1A2_onclick(this)" title="Uses the 'PromiseDIY' object">Who are you? <span style="font-size: 0.8em;opacity:0.5;  ">('PromiseDIY')</span></button>
-		('pronise.then' is the original 'PromiseDIY'. Because of:
-		'<b><span class="keyword">return</span> <span class="keyword">this</span><span class="punctuation">;</span></b>')
-	</p>
-<pre class="ai" style="margin-top:0px;"><code>	
-	<span class="keyword">var</span> <span class="variable">promiseDIY</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="function">PromiseDIY</span>((<span class="variable">resolve</span>, <span class="variable">reject</span>) <span class="punctuation">=></span> {
-		<span class="function">resolve</span>()<span class="punctuation">;</span>
-	})<span class="punctuation">;</span>
-	<span class="variable">promiseDIY</span>.<span class="variable">whoAreYou</span> <span class="operator">=</span> <span class="string">"It's Me"</span><span class="punctuation">;</span>
-		
-	<span class="function">alert</span>(<span class="variable">promiseDIY</span>.<span class="function">then</span>().<span class="variable">whoAreYou</span>)<span class="punctuation">;</span>
-</code></pre>
-
-
-<br>
-<p class="superImportant">
-	<strong>Attention:</strong> despite it's perfectly legitimate to call 'then' multiple times <b>on the same Promise</b> 
-	and should return the same value, the result is not the same.' 
-</p>
-<p class="lessImportant" style="margin-bottom: 0px;padding-bottom: 1px;">
+<!-- <br>
+<p class="lessImportant br15" style="margin-bottom: 0px;padding-bottom: 1px;">
 	<button onclick="btnS1A3_onclick(this)" title="Uses the 'PromiseDIY' object">Do math</button>
 	(Both should return 33. Only 'promise2.then.then' does. Why will be clear soon.)
 </p>
@@ -1815,7 +2295,7 @@ Keywords: JavaScript asynchronous example, sync vs async, progress bar demo, dyn
 			.<span class="function">then</span>( <span class="variable">value</span> => <span class="punctuation">{</span> <span class="keyword">return</span> <span class="variable">value</span> * <span class="number">3</span><span class="punctuation">;</span> <span class="punctuation">})</span>
 			.<span class="function">then</span>( <span class="function">alert</span> );
 	<span class="punctuation">}</span>
-</code></pre>
+</code></pre> -->
 
 
 
@@ -1914,7 +2394,12 @@ Keywords: JavaScript asynchronous example, sync vs async, progress bar demo, dyn
 					
 					<tr>
 						<td class="pbsContainer" id="tdS1AE2" colspan="2"> 
-							<table class="demo"cellspacing="0"></table>
+							<table cellspacing="0" style="width: 320px;">
+								<tr>
+									<td id="tdS1AE2gui" style="width: 50px;"></td>
+									<td id="tdS1AE2Pb"></td>
+								</tr>
+							</table>
 						</td>
 					</tr>
 
@@ -1985,7 +2470,6 @@ Keywords: JavaScript asynchronous example, sync vs async, progress bar demo, dyn
 
 	</section>
 
-		
 	<section>
 		<h2>
 			<span class="underline">
@@ -1995,65 +2479,123 @@ Keywords: JavaScript asynchronous example, sync vs async, progress bar demo, dyn
 			</span>
 		</h2>
 
-		<p class="superImportant">
-			<b>Promise' likes to play its own game</b> and being in the know is crucial.
+		<!-- <br> -->
+		<p class="important br15">
+			'then', 'catch', and 'finally' all return a Promise and that's true. 
 		</p>
 
-		<p class="lessImportant">
-			
-			The concept of 'chain' under 'Promise' is different 
+		<p class="superImportant ">
+			 But it's <b>a completely new Promise</b> each time.
 		</p>
-		<table>			
-			<tr>
-				<td class="btnsContainer" style="width: 200px;"> 
-					
-					<button onclick="btnS1ASub1B1_onclick(this)" style="width: 160px;text-align: left;" title="Uses the 'PromisePRO' to prove it behave like 'Promise'.">1) GO <span style="font-size: 0.8em;opacity:0.5">(callback hell)</span></button>	
-					<br><br>
-					<button onclick="btnS1ASub1B2_onclick(this)" style="width: 160px;text-align: left;" title="Uses the old style callback metodology.">2) GO <span style="font-size: 0.8em;opacity:0.5">(callbacks)</span></button>
-					<br><br>
-					<button onclick="btnS1ASub1B3_onclick(this)" style="width: 160px;text-align: left;" title="Uses the 'Promise'.">3) GO <span style="font-size: 0.8em;opacity:0.5">('Promise')</span></button>
-					<br><br>
-					<button onclick="btnS1ASub1B4_onclick(this)" style="width: 160px;text-align: left;" title="Uses the 'PromisePRO' to prove it behave like 'Promise'.">4) GO <span style="font-size: 0.8em;opacity:0.5">('PromisePRO')</span></button>
-					<br><br>
-					<button onclick="btnS1ASub1B5_onclick(this)" style="width: 160px;text-align: left;" title="Uses the 'PromisePRO' to prove it behave like 'Promise'.">5) GO <span style="font-size: 0.8em;opacity:0.5">('chain')</span></button>
-					<br><br>					
-				</td>
-				<td class="pbsContainer" id="tdS1ASub1"> 					
-					<div class="scroll" >
-						<table class="demo"cellspacing="0"></table>
-					</div>				
-				</td>
-			</tr>
-		</table>
 
+		<!-- <br> -->
+		<p class="text br15" style="margin-bottom: 0px;padding-bottom: 1px;">
+			The following examples demostrate that 'then', 'catch', and 'finally' return a different 'Promise'.
+		</p>
+
+		<br>
+
+<p class="lessImportant br15" style="margin-bottom: 0px;padding-bottom: 1px;">
+	<button onclick="btnS1A1_onclick(this)"    title="Uses the 'Promise' object">Who are you? <span style="font-size: 0.8em;opacity:0.5">('Promise')</span></button>
+
+	('promise.then' returns a totally new 'Promise'. Therefore 'whoAreYou' is 'undefined'.)
+</p>
+
+
+<pre class="ai" style="margin-top:0px;"><code>
+	<span class="keyword">var</span> <span class="variable">promise</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="function">Promise</span>((<span class="variable">resolve</span>, <span class="variable">reject</span>) <span class="punctuation">=></span> {
+		<span class="function">resolve</span>()<span class="punctuation">;</span>
+	})<span class="punctuation">;</span>
+	<span class="variable">promise</span>.<span class="variable">whoAreYou</span> <span class="operator">=</span> <span class="string">"It's Me"</span><span class="punctuation">;</span>
 	
+	<span class="comment">// This shows "It's me".</span>	
+	<span class="function">alert</span>(<span class="variable">promise</span>.<span class="variable">whoAreYou</span>)<span class="punctuation">;</span>
+
+	<span class="comment">// This shows "undefined".</span>
+	<span class="function">alert</span>(<span class="variable">promise</span>.<span class="function">then</span>().<span class="variable">whoAreYou</span>)<span class="punctuation">;</span>
+</code></pre>
+<br>
+
+
+<!-- <p class="superImportant">
+	<strong>Attention:</strong> despite it's perfectly legitimate to call 'then' multiple times <b>on the same Promise</b> 
+	and should return the same value, the result is not the same.' 
+</p> -->
+
+<hr>
+<br>
+<p class="text">
+	There are 2 different way to call 'then' on the Promise and both should behave the same:
+</p>
+
+
+<!-- <br> -->
+<br>
+<button onclick="btnS1A1_onclick(this)"    title="Uses the 'Promise' object">Chaining <span style="font-size: 0.8em;opacity:0.5"> (Version 1)</span></button>
+<span class="lessImportant">('promise.then' invoked many times from the same: 'promise1')</span>
+<pre class="ai"><code>
+	<span class="keyword">let</span> <span class="variable">promise1</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="function">Promise</span>(<span class="variable">executor1</span>)<span class="punctuation">;</span>
+
+	<span class="variable">promise1</span>.<span class="function">then</span>(<span class="variable">onResolve</span>, <span class="variable">onReject</span>)<span class="punctuation">;</span>
+	<span class="variable">promise1</span>.<span class="function">then</span>(<span class="variable">onResolve</span>, <span class="variable">onReject</span>)<span class="punctuation">;</span>
+	<span class="variable">promise1</span>.<span class="function">then</span>(<span class="variable">onResolve</span>, <span class="variable">onReject</span>)<span class="punctuation">;</span>
+</code></pre>
+<br>
+<br>
+<button onclick="btnS1A1_onclick(this)"    title="Uses the 'Promise' object">Chaining <span style="font-size: 0.8em;opacity:0.5"> (Version 2)</span></button>
+<span class="lessImportant">('.then' invoked on the previous 'promise')</span>
+<pre class="ai"><code>
+	<span class="keyword">let</span> <span class="variable">promise2</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="function">Promise</span>(<span class="variable">executor2</span>)<span class="punctuation">;</span>
+	<span class="variable">promise2</span>
+		.<span class="function">then</span>(<span class="variable">onResolve</span>, <span class="variable">onReject</span>)
+		.<span class="function">then</span>(<span class="variable">onResolve</span>, <span class="variable">onReject</span>)
+		.<span class="function">then</span>(<span class="variable">onResolve</span>, <span class="variable">onReject</span>)<span class="punctuation">;</span>
+</code></pre>
+
+<br>
+<p class="text">
+	<!-- Il miglior paragone del comportamento di  'then', 'catch', and 'finally' è la 'Relay race' -->
+	The best way to understand how then, catch, and finally behave is to think of a relay race. 
+</p>
+<div style="text-align: center;" class="br15">
+<img src="stuffs/RelayRace.png" style="width:150px;margin:auto;display:inline-block;padding:0px;margin:0px;">
+</div>
+
+<p class="text">
+	<!-- Dove i corridori sono solamente coloro che portano il testimone: sono i dati che viaggiano e nonla promise -->
+	In the race, the true 'runner' is the data being passed along, not the promise itself, which merely facilitates the handovers of the baton.
+</p>
+<br>
+
 	</section>
 
 
+
+	
 	<aside style="background-color: #F0F0F5;">
 		<h2>
 			<span class="underline">
 				<span class="SectionLabel">Snippet 2A:</span>&nbsp;
 				<span class="SectionTitle">PromisePRO</span>				
-				<span class="SectionSubTitle">a better implementation.</span>
+				<span class="SectionSubTitle"> implementation of chaining.</span>
 			</span>
 		</h2>
 		
-		<p class="text">
-			<!-- '<b>PromisePRO</b>':  -->
-			A new, more detailed, implementation of the 'Promise': to clearly understand <b>how 'chain' works</b>.
-		</p>
-		<p class="important">
+		<p class="text br15">
+			A new implementation of the Promise, focusing on chaining to better understand how it actually works.
+		</p>		
+
+		<p class="superImportant">
 			The principle of 'chaining' is simple: to propagate information along the flow of processes
 		</p>		
 		<p class="lessImportant">
 			How 'Promise' obtains that is less straightforward. 
 		</p>
-		<img src="stuffs/RelayRace.png" style="width:150px;margin:auto;display:inline-block;padding:0px;margin:0px;">
+		<!-- <img src="stuffs/RelayRace.png" style="width:150px;margin:auto;display:inline-block;padding:0px;margin:0px;"> -->
 <pre class="ai" style="padding-top: 0px;margin-top: 0px;"><code>
 	<span class="keyword">class</span> <span class="variable">PromisePro</span> <span class="punctuation">{</span>
 	<details style="margin-left: 5px;">
-		<summary><span class="comment">    // This is bit long: click to expand the code.</span></summary>
+		<summary><span class="comment">    // <b>Click</b> to expand the code.</span></summary>
 		<span class="keyword">constructor</span>(<span class="variable">executor</span>) <span class="punctuation">{</span>
 			<span class="keyword">this</span>.<span class="variable">status</span> <span class="operator">=</span> <span class="string">'pending'</span><span class="punctuation">;</span>
 			<span class="keyword">this</span>.<span class="variable">value</span> <span class="operator">=</span> <span class="keyword">undefined</span><span class="punctuation">;</span>
@@ -2180,285 +2722,210 @@ Keywords: JavaScript asynchronous example, sync vs async, progress bar demo, dyn
 </code></pre>
 	<br>
 
+	<p class="lessImportant">
+		This implementation of the Promise is still not complete, but it works and will be used soon.
+	</p>	
 
 
 </aside>
-	
-	<section>
-		<h2>
-			<span class="underline">
-				<span class="SectionLabel">Section 1B sub 1:</span>&nbsp;
-				<span class="SectionTitle">Inner states</span>
-				<span class="SectionSubTitle">Promise Lifecycle</span>
-			</span>
-		</h2>
-
-	</section>
-
-	<section>
-		<h2>
-			<span class="underline">
-				<span class="SectionLabel">Section 1B sub 2:</span>&nbsp;
-				<span class="SectionTitle">Do & Don't</span>
-				<span class="SectionSubTitle">Good & bad practises</span>
-			</span>
-		</h2>
-
-	</section>
-	
-	<!--Section 1B  -->	
-	
-	<section>
-		<h2>
-			<span class="underline">
-				<span class="SectionLabel">Section 1B:</span>&nbsp;
-				<span class="SectionTitle">No 'Promise'</span>
-				<span class="SectionSubTitle">Back to the Callback Age</span>
-			</span>
-		</h2>
-	
-		<br>
-	
-		<p class="text">
-			Before the introduction of 'Promise', asynchronous functions were handled using callbacks.
-		</p>
-	
-	<pre class="ai"><code>
-		<span class="comment">//Note: this version uses the same building blocks as 'Promise'.</span>
-		<span class="keyword">function</span> <span class="function">btnS1B_onclick</span>(<span class="variable">btn</span>) <span class="punctuation">{</span>
-			<span class="keyword">try</span><span class="punctuation">{</span>
-				<span class="variable">pb</span>.<span class="function">executor</span>(<span class="variable">pgui</span>.<span class="method">onResolve</span>, <span class="variable">pgui</span>.<span class="method">onRreject</span>)<span class="punctuation">;</span>
-			<span class="punctuation">}</span>
-			<span class="keyword">catch</span>(<span class="variable">jse</span>)<span class="punctuation">{</span>
-				<span class="variable">pgui</span>.<span class="method">onCatch(<span class="variable">jse</span>)</span><span class="punctuation">;</span>
-			<span class="punctuation">}</span>
-			<span class="keyword">finally</span><span class="punctuation">{</span>
-				<span class="variable">pgui</span>.<span class="method">onFinally</span>()<span class="punctuation">;</span>
-			<span class="punctuation">}</span>	
-		<span class="punctuation">}</span>
-	</code></pre>	
-	
-	<p class="lessImportant">
-		It works exactly as 'Promise' does. (To be fair, 'Promise' is the one that came along later.)</span>
-	</p>
-
-	
-	<table style="width: 100%;border:solid 0px transparent;">			
-		<tr>
-			<td class="btnsContainer" style="width: 100px;"> 
-				<button style="width: 80px;" onclick="btnS1B_onclick(this)"  title="Asynchronous function managed without 'Promise'">GO</button>
-			</td>
-			<td class="pbsContainer" id="tdS1B"> 
-				<table class="demo" cellspacing="0"></table>
-			</td>
-		</tr>
-	</table>
-	
-	<p class="text">
-		Handling a single async function using 'Promise' is a choice—between formalism and simplicity.
-	</p>
-	
-	<p class="superImportant">
-		With more than one async functions, using 'Promise' becomes <b>a must</b> to avoid <b>callback hell</b>.
-	</p>
 
 
-	<p class="text">
-		We'll soon see how 'Promise' ends callback hell. 
-		<!-- First, a look at <b>chaining</b> and <b>async/await</b>. -->
-	</p>	
-	</section>
-	
 	<!--Note  -->
+	
+
+	<aside style="background-color: #F0F0F5;">
+
+		<p class="important br15">
+			Working with a single async process, a Promise is an option; with many, Promises are key.
+		</p>	
+
+		<p class="text br15">
+			There are two different configurations for multiple processes:
+		</p>	
+
+		<!-- <hr> -->
+		<table style="width: 400px;margin: auto;" >
+			<tr>
+				<td>
+					<h3>Sequential flow</h3>
+				</td>
+				<td>
+					<h3>Parallel flow</h3>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<img src="stuffs/SequentialFlowV.png" alt="three processess running sequential" style="width:80px;margin:auto;display:inline-block;padding:0px;margin:0px;">
+				</td>
+				<td>
+					
+						<img src="stuffs/ParallelFlowV.png" alt="three processess running parallel" style="width:100px;margin:auto;display:inline-block;padding:0px;margin:0px;">
+				</td>
+			</tr>
+
+		</table>
+		
+		<p class="text br15">
+			Next sessions will analize them
+		</p>
+
+	</aside>
+
+	
 	<div class="comment">
-		<p class="MenInBlackEmoji text">
+		<p class="MenInBlackEmoji text br15">
 			 Now it's time to put things together...<span class="lessImportant">(When the going gets tough, the tough get going.)</span>
 		</p>
 	</div>	
-
-	<!--Section 1C  -->
+		
 	<section>
 		<h2>
 			<span class="underline">
-				<span class="SectionLabel">Section 1C:</span>&nbsp;
-				<span class="SectionTitle">Callback hell</span>
-				<span class="SectionSubTitle">Getting used to multiple async flows</span>
+				<span class="SectionLabel">Section 1A sub 2:</span>&nbsp;
+				<span class="SectionTitle">then/catch/finally</span>
+				<span class="SectionSubTitle"><span class="red">Sequential</span> flow</span>
 			</span>
 		</h2>
+		<br>      
+		<p class="superImportant">
+			It might seem odd, but <b>'then'/'catch'/'finally' chains aren't designed to be interrupted</b> 
+			<!-- , running their course till the end. -->
+	   </p>
 
-		<p class="text">
-			Keep the browser in debug-mode and click the button, the code will be displayed automatically
-		</p>	
-		<table>			
+	   <p class="superImportant">
+			The <b>Promise hell</b> is the direct consequence when a squential high granulrity flow is needed
+	  </p>
+	   
+		<!-- <p class="text">
+			This means the process implemented in this section can be achieved with a neat little trick.
+	   </p> -->
+
+	   <br>
+
+		<table style="table-layout: fixed;">			
 			<tr>
-				<td class="btnsContainer" > 
-					<button onclick="btnS1C_onclick(this)">GO</button>
+				<td class="btnsContainer" style="width: 200px;vertical-align: top;"> 
+					
+					<button onclick="btnS1ASub1B1_onclick(this)" style="width: 160px;text-align: left;" title="Vivid RUNNING example of 'callback hell'">1) GO <span style="font-size: 0.8em;opacity:0.5">(callback hell)</span></button>	
+					<!-- <br> -->
+					<!-- <br> -->
+					<button onclick="btnS1ASub1B2_onclick(this)" style="width: 160px;text-align: left;margin-top: 5px;" title="Old style implementation: callback oriented'.">2) GO <span style="font-size: 0.8em;opacity:0.5">(callbacks)</span></button>
+					<!-- <br> -->
+					<!-- <br> -->
+					<button onclick="btnS1ASub1B3_onclick(this)" style="width: 160px;text-align: left;margin-top: 5px;" title="Again the same process this time Uses the 'Promise'.">3) GO <span style="font-size: 0.8em;opacity:0.5">('Promise')</span></button>
+					<!-- <br><br> -->
+					<button onclick="btnS1ASub1B4_onclick(this)" style="width: 160px;text-align: left;margin-top: 5px;" title="this time uses the 'PromisePRO' to prove it behave like the real 'Promise'.">4) GO <span style="font-size: 0.8em;opacity:0.5">('PromisePRO')</span></button>
+					<!-- <br><br> -->
+					<button onclick="btnS1ASub1B5_onclick(this)" style="width: 160px;text-align: left;margin-top: 5px;" title="The version with the chaining of 'then'">5) GO <span style="font-size: 0.8em;opacity:0.5">('chain')</span></button>
+					<!-- <br><br>					 -->
 				</td>
-				<td class="pbsContainer" id="tdS1C"> 					
-					<div class="scroll" >
-						<table class="demo"cellspacing="0"></table>
-					</div>				
+				<td class="pbsContainer" id="tdS1ASub1" style="vertical-align: top;"> 					
+
+					<table style="width: 320px;"cellspacing="0">
+						<tr>
+							<td style="width: 40px;" id="tdtdS1ASub1gui1"></td>
+							<td id="tdtdS1ASub1pb1"></td>
+						</tr>
+						<tr>
+							<td style="width: 40px;" id="tdtdS1ASub1gui2"></td>
+							<td id="tdtdS1ASub1pb2"></td>
+						</tr>
+						<tr>
+							<td style="width: 40px;" id="tdtdS1ASub1gui3"></td>
+							<td id="tdtdS1ASub1pb3"></td>
+						</tr>
+						<tr>
+							<td style="width: 40px;" id="tdtdS1ASub1gui4"></td>
+							<td id="tdtdS1ASub1pb4"></td>
+						</tr>
+						<tr>
+							<td style="width: 40px;" id="tdtdS1ASub1gui5"></td>
+							<td id="tdtdS1ASub1pb5"></td>
+						</tr>
+
+						<tr>
+							<td></td>
+							<td id="tdS1ASub1Message">&nbsp;</td>
+						</tr>
+					</table>
+									
 				</td>
 			</tr>
-		</table>
-<br>
-	<p class="text">
-		Callback hell' illustrated: 3 nested async processes, each reliant on the previous one's result.
-	</p>	
-<pre class="ai"><code>
-	<span class="comment">// And here it is—callback hell.</span>
-	<span class="variable">pb1</span>.<span class="function">executor</span>(
-		<span class="punctuation">()</span> <span class="operator">=&gt;</span> <span class="punctuation">{</span>
-		<span class="opaque">pgui1.onResolve()</span>   
-		<span class="variable">pb2</span>.<span class="function">executor</span>(<span class="punctuation">()</span> <span class="operator">=&gt;</span> <span class="punctuation">{</span>
-			<span class="opaque">pgui2.onResolve()</span>   
-			<span class="variable">pb3</span>.<span class="function">executor</span>(<span class="variable">pgui3</span>.<span class="function">onResolve</span>, <span class="variable">pgui3</span>.<span class="function">onReject</span>)
-		<span class="punctuation">}</span>, <span class="variable">pgui2</span>.<span class="function">onReject</span>)
-	<span class="punctuation">}</span>, <span class="variable">pgui1</span>.<span class="function">onReject</span><span class="punctuation">);</span>
-</code></pre>
 			
-	<p class="lessImportant">
-		(Have a look in your browser's debug mode and you can follow the code's flow live.)
-	</p>	
+		</table>
+
+			   
+		<p class="lessImportant">
+			This section implements a sequential flow with the ability to be interrupted at any point,
+			offering the granularity to act appropriately at the level of interruption. 
+	   </p>
+ 
+		<p class="lessImportant"> 
+			Various techniques are used, and their analysis in DEBUG MODE is highly recommended.
+	   </p>
+	
 	</section>
 
-	<p class="lessImportant">
-		(In this section, the processes are entirely independent: it is designed solely to help familiarize you with multiple Promises.)
-	</p>	
-
-	<!--Section 1D  -->
-	<section>
+	<!-- <aside  style="background-color: #F0F0F5;">
 		<h2>
 			<span class="underline">
-				<span class="SectionLabel">Section 1D:</span>&nbsp;
-				<span class="SectionTitle">'Chaining'</span>
-				<span class="SectionSubTitle">building async workflows </span>
+				<span class="SectionLabel">Section 1B sub 1:</span>&nbsp;
+				<span class="SectionTitle">Parallel flow</span>
+				<span class="SectionSubTitle">All, AllSttled; Race; Any	</span>
 			</span>
 		</h2>
 
+	</aside> -->
+
+	<aside style="background-color: #F0F0F5;">
+			   
 		<p class="text">
-			Again, a 'Promise' in the easiest way. This time fully configured against exception: <b>practically unstoppable</b>.
+			<b>All</b>, <b>AllSettled</b>, <b>Race</b>, and <b>Any</b> are different strategies to manage many parallel asynchronous processes. 
+	   </p>
+
+	   		   
+		<p class="text br15">
+			All of them require the same configuration but different from those used since now. 
+			<div style="margin-left: 45px;">
+				- A Master promise<br>	
+
+				- n sub promises	
+			</div>	
 		</p>
-
-		<table>
-			<tr>
-				<td class="btnsContainer" > 
-					<button onclick="btnS1D1_onclick(this)">GO</button>
-				</td>
-				<td class="pbsContainer" id="tdS1D1"> 					
-					<div class="scroll" >
-						<table class="demo"cellspacing="0"></table>
-					</div>				
-				</td>			
-			</tr>
-		</table>
-		
-		<hr>
-
-		<table>
-			<tr>
-				<td class="btnsContainer" > 
-					<button onclick="btnS1D2_onclick(this)">GO</button>
-				</td>
-				<td class="pbsContainer" id="tdS1D2"> 					
-					<div class="scroll" >
-						<table class="demo"cellspacing="0"></table>
-					</div>				
-				</td>			
-			</tr>
-		</table>
-		
-		<hr>
-
-		<table>
-			<tr>
-				<td class="btnsContainer" > 
-					<button onclick="btnS1D3_onclick(this)">GO</button>
-				</td>
-				<td class="pbsContainer" id="tdS1D3"> 					
-					<div class="scroll" >
-						<table class="demo"cellspacing="0"></table>
-					</div>				
-				</td>			
-			</tr>
-		</table>
-
-	</section>
-
-	<section>
-		<h2>
-			<span class="underline">
-				<span class="SectionLabel">Section 1E:</span>&nbsp;
-				<span class="SectionTitle">'Promise'</span>
-				<span class="SectionSubTitle"><span class="blue">async</span>/<span class="blue">await</span> version.
-			</span>
-		</h2>
-
-		<table>
-		
-			<tr>
-				<td class="msgContainer" colspan="3"> 
-					<p class="text">
-						Again, a 'Promise' in the easiest way. This time fully configured against exception: <b>practically unstoppable</b>.
-					</p>
-				</td>
-			</tr>
-		
-			<tr>
-				<td class="btnsContainer" > 
-					<button onclick="btnS1E3_onclick(this)">GO</button>
-				</td>
-				<td class="pbsContainer" id="tdS1E"> 					
-					<div class="scroll" >
-						<table class="demo"cellspacing="0"></table>
-					</div>				
-				</td>
-				<td class="msgContainer"> 
-
-				</td>							
-				
-			</tr>
-		</table>
-
-	</section>
-
+	</aside>
 
 	<!--Section 3B  -->
 	<section>
 		<h2>
 			<span class="underline">
-				<span class="SectionLabel">Section 3B:</span>&nbsp;
-				<span class="SectionTitle">'Promise'</span>
-				<span class="SectionSubTitle"><span class="blue">async</span>/<span class="blue">await</span> version.
+				<span class="SectionLabel">Section 1A sub 3:</span>&nbsp;
+				<span class="SectionTitle">then/catch/finally</span>
+				<span class="SectionSubTitle"><span class="red">Parallel</span> flow</span>
 			</span>
-
 		</h2>
 
-		<table>
-		
-			<tr>
-				<td class="msgContainer" colspan="3"> 
-					<p class="text">
-						Again, a 'Promise' in the easiest way. This time fully configured against exception: <b>practically unstoppable</b>.
-					</p>
-				</td>
-			</tr>
-		
-			<tr>
-				<td class="btnsContainer" > 
-					<button onclick="btnR3BThen_onclick(this)">then</button>
-				</td>
-				<td class="pbsContainer" id="tdR3BC2"> 					
-					<div id="tdR3AC2" class="scroll" style="">
-						<table class="demo"cellspacing="0"></table>
-					</div>				
-				</td>
-				<td class="msgContainer"> 
 
-				</td>							
-				
-			</tr>
-		</table>
+		<p class="text br15">
+			In this case, many indipendent processes run Simultaneously
+		</p>
+
+
+
+
+<table style="width: 400px;" class="br15">
+
+	<tr>
+		<td id="tdR3BPromiseGuiGroup"> 
+			<button onclick="btnR3BGO_onclick(this)" style="margin-right: 20px;">GO</button>
+		</td>
+
+		<td id="tdR3BProgressBar">					
+		</td>							
+		
+	</tr>
+</table>
+
+
 
 	</section>
 
@@ -2466,7 +2933,7 @@ Keywords: JavaScript asynchronous example, sync vs async, progress bar demo, dyn
 	<div class="comment">
 		<!-- <h2>Note</h2>-->
 			<p class="text">
-				Now it's Time to make 'Promise' shine.
+				✨ Now it's Time to make 'Promise' shine. ✨
 			</p>	 
 			<br>
 
@@ -2489,116 +2956,34 @@ Keywords: JavaScript asynchronous example, sync vs async, progress bar demo, dyn
 			</span>
 		</h2>
 
-		<table border="0" >	
-				
-			<tr>
-				<td class="msgContainer" id="msgContainer1" colspan="3"> 
-					<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise/all" target="_blank" style="margin-bottom:10px;">Promise.all() - JavaScript | MDN</a>
-				</td>
-			</tr>
-		
-			<tr>
-				<td class="btnsContainer scroll"> 
-					<button onclick="btnR4AAll_onclick(this)">all</button>
-				</td>
-				<td class="pbsContainer" > <!-- style="border: solid 10px red;" -->
-					<div  id="tdR4AC2" class="scroll" style="">
-						<table class="demo"cellspacing="0"></table>
-					</div>
-				</td>
-				<td class="msgContainer"> 
+		<p class="text">
+			<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise/all" target="_blank" style="margin-bottom:10px;">Promise.all() - JavaScript | MDN</a>
+	   </p>
 
+		<table class="br15" style="width: 500px;">
+
+			<tr id="trR4A">
+				<td> 
+					<button onclick="btnR4AGO_onclick(this)" style="margin-right: 20px;">GO</button>
 				</td>
-			</tr>
-			
-							
-			<!-- <tr>
-				<td class="msgContainer" id="msgContainer1" colspan="3"> 
-					<p class="text">
-						With the function '<b>Promise.all</b>', the 'Master-Promise':<br/>
-						- <b>resolves</b> (is successful) only when all its 'promises' resolve.<br/>
-						- <b>Rejects</b> (fails) as soon any of the 'promises' rejects.
-					</p>
-				</td>
-			</tr> -->
-									
-			<tr>
-				<td class="msgContainer" id="msgContainer1" colspan="3"> 
-					<ul>					
-						<p class="text" style="text-indent: -25px;">
-							With the function '<b>Promise.all</b>', the 'Master-Promise':
-						</p>
-						<li class="text">
-								<b>Resolves</b> (is successful) only when all its 'promises' resolve.
-						</li>
-						<li class="text">
-								<b>Rejects</b> (fails) as soon any of the 'promises' rejects.
-						</li>
-					</ul>
-				</td>
+
+				<td id="tdR4AProgressBar"  >					
+				</td>	
+
+				<td style="width:5px;"> 
+
+				</td>						
+				
 			</tr>
 		</table>
+
+		<p class="text br15">
+			'<b>Promise.all</b>', Resolves only when all its 'promises' resolve. Rejects as soon any of the 'promises' rejects.
+		</p>
+
+	</ul>
 	</section>
 	
-	<!--Note  -->	
-	<div class="comment">
-		<h2>Note</h2>
-		<p class="text">
-			When a 'ProgressBar' fails, only the associate 'PromiseGUI' shows the right state (become red) all the other 'PromiseGUI' remains in the pending state (dimmed).			
-		</p>	
-
-	</div>		
-		
-	<!--Section 4A Bis  -->
-	<section style="min-height:70px;">
-		<h2>
-			<span class="underline">
-				<span class="SectionLabel">Section 4A Bis:</span>&nbsp;
-				<span class="SectionTitle">'Promise.all'</span>
-				<span class="SectionSubTitle">(extended).</span>
-			</span>
-		</h2>
-		<!-- <h2>
-			<span class="SectionLabel">Section 4A Bis: </span> <span class="SectionTitle"> Promise.all<span style="font-weight:normal;"> (extended).</span></span>
-		</h2> -->
-		<table border="0" style="width:100%;">
-		
-				
-			<tr>
-				<td class="msgContainer" id="msgContainer1" colspan="3"> 
-					<p class="text">
-						In this case, the implementation of 'Promise.all' is a little bit more advanced than the previous, in 'section 4A'.
-					</p>
-					<p class="text">
-						Every 'ProgressBar' is able to set the state (the color) of its own 'PromiseGUI'.<br/>
-					</p>
-				</td>
-			</tr>
-		
-			<tr>
-				<td class="btnsContainer scroll"> 
-					<button onclick="btnR4ABisAll_onclick(this)">all</button>
-				</td>
-				<td class="pbsContainer" colspan="2">
-					<div  id="tdR4ABisC2" class="scroll" style="width:100%;border:solid 1px transparent;">
-						<table class="demo"cellspacing="0"></table>
-					</div>
-				</td>
-
-			</tr>
-			
-							
-			<tr>
-				<td class="msgContainer" id="msgContainer1" colspan="3"> 
-					<p class="text">
-						Now, when one of the 'ProgressBar' rejects, it is possible to show the 'state' of the other 'ProgressBar'.<br/>
-						<span class="lessImportant">(every graphical element is properly colored);</span>
-					</p>
-				</td>
-			</tr>			
-			
-		</table>
-	</section>
 		
 	<!--Section 4B  -->
 	<section style="min-height:70px;">
@@ -2610,46 +2995,36 @@ Keywords: JavaScript asynchronous example, sync vs async, progress bar demo, dyn
 			</span>
 		</h2>
 
-		<table border="0" >
+
+		<p class="text br15">
+			<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise/race" target="_blank" style="margin-bottom:10px;">Promise.race() - JavaScript | MDN</a>
+		</p>
 		
+		<table style="width: 450px;" class="br15">
+		
+			<tr id="trR4B">
+				<td> 
+					<button onclick="btnR4BGO_onclick(this)" style="margin-right: 20px;">GO</button>
+				</td>
+		
+				<td id="tdR4BProgressBar">					
+				</td>
+
+				<td style="width:5px;"> 
+		
+				</td>						
 				
-			<tr>
-				<td class="msgContainer" id="msgContainer1" colspan="3"> 
-					<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise/allSettled" target="_blank" style="margin-bottom:10px;">Promise.allSettled() - JavaScript | MDN</a>
-				</td>
 			</tr>
-		
-			<tr>
-				<td class="btnsContainer scroll"> 
-					<button onclick="btnR4BAllSettled_onclick(this)">allSettled</button>
-				</td>
-				<td class="pbsContainer" > <!-- style="border: solid 10px red;" -->
-					<div  id="tdR4BC2" class="scroll" style="">
-						<table class="demo"cellspacing="0"></table>
-					</div>
-				</td>
-				<td class="msgContainer"> 
-					<div style="margin-bottom:10px;">
-					</div>
-					
-				</td>
-			</tr>
-			
-			
-							
-			<tr>
-				<td class="msgContainer" id="msgContainer1" colspan="3"> 
-					<p class="text">
-						The function 'Promise.allSettled', waits till all the 'ProgressBars' complete, successfully or not. Then resolves.
-					</p>
-					<p class="text">
-						<span class="lessImportant">('allSettled' rejects only if a 'catch' occurs.)</span>
-					</p>
-				</td>
-			</tr>	
-			
-			
 		</table>
+
+		
+		<p class="text br15">
+			'<b>Promise.allSettled</b>', waits till all the 'ProgressBars' complete, successfully or not. Then resolves.
+		</p>
+		<p class="text">
+			<span class="lessImportant">('allSettled' rejects only if a 'catch' occurs.)</span>
+		</p>
+
 	</section>
 		
 	<!--Section 4C  -->
@@ -2661,38 +3036,32 @@ Keywords: JavaScript asynchronous example, sync vs async, progress bar demo, dyn
 				<!-- <span class="SectionSubTitle">(extended).</span> -->
 			</span>
 		</h2>
-		<!-- <h2><span class="SectionLabel">Section 4C: </span> <span class="SectionTitle"> Promise.race</span></h2> -->
-		<table border="0" >
 
-			<tr>
-				<td class="msgContainer" id="msgContainer1" colspan="3"> 
-					<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise/race" target="_blank" style="margin-bottom:10px;">Promise.race() - JavaScript | MDN</a>
-				</td>
-			</tr>	
-					
+		<p class="text br15">
+			<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise/race" target="_blank" style="margin-bottom:10px;">Promise.race() - JavaScript | MDN</a>
+		</p>
 		
-			<tr>
-				<td class="btnsContainer"> 
-					<button onclick="btnR4CRace_onclick(this)">race</button>
+		<table style="width: 450px;" class="br15">
+		
+			<tr id="trR4C">
+				<td> 
+					<button onclick="btnR4CGO_onclick(this)" style="margin-right: 20px;">GO</button>
 				</td>
-				<td class="pbsContainer" id="tdR4CC2"> 
-					<table class="demo"cellspacing="0"></table>
-				</td>
-				<td class="msgContainer"> 
-					<div style="margin-bottom:10px;"></div>
-				</td>
-			</tr>
+		
+				<td id="tdR4CProgressBar">					
+				</td>	
 
-			<tr>
-				<td class="msgContainer" id="msgContainer1" colspan="3"> 
-					<p class="text">
-						The function 'race', 'resolve' (is successfull) as soon a 'ProgressBar' 'resolve'. 'reject' as soon any of the 'ProgressBar' 'rejects'.
-					</p>
-				</td>
+				<td style="width:5px;"> 
+		
+				</td>						
+				
 			</tr>
-			
-			
-		</table>
+		</table>					
+		
+		<p class="text br15">
+			'<b>Promise.race</b>', 'resolve' as soon a 'ProgressBar' 'resolves'. 'reject' as soon any of the 'ProgressBar' 'rejects'.
+		</p>
+
 	</section>
 		
 	<!--Section 4D  -->
@@ -2704,155 +3073,46 @@ Keywords: JavaScript asynchronous example, sync vs async, progress bar demo, dyn
 				<!-- <span class="SectionSubTitle">(extended).</span> -->
 			</span>
 		</h2>
-		<!-- <h2>
-			<span class="SectionLabel">Section 4D: </span> <span class="SectionTitle"> Promise.any<span style="font-weight:normal;">.</span></span>
-		</h2> -->
-		<table border="0" >
+
 		
+
+		<p class="text br15">
+			<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise/any" target="_blank" style="margin-bottom:10px;">Promise.any() - JavaScript | MDN</a>
+		</p>
+
+
+		<table style="width: 450px;" class="br15">
+		
+			<tr id="trR4D">
+				<td> 
+					<button onclick="btnR4DGO_onclick(this)" style="margin-right: 20px;">GO</button>
+				</td>
+		
+				<td id="tdR4DProgressBar">					
+				</td>		
 				
-			<tr>
-				<td class="msgContainer" id="msgContainer1" colspan="3"> 
-					<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise/any" target="_blank" style="margin-bottom:10px;">Promise.any() - JavaScript | MDN</a>
-				</td>
-			</tr>
+				<td style="width:5px;"> 
 		
-			<tr>
-				<td class="btnsContainer scroll"> 
-					<button onclick="btnR4DAny_onclick(this)">any</button>
-				</td>
-				<td class="pbsContainer" > <!-- style="border: solid 10px red;" -->
-					<div  id="tdR4DC2" class="scroll" style="">
-						<table class="demo"cellspacing="0"></table>
-					</div>
-				</td>
-				<td class="msgContainer"> 
-
-				</td>
+				</td>					
+				
 			</tr>
-			
-<!-- 		<tr>
-				<td class="msgContainer" id="msgContainer1" colspan="3"> 
-					<p class="text">
-						With '<b>Promise.any</b>', the 'Master-Promise':<br/>
-						- <b>resolves</b> (is successful) as soon any of the 'promises' resolve.<br/>
-						- <b>Rejects</b> (fails) when all 'promises' rejects.<br/>
-					</p>
-				</td>
-			</tr> -->
-
-			<tr>
-				<td class="msgContainer" id="msgContainer1" colspan="3"> 
-					<ul>
-						<p class="text">With '<b>Promise.any</b>', the 'Master-Promise':</p>
-						<li class="text"><b>resolves</b> (is successful) as soon any of the 'promises' resolve.
-						</li>
-						<li class="text"><b>Rejects</b> (fails) when all 'promises' rejects.
-						</li>
-					</ul>
-				</td>
-			</tr>
-							
-			<tr>
-				<td class="msgContainer" id="msgContainer1" colspan="3"> 
-					<p class="important">
-						<b>Note</b>: Only the succeeding progressBar can set properly its own ProgressGUI. The other progressBars are not able to show its own state.
-					</p>					
-				</td>
-			</tr>
-			
 		</table>
+
+		
+		<p class="text br15">
+			'<b>Promise.any</b>' resolves as soon any of the 'promises' resolve. Rejects when all 'promises' reject
+		</p>
+		<!-- <ul>
+			<p class="text">With '<b>Promise.any</b>', the 'Master-Promise':</p>
+			<li class="text"><b>resolves</b> (is successful) as soon any of the 'promises' resolve.
+			</li>
+			<li class="text"><b>Rejects</b> (fails) when all 'promises' rejects.
+			</li>
+		</ul> -->
+
+
 	</section>	
-	
-	<!--Section 4D Bis  -->
-	<section style="min-height:70px;">
-		<h2>
-			<span class="underline">
-				<span class="SectionLabel">Section 4D Bis:</span>&nbsp;
-				<span class="SectionTitle">'Promise.any'</span>
-				<span class="SectionSubTitle">(extended).</span>
-			</span>
-		</h2>
-		<!-- <h2>
-			<span class="SectionLabel">Section 4D Bis <span><span class="SectionTitle">Promise.any<span style="font-weight:normal;"> (extended).</span></span>
-		</h2> -->
-		<table border="0" style="width:100%;">
-		
-				
-			<tr>
-				<td class="msgContainer" id="msgContainer1" colspan="3"> 
-					<p class="text">
-					In this case, the implementation of 'Promise.any' is a little bit more advanced than the previous, in 'section 4D'.
-					Every 'ProgressBar' is able to set the state (the color) of its own 'PromiseGUI'.<br/>
-					</p>
-				</td>
-			</tr>
-		
-			<tr>
-				<td class="btnsContainer scroll"> 
-					<button onclick="btnR4DBisAny_onclick(this)">any</button>
-				</td>
-				<td class="pbsContainer" colspan="2">
-					<div  id="tdR4DBisC2" class="scroll" style="width:100%;border:solid 1px transparent;">
-						<table class="demo"cellspacing="0"></table>
-					</div>
-				</td>
 
-			</tr>
-			
-							
-			<tr>
-				<td class="msgContainer" id="msgContainer1" colspan="3"> 
-					<p class="important">
-						Now, every 'Promise' that fullfils (resolves or rejects) it is able to set its own 'PromiseGUI.<br/>
-						<span class="lessImportant">(every graphical element is properly colored);</span>
-					</p>
-				</td>
-			</tr>			
-			
-		</table>
-	</section>
-		
-	<!--Section 5A  -->
-	<!-- <section style="min-height:230px;">
-		<h2>
-			<span class="underline">
-				<span class="SectionLabel">Section 5A Bis:</span>&nbsp;
-				<span class="SectionTitle">'Promise' synchronous</span>
-			</span>
-		</h2>
-		<table border="0" >
-		
-		
-			<tr>
-				<td class="msgContainer" id="msgContainer1" colspan="3"> 
-					<br/>
-				</td>
-			</tr>
-			<tr>
-				<td class="btnsContainer"> 
-					<button onclick="btnR5AStart_onclick(this)">start</button>
-				</td>
-				<td class="pbsContainer" id="tdR5AC2"> 
-					<div  id="tdR5AC2" class="scroll" style="">
-						<table class="demo"cellspacing="0"></table>
-					</div>
-				</td>
-				<td class="msgContainer"> 
-				</td>
-			</tr>
-			
-			
-			<tr>
-				<td class="msgContainer" id="msgContainer1" colspan="3"> 
-					<p class="text">
-						Using '<span class="blue">async/await</span>' a 'Promise' transforms an <span class="red" style="font-weight:bold;">A</span>synchronous process in a <span style="co lor:red;font-weight:bold;">S</span>ynchronous.					<br/>
-							<span class="lessImportant">(This configuration does not need a 'Master-Promise' that controls the other 'Promises')</span>
-					</p>
-				</td>
-			</tr>
-		</table>
-	</section> -->
-	
 		
 	<!--Note  -->
 	<div class="comment">
@@ -2935,7 +3195,7 @@ Keywords: JavaScript asynchronous example, sync vs async, progress bar demo, dyn
 		
 		
 			<tr>
-				<td class="btnsContainer" style="vertical-align: top;margin-top:15px;"> 
+				<td class="btnsContainer br15" style="vertical-align: top;"> 
 					<button onclick="btnR6ALoops100_onClick(this)">Loops 100 [ms]</button>
 					<button onclick="btnR6ALoops150_onClick(this)">Loops 150 [ms]</button>
 					<button onclick="btnR6ALoops200_onClick(this)">Loops 200 [ms]</button>
@@ -3293,11 +3553,11 @@ Keywords: JavaScript asynchronous example, sync vs async, progress bar demo, dyn
 <script src="./js/R3A.js"></script>
 <script src="./js/R3B.js"></script>
 <script src="./js/R4A.js"></script>
-<script src="./js/R4ABis.js"></script>
+<!-- <script src="./js/R4ABis.js"></script> -->
 <script src="./js/R4B.js"></script>
 <script src="./js/R4C.js"></script>
 <script src="./js/R4D.js"></script>
-<script src="./js/R4DBis.js"></script>
+<!-- <script src="./js/R4DBis.js"></script> -->
 <script src="./js/R5A.js"></script>
 <script src="./js/R6A.js"></script>
 <script src="./js/R6B.js"></script>
@@ -3305,6 +3565,7 @@ Keywords: JavaScript asynchronous example, sync vs async, progress bar demo, dyn
 <script src="./js/R7B.js"></script>
 <script src="./js/R7C.js"></script>
 <script src="./js/R7D.js"></script>
+<script src="./js/T0.js"></script>
 <!-- ===================================== -->
 
 

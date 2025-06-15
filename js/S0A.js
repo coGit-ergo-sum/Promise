@@ -7,6 +7,8 @@ S0.progressBar = new ProgressBar('progressBar');
 
 tools.append(S0.progressBar, 'tdS0A');	
 
+var tdProgressBar = document.getElementById('tdProgressBar')
+
 S0.progressBar.probabilities.resolve  =  70;
 
 S0.progressBar.probabilities.reject   =  10;
@@ -15,9 +17,10 @@ S0.progressBar.probabilities.timeout  =  10;
 
 S0.progressBar.interval =  2;
 
+
 function btnS0AStartS_onclick(btn){
 		
-	MoveHtml('#divSync');
+	MoveHtml('divSync');
 	S0.progressBar.reset();
 	S0.progressBar.green();
 
@@ -27,18 +30,22 @@ function btnS0AStartS_onclick(btn){
 	debugger;
 	
 	while (true) {
-		S0.progressBar.width(w);
+		/*S0.progressBar.*/width(w);
 		w++;
 
 		if(w > wMax){ break; }
 	}
 }
 
+function width(value){
+	tdProgressBar.style.background = `linear-gradient(to right, #33DD33 ${value}%, transparent ${value}%)`; 
+}
+
 	
 
 function btnS0AStartA_onclick(btn){
 		
-	MoveHtml('#divAsync');
+	MoveHtml('divAsync');
 	S0.progressBar.reset();
 	S0.progressBar.green();
 
@@ -48,7 +55,7 @@ function btnS0AStartA_onclick(btn){
 	debugger;
 
 	let intervalId = setInterval(() => {
-		S0.progressBar.width(w);
+		/*S0.progressBar.*/width(w);
 		w++;
 
 		if(w > wMax){ clearInterval(intervalId);}
@@ -58,22 +65,22 @@ function btnS0AStartA_onclick(btn){
 
 // In this example 'info' is a string but can be anything. 
 function onResolve(info) {
-	alert(`promise.then onResolve -> ${info}`);
+	alert(`promise.then -> onResolve -> ${info}`);
 }	
 	
 // 'jse' should be a javascript Error object. 
 function onReject(jse) {
-	alert(`promise.then onReject -> ${jse.message}`);
+	alert(`promise.then -> onReject -> ${jse.message}`);
 }
 
 // 'jse' should be a javascript Error object. 
 function onCatch(jse) {		
-	alert(`promise.catch onCatch -> ${jse.message}`);
+	alert(`promise.catch -> onCatch -> ${jse.message}`);
 }
 
 // 'onFinally' does expect any parameter. 
 function onFinally() {
-	alert(`promise.finally onFinally`);
+	alert(`promise.finally -> onFinally`);
 }
 
 function btnI41_onclick(btn){

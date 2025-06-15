@@ -1,3 +1,138 @@
+
+
+let R4ABis = {};
+
+{
+	let n = 5;
+	
+	R4ABis.pbs   = [];
+	R4ABis.pguis = [];
+
+	
+	for(let i = 0; i < n; i++){
+		
+		R4ABis.pbs[i] = new ProgresBar2('ProgressBar' + i);
+
+		//////R4A.pbs[i].interval = 1;
+
+		R4ABis.pbs[i].probabilities.resolve = 70;
+		R4ABis.pbs[i].probabilities.error   =  0;		
+		R4ABis.pbs[i].probabilities.reject  = 20;
+		R4ABis.pbs[i].probabilities.timeout = 10;
+	
+		R4ABis.pbs[i].appendTo('tdR4ABisProgressBar');		
+		R4ABis.pguis[i] = new PromiseGUI(1);	
+		debugger;
+		let pguiElement = R4ABis.pguis[i].getTopElement();
+		R4ABis.pbs[i].appendPGui(pguiElement);	
+	}	
+	
+	R4ABis.pgui = new PromiseGUI(1);
+	R4ABis.pgui.appendTo('trR4ABis');
+
+
+
+	function btnR4ABisGOX_onclick(btn){
+
+		for(let i = 0; i < n; i++){
+		
+			debugger;
+
+			var pb = R4ABis.pbs[i];
+			var pgui = R4ABis.pguis[i];
+			pb.reset();	
+			pgui.reset();	
+			
+			function executorR4ABis(resolve, reject) {
+				let alea = Math.floor(100 * Math.random());	
+				pb.executor(resolve, reject, alea);
+			}					
+
+			let promise = new Promise(executorR4ABis);
+			promise
+			.then(pgui.onResolve, pgui.onReject)
+			.catch(pgui.onCatch)
+			.finally(pgui.onFinally);
+		}
+	}
+
+	function btnR4ABisGO_onclick(btn){
+
+		let promises = [];
+
+		R4ABis.pgui.reset();
+
+		for(let i = 0; i < n; i++){
+		
+			//debugger;
+
+			var pb = R4ABis.pbs[i];
+			let pgui = R4ABis.pguis[i];
+			pb.reset();	
+			pgui.reset();	
+			
+			function executorR4ABis(resolve, reject) {
+				let alea = Math.floor(100 * Math.random());	
+				pb.executor(resolve, reject, alea);
+			}
+					
+			function _onReject(reason){
+				pgui.onReject(reason);
+				for(let i = 0; i < n; i++){
+					var pb = R4ABis.pbs[i];
+					pb.stop();
+				}
+			}
+
+			let promise = new Promise(executorR4ABis);
+			promise
+			.then(pgui.onResolve, _onReject)	
+			.catch(pgui.onCatch)
+			.finally(pgui.onFinally);
+
+			promises[i] = promise;
+		}
+
+		// The new promise does not controls the 'ProgressBar', instead it controls an array 
+		// of 'promises' like an orchestra conductor. 
+		// Now we have 2 levels of 'Promise': it's a little bit more complex, but the concepts
+		// are all the same!
+		let promiseAll = Promise.all(promises);
+		
+		// and now we can use the 'promise' in the way we learned 
+		promiseAll.then(R4ABis.pgui.onResolve,  R4ABis.pgui.onReject)
+		.finally(R4ABis.pgui.onFinally)
+		.catch(R4ABis.pgui.onCatch);
+	}
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*
+
+
 {
 	
 	// When the going gets tough, the tough get going   ;)
@@ -166,7 +301,7 @@
 			.catch(function(envelope){ 
 				 if(envelope.error != null){_catch(envelope, pgui);};
 			})
-			*/
+			* /
 			;
 			// WMWMWMWMWMWMWMWMWMWMWMWMWMWMWMWMWMWMWMWMWMWMWMWMWMWMWMWMWMWMWMWMWMWMWMWMWMWMWMWMWMWMWMWMWMWMWMWM //		
 		}
@@ -197,3 +332,4 @@
 	}
 
 }
+	*/

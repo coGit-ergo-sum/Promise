@@ -7,6 +7,8 @@ class PromisePro {
         this.onResolves = [];
         this.onRejects = [];
 
+        debugger;
+
         try {
             executor(this._resolve.bind(this), this._reject.bind(this));
         } catch (err) {
