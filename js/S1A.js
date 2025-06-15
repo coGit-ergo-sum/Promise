@@ -14,6 +14,9 @@
 	
 	let pgui = new PromiseGUI(1);	
 	pgui.appendTo('tdS1AE2gui');
+
+	let pguiElement = pgui.getTopElement();
+	pb.appendPGui(pguiElement);
 	
 	
 	function executor(resolve, reject) {

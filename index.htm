@@ -2258,45 +2258,17 @@ This makes immediately clear what distinguishes the two functions and their beha
 		<span class="punctuation">}</span>
 	<span class="punctuation">}</span>
 	</code></pre>
+	
+	<p class="lessImportant">  
+		'<b><span class="keyword">return</span> <span class="keyword">this</span><span class="punctuation">;</span></b>' 
+		 in the snippet above doesn't reflect how Promises really works!
+	</p>
 	<br>
 	<p class="superImportant">
 		<strong>Attention:</strong> 'then', 'catch' and 'finally' <b>ALWAYS return a <span class="red">NEW</span> 'Promise'</b>.
 	</p>
-	<p class="important">  
-		'<b><span class="keyword">return</span> <span class="keyword">this</span><span class="punctuation">;</span></b>' 
-		 in the snippet above doesn't reflect how Promises really works in JavaScript!
-	</p>
-	<!-- <hr> -->
+	
 	<br>
-
-<!-- <br>
-<p class="lessImportant br15" style="margin-bottom: 0px;padding-bottom: 1px;">
-	<button onclick="btnS1A3_onclick(this)" title="Uses the 'PromiseDIY' object">Do math</button>
-	(Both should return 33. Only 'promise2.then.then' does. Why will be clear soon.)
-</p>
-<pre class="ai" style="margin-top:0px;"><code>
-	<span class="keyword">function</span> <span class="function">btnS1A3_onclick</span>(<span class="variable">btn</span>)<span class="punctuation">{</span>
-
-		<span class="keyword">function</span> <span class="function">executor</span>(<span class="variable">resolve</span><span class="punctuation">,</span> <span class="variable">reject</span>)<span class="punctuation">{</span>
-			<span class="function">setTimeout</span>(() => <span class="punctuation">{</span> <span class="function">resolve</span>(<span class="number">11</span>)<span class="punctuation">;</span> <span class="punctuation">},</span> <span class="number">1</span>)<span class="punctuation">;</span> 
-		<span class="punctuation">}</span>
-
-		<span class="keyword">let</span> <span class="variable">promise1</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="function">Promise</span>(<span class="red">executor</span><span class="punctuation">);</span>
-
-		<span class="comment">// (fake) Chain: both 'then' are called on promise1.</span>
-		<span class="variable">promise1</span>.<span class="function">then</span>( <span class="variable">value</span> <span class="operator">=></span> <span class="punctuation">{</span> <span class="keyword">return</span> <span class="variable">value</span> * <span class="number">3</span><span class="punctuation">;</span> <span class="punctuation">});</span>
-		<span class="variable">promise1</span>.<span class="function">then</span>( <span class="function">alert</span> );
-
-
-		<span class="keyword">let</span> <span class="variable">promise2</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="function">Promise</span>(<span class="red">executor</span><span class="punctuation">);</span>
-
-		<span class="comment">// (true) Chain of 'then'</span>
-		<span class="variable">promise2</span>
-			.<span class="function">then</span>( <span class="variable">value</span> => <span class="punctuation">{</span> <span class="keyword">return</span> <span class="variable">value</span> * <span class="number">3</span><span class="punctuation">;</span> <span class="punctuation">})</span>
-			.<span class="function">then</span>( <span class="function">alert</span> );
-	<span class="punctuation">}</span>
-</code></pre> -->
-
 
 
 </aside>
@@ -2823,23 +2795,18 @@ This makes immediately clear what distinguishes the two functions and their beha
 
 					<table style="width: 320px;"cellspacing="0">
 						<tr>
-							<td style="width: 40px;" id="tdtdS1ASub1gui1"></td>
 							<td id="tdtdS1ASub1pb1"></td>
 						</tr>
 						<tr>
-							<td style="width: 40px;" id="tdtdS1ASub1gui2"></td>
 							<td id="tdtdS1ASub1pb2"></td>
 						</tr>
 						<tr>
-							<td style="width: 40px;" id="tdtdS1ASub1gui3"></td>
 							<td id="tdtdS1ASub1pb3"></td>
 						</tr>
 						<tr>
-							<td style="width: 40px;" id="tdtdS1ASub1gui4"></td>
 							<td id="tdtdS1ASub1pb4"></td>
 						</tr>
 						<tr>
-							<td style="width: 40px;" id="tdtdS1ASub1gui5"></td>
 							<td id="tdtdS1ASub1pb5"></td>
 						</tr>
 

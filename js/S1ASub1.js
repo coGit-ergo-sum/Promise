@@ -11,7 +11,10 @@
 		pb.probabilities.timeout = 10;
 
         pb.appendTo('tdtdS1ASub1pb' + n);
-        pgui.appendTo('tdtdS1ASub1gui' + n);
+        //pgui.appendTo('tdtdS1ASub1gui' + n);
+
+        let pguiElement = pgui.getTopElement();
+        pb.appendPGui(pguiElement);	
 		
     }
 

@@ -9,10 +9,8 @@
 		
 	let pgui = new PromiseGUI(1);	
 	pb.appendTo('divXXX')	
-	pgui.appendTo('tdGUI')	
-	//tools.append2Demo(pb, 'tdR2AC2');
-		
-	//tools.prepend(pgui.$td, pb.$tr);	
+	let pguiElement = pgui.getTopElement();
+	pb.appendPGui(pguiElement);	
 
 	function executor(resolve, reject) {
 		let alea = Math.floor(100 * Math.random());	
