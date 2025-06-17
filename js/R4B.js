@@ -13,14 +13,14 @@ let R4AB = {};
 		
 		R4AB.pbs[i] = new ProgresBar2('ProgressBar' + i);
 
-		R4AB.pbs[i].probabilities.resolve = 70;
-		R4AB.pbs[i].probabilities.error   =  0;		
-		R4AB.pbs[i].probabilities.reject  = 20;
+		R4AB.pbs[i].probabilities.resolve = 60;
+		R4AB.pbs[i].probabilities.error   = 20;		
+		R4AB.pbs[i].probabilities.reject  = 10;
 		R4AB.pbs[i].probabilities.timeout = 10;
 	
 		R4AB.pbs[i].appendTo('tdR4BProgressBar');		
 		R4AB.pguis[i] = new PromiseGUI(1);	
-		debugger;
+
 		let pguiElement = R4AB.pguis[i].getTopElement();
 		R4AB.pbs[i].appendPGui(pguiElement);	
 	}	
@@ -38,7 +38,7 @@ let R4AB = {};
 
 		for(let i = 0; i < n; i++){
 		
-			//debugger;
+			debugger;
 
 			var pb = R4AB.pbs[i];
 			let pgui = R4AB.pguis[i];
@@ -71,10 +71,10 @@ let R4AB = {};
 		// of 'promises' like an orchestra conductor. 
 		// Now we have 2 levels of 'Promise': it's a little bit more complex, but the concepts
 		// are all the same!
-		let promiseAll = Promise.all(promises);
+		let promiseAllSettled = Promise.allSettled(promises);
 		
 		// and now we can use the 'promise' in the way we learned 
-		promiseAll.then(R4AB.pgui.onResolve,  R4AB.pgui.onReject)
+		promiseAllSettled.then(R4AB.pgui.onResolve,  R4AB.pgui.onReject)
 		.finally(R4AB.pgui.onFinally)
 		.catch(R4AB.pgui.onCatch);
 	}

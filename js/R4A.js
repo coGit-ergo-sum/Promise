@@ -27,7 +27,7 @@ let R4A = {};
 		R4A.pbs[i].appendTo('tdR4AProgressBar');
 		
 		R4A.pguis[i] = new PromiseGUI(1);	
-		debugger;
+
 		let pguiElement = R4A.pguis[i].getTopElement();
 		R4A.pbs[i].appendPGui(pguiElement);
 	}	

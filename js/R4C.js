@@ -25,7 +25,7 @@ let R4C = {};
 	
 		R4C.pbs[i].appendTo('tdR4CProgressBar');		
 		R4C.pguis[i] = new PromiseGUI(1);	
-		debugger;
+
 		let pguiElement = R4C.pguis[i].getTopElement();
 		R4C.pbs[i].appendPGui(pguiElement);	
 	}	
